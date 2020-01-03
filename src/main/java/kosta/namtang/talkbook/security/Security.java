@@ -10,8 +10,8 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/*").permitAll()
-                .antMatchers("/aroma/**").hasRole("MANAGER");
+                .antMatchers("/*").permitAll();
+                //.antMatchers("/aroma/**").hasRole("MANAGER");
 
         http.formLogin();
         http.exceptionHandling().accessDeniedPage("/accessDenied");
