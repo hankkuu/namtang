@@ -28,8 +28,10 @@ public class Book {
     private int bookCount;
     private String bookIsbn;
 
+
+
     @ManyToOne
-//    @JoinColumn(name="catgIdx")
+    @JoinColumn(name="catgIdx")
     private Category category;
 
 }
