@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import oracle.jdbc.proxy.oracle$1jdbc$1replay$1driver$1NonTxnReplayableOthers$2java$1sql$1SQLOutput$$$Proxy;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +21,7 @@ public class Category {
     private Long catgIdx;
     private String catgName;
 
-    @OneToMany(mappedBy = "category")
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Book> list = new ArrayList<Book>();
 }

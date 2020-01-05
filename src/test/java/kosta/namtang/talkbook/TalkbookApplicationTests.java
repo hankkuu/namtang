@@ -15,6 +15,7 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.transaction.Transactional;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
@@ -31,6 +32,8 @@ import org.xml.sax.InputSource;
 
 import java.net.URLEncoder;
 
+import static java.lang.System.*;
+
 
 @SpringBootTest
 class TalkbookApplicationTests {
@@ -40,6 +43,7 @@ class TalkbookApplicationTests {
 	@Autowired
 	private CategoryRepository catgRepo;
 
+//	@Transactional
 	@Test
 	void contextLoads() {
 
@@ -53,7 +57,10 @@ class TalkbookApplicationTests {
 		String clientSecret = "fy7bRsApnt";// 애플리케이션 클라이언트 시크릿값";\
 //        int display = 100; // 검색결과갯수. 최대100개
 		try {
-			String apiURL = "https://openapi.naver.com/v1/search/book.xml?query=java&display=2&start=1";
+//			String apiURL = "https://openapi.naver.com/v1/search/book.xml?query=java&display=2&start=1";
+			//기본검색
+			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=110010&d_cont=2017&display=1&start=1";
+			//상세검색
 
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -100,8 +107,11 @@ class TalkbookApplicationTests {
 			String publisher= null;
 			String title = null;
 
+//			catgRepo.save(new Category(1L,"한국시",null));
+
+
 			Category category = catgRepo.findById(1L).orElse(null);
-			System.out.println(category);
+			out.println(category);
 
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				NodeList child = nodeList.item(i).getChildNodes();
@@ -113,27 +123,26 @@ class TalkbookApplicationTests {
 					System.out.println("현재 노드 네임스페이스 : " + node.getPrefix());
 					System.out.println("현재 노드의 다음 노드 : " + node.getNextSibling());
 					System.out.println();
-//
-//					if(i==0) {
-//						title = node.getTextContent();
-//					} else if(i==2) img = node.getTextContent();
-//					else if(i==3) author = node.getTextContent();
-//					else if(i==4) price = Integer.parseInt(node.getTextContent());
-//					else if(i==6) publisher = node.getTextContent();
-//					else if(i==7) pubdate = node.getTextContent();
-//					else if(i==8) isbn = node.getTextContent();
-//					else if(i==9) desc = node.getTextContent();
-//
-//					Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, 0, isbn, category);
-//					System.out.println(book);
-//					bookRepo.save(book);
+
+					if(i==0) {
+						title = node.getTextContent();
+					} else if(i==2) img = node.getTextContent();
+					else if(i==3) author = node.getTextContent();
+					else if(i==4) price = Integer.parseInt(node.getTextContent());
+					else if(i==6) publisher = node.getTextContent();
+					else if(i==7) pubdate = node.getTextContent();
+					else if(i==8) isbn = node.getTextContent();
+					else if(i==9) desc = node.getTextContent();
 
 				}
+				Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, 0, isbn, category);
+//					System.out.println(book);
+				bookRepo.save(book);
 			}
 
 
 		} catch (Exception e) {
-			System.out.printf("e");
+			out.print(e.getMessage());
 		}
 
 	}
