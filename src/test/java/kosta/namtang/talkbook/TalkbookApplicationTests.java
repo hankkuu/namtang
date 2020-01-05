@@ -12,6 +12,7 @@ import org.xml.sax.InputSource;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -34,7 +35,9 @@ import java.net.URLEncoder;
 
 import static java.lang.System.*;
 
-
+/**
+ * Naver Book Api를 이용해 DB에 데이터를 담는 메소드
+ */
 @SpringBootTest
 class TalkbookApplicationTests {
 
@@ -45,7 +48,7 @@ class TalkbookApplicationTests {
 
 //	@Transactional
 	@Test
-	void contextLoads() {
+	void contextLoads() throws UnsupportedEncodingException {
 
 		StringBuilder sb;
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -55,11 +58,25 @@ class TalkbookApplicationTests {
 
 		String clientId = "7FZwEYvppDhLr3RUcauR";// 애플리케이션 클라이언트 아이디값";
 		String clientSecret = "fy7bRsApnt";// 애플리케이션 클라이언트 시크릿값";\
+		String text = URLEncoder.encode("책이있는풍경", "UTF-8");
 //        int display = 100; // 검색결과갯수. 최대100개
+		//문학과지성사
+		//난다
+		//밝은세상
+
+		String catgNum = "110100";
+		Long catgNumId = 10L;
+		//대상 카테고리
+
+		Category category = catgRepo.findById(catgNumId).orElse(null);
+//			out.println(category);
+
 		try {
 //			String apiURL = "https://openapi.naver.com/v1/search/book.xml?query=java&display=2&start=1";
 			//기본검색
-			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=110010&d_cont=2017&display=1&start=1";
+//			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=110010&d_cont=2017&display=100&start=1";
+//			한글깨짐
+			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg="+catgNum+"&d_publ="+text+"&display=100&start=1";
 			//상세검색
 
 			URL url = new URL(apiURL);
@@ -84,7 +101,7 @@ class TalkbookApplicationTests {
 			}
 			br.close();
 			con.disconnect();
-//            System.out.println(sb);
+            System.out.println(sb);
 
 
 
@@ -108,32 +125,47 @@ class TalkbookApplicationTests {
 			String title = null;
 
 //			catgRepo.save(new Category(1L,"한국시",null));
+//			catgRepo.save(new Category(2L,"외국시",null));
+//			catgRepo.save(new Category(3L,"인물 에세이",null));
+//			catgRepo.save(new Category(4L,"여행 에세이",null));
+//			catgRepo.save(new Category(5L,"성공 에세이",null));
+//			catgRepo.save(new Category(6L,"독서 에세이",null));
+//			catgRepo.save(new Category(7L,"명상 에세이",null));
+//			catgRepo.save(new Category(8L,"그림/포토 에세이",null));
+//			catgRepo.save(new Category(9L,"연애/사랑 에세이",null));
+//			catgRepo.save(new Category(10L,"삶의 지혜/명언",null));
 
 
-			Category category = catgRepo.findById(1L).orElse(null);
-			out.println(category);
 
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				NodeList child = nodeList.item(i).getChildNodes();
 				for (int j = 0; j < child.getLength(); j++) {
 					Node node = child.item(j);
-					System.out.println("현재 노드 이름 : " + node.getNodeName());
-					System.out.println("현재 노드 타입 : " + node.getNodeType());
-					System.out.println("현재 노드 값 : " + node.getTextContent());
-					System.out.println("현재 노드 네임스페이스 : " + node.getPrefix());
-					System.out.println("현재 노드의 다음 노드 : " + node.getNextSibling());
-					System.out.println();
 
-					if(i==0) {
+//					System.out.println("현재 노드 이름 : " + node.getNodeName());
+//					System.out.println("현재 노드 타입 : " + node.getNodeType());
+//					System.out.println("현재 노드 값 : " + node.getTextContent());
+//					System.out.println("현재 노드 네임스페이스 : " + node.getPrefix());
+//					System.out.println("현재 노드의 다음 노드 : " + node.getNextSibling());
+//					System.out.println();
+
+					if(j==0) {
 						title = node.getTextContent();
-					} else if(i==2) img = node.getTextContent();
-					else if(i==3) author = node.getTextContent();
-					else if(i==4) price = Integer.parseInt(node.getTextContent());
-					else if(i==6) publisher = node.getTextContent();
-					else if(i==7) pubdate = node.getTextContent();
-					else if(i==8) isbn = node.getTextContent();
-					else if(i==9) desc = node.getTextContent();
-
+						out.println(title);
+					} else if(j==2) {
+						img = node.getTextContent();
+						out.println(img);
+					}
+					else if(j==3) author = node.getTextContent();
+					else if(j==4) price = Integer.parseInt(node.getTextContent());
+					else if(j==6) {
+						publisher = node.getTextContent();
+						publisher = publisher.replace("<b>", "");
+						publisher = publisher.replace("</b>", "");
+					}
+					else if(j==7) pubdate = node.getTextContent();
+					else if(j==8) isbn = node.getTextContent();
+					else if(j==9) desc = node.getTextContent();
 				}
 				Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, 0, isbn, category);
 //					System.out.println(book);
