@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,4 +15,6 @@ import javax.persistence.Entity;
 public class Cart {
     @EmbeddedId
     private CartId cartId;
+
+    private LocalDateTime createDate;
 }
