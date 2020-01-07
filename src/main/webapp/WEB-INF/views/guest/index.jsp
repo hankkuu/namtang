@@ -42,7 +42,7 @@
                   <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
                 </ul>
 							</li>
-              <li class="nav-item"><a class="nav-link" href="aroma/category">Category</a></li>
+              <li class="nav-item"><a class="nav-link" href="aroma/category2">Category</a></li>
 
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +16,75 @@
   <link rel="stylesheet" href="/vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="/vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="/vendors/nouislider/nouislider.css">
-
+  <script src="/js/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
+    .pagination-container {
+      color: #2c3e50;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      margin: 15px auto;
+      padding-right: 40px;
+      text-align: center;
+
+    }
+    .pagination {
+      position: relative;
+    }
+    .pagination a {
+      position: relative;
+      display: inline-block;
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 8px 16px 10px;
+    }
+    .pagination a:before {
+      z-index: -1;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      content: "";
+      top: 0;
+      left: 0;
+      background-color: #2c3e50;
+      border-radius: 24px;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      transition: all 0.2s;
+    }
+    .pagination a:hover,
+    .pagination a .pagination-active {
+      color: #fff;
+    }
+    .pagination a:hover:before,
+    .pagination a .pagination-active:before {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    .pagination .pagination-active {
+      color: #fff;
+    }
+    .pagination .pagination-active:before {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    .pagination-newer {
+      margin-right: 50px;
+    }
+    .pagination-older {
+      margin-left: 50px;
+    }
+  </style>
+  <script>
+    $(function(){
+    $('.pagination-inner a').on('click', function() {
+      $(this).siblings().removeClass('pagination-active');
+      $(this).addClass('pagination-active');
+    });
+    });
+  </script>
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -67,6 +135,7 @@
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
+              <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
             </ul>
@@ -113,10 +182,10 @@
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">여행 에세이<span> (3600)</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">성공 에세이<span> (3600)</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">독서 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">명상 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="poto">그림/포토 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="love">연애/사랑 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="wisdom">삶의 지혜/명언<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food1" name="brand"><label for="food">명상 에세이<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food2" name="brand"><label for="poto">그림/포토 에세이<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food3" name="brand"><label for="love">연애/사랑 에세이<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food4" name="brand"><label for="wisdom">삶의 지혜/명언<span> (3600)</span></label></li>
                   </ul>
                 </form>
               </li>
@@ -173,10 +242,12 @@
             <div class="row">
 
 
+                <c:forEach var="item" items="${booklist}" varStatus="status">
+<%--            <c:forEach var="i" begin="0" end="8">--%>
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product1.png" alt="">
+                    <img class="card-img" src="${item.bookImg}" alt="">
                     <ul class="card-product__imgOverlay">
                       <li><button><i class="ti-search"></i></button></li>
                       <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -184,15 +255,15 @@
                     </ul>
                   </div>
                   <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <p>${item.category.catgName}</p>
+                    <h4 class="card-product__title"><a href="#">${item.bookTitle}</a></h4>
+                    <p class="card-product__price">${item.bookPrice}</p>
                   </div>
                 </div>
               </div>
+            </c:forEach>
 
-
-
+<%--
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
@@ -292,7 +363,7 @@
                     <p>Accessories</p>
                     <h4 class="card-product__title"><a href="#">Blutooth Speaker</a></h4>
                     <p class="card-product__price">$150.00</p>
-                  </div> 
+                  </div>
                 </div>
               </div>
               <div class="col-md-6 col-lg-4">
@@ -328,15 +399,33 @@
                     <p class="card-product__price">$150.00</p>
                   </div>
                 </div>
-              </div>
+              </div>--%>
+
+              <nav class="pagination-container">
+                <div class="pagination">
+                  <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>
+                  <span class="pagination-inner">
+					<a href="#ㅇㅅㅇ">1</a>
+					<a class="pagination-active" href="#ㅇㅅㅇ">2</a>
+					<a href="#ㅇㅅㅇ">3</a>
+					<a href="#ㅇㅅㅇ">4</a>
+					<a href="#ㅇㅅㅇ">5</a>
+					<a href="#ㅇㅅㅇ">6</a>
+				</span>
+                  <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>
+                </div>
+              </nav>
+
             </div>
           </section>
           <!-- End Best Seller -->
         </div>
       </div>
     </div>
+
   </section>
-	<!-- ================ category section end ================= -->		  
+	<!-- ================ category section end ================= -->
+
 
 	<!-- ================ top product area start ================= -->	
 	<section class="related-product-area">
