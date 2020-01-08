@@ -24,13 +24,13 @@ public interface PurchaseService {
 							  PurchasePayment payment, User user) throws Exception;
 	
 	// 환불
-	public BillKey refund(String billKey, String reason, int refundType, List<Long> purchaseGoodsList) throws Exception;
+	public BillKey refund(String billKey, String reason, int refundType,  List<PurchaseBook> cancelBookList) throws Exception;
 	
 	// 구매 수정 
 	public BillKey changePurchase(String billKey, List<PurchaseBook> purchaseGoodsList) throws Exception;
 	
 	// 구매 내역 조회
-	public List<PurchaseOrderResponse> selectPurchaseDetail(User account) throws Exception;
+	public List<PurchaseOrderResponse> selectOrderList(User account) throws Exception;
 	
 	/**
 	 * 장바구니에서 구매 넘어갈때 들고갈 상품 정보(조회)

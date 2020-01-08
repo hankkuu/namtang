@@ -1,6 +1,6 @@
-package kosta.namtang.talkbook.common.bill;
+package kosta.namtang.talkbook.service.bill;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,7 +22,7 @@ public class BillKeySystem {
 		UUID uuid = UUID.randomUUID();
 		
 		// 기존에 있는 키인지 확인한다
-		Optional<BillKey> key = billkey.findById(uuid.toString());
+		BillKey key = billkey.findById(uuid.toString()).orElse(null);
 		if(key == null) {
 			return uuid.toString();
 		}
@@ -30,29 +30,32 @@ public class BillKeySystem {
 		return "";
 	}
 	
-	public BillKey registerPurchase(String billKey, Date date) throws Exception {
+	public BillKey registerPurchase(String billKey, Timestamp date) throws Exception {
 		
 		BillKey key = new BillKey();
 		key.setBillKey(billKey);
 		key.setIssueDate(date);
 		key.setUpdateDate(date);
-		key.setCancelDate(DateTimeHelper.convertSqldate(DateTimeHelper.dateFormatUtil("yyyy-MM-dd", "1900-01-01")));
+		key.setCancelDate(DateTimeHelper.timeStamp("1900-01-01 00:00:00"));
 		//key.setCreateDate(DateTimeHelper.sqlDateNow());
 
-		BillKey result = null;
-		result = billkey.save(key);
+		BillKey result = billkey.save(key);
 		return result;
 	}
 	
-	public BillKey registerCancel(String billKey, Date date) throws Exception {
+	public BillKey registerCancel(String billKey, Timestamp date) throws Exception {
 		
-		BillKey key = new BillKey();
-		key.setCancelDate(date);
-		key.setUpdateDate(date);
+		BillKey key = billkey.findById(billKey).orElse(null);
+		if(key != null) {
+			key.setCancelDate(date);
+			key.setUpdateDate(date);
 
-		BillKey result = null;
-		result = billkey.save(key);
-		return result;
+			BillKey result = billkey.save(key);
+			if(result != null)
+				return result;
+		}
+
+		return key;
 	}
 
 }

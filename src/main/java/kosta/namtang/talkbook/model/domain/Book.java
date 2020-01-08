@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Book {
 
     @Id

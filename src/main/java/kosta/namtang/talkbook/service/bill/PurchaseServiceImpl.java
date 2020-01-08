@@ -4,7 +4,6 @@ package kosta.namtang.talkbook.service.bill;
 import kosta.namtang.talkbook.common.GlobalException;
 import kosta.namtang.talkbook.common.PurchaseCode;
 import kosta.namtang.talkbook.common.StatusCode;
-import kosta.namtang.talkbook.common.bill.BillKeySystem;
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.bill.*;
 import kosta.namtang.talkbook.model.domain.User;
@@ -19,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 			// [0] 빌키 받아오기 //uuid
 			String key = keySystem.issueBillKey();
 			// 시간 동기화
-			Date purchaseDate = DateTimeHelper.sqlDateNow();
+			Timestamp purchaseDate = DateTimeHelper.timeStampNow();
 
 			// [1] 계정 정보 알아오기 (로그인 세션에서 알수있음)
 			long userIdx = account.getUserIdx();
@@ -60,6 +59,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 			order.setOrderDate(purchaseDate);
 			//order.setCreateDate(purchaseDate);
 			order.setUpdateDate(purchaseDate);
+			order.setBillKey(key);
 
 			///////////////////////////////////////////// 트랜잭션 시작
 			// [2] basket 정보를 넣어주기 (seq로 return을 받는것이 가장 좋다)
@@ -117,12 +117,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	@Transactional
-	public BillKey refund(String billKey, String reason, int refundCode, List<Long> purchaseBookIdsList) throws Exception {
+	public BillKey refund(String billKey, String reason, int refundCode, List<PurchaseBook> cancelBookList) throws Exception {
 		
 		try {
 			//구매당시의 Billkey를 가져 옴
 			// 빌키 검증이 필요할까??? 
-			Date cancelDate = DateTimeHelper.sqlDateNow();
+			Timestamp cancelDate = DateTimeHelper.timeStampNow();
 			
 			//해당 BillKey의 Basket 정보를 가져옴
 			PurchaseOrder order = purchaseOrder.findByBillKey(billKey);
@@ -133,12 +133,13 @@ public class PurchaseServiceImpl implements PurchaseService {
 			//해당 Basket 정보의 Goods를 가져옴
 			// 단, 여기서 전체환불인지 부분환불인지 구분한다
 			List<PurchaseBook> booksList = new ArrayList<PurchaseBook>();
-			if(purchaseBookIdsList.size() == 0) {
+			if(cancelBookList.size() == 0) {
 				booksList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
 			} else {
-				for(long purchaseBookId : purchaseBookIdsList) {
-					PurchaseBook cancelGoods = purchaseBook.findByPurchaseBookIdBookIdx(purchaseBookId);
-					booksList.add(cancelGoods);
+				for(PurchaseBook cancelBook : cancelBookList) {
+					PurchaseBook book = purchaseBook.findByPurchaseBookIdBookIdx(cancelBook.getPurchaseBookId().getBookIdx());
+					book.setCount(cancelBook.getCount());
+					booksList.add(book);
 				}
 			}
 
@@ -171,6 +172,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 					//cancel.setPurchaseGoodsId(goods.getPurchaseGoodId());
 					cancel.setReason(reason);
 					cancel.setRefundCode(refundCode);
+					cancel.setCreateDate(cancelDate);
+					cancel.setUpdateDate(cancelDate);
+					cancel.setCount(book.getCount());
 					
 					//해당 Goods의 Cancel 정보를 insert
 					PurchaseCancel cancelResult = purchaseCancel.save(cancel);
@@ -213,7 +217,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	@Transactional
-	public List<PurchaseOrderResponse> selectPurchaseDetail(User account) throws Exception {
+	public List<PurchaseOrderResponse> selectOrderList(User account) throws Exception {
 
 		List<PurchaseOrderResponse> list = new ArrayList<>();
 		try {
@@ -226,6 +230,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 				//dto 사용
 				PurchaseOrderResponse response = new PurchaseOrderResponse();
 				response.setPayment(payment);
+				response.setOrder(order);
 				list.add(response);
 				
 //				List<PurchaseBook> purchaseGoodsList = purchaseBook.findByOrderIdx(order.getPurchaseOrderIdx());
@@ -247,13 +252,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 //				order.setPurchaseGoodList(purchaseGoodsList);
 			}
 
-			return list;
-
 		}catch(Exception e) {
 			// 위의 쿼리에서 문제가 없다면 모든 구매 정보를 보낸다 
 			e.printStackTrace();
 		}
 		
-		return null;
+		return list;
 	}
 }

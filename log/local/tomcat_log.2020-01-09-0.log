@@ -1,0 +1,773 @@
+2020:01:09 02:13:47.335 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 8032 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:13:47.338 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:13:47.339 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 02:13:47.602 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 02:13:47.606 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 02:13:47.607 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 02:13:49.453 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:13:49.558 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:13:50.178 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:13:50.890 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 02:13:50.905 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:13:50.906 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 02:13:50.907 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 02:13:51.310 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 02:13:51.316 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 02:13:51.317 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 3708 ms 
+2020:01:09 02:13:51.638 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:13:51.766 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 02:13:51.908 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 02:13:51.998 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 02:13:52.000 WARN  --- [restartedMain] c.z.hikari.util.DriverDataSource : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation. 
+2020:01:09 02:13:52.183 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:13:52.196 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 02:13:52.211 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:13:52.741 WARN  --- [restartedMain] org.hibernate.mapping.RootClass : HHH000038: Composite-id class does not override equals(): kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId 
+2020:01:09 02:13:52.742 WARN  --- [restartedMain] org.hibernate.mapping.RootClass : HHH000039: Composite-id class does not override hashCode(): kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId 
+2020:01:09 02:13:52.742 WARN  --- [restartedMain] org.hibernate.mapping.RootClass : HHH000038: Composite-id class does not override equals(): kosta.namtang.talkbook.model.domain.CartId 
+2020:01:09 02:13:52.743 WARN  --- [restartedMain] org.hibernate.mapping.RootClass : HHH000039: Composite-id class does not override hashCode(): kosta.namtang.talkbook.model.domain.CartId 
+2020:01:09 02:13:52.743 WARN  --- [restartedMain] org.hibernate.mapping.RootClass : HHH000038: Composite-id class does not override equals(): kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId 
+2020:01:09 02:13:52.743 WARN  --- [restartedMain] org.hibernate.mapping.RootClass : HHH000039: Composite-id class does not override hashCode(): kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId 
+2020:01:09 02:13:54.438 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:13:54.458 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:13:54.507 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 02:13:55.080 WARN  --- [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020:01:09 02:13:55.154 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 65a1b2c5-b7f3-4494-8d8e-8f2ec5280b89
+ 
+2020:01:09 02:13:55.244 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d890294, org.springframework.security.web.context.SecurityContextPersistenceFilter@e04a1a1, org.springframework.security.web.header.HeaderWriterFilter@51814204, org.springframework.security.web.csrf.CsrfFilter@44c93580, org.springframework.security.web.authentication.logout.LogoutFilter@1cea8d86, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7e6971cd, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@bffcec3, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@60a2e2ea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4130de2f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42362008, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@65e36d98, org.springframework.security.web.session.SessionManagementFilter@676de877, org.springframework.security.web.access.ExceptionTranslationFilter@5e6d8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@8f6fe] 
+2020:01:09 02:13:55.322 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:13:55.522 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:13:56.104 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:13:56.131 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 02:13:56.135 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 9.658 seconds (JVM running for 11.325) 
+2020:01:09 02:13:56.139 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 02:13:56.139 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 02:13:56.139 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 02:13:56.139 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 02:37:20.338 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 7724 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:37:20.342 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:37:20.343 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 02:37:20.518 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 02:37:20.519 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 02:37:20.675 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 02:37:21.897 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:37:22.055 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 144ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:37:22.495 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:37:22.834 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 02:37:22.843 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:37:22.844 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 02:37:22.844 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 02:37:23.182 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 02:37:23.187 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 02:37:23.188 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2512 ms 
+2020:01:09 02:37:23.480 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:37:23.550 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 02:37:23.655 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 02:37:23.756 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 02:37:23.757 WARN  --- [restartedMain] c.z.hikari.util.DriverDataSource : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation. 
+2020:01:09 02:37:23.995 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:37:24.009 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 02:37:24.022 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:37:26.665 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:37:26.685 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:37:26.743 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 02:37:27.330 WARN  --- [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020:01:09 02:37:27.410 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 07d6b487-ff24-4fda-9629-e8ee0a13e83a
+ 
+2020:01:09 02:37:27.507 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d14c01b, org.springframework.security.web.context.SecurityContextPersistenceFilter@2439d1d9, org.springframework.security.web.header.HeaderWriterFilter@6095a00b, org.springframework.security.web.csrf.CsrfFilter@2b8c0f9a, org.springframework.security.web.authentication.logout.LogoutFilter@7b55c295, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@54ce2894, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@42ec23e1, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6ebb82f6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d9c3a8b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@76d1173c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b24ac29, org.springframework.security.web.session.SessionManagementFilter@7075e37f, org.springframework.security.web.access.ExceptionTranslationFilter@359fbaf9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@48571ea6] 
+2020:01:09 02:37:27.607 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:37:27.768 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:37:28.302 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:37:28.318 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 02:37:28.334 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.888 seconds (JVM running for 11.003) 
+2020:01:09 02:37:28.334 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 02:37:28.334 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 02:37:28.334 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 02:37:28.334 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 02:42:11.706 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 15136 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:42:11.706 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:42:11.706 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 02:42:11.971 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 02:42:11.971 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 02:42:11.971 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 02:42:13.221 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:42:13.362 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 123ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:42:13.799 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:42:14.143 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 02:42:14.159 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:42:14.159 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 02:42:14.159 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 02:42:14.502 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 02:42:14.502 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 02:42:14.502 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2531 ms 
+2020:01:09 02:42:14.815 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:42:14.893 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 02:42:15.002 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 02:42:15.096 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 02:42:15.096 WARN  --- [restartedMain] c.z.hikari.util.DriverDataSource : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation. 
+2020:01:09 02:42:15.315 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:42:15.331 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 02:42:15.346 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:42:17.624 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:42:17.639 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:42:17.686 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 02:42:18.311 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b02f5036-e613-4b03-abed-2a6005838aeb
+ 
+2020:01:09 02:42:18.405 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5ab25e96, org.springframework.security.web.context.SecurityContextPersistenceFilter@77ed8824, org.springframework.security.web.header.HeaderWriterFilter@43d892b7, org.springframework.security.web.csrf.CsrfFilter@3de2dadc, org.springframework.security.web.authentication.logout.LogoutFilter@5ca9a353, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1866b927, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1ccb2818, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@498e6094, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@538037c5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@334819c9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cd06c5e, org.springframework.security.web.session.SessionManagementFilter@f215a7, org.springframework.security.web.access.ExceptionTranslationFilter@6d7062e8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12f34bcd] 
+2020:01:09 02:42:18.498 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:42:18.702 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:42:19.248 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:42:19.280 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 02:42:19.280 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.681 seconds (JVM running for 10.301) 
+2020:01:09 02:42:19.295 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 02:42:19.295 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 02:42:19.295 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 02:42:19.295 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 02:49:09.567 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5028 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:49:09.567 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:49:09.567 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 02:49:09.973 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 02:49:09.973 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 02:49:09.973 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 02:49:11.255 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:49:11.395 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:49:11.770 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:49:12.098 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 02:49:12.098 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:49:12.098 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 02:49:12.098 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 02:49:12.458 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 02:49:12.458 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 02:49:12.458 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2485 ms 
+2020:01:09 02:49:12.786 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:49:12.848 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 02:49:12.958 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 02:49:13.067 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 02:49:13.286 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:49:13.301 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 02:49:13.317 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:49:15.722 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:49:15.738 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:49:15.785 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 02:49:16.332 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9874a24a-2236-4f18-aefe-c059e0870baa
+ 
+2020:01:09 02:49:16.410 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b37a5b4, org.springframework.security.web.context.SecurityContextPersistenceFilter@6aed688f, org.springframework.security.web.header.HeaderWriterFilter@4fe8b546, org.springframework.security.web.csrf.CsrfFilter@5f21fd0, org.springframework.security.web.authentication.logout.LogoutFilter@2a2e632f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2b58fc2c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7d3b712b, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@338639ba, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4fe140a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@434d9411, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22d7e2b8, org.springframework.security.web.session.SessionManagementFilter@61156880, org.springframework.security.web.access.ExceptionTranslationFilter@7fe3229b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d2cd117] 
+2020:01:09 02:49:16.489 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:49:16.645 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:49:17.160 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:49:17.192 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 02:49:17.192 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.472 seconds (JVM running for 9.948) 
+2020:01:09 02:49:17.192 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 02:49:17.192 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 02:49:17.192 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 02:49:17.192 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 02:54:32.743 INFO  --- [Thread-21] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:54:32.743 INFO  --- [Thread-21] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:54:32.758 INFO  --- [Thread-21] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:54:32.774 INFO  --- [Thread-21] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 02:54:32.993 INFO  --- [Thread-21] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 02:54:33.713 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5028 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:54:33.713 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:54:33.728 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 02:54:34.056 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:54:34.150 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:54:34.353 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:54:34.478 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 02:54:34.603 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 02:54:34.603 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:54:34.603 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 02:54:34.603 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 02:54:35.111 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 02:54:35.117 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 02:54:35.118 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 1390 ms 
+2020:01:09 02:54:35.221 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:54:35.234 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Starting... 
+2020:01:09 02:54:35.343 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-2 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:54:35.353 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Start completed. 
+2020:01:09 02:54:35.355 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:54:36.949 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:54:36.949 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:54:36.965 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 02:54:37.043 WARN  --- [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'purchaseController': Unsatisfied dependency expressed through field 'purchaseService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'purchaseServiceImpl': Unsatisfied dependency expressed through field 'keySystem'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kosta.namtang.talkbook.service.bill.BillKeySystem' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2020:01:09 02:54:37.043 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:54:37.043 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown initiated... 
+2020:01:09 02:54:37.168 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown completed. 
+2020:01:09 02:54:37.168 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Stopping service [Tomcat] 
+2020:01:09 02:54:37.183 INFO  --- [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+2020:01:09 02:54:37.449 ERROR --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field keySystem in kosta.namtang.talkbook.service.bill.PurchaseServiceImpl required a bean of type 'kosta.namtang.talkbook.service.bill.BillKeySystem' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'kosta.namtang.talkbook.service.bill.BillKeySystem' in your configuration.
+ 
+2020:01:09 02:54:43.319 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Starting BillingTests on DESKTOP-2EUQSAF with PID 3992 (started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:54:43.319 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:54:43.319 INFO  --- [main] kosta.namtang.talkbook.BillingTests : The following profiles are active: local 
+2020:01:09 02:54:44.976 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:54:45.163 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 172ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:54:46.319 INFO  --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:54:46.897 INFO  --- [main] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:54:47.038 INFO  --- [main] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 02:54:47.272 INFO  --- [main] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 02:54:47.725 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 02:54:48.053 INFO  --- [main] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:54:48.069 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 02:54:48.100 INFO  --- [main] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:54:51.147 INFO  --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:54:51.178 INFO  --- [main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:54:52.600 INFO  --- [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ac210ba2-7495-4015-b852-657e215bc852
+ 
+2020:01:09 02:54:52.959 INFO  --- [main] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@669c2b07, org.springframework.security.web.context.SecurityContextPersistenceFilter@56872fcb, org.springframework.security.web.header.HeaderWriterFilter@61c4cebd, org.springframework.security.web.csrf.CsrfFilter@7079f8f0, org.springframework.security.web.authentication.logout.LogoutFilter@5a7a6d34, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3c7d8a4, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4489f60f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1b1ea1d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d3b6585, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6630dd28, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a902015, org.springframework.security.web.session.SessionManagementFilter@716ae973, org.springframework.security.web.access.ExceptionTranslationFilter@563843f1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@299a43d9] 
+2020:01:09 02:54:53.116 INFO  --- [main] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:54:53.897 INFO  --- [main] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:54:54.678 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Started BillingTests in 12.763 seconds (JVM running for 16.016) 
+2020:01:09 02:54:55.303 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : [{"payment":{"purchaseOrderIdx":10,"totalPrice":100000,"shippingPrice":10000,"paymentCode":1,"receiverName":"강한규","receiverPhone":"111111111","deliveryComment":"잘배송해주세요","createDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM"}},{},{"payment":{"purchaseOrderIdx":8,"totalPrice":100000,"shippingPrice":10000,"paymentCode":1,"receiverName":"강한규","receiverPhone":"111111111","deliveryComment":"잘배송해주세요","createDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM"}},{"payment":{"purchaseOrderIdx":11,"totalPrice":0,"shippingPrice":10000,"paymentCode":1,"receiverName":"강한규","receiverPhone":"111111111","deliveryComment":"잘배송해주세요","createDate":"Jan 8, 2020 9:42:39 PM","updateDate":"Jan 8, 2020 9:42:39 PM"}}] 
+2020:01:09 02:54:55.350 INFO  --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:54:55.350 INFO  --- [SpringContextShutdownHook] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:54:55.365 INFO  --- [SpringContextShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:54:55.365 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 02:54:55.475 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 02:57:09.326 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5028 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:57:09.326 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:57:09.326 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 02:57:09.841 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:57:09.920 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:57:10.107 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:57:10.170 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 02:57:10.295 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 02:57:10.295 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 02:57:10.295 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 02:57:10.295 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 02:57:10.529 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 02:57:10.544 INFO  --- [restartedMain] o.a.c.c.C.[.[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 02:57:10.544 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 1203 ms 
+2020:01:09 02:57:10.716 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:57:10.716 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Starting... 
+2020:01:09 02:57:10.851 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-3 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:57:10.867 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Start completed. 
+2020:01:09 02:57:10.867 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:57:12.449 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:57:12.449 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:57:12.464 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 02:57:12.574 WARN  --- [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'purchaseController': Unsatisfied dependency expressed through field 'purchaseService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kosta.namtang.talkbook.service.bill.PurchaseService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2020:01:09 02:57:12.574 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:57:12.589 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown initiated... 
+2020:01:09 02:57:12.730 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown completed. 
+2020:01:09 02:57:12.730 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Stopping service [Tomcat] 
+2020:01:09 02:57:12.746 INFO  --- [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+2020:01:09 02:57:12.949 ERROR --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field purchaseService in kosta.namtang.talkbook.controller.PurchaseController required a bean of type 'kosta.namtang.talkbook.service.bill.PurchaseService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'kosta.namtang.talkbook.service.bill.PurchaseService' in your configuration.
+ 
+2020:01:09 02:57:15.537 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Starting BillingTests on DESKTOP-2EUQSAF with PID 1072 (started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 02:57:15.537 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 02:57:15.537 INFO  --- [main] kosta.namtang.talkbook.BillingTests : The following profiles are active: local 
+2020:01:09 02:57:17.272 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 02:57:17.444 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 153ms. Found 9 JPA repository interfaces. 
+2020:01:09 02:57:18.318 INFO  --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 02:57:18.912 INFO  --- [main] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 02:57:19.037 INFO  --- [main] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 02:57:19.272 INFO  --- [main] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 02:57:19.662 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 02:57:19.990 INFO  --- [main] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 02:57:20.022 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 02:57:20.037 INFO  --- [main] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 02:57:23.047 INFO  --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 02:57:23.063 INFO  --- [main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:57:24.360 INFO  --- [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 377021a3-7cd9-42bc-876e-76da8eda0836
+ 
+2020:01:09 02:57:24.688 INFO  --- [main] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@534d0e20, org.springframework.security.web.context.SecurityContextPersistenceFilter@4fea5ee0, org.springframework.security.web.header.HeaderWriterFilter@34e25492, org.springframework.security.web.csrf.CsrfFilter@2b99c937, org.springframework.security.web.authentication.logout.LogoutFilter@391d28ea, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@669c2b07, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5d5574c7, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7d18338b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6630dd28, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25d9291a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f4a605f, org.springframework.security.web.session.SessionManagementFilter@5f2b9da8, org.springframework.security.web.access.ExceptionTranslationFilter@41059616, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45fb2354] 
+2020:01:09 02:57:24.844 INFO  --- [main] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:57:25.672 INFO  --- [main] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:57:26.422 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Started BillingTests in 12.632 seconds (JVM running for 15.523) 
+2020:01:09 02:57:26.969 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : [{"order":{"purchaseOrderIdx":10,"stateCode":10,"deliveryAddress":"경기도 판교시","orderDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM","billKey":"3c1ef832-ae41-47fd-9d3d-b7651dff5573","userIdx":1},"payment":{"purchaseOrderIdx":10,"totalPrice":100000,"shippingPrice":10000,"paymentCode":1,"receiverName":"강한규","receiverPhone":"111111111","deliveryComment":"잘배송해주세요","createDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM"}},{"order":{"purchaseOrderIdx":3,"stateCode":10,"deliveryAddress":"경기도 판교시","orderDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM","userIdx":1}},{"order":{"purchaseOrderIdx":8,"stateCode":10,"deliveryAddress":"경기도 판교시","orderDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM","billKey":"4a7e4bac-17de-4356-afce-2c656d53f38d","userIdx":1},"payment":{"purchaseOrderIdx":8,"totalPrice":100000,"shippingPrice":10000,"paymentCode":1,"receiverName":"강한규","receiverPhone":"111111111","deliveryComment":"잘배송해주세요","createDate":"Jan 8, 2020 12:00:00 AM","updateDate":"Jan 8, 2020 12:00:00 AM"}},{"order":{"purchaseOrderIdx":11,"stateCode":10,"deliveryAddress":"경기도 판교시","orderDate":"Jan 8, 2020 9:42:39 PM","updateDate":"Jan 8, 2020 9:42:39 PM","billKey":"b92a1e61-92b3-4f34-97c2-5e861e2fd36d","userIdx":1},"payment":{"purchaseOrderIdx":11,"totalPrice":0,"shippingPrice":10000,"paymentCode":1,"receiverName":"강한규","receiverPhone":"111111111","deliveryComment":"잘배송해주세요","createDate":"Jan 8, 2020 9:42:39 PM","updateDate":"Jan 8, 2020 9:42:39 PM"}}] 
+2020:01:09 02:57:26.985 INFO  --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 02:57:26.985 INFO  --- [SpringContextShutdownHook] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 02:57:27.000 INFO  --- [SpringContextShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 02:57:27.000 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 02:57:27.125 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 03:33:09.160 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5028 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 03:33:09.160 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 03:33:09.160 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 03:33:09.473 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 03:33:09.535 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55ms. Found 9 JPA repository interfaces. 
+2020:01:09 03:33:09.676 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 03:33:09.848 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 03:33:09.988 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 03:33:09.988 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 03:33:09.988 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 03:33:09.988 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 03:33:10.198 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 03:33:10.202 INFO  --- [restartedMain] o.a.c.c.C.[.[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 03:33:10.202 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 1042 ms 
+2020:01:09 03:33:10.296 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 03:33:10.307 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Starting... 
+2020:01:09 03:33:10.422 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-4 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 03:33:10.432 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Start completed. 
+2020:01:09 03:33:10.433 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 03:33:11.956 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 03:33:11.956 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:33:11.972 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 03:33:12.237 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 606ab096-4269-402a-a6d6-705fc0382df5
+ 
+2020:01:09 03:33:12.300 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1131f27c, org.springframework.security.web.context.SecurityContextPersistenceFilter@9346f1b, org.springframework.security.web.header.HeaderWriterFilter@16ee7ce3, org.springframework.security.web.csrf.CsrfFilter@935e517, org.springframework.security.web.authentication.logout.LogoutFilter@649e0b69, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5b3432c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1d4f3840, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6ac60265, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2eafb960, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b43d132, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@965cad4, org.springframework.security.web.session.SessionManagementFilter@2f0f2ab0, org.springframework.security.web.access.ExceptionTranslationFilter@965db36, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@38eb757c] 
+2020:01:09 03:33:12.441 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:33:12.691 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 03:33:12.706 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 03:33:12.706 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 3.608 seconds (JVM running for 2645.465) 
+2020:01:09 03:33:12.706 INFO  --- [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged 
+2020:01:09 03:33:12.706 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 03:33:12.706 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 03:33:12.706 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 03:33:12.706 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 03:33:15.331 INFO  --- [Thread-31] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:33:15.331 INFO  --- [Thread-31] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:33:15.331 INFO  --- [Thread-31] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Shutdown initiated... 
+2020:01:09 03:33:15.456 INFO  --- [Thread-31] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Shutdown completed. 
+2020:01:09 03:33:16.208 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5028 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 03:33:16.208 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 03:33:16.208 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 03:33:16.534 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 03:33:16.561 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 9 JPA repository interfaces. 
+2020:01:09 03:33:16.628 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 03:33:16.661 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 03:33:16.683 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 03:33:16.684 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 03:33:16.684 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 03:33:16.684 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 03:33:16.800 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 03:33:16.802 INFO  --- [restartedMain] o.a.c.c.C.[.[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 03:33:16.802 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 594 ms 
+2020:01:09 03:33:16.872 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 03:33:16.880 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Starting... 
+2020:01:09 03:33:16.977 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-5 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 03:33:16.989 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Start completed. 
+2020:01:09 03:33:16.990 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 03:33:18.489 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 03:33:18.489 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:33:18.515 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 03:33:18.989 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:33:19.039 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ef9caf2d-85a3-48de-846d-41967631ea60
+ 
+2020:01:09 03:33:19.066 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c15ddb0, org.springframework.security.web.context.SecurityContextPersistenceFilter@312583b7, org.springframework.security.web.header.HeaderWriterFilter@7cba7848, org.springframework.security.web.csrf.CsrfFilter@36fafca2, org.springframework.security.web.authentication.logout.LogoutFilter@1210a277, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3ffd6945, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4655c697, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7c877940, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@62056585, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4dd229b5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b8689da, org.springframework.security.web.session.SessionManagementFilter@50db6ae2, org.springframework.security.web.access.ExceptionTranslationFilter@2eafbb85, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6c0d7163] 
+2020:01:09 03:33:19.288 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:33:19.761 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 03:33:19.761 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 03:33:19.761 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 3.682 seconds (JVM running for 2652.523) 
+2020:01:09 03:33:19.761 INFO  --- [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged 
+2020:01:09 03:33:19.761 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 03:33:19.761 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 03:33:19.761 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 03:33:19.761 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 03:33:23.855 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Starting BillingTests on DESKTOP-2EUQSAF with PID 12192 (started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 03:33:23.855 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 03:33:23.855 INFO  --- [main] kosta.namtang.talkbook.BillingTests : The following profiles are active: local 
+2020:01:09 03:33:25.620 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 03:33:25.839 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 199ms. Found 9 JPA repository interfaces. 
+2020:01:09 03:33:27.042 INFO  --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 03:33:27.761 INFO  --- [main] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 03:33:27.917 INFO  --- [main] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 03:33:28.323 INFO  --- [main] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 03:33:28.870 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 03:33:29.198 INFO  --- [main] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 03:33:29.214 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 03:33:29.276 INFO  --- [main] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 03:33:32.635 INFO  --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 03:33:32.651 INFO  --- [main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:33:34.416 INFO  --- [main] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:33:34.635 INFO  --- [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f7271ae3-0a50-4bb7-859d-8fba8f09df4e
+ 
+2020:01:09 03:33:35.198 INFO  --- [main] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e5190bd, org.springframework.security.web.context.SecurityContextPersistenceFilter@7ec68821, org.springframework.security.web.header.HeaderWriterFilter@347c5721, org.springframework.security.web.csrf.CsrfFilter@3a5b1af7, org.springframework.security.web.authentication.logout.LogoutFilter@2c8e096, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@9c40f43, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@620f7a39, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@733345f5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6158113e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35e7fcf2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5add7380, org.springframework.security.web.session.SessionManagementFilter@1f7b8d59, org.springframework.security.web.access.ExceptionTranslationFilter@49c37918, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3c62c81f] 
+2020:01:09 03:33:36.264 INFO  --- [main] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:33:37.295 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Started BillingTests in 14.747 seconds (JVM running for 19.734) 
+2020:01:09 03:33:38.077 INFO  --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:33:38.077 INFO  --- [SpringContextShutdownHook] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:33:38.077 INFO  --- [SpringContextShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:33:38.092 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 03:33:38.247 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 03:36:24.432 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Starting BillingTests on DESKTOP-2EUQSAF with PID 8728 (started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 03:36:24.432 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 03:36:24.432 INFO  --- [main] kosta.namtang.talkbook.BillingTests : The following profiles are active: local 
+2020:01:09 03:36:26.556 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 03:36:26.791 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 214ms. Found 9 JPA repository interfaces. 
+2020:01:09 03:36:27.869 INFO  --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 03:36:28.587 INFO  --- [main] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 03:36:28.728 INFO  --- [main] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 03:36:28.994 INFO  --- [main] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 03:36:29.431 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 03:36:29.775 INFO  --- [main] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 03:36:29.791 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 03:36:29.837 INFO  --- [main] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 03:36:32.868 INFO  --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 03:36:32.900 INFO  --- [main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:36:34.650 INFO  --- [main] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:36:34.853 INFO  --- [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 42be0e01-b743-4290-a127-fa9403c4e2aa
+ 
+2020:01:09 03:36:35.371 INFO  --- [main] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@733345f5, org.springframework.security.web.context.SecurityContextPersistenceFilter@220a5163, org.springframework.security.web.header.HeaderWriterFilter@4d22265c, org.springframework.security.web.csrf.CsrfFilter@4932d580, org.springframework.security.web.authentication.logout.LogoutFilter@3dabdd11, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6cac0334, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@e581302, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5add7380, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61375dff, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@620f7a39, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e638553, org.springframework.security.web.session.SessionManagementFilter@28551755, org.springframework.security.web.access.ExceptionTranslationFilter@43de88f3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a4d57b7] 
+2020:01:09 03:36:36.543 INFO  --- [main] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:36:37.527 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Started BillingTests in 14.576 seconds (JVM running for 18.879) 
+2020:01:09 03:37:57.431 INFO  --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:37:57.431 INFO  --- [SpringContextShutdownHook] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:37:57.431 INFO  --- [SpringContextShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:37:57.446 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 03:37:57.572 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 03:43:10.903 INFO  --- [Thread-45] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:43:10.903 INFO  --- [Thread-45] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:43:10.903 INFO  --- [Thread-45] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:43:10.903 INFO  --- [Thread-45] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Shutdown initiated... 
+2020:01:09 03:43:11.012 INFO  --- [Thread-45] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Shutdown completed. 
+2020:01:09 03:43:11.858 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5028 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 03:43:11.858 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 03:43:11.858 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 03:43:12.280 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 03:43:12.358 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 9 JPA repository interfaces. 
+2020:01:09 03:43:12.597 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 03:43:12.691 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 03:43:12.885 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 03:43:12.885 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 03:43:12.916 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 03:43:12.916 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 03:43:13.432 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 03:43:13.432 INFO  --- [restartedMain] o.a.c.c.C.[.[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 03:43:13.432 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 1574 ms 
+2020:01:09 03:43:13.651 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 03:43:13.666 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-6 - Starting... 
+2020:01:09 03:43:13.776 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-6 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 03:43:13.791 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-6 - Start completed. 
+2020:01:09 03:43:13.791 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 03:43:15.354 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 03:43:15.354 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:43:15.385 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 03:43:15.838 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:43:15.901 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 84586fe6-996f-4b00-ad6d-5b6205fb7159
+ 
+2020:01:09 03:43:15.916 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46ec9a85, org.springframework.security.web.context.SecurityContextPersistenceFilter@10f5704, org.springframework.security.web.header.HeaderWriterFilter@3e57ea59, org.springframework.security.web.csrf.CsrfFilter@26ae9255, org.springframework.security.web.authentication.logout.LogoutFilter@76bc78b5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6b6bba2d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@191e4d39, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@22e1f60a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@41fab006, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@40fe8f42, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3664a453, org.springframework.security.web.session.SessionManagementFilter@53615b07, org.springframework.security.web.access.ExceptionTranslationFilter@52e25af1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4a2bc752] 
+2020:01:09 03:43:16.213 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:43:16.616 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 03:43:16.629 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 03:43:16.630 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 4.831 seconds (JVM running for 3249.379) 
+2020:01:09 03:43:16.633 INFO  --- [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged 
+2020:01:09 03:43:16.633 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 03:43:16.634 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 03:43:16.634 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 03:43:16.634 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 03:43:18.619 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Starting BillingTests on DESKTOP-2EUQSAF with PID 8272 (started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 03:43:18.619 DEBUG --- [main] kosta.namtang.talkbook.BillingTests : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 03:43:18.619 INFO  --- [main] kosta.namtang.talkbook.BillingTests : The following profiles are active: local 
+2020:01:09 03:43:20.135 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 03:43:20.338 INFO  --- [main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 176ms. Found 9 JPA repository interfaces. 
+2020:01:09 03:43:21.244 INFO  --- [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 03:43:21.994 INFO  --- [main] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 03:43:22.134 INFO  --- [main] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 03:43:22.384 INFO  --- [main] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 03:43:22.884 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 03:43:23.259 INFO  --- [main] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 03:43:23.275 INFO  --- [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 03:43:23.322 INFO  --- [main] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 03:43:26.790 INFO  --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 03:43:26.822 INFO  --- [main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:43:28.431 INFO  --- [main] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:43:28.618 INFO  --- [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 0b2d3fdc-1f6d-4e7d-8475-b8f810be4952
+ 
+2020:01:09 03:43:29.118 INFO  --- [main] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1df2e767, org.springframework.security.web.context.SecurityContextPersistenceFilter@29693b1d, org.springframework.security.web.header.HeaderWriterFilter@626ff077, org.springframework.security.web.csrf.CsrfFilter@218e186b, org.springframework.security.web.authentication.logout.LogoutFilter@71689ee2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1fa24e7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@50d91a0f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4d0d568f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44d6f9cf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f370472, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2c7aba7c, org.springframework.security.web.session.SessionManagementFilter@6802c10e, org.springframework.security.web.access.ExceptionTranslationFilter@39a09c0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@41a3c6f5] 
+2020:01:09 03:43:30.181 INFO  --- [main] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:43:31.274 INFO  --- [main] kosta.namtang.talkbook.BillingTests : Started BillingTests in 13.799 seconds (JVM running for 18.577) 
+2020:01:09 03:44:26.831 INFO  --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 03:44:26.831 INFO  --- [SpringContextShutdownHook] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 03:44:26.831 INFO  --- [SpringContextShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 03:44:26.831 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 03:44:26.971 INFO  --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 04:15:24.384 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 3992 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:15:24.399 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:15:24.399 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:15:24.696 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:15:24.696 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:15:24.696 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:15:26.181 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:15:26.306 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:15:26.743 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:15:27.087 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:15:27.102 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:15:27.102 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:15:27.102 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:15:27.431 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:15:27.446 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:15:27.446 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2750 ms 
+2020:01:09 04:15:27.743 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:15:27.806 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:15:27.899 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:15:27.993 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:15:28.196 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:15:28.212 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:15:28.227 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:15:30.290 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:15:30.321 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:15:30.368 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:15:30.993 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:15:31.055 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f35d29a7-e01d-4dd5-88e8-5ead1894c5ee
+ 
+2020:01:09 04:15:31.149 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40dbd0a0, org.springframework.security.web.context.SecurityContextPersistenceFilter@75a141cb, org.springframework.security.web.header.HeaderWriterFilter@7cf0fa36, org.springframework.security.web.csrf.CsrfFilter@50476926, org.springframework.security.web.authentication.logout.LogoutFilter@386ba45b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2746df01, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@2ff47f08, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@364ab8d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@30a6688b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15f9da1e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@73e217be, org.springframework.security.web.session.SessionManagementFilter@3bb8a262, org.springframework.security.web.access.ExceptionTranslationFilter@6e81a8d5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@39b534ea] 
+2020:01:09 04:15:31.305 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:15:31.836 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:15:31.868 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:15:31.868 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.473 seconds (JVM running for 9.962) 
+2020:01:09 04:15:31.868 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:15:31.868 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:15:31.868 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:15:31.868 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 04:20:38.485 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 8752 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:20:38.516 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:20:38.516 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:20:38.688 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:20:38.688 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:20:38.688 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:20:39.823 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:20:39.961 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 124ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:20:40.431 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:20:40.743 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:20:40.759 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:20:40.759 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:20:40.759 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:20:41.134 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:20:41.134 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:20:41.134 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2446 ms 
+2020:01:09 04:20:41.446 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:20:41.524 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:20:41.634 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:20:41.727 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:20:41.915 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:20:41.931 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:20:41.931 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:20:44.180 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:20:44.196 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:20:44.259 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:20:44.883 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:20:44.946 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 78b2ef81-c65f-4f4f-b47c-e551e188a580
+ 
+2020:01:09 04:20:45.024 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@75765557, org.springframework.security.web.context.SecurityContextPersistenceFilter@26a0357b, org.springframework.security.web.header.HeaderWriterFilter@48d98cd2, org.springframework.security.web.csrf.CsrfFilter@206a7674, org.springframework.security.web.authentication.logout.LogoutFilter@4d21daf1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@495b83a7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@541afa53, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7c39ced7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@682456b3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@29983a21, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5779f7e2, org.springframework.security.web.session.SessionManagementFilter@22d7ecd5, org.springframework.security.web.access.ExceptionTranslationFilter@19f3638, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1b7f4aab] 
+2020:01:09 04:20:45.212 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:20:45.727 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:20:45.758 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:20:45.758 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.121 seconds (JVM running for 9.639) 
+2020:01:09 04:20:45.758 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:20:45.758 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:20:45.758 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:20:45.758 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 04:23:02.622 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 14344 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:23:02.622 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:23:02.622 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:23:02.872 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:23:02.872 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:23:02.872 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:23:03.810 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:23:03.951 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:23:04.482 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:23:04.810 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:23:04.825 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:23:04.825 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:23:04.825 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:23:05.200 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:23:05.200 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:23:05.200 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2328 ms 
+2020:01:09 04:23:05.560 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:23:05.622 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:23:05.747 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:23:05.872 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:23:06.091 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:23:06.107 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:23:06.107 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:23:08.403 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:23:08.419 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:23:08.466 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:23:09.185 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:23:09.247 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9d2d7f2d-9d76-4e11-93c9-64748c47eb6c
+ 
+2020:01:09 04:23:09.341 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40c85d19, org.springframework.security.web.context.SecurityContextPersistenceFilter@4cb20f93, org.springframework.security.web.header.HeaderWriterFilter@73ee7165, org.springframework.security.web.csrf.CsrfFilter@23c4b104, org.springframework.security.web.authentication.logout.LogoutFilter@181e82a4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@732d79eb, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@60b79fff, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7d70a842, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5aa571f9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10692770, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@205249a1, org.springframework.security.web.session.SessionManagementFilter@5d8f8cc9, org.springframework.security.web.access.ExceptionTranslationFilter@46542fa7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5784ef8f] 
+2020:01:09 04:23:09.591 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:23:10.247 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:23:10.278 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:23:10.278 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.792 seconds (JVM running for 11.096) 
+2020:01:09 04:23:10.294 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:23:10.294 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:23:10.294 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:23:10.294 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 04:25:57.921 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 4916 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:25:57.983 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:25:57.983 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:25:58.280 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:25:58.280 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:25:58.280 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:25:59.483 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:25:59.639 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:26:00.077 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:26:00.421 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:26:00.436 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:26:00.436 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:26:00.436 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:26:00.795 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:26:00.795 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:26:00.795 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2515 ms 
+2020:01:09 04:26:01.108 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:26:01.170 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:26:01.280 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:26:01.420 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:26:01.624 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:26:01.639 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:26:01.655 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:26:03.842 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:26:03.873 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:26:03.920 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:26:04.498 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:26:04.545 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 0fe79850-0d3c-4f56-8a83-f3bf113e9156
+ 
+2020:01:09 04:26:04.639 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@59c1d889, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a2640c2, org.springframework.security.web.header.HeaderWriterFilter@6f248632, org.springframework.security.web.csrf.CsrfFilter@5b64795b, org.springframework.security.web.authentication.logout.LogoutFilter@6211fe95, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@18f9dd36, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1d89d528, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@52919be, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7b890aad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6165e82c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d84e1d, org.springframework.security.web.session.SessionManagementFilter@640a5fce, org.springframework.security.web.access.ExceptionTranslationFilter@a100428, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5398f5e0] 
+2020:01:09 04:26:04.826 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:26:05.420 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:26:05.436 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:26:05.451 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.498 seconds (JVM running for 10.255) 
+2020:01:09 04:26:05.451 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:26:05.451 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:26:05.451 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:26:05.451 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 04:30:17.654 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 14216 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:30:17.654 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:30:17.654 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:30:18.065 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:30:18.065 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:30:18.065 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:30:19.996 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:30:20.121 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:30:20.481 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:30:20.808 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:30:20.808 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:30:20.808 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:30:20.808 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:30:21.267 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:30:21.285 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:30:21.285 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 3220 ms 
+2020:01:09 04:30:21.863 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:30:22.097 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:30:22.334 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:30:22.496 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:30:22.728 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:30:22.742 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:30:22.760 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:30:25.253 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:30:25.269 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:30:25.316 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:30:25.878 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:30:25.941 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 206f5ef6-2c0a-4c67-addf-35cc8800e19f
+ 
+2020:01:09 04:30:26.019 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@e92c898, org.springframework.security.web.context.SecurityContextPersistenceFilter@6ade20ce, org.springframework.security.web.header.HeaderWriterFilter@5559b6dc, org.springframework.security.web.csrf.CsrfFilter@2cd79c70, org.springframework.security.web.authentication.logout.LogoutFilter@dcc7738, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6be126fb, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4e71c231, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3b123c5f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75c2607e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@376bae7b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6191c372, org.springframework.security.web.session.SessionManagementFilter@5564585e, org.springframework.security.web.access.ExceptionTranslationFilter@3011932e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@440103da] 
+2020:01:09 04:30:26.175 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:30:26.722 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:30:26.753 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:30:26.753 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 10.145 seconds (JVM running for 11.906) 
+2020:01:09 04:30:26.769 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:30:26.769 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:30:26.769 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:30:26.769 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 04:31:21.946 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 5512 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:31:21.946 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:31:21.962 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:31:22.243 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:31:22.243 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:31:22.243 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:31:23.465 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:31:23.603 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 123ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:31:23.978 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:31:24.290 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:31:24.306 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:31:24.306 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:31:24.306 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:31:24.649 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:31:24.649 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:31:24.649 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2406 ms 
+2020:01:09 04:31:24.931 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:31:25.009 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:31:25.102 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:31:25.196 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:31:25.446 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:31:25.462 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:31:25.477 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:31:27.665 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:31:27.680 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:31:27.727 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:31:28.305 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:31:28.352 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3c16eebb-d093-474d-b73c-ae3dc052795a
+ 
+2020:01:09 04:31:28.446 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58f5dd01, org.springframework.security.web.context.SecurityContextPersistenceFilter@10a97a77, org.springframework.security.web.header.HeaderWriterFilter@2ef3f290, org.springframework.security.web.csrf.CsrfFilter@7a1e38f3, org.springframework.security.web.authentication.logout.LogoutFilter@7d70a2bc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4a2737ac, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@442be625, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6be1aff8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ce8858d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@745d4029, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@992bccc, org.springframework.security.web.session.SessionManagementFilter@1240a8ec, org.springframework.security.web.access.ExceptionTranslationFilter@58ff2be6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7470f3f1] 
+2020:01:09 04:31:28.665 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:31:29.227 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:31:29.258 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:31:29.258 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.479 seconds (JVM running for 10.103) 
+2020:01:09 04:31:29.274 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:31:29.274 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:31:29.274 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:31:29.274 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 

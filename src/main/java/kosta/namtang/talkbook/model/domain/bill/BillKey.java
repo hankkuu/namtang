@@ -6,9 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @NoArgsConstructor
@@ -18,8 +20,11 @@ public class BillKey {
 
 	@Id
 	private String billKey;
-	private Date issueDate;
-	private Date cancelDate;
-	private Date updateDate;
+	@Column(name = "ISSUE_DATE", nullable = false)
+	private Timestamp issueDate;
+	@Column(name = "CANCEL_DATE", nullable = false)
+	private Timestamp cancelDate;
+	@Column(name = "UPDATE_DATE", nullable = false)
+	private Timestamp updateDate;
 
 }
