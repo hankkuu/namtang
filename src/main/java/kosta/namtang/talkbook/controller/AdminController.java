@@ -1,11 +1,20 @@
 package kosta.namtang.talkbook.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import kosta.namtang.talkbook.model.domain.Statistics;
 import kosta.namtang.talkbook.service.AdminService;
@@ -19,13 +28,25 @@ public class AdminController {
 	@RequestMapping("dashBoard")
 	public String dashBoard(Model model) {
 		List<Statistics> list = service.selectAll();
-		System.out.println(list.size());
 		model.addAttribute("list",list);
-//		list.get(0).getStatIdx();
-//		list.get(0).getSalePrice()
-//		list.get(0).getUserCount()
-		return "admin/dashBoard";
+		
+		return "admin/dashBoard"; 
 	}
+	/*
+	@RequestMapping("dashBoardList")
+	@ResponseBody
+	public String dashBoardList(HttpServletRequest request,Model model) throws JsonGenerationException, JsonMappingException, IOException { //?address
+		List<Statistics> list = service.selectAll();
+		
+		ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        
+        // Serialize Object to JSON.
+        return mapper.writeValueAsString(list);
+	}
+	*/
+	
+	
 	
 	@RequestMapping("adminDOM")
 	public String adminDOM(Model model) {

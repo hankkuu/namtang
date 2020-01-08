@@ -12,9 +12,8 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @RequestMapping("aroma/category2")
+    @RequestMapping("aroma/category")
     String category(Model model){
-        System.out.println(1);
         model.addAttribute("booklist",bookService.selectAll());
         System.out.println(3);
         return "aroma/category";
