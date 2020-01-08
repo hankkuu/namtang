@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CartController {
 
     @RequestMapping("aroma/cart")
-    public void cart() {
+    public void index() {
 
     }
+
 }

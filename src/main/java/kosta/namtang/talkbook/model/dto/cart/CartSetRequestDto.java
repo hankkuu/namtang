@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class CartRequestDto {
+public class CartSetRequestDto {
     //장바구니 추가
     private CartId cartId;
 
@@ -15,8 +15,7 @@ public class CartRequestDto {
     private String bookImg;
     private int bookPrice;
 
-    @Builder
-    public CartRequestDto(CartId cartId, String bookTitle, String bookImg, int bookPrice) {
+    public CartSetRequestDto(CartId cartId, String bookTitle, String bookImg, int bookPrice) {
         this.cartId = cartId;
         this.bookTitle = bookTitle;
         this.bookImg = bookImg;
