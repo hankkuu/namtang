@@ -22,7 +22,7 @@ public class BookService {
         while(ito.hasNext()) {
         	Book go = ito.next();
         	dtoList.add(go);
-            System.out.println(go);
+//            System.out.println(go);
         }
 
         return dtoList;
