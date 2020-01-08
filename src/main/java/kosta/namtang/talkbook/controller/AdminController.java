@@ -20,8 +20,10 @@ public class AdminController {
 	public String dashBoard(Model model) {
 		List<Statistics> list = service.selectAll();
 		System.out.println(list.size());
-		System.out.println(list.get(1).getSaleDate());
 		model.addAttribute("list",list);
+//		list.get(0).getStatIdx();
+//		list.get(0).getSalePrice()
+//		list.get(0).getUserCount()
 		return "admin/dashBoard";
 	}
 	
