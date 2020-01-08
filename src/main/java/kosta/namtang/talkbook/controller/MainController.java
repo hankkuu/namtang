@@ -12,6 +12,7 @@ public class MainController {
 		return "guest/index";
 	}
 
+	
 	@RequestMapping("/detail")
 	public String detail() {
 
