@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -119,7 +120,7 @@ class TalkbookApplicationTests {
 			String desc= null;
 			String img= null;
 			String isbn= null;
-			int price = 0;
+			BigDecimal price = null;
 			String pubdate= null;
 			String publisher= null;
 			String title = null;
@@ -157,7 +158,7 @@ class TalkbookApplicationTests {
 						out.println(img);
 					}
 					else if(j==3) author = node.getTextContent();
-					else if(j==4) price = Integer.parseInt(node.getTextContent());
+					else if(j==4) price = new BigDecimal(node.getTextContent());
 					else if(j==6) {
 						publisher = node.getTextContent();
 						publisher = publisher.replace("<b>", "");

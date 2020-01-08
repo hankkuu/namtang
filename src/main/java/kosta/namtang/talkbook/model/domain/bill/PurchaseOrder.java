@@ -13,7 +13,8 @@ import java.util.List;
 public class PurchaseOrder {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "ORDER_SEQ_NO")
+	@SequenceGenerator(sequenceName = "ORDER_SEQ_NO", name="ORDER_SEQ_NO", allocationSize = 1)
 	private long purchaseOrderIdx;
 	private int stateCode;
 	private String deliveryAddress;

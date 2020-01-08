@@ -8,7 +8,9 @@ import kosta.namtang.talkbook.model.domain.bill.BillKey;
 import kosta.namtang.talkbook.repository.bill.BillKeyRepository;
 import kosta.namtang.talkbook.util.DateTimeHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BillKeySystem {
 
 	@Autowired

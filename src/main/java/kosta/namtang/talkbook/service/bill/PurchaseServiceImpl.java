@@ -8,6 +8,7 @@ import kosta.namtang.talkbook.common.bill.BillKeySystem;
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.bill.*;
 import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 import kosta.namtang.talkbook.repository.bill.PurchaseBookRepository;
 import kosta.namtang.talkbook.repository.bill.PurchaseCancelRepository;
@@ -15,13 +16,14 @@ import kosta.namtang.talkbook.repository.bill.PurchaseOrderRepository;
 import kosta.namtang.talkbook.repository.bill.PurchasePaymentRepository;
 import kosta.namtang.talkbook.util.DateTimeHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class PurchaseServiceImpl implements PurchaseService {
 	// 필요한 dAO 목록.....
 	@Autowired
@@ -40,6 +42,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Transactional
 	public BillKey insertPurchase(List<Book> booksList, PurchaseOrder order,
 							  PurchasePayment payment, User account) throws Exception{
+
+		BillKey keyResult = null;
 		try {
 			
 			// [0] 빌키 받아오기 //uuid
@@ -80,8 +84,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 			// [4] 구매할 상품 정보 넣어 주기 (아마 insert?)
 			// 벌그인서트가 없다.. 아씨...ㅋㅋㅋ 아아아ㅏ아아ㅏ아얼닝런이런이러 일단 무식하게(추후 수정)
 			for (Book book : booksList) {
-
-				PurchaseBook pBook = new PurchaseBook(book.getBookIdx(), orderIdx, book.getBookPrice(), PurchaseCode.Payment_Success.getValue()
+				PurchaseBookId id = new PurchaseBookId(book.getBookIdx(), orderIdx);
+				PurchaseBook pBook = new PurchaseBook(id, book.getBookPrice(), PurchaseCode.Payment_Success.getValue()
 						,  book.getBookTitle(), book.getBookCount(), book.getBookImg(), key, purchaseDate, purchaseDate);
 
 				PurchaseBook purchaseBookResult = purchaseBook.save(pBook);
@@ -93,7 +97,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 			// 여기 까지 문제가 없다면
 			// [5] billkey table에 완료시간을 기록하기
-			BillKey keyResult = keySystem.registerPurchase(key, purchaseDate);
+			keyResult = keySystem.registerPurchase(key, purchaseDate);
 			/////////////////////////////////////////////////////////////////////// 트랜잭션 종료 시키기 
 
 			// [6] 구매 완료 시키기
@@ -107,7 +111,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 			// 임시로 
 			e.printStackTrace();
 		}
-		return null;
+		return keyResult;
 		
 	}
 
@@ -130,10 +134,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 			// 단, 여기서 전체환불인지 부분환불인지 구분한다
 			List<PurchaseBook> booksList = new ArrayList<PurchaseBook>();
 			if(purchaseBookIdsList.size() == 0) {
-				booksList = purchaseBook.findByPurchaseOrderIdx(order.getPurchaseOrderIdx());
+				booksList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
 			} else {
 				for(long purchaseBookId : purchaseBookIdsList) {
-					PurchaseBook cancelGoods = purchaseBook.findByBookIdx(purchaseBookId);
+					PurchaseBook cancelGoods = purchaseBook.findByPurchaseBookIdBookIdx(purchaseBookId);
 					booksList.add(cancelGoods);
 				}
 			}
@@ -163,8 +167,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 					// 아래와 같이 1:1 로 맵핑되는 부분은 procedure로 하면 좋을 듯
 					PurchaseCancel cancel = new PurchaseCancel();
 					cancel.setBillKey(billKey);
-					cancel.setCancelBookIdx(book.getBookIdx());
-					cancel.setPurchaseOrderIdx(order.getPurchaseOrderIdx());
+					cancel.setPurchaseBookId(new PurchaseBookId(book.getPurchaseBookId().getBookIdx(), order.getPurchaseOrderIdx()));
 					//cancel.setPurchaseGoodsId(goods.getPurchaseGoodId());
 					cancel.setReason(reason);
 					cancel.setRefundCode(refundCode);

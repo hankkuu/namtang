@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import java.sql.Date;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Setter
 @Getter
 public class BillKey {

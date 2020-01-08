@@ -1,9 +1,10 @@
 package kosta.namtang.talkbook.model.domain.bill;
 
+import kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId;
 import lombok.*;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -14,11 +15,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class PurchaseBook {
 
-    @Id
-    //private long purchaseBookIdx;
-    private long bookIdx;
-    @Id
-    private long purchaseOrderIdx;
+    @EmbeddedId
+    private PurchaseBookId purchaseBookId;
 
 	private BigDecimal price;
 	private int stateCode;

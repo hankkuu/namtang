@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @Setter
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class PurchasePayment {
 
 	@Id
