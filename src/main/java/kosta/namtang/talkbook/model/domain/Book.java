@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -21,7 +22,7 @@ public class Book {
     private String bookTitle;
     private String bookImg;
     private String bookAuthor;
-    private int bookPrice;
+    private BigDecimal bookPrice;
     private String bookPublisher;
     private String bookDesc;
     private String bookPubdate;
