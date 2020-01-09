@@ -15,7 +15,7 @@ public class BookController {
     @RequestMapping("aroma/category")
     String category(Model model){
         model.addAttribute("booklist",bookService.selectAll());
-        System.out.println(3);
+//        System.out.println(3);
         return "aroma/category";
     }
 }

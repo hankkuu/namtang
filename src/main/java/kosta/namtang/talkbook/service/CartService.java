@@ -1,5 +1,6 @@
 package kosta.namtang.talkbook.service;
 
+import com.google.common.collect.Lists;
 import kosta.namtang.talkbook.model.domain.Cart;
 import kosta.namtang.talkbook.model.dto.cart.CartDelRequestDto;
 import kosta.namtang.talkbook.model.dto.cart.CartResponseDto;
@@ -19,8 +20,8 @@ public class CartService {
 
     //유저 repo 추가해야됨
 
-    public List<Cart> selectByUserIdx() {
-        return null;
+    public List<Cart> selectByUserIdx(Long userIdx) {
+        return Lists.newArrayList(cartRepository.findByCartIdUserIdx(userIdx));
     }
 
     //삭제
