@@ -14,13 +14,13 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString (exclude = "list")
 public class Category {
 
     @Id
     private Long catgIdx;
     private String catgName;
 
-//    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-//    private List<Book> list = new ArrayList<Book>();
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    private List<Book> list = new ArrayList<Book>();
 }
