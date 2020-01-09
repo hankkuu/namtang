@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import javax.servlet.ServletContext;
 
-import static javafx.application.ConditionalFeature.WEB;
+//import static javafx.application.ConditionalFeature.WEB;
 
 @Configuration
 public class TilesConfig {
