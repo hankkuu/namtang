@@ -3,7 +3,6 @@ package kosta.namtang.talkbook.service;
 import com.google.common.collect.Lists;
 import kosta.namtang.talkbook.model.domain.Cart;
 import kosta.namtang.talkbook.model.dto.cart.CartDelRequestDto;
-import kosta.namtang.talkbook.model.dto.cart.CartResponseDto;
 import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CartRepository;
 import lombok.RequiredArgsConstructor;

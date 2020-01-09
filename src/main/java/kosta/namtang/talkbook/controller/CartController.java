@@ -1,17 +1,27 @@
 package kosta.namtang.talkbook.controller;
 
+import kosta.namtang.talkbook.model.domain.Cart;
+import kosta.namtang.talkbook.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+import java.util.List;
+
+@Controller
 @RequiredArgsConstructor
 public class CartController {
 
-    @RequestMapping("aroma/cart")
-    public void index() {
+    private final CartService cartService;
 
+    @RequestMapping("cart")
+    public ModelAndView index() {
+        List<Cart> list = cartService.selectByUserIdx(1L);
+
+        return new ModelAndView("user/cart", "cartList", list);
     }
 
 }
