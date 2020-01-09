@@ -91,7 +91,7 @@
       $(this).addClass('pagination-active');
     });
 
-    $("#category li input").click(function(){
+    $("#category li input, ".pagination-active).click(function(){
 
       $(".pagination-active").removeClass();
       $(".pagination-inner a:first").addClass('pagination-active');
@@ -405,7 +405,7 @@
             </div>
             <nav class="pagination-container">
             <div class="pagination">
-              <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>
+              <a class="pagination-newer" href="">PREV</a>
               <span class="pagination-inner">
 					<a class="pagination-active" href="#ㅇㅅㅇ">1</a>
 					<a href="#ㅇㅅㅇ">2</a>
