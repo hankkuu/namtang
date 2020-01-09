@@ -248,9 +248,7 @@
                                       </td>
                                       <td>
                                           ${cartVO.bookTitle}
-
                                       </td>
-
 
                                       <td>
                                           <fmt:formatNumber value="${cartVO.bookPrice}" type="currency"/>
