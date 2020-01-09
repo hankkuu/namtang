@@ -91,7 +91,7 @@
       $(this).addClass('pagination-active');
     });
 
-    $("#category li input, ".pagination-active).click(function(){
+    $("#category li input").click(function(){
 
       $(".pagination-active").removeClass();
       $(".pagination-inner a:first").addClass('pagination-active');

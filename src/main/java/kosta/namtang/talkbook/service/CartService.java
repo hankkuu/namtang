@@ -7,9 +7,11 @@ import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class CartService {
@@ -19,16 +21,19 @@ public class CartService {
 
     //유저 repo 추가해야됨
 
+
+    //출력
     public List<Cart> selectByUserIdx(Long userIdx) {
         return Lists.newArrayList(cartRepository.findByCartIdUserIdx(userIdx));
     }
 
     //삭제
-    public CartDelRequestDto delete(Long userIdx, Long bookIdx) {
-//        int result = cartRepository.deleteByCartIdUserIdxAndCartIdBookIdx(userIdx, bookIdx);
-//        if (result != 1) {
+    public void delete(Long userIdx, Long bookIdx) {
+        cartRepository.deleteByCartIdUserIdxAndCartIdBookIdx(userIdx, bookIdx);
+//        if (list.isEmpty()) {
 //            // error
+//            System.out.println("삭제할 정보 없음");
 //        }
-        return null;
+//        return null;
     }
 }
