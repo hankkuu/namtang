@@ -1,7 +1,19 @@
 package kosta.namtang.talkbook.repository;
 
 import kosta.namtang.talkbook.model.domain.Cart;
+import kosta.namtang.talkbook.model.domain.CartId;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CartRepository extends CrudRepository<Cart,Long> {
+import java.util.List;
+
+public interface CartRepository extends CrudRepository<Cart, CartId> {
+
+    //find => userIdx기준으로 찾기
+    List<Cart> findByCartIdUserIdx(Long userIdx);
+
+
+    //delete => useridx BookIdx 로 삭제
+    Cart deleteByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
+//    int deleteByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
 }

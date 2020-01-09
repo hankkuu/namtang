@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/vendors/nouislider/nouislider.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
+
+
 </head>
 <body style="padding-top: 0px;">
 <!--================ Start Header Menu Area =================-->
