@@ -1,7 +1,7 @@
 package kosta.namtang.talkbook.controller;
 
 
-import kosta.namtang.talkbook.model.domain.Review;
+import kosta.namtang.talkbook.model.dto.ReviewDTO;
 import kosta.namtang.talkbook.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,13 @@ public class ReviewController {
     @Autowired
     ReviewService service;
 
+    @PostMapping("/reviewReg")
+    public void insert(ReviewDTO dto){
 
-    @PostMapping
-    public void form(Review dto){
-
-        service.insert(dto);
+//        dto.get
+//
+//
+//        service.insert(dto);
     }
 
 }

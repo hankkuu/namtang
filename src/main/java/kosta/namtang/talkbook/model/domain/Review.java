@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-//import org.hibernate.annotations.CreationTimestamp;
-//import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -22,18 +22,30 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "review_seq")
     private Long reviewIdx;
 
+    private Long bookIdx;
+
     private String reviewTitle;
     private String reviewContent;
 
-    //@CreationTimestamp
+    @CreationTimestamp
     private String reviewDate;
 
-    //@UpdateTimestamp
+    @UpdateTimestamp
     private String reviewModify;
     private int reviewScore;
 
     private String reviewerId;
 
+
+//    리뷰테이블
+//
+//    작성자
+//    제목
+//    내용
+//    상품인덱스
+//    등록일
+//    수정일
+//    별점
 
 
 //    리뷰 테이블
@@ -45,6 +57,7 @@ public class Review {
 //    리뷰 평점 - review_score (number)
 //    리뷰 작성자 ID FK - reviewer_id (varchar2)
 //    (user 테이블의 user_id 사용)
+
 
 
 }

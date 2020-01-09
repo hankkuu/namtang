@@ -440,7 +440,7 @@
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                             </ul>
                             <p>Outstanding</p>
-                            <form action="#/" class="form-contact form-review mt-3" method="post">
+                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
                                 <div class="form-group">
                                     <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>
                                 </div>

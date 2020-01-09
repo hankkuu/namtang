@@ -1,24 +1,17 @@
 package kosta.namtang.talkbook.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 
-@Component
+@Data
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq")
-    @SequenceGenerator(name = "seq", allocationSize = 1)
     private Long reviewIdx;
     private String reviewTitle;
     private String reviewContent;
