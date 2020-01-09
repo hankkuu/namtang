@@ -1,12 +1,12 @@
-package kosta.namtang.talkbook.model.domain;
+package kosta.namtang.talkbook.model.domain.bill.id;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import java.io.Serializable;
 
 @EqualsAndHashCode
@@ -14,10 +14,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class CartId implements Serializable {
-    private Long userIdx;
-    private Long bookIdx;
+public class PurchaseBookId  implements Serializable {
 
-
-
+    private long bookIdx;
+    private long purchaseOrderIdx;
 }

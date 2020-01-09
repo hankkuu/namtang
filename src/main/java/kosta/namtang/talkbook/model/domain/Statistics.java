@@ -19,8 +19,8 @@ import lombok.ToString;
 public class Statistics {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "STAT_SQC")
-	@SequenceGenerator(sequenceName = "STAT_SQC", name = "STAT_SQC", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "STAT_SEQ_NO")
+	@SequenceGenerator(sequenceName = "STAT_SEQ_NO", name = "STAT_SEQ_NO", allocationSize = 1)
 	private int statIdx;
 	private int salePrice;
 	private String saleDate;
