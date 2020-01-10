@@ -8,17 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Cart</title>
-	<link rel="icon" href="/static/img/Fevicon.png" type="image/png">
-  <link rel="stylesheet" href="/static/vendors/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="/static/vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="/static/vendors/linericon/style.css">
-  <link rel="stylesheet" href="/static/vendors/owl-carousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="/static/vendors/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="/static/vendors/nice-select/nice-select.css">
-  <link rel="stylesheet" href="/static/vendors/nouislider/nouislider.min.css">
 
-  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
@@ -240,8 +230,7 @@
 
                                   <tr>
                                       <td>
-<%--                                          <a class="remove" href="#" onclick="go_cart_delete(${cartVO.cseq})"><fa class="fa fa-close"></fa></a>--%>
-<%--                                          <input type="hidden" name="cseq" value="${cartVO.cseq}">--%>
+                                          <a href="${path}/cart/delete?userIdx=${cartVO.cartId.userIdx}&bookIdx=${cartVO.cartId.bookIdx}">[삭제]</a>
                                       </td>
                                       <td>
                                           <img class="card-img" src="${cartVO.bookImg}">
@@ -274,106 +263,98 @@
   </section>
   <!--================End Cart Area =================-->
 
-  <script type="text/javascript">
-	  //장바구니 에 담기
+<%--  <script type="text/javascript">--%>
+<%--	  //장바구니 에 담기--%>
 
-	  function go_cart(){
-		  var loginUser='${sessionScope.loginUser}';
-		  if(loginUser==null || loginUser==''){
-			  alert("로그인을 먼저 하세요.");
-			  return;
-		  }
-		  if(document.formm.quantity.value==""){
-			  alert("수량을 입력하여 주세요.");
-			  document.formm.quantity.focus();
-		  }else{
-			  $("input[name=command]").val("cart_insert");
-			  document.formm.submit();
+<%--	  function go_cart(){--%>
+<%--		  var loginUser='${sessionScope.loginUser}';--%>
+<%--		  if(loginUser==null || loginUser==''){--%>
+<%--			  alert("로그인을 먼저 하세요.");--%>
+<%--			  return;--%>
+<%--		  }--%>
+<%--		  if(document.formm.quantity.value==""){--%>
+<%--			  alert("수량을 입력하여 주세요.");--%>
+<%--			  document.formm.quantity.focus();--%>
+<%--		  }else{--%>
+<%--			  $("input[name=command]").val("cart_insert");--%>
+<%--			  document.formm.submit();--%>
 
-		  }
+<%--		  }--%>
 
-	  }
+<%--	  }--%>
 
-	  $(function(){
+<%--	  $(function(){--%>
 
-		  $(".cart-ajax").click(function(event){
-			  event.preventDefault();
-			  pseq=$(this).attr("data-pseq");
+<%--		  $(".cart-ajax").click(function(event){--%>
+<%--			  event.preventDefault();--%>
+<%--			  pseq=$(this).attr("data-pseq");--%>
 
-			  $.ajax({
-				  url:"MacaronicsServlet?command=cart_ajax",
-				  type:"post",
-				  dataType:"text",
-				  data : {
-					  pseq:pseq,
-					  quantity:1
-				  },
-				  success:function(result){
+<%--			  $.ajax({--%>
+<%--				  url:"MacaronicsServlet?command=cart_ajax",--%>
+<%--				  type:"post",--%>
+<%--				  dataType:"text",--%>
+<%--				  data : {--%>
+<%--					  pseq:pseq,--%>
+<%--					  quantity:1--%>
+<%--				  },--%>
+<%--				  success:function(result){--%>
 
-					  if($.trim(result)=='success'){
-						  if(confirm("장바구니에 담았습니다. 장바구니로 이동하시겠습니까?")){
+<%--					  if($.trim(result)=='success'){--%>
+<%--						  if(confirm("장바구니에 담았습니다. 장바구니로 이동하시겠습니까?")){--%>
 
-							  location.href="/MacaronicsServlet?command=cart_list";
-						  }
-					  }else{
-						  alert($.trim(result));
-					  }
-				  }
-			  });
-		  });
-
-
-
-	  });
-	  function go_cart_delete(cseq){
-
-		  if(confirm("정말 삭제하시겠습니까?")){
-			  location.href="MacaronicsServlet?command=cart_delete&cseq="+cseq;
-		  }
-
-	  }
-
-	  function go_cart_all_delete(){
-
-		  if(confirm("정말 삭제하시겠습니까?")){
-			  document.form1.submit();
-		  }
-
-	  }
-
-	  function go_cart_ajax_delete(cseq){
-
-		  if(confirm("정말 삭제하시겠습니까?")){
-
-			  $.ajax({
-				  url:"MacaronicsServlet?command=cart_delete_ajax",
-				  type:"post",
-				  data:{cseq:cseq},
-				  success:function(result){
-					  if($.trim(result)=='success'){
-						  alert("삭제 했습니다.")
-						  location.reload();
-					  }
-				  }
-
-			  });
-
-		  }
-
-	  }
-
-  </script>
+<%--							  location.href="/MacaronicsServlet?command=cart_list";--%>
+<%--						  }--%>
+<%--					  }else{--%>
+<%--						  alert($.trim(result));--%>
+<%--					  }--%>
+<%--				  }--%>
+<%--			  });--%>
+<%--		  });--%>
 
 
 
+<%--	  });--%>
+<%--	  function go_cart_delete(cseq){--%>
 
-  <script src="/static/vendors/jquery/jquery-3.2.1.min.js"></script>
-  <script src="/static/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="/static/vendors/skrollr.min.js"></script>
-  <script src="/static/vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="/static/vendors/nice-select/jquery.nice-select.min.js"></script>
-  <script src="/static/vendors/jquery.ajaxchimp.min.js"></script>
-  <script src="/static/vendors/mail-script.js"></script>
-  <script src="/static/js/main.js"></script>
+<%--		  if(confirm("정말 삭제하시겠습니까?")){--%>
+<%--			  location.href="MacaronicsServlet?command=cart_delete&cseq="+cseq;--%>
+<%--		  }--%>
+
+<%--	  }--%>
+
+<%--	  function go_cart_all_delete(){--%>
+
+<%--		  if(confirm("정말 삭제하시겠습니까?")){--%>
+<%--			  document.form1.submit();--%>
+<%--		  }--%>
+
+<%--	  }--%>
+
+<%--	  function go_cart_ajax_delete(cseq){--%>
+
+<%--		  if(confirm("정말 삭제하시겠습니까?")){--%>
+
+<%--			  $.ajax({--%>
+<%--				  url:"MacaronicsServlet?command=cart_delete_ajax",--%>
+<%--				  type:"post",--%>
+<%--				  data:{cseq:cseq},--%>
+<%--				  success:function(result){--%>
+<%--					  if($.trim(result)=='success'){--%>
+<%--						  alert("삭제 했습니다.")--%>
+<%--						  location.reload();--%>
+<%--					  }--%>
+<%--				  }--%>
+
+<%--			  });--%>
+
+<%--		  }--%>
+
+<%--	  }--%>
+
+<%--  </script>--%>
+
+
+
+
 </body>
 </html>

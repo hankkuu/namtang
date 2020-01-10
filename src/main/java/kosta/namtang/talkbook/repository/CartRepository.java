@@ -14,6 +14,6 @@ public interface CartRepository extends CrudRepository<Cart, CartId> {
 
 
     //delete => useridx BookIdx 로 삭제
-    Cart deleteByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
+    void deleteByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
 //    int deleteByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
 }
