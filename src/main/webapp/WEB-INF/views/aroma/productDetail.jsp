@@ -373,7 +373,8 @@
                             </div>
                         </div>
 
-                        <c:forEach var="reviewc" items="${reviewcc}">
+                        <c:choose>
+                        <c:when test="${reviewcc eq null}">
                         <div class="review_list">
                             <div class="review_item">
                                 <div class="media">
@@ -381,7 +382,7 @@
                                         <img src="img/product/review-1.png" alt="">
                                     </div>
                                     <div class="media-body">
-                                        <h4>${reviewc.reviewIdx}</h4>
+                                        <h4>현재 리뷰 없음!</h4>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -389,8 +390,32 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                 </div>
-                                <p>${reviewc.reviewContent}</p>
+                                <p>리뷰 데이터 없음!</p>
                             </div>
+                        </c:when>
+                            <c:otherwise>
+                            <c:forEach var="reviewc" items="${reviewcc}">
+                            <div class="review_list">
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="img/product/review-1.png" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>${reviewc.reviewIdx}</h4>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p>${reviewc.reviewContent}</p>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
+
 
 <%--                            <div class="review_item">--%>
 <%--                                <div class="media">--%>

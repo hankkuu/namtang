@@ -31,7 +31,6 @@ public class MainController {
 
 		List<Review> rv = reviewService.selectUser(1L);
 
-
 		mv.addObject("reviewcc", rv);
 
 		return mv;
