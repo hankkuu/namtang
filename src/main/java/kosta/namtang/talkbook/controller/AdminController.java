@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import kosta.namtang.talkbook.model.domain.Admin;
 import kosta.namtang.talkbook.model.domain.Statistics;
 import kosta.namtang.talkbook.service.AdminService;
 
@@ -45,14 +46,28 @@ public class AdminController {
         return mapper.writeValueAsString(list);
 	}
 	*/
-	
-	
-	
+
 	@RequestMapping("adminDOM")
 	public String adminDOM(Model model) {
 		return "admin/adminDOM";
 	}
 	
+//	@RequestMapping("adminloginCheck")
+//	public String adminloginCheck(Admin admin) {
+//		
+//		System.out.println(admin +"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+//		//service.selectById(admin); 
+//		return "/";
+//		
+//	}
+	@RequestMapping("/adminLoginForm")
+	public String adminlogin(Admin admin) {
+		
+		System.out.println(admin +"불꽅남자");
+		//service.selectById(admin); 
+		return "/adminLoginForm";
+		
+	}
 	
 
 }
