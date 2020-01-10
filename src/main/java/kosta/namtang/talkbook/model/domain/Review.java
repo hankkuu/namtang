@@ -23,19 +23,22 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "review_seq")
     private Long reviewIdx;
 
-    private Long bookIdx;
+    private Long userIdx;
 
     private String reviewTitle;
     private String reviewContent;
+
+    private Long bookIdx;
+
+    private int reviewScore;
 
     @CreationTimestamp
     private Date reviewDate;
 
     @UpdateTimestamp
     private Date reviewModify;
-    private int reviewScore;
 
-    private String reviewerId;
+
 
 
 //    리뷰테이블
@@ -44,9 +47,10 @@ public class Review {
 //    제목
 //    내용
 //    상품인덱스
+//    별점
 //    등록일
 //    수정일
-//    별점
+
 
 
 //    리뷰 테이블
