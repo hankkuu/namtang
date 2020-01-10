@@ -40,6 +40,7 @@ public class BillingTests {
     @Test
     void purchaseTest() throws Exception {
         // 구매 책 목록
+
         List<Book> bookList = bookService.selectAll();
         List<Book> list = new ArrayList<>();
         BigDecimal totalPrice = new BigDecimal(0);

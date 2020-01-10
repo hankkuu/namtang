@@ -21,6 +21,6 @@ public class Category {
     private String catgName;
 
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<Book> list = new ArrayList<Book>();
+//    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+//    private List<Book> list = new ArrayList<Book>();
 }

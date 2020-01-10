@@ -23,17 +23,21 @@ public class BookService {
 
     public Page<Book> selectAll(Pageable page){
         Page<Book> it = bookRepo.findAll(page);
-
-//
-//        List<Book> dtoList = new ArrayList<Book>();
-//        Iterator<Book> ito = it.iterator();
-//        while(ito.hasNext()) {
-//        	Book go = ito.next();
-//        	dtoList.add(go);
-////            System.out.println(go);
-//        }
-
         return it;
+    }
+
+    public List<Book> selectAll(){
+        Iterable<Book> it = bookRepo.findAll();
+
+        List<Book> dtoList = new ArrayList<Book>();
+        Iterator<Book> ito = it.iterator();
+        while(ito.hasNext()) {
+        	Book go = ito.next();
+        	dtoList.add(go);
+//            System.out.println(go);
+        }
+
+        return dtoList;
     }
 
     public List<Integer> countAll(){
@@ -42,10 +46,11 @@ public class BookService {
             list.add(bookRepo.countBookByCategory(catgRepo.findById(i)));
         }
         list.add((int) bookRepo.count());
-        System.out.println(list);
+
         return list;
      }
      public Page<Book> CatgCall(Long CatgIdx,Pageable page){
-        return bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
+        Page<Book> book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
+        return book;
      }
     }

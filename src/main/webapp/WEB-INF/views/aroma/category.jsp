@@ -86,59 +86,161 @@
   </style>
   <script>
     $(function(){
-    $('.pagination-inner a').on('click', function() {
+      var CatgIdx=0;
+      var startPage=${startPage};
+      var maxPage=${maxPage};
+      var curPage;
+      var pageInfo
+      //AJAX기능
+      function bookAjax(CatgIdx,PageNum){
+        $.ajax({
+          async: false,
+          url : "/catgCall", //서버요청주소
+          type : "get",//요청방식 (get,post,patch,delete,put)
+          dataType : "json",//서버가 보내온 데이터 타입 (text, html, xml, json)
+          data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum,//서버에게 보내는 parameter정보
+          success : function(result){
+            $("#bookCard").empty();
+
+            $.each(result[0], function(index, item){
+              var Img = item.bookImg;
+              var Title = item.bookTitle;
+              var Price = item.bookPrice;
+              var CatgName = item.category.catgName;
+
+              var str = " <div class=\"col-md-6 col-lg-4\">\n" +
+                      "                <div class=\"card text-center card-product\">\n" +
+                      "                  <div class=\"card-product__img\">\n" +
+                      "                    <img class=\"card-img\" src=\""+Img+"\" alt=\"\">\n" +
+                      "                    <ul class=\"card-product__imgOverlay\">\n" +
+                      "                      <li><button><i class=\"ti-search\"></i></button></li>\n" +
+                      "                      <li><button><i class=\"ti-shopping-cart\"></i></button></li>\n" +
+                      "                      <li><button><i class=\"ti-heart\"></i></button></li>\n" +
+                      "                    </ul>\n" +
+                      "                  </div>\n" +
+                      "                  <div class=\"card-body\">\n" +
+                      "                    <p>"+CatgName+"</p>\n" +
+                      "                    <h4 class=\"card-product__title\"><a href=\"#\">"+Title+"</a></h4>\n" +
+                      "                    <p class=\"card-product__price\">"+Price+"</p>\n" +
+                      "                  </div>\n" +
+                      "                </div>\n" +
+                      "              </div>";
+              $('#bookCard').append(str);
+              pageInfo = result[1];
+            });
+
+          } , //성공했을때
+          error : function(request){
+          // alert(request.responseText);
+          }// 실패했을때
+        });
+        startPage = pageInfo[0];
+        maxPage = pageInfo[1];
+        curPage = pageInfo[2];
+      }
+
+      //페이지 버튼
+      $(document).on('click','.pagination-inner a',function(){
+    // $('.pagination-inner a').on('click', function() {
       $(this).siblings().removeClass('pagination-active');
       $(this).addClass('pagination-active');
+
+      CatgIdx = $("#category li input:checked").attr('id');
+      var PageNum = $(".pagination-active").text();
+      bookAjax(CatgIdx,PageNum);
     });
 
-    $("#category li input, ".pagination-active).click(function(){
+    //카테고리 버튼
+    $("#category li input").on('click',function(){
+      // $(".pagination-active").removeClass();
+      // $(".pagination-inner a:first").addClass('pagination-active');
 
-      $(".pagination-active").removeClass();
-      $(".pagination-inner a:first").addClass('pagination-active');
-      var CatgIdx = $(this).attr('id');
+      CatgIdx = $(this).attr('id');
+      // var PageNum = $(".pagination-active").text();
+      var PageNum = 1;
+      bookAjax(CatgIdx,PageNum);
+
+      $(".pagination-inner").empty();
+      var doneLoop = false;
+      for(var i = startPage; i <= maxPage; i++){
+        if(doneLoop==false){
+          if(i == curPage){
+            $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>"+i+"</a>");
+          } else {
+            $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">"+i+"</a>");
+          }
+          if(i==startPage+9){
+            doneLoop = true;
+          }
+        }
+      }
+
+    });
+
+    // PREV, NEXT 버튼
+    $(document).on('click','.pagination-older,.pagination-newer',function(){
       var PageNum = $(".pagination-active").text();
-      $.ajax({
-        url : "/catgCall", //서버요청주소
-        type : "get",//요청방식 (get,post,patch,delete,put)
-        dataType : "json",//서버가 보내온 데이터 타입 (text, html, xml, json)
-        data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum,//서버에게 보내는 parameter정보
-        success : function(result){
-          // console.log(result);
-          $("#bookCard").empty();
+      if($(this).text() == 'PREV'){
+        PageNum = PageNum*1 - 1;
+        if(PageNum < 1){
+          alert("이전 페이지가 존재하지 않습니다.");
+          return 0;
+        }
 
-          $.each(result, function(index, item){
-            var Img = item.bookImg;
-            var Title = item.bookTitle;
-            var Price = item.bookPrice;
-            var CatgName = item.category.catgName;
+        $('.pagination-active').prev().addClass('pagination-active');
+        $('.pagination-active').next().removeClass('pagination-active');
 
-            var str = " <div class=\"col-md-6 col-lg-4\">\n" +
-                    "                <div class=\"card text-center card-product\">\n" +
-                    "                  <div class=\"card-product__img\">\n" +
-                    "                    <img class=\"card-img\" src=\""+Img+"\" alt=\"\">\n" +
-                    "                    <ul class=\"card-product__imgOverlay\">\n" +
-                    "                      <li><button><i class=\"ti-search\"></i></button></li>\n" +
-                    "                      <li><button><i class=\"ti-shopping-cart\"></i></button></li>\n" +
-                    "                      <li><button><i class=\"ti-heart\"></i></button></li>\n" +
-                    "                    </ul>\n" +
-                    "                  </div>\n" +
-                    "                  <div class=\"card-body\">\n" +
-                    "                    <p>"+CatgName+"</p>\n" +
-                    "                    <h4 class=\"card-product__title\"><a href=\"#\">"+Title+"</a></h4>\n" +
-                    "                    <p class=\"card-product__price\">"+Price+"</p>\n" +
-                    "                  </div>\n" +
-                    "                </div>\n" +
-                    "              </div>"
-
-            $('#bookCard').append(str);
-          });
+      } else if ($(this).text() == 'NEXT'){
 
 
-        } , //성공했을때
-        error : function(err){
+        PageNum = PageNum*1 + 1;
+        <%--alert(${maxPage});--%>
+        if(PageNum > maxPage){
+          alert("다음 페이지가 존재하지 않습니다.");
+          return 0;
+        }
 
-        }// 실패했을때
-      });
+        bookAjax(CatgIdx,PageNum);
+
+        $(".pagination-inner").empty();
+        var doneLoop=false;
+        for(var i = startPage; i <= maxPage; i++){
+
+          if(doneLoop==false){
+            if(i == PageNum){
+              $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>"+i+"</a>");
+            } else {
+              $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">"+i+"</a>");
+            }
+            if(i==startPage+9){
+              doneLoop = true;
+            }
+          }
+        }
+        <%--var str = `<c:set var="doneLoop" value="false"/>--%>
+        <%--    <c:forEach var="i" begin="${startPage}" end="${maxPage}" varStatus="status">--%>
+
+        <%--    <c:if test="${not doneLoop}">--%>
+        <%--    <c:choose >--%>
+        <%--    <c:when test="${i eq curPage}">--%>
+        <%--  <a class="pagination-active" href="#ㅇㅅㅇ"><c:out value="${i}"/></a>--%>
+        <%--            </c:when>--%>
+        <%--            <c:otherwise>--%>
+        <%--            <a href="#ㅇㅅㅇ"><c:out value="${i}"/></a>--%>
+        <%--    </c:otherwise>--%>
+        <%--    </c:choose>--%>
+        <%--    <c:if test="${status.count eq 10}">--%>
+        <%--    <c:set var="doneLoop" value="true"/>--%>
+        <%--    </c:if>--%>
+        <%--    </c:if>--%>
+        <%--    </c:forEach>`;--%>
+        <%--$('.pagination-inner').append(str);--%>
+
+      }
+
+      bookAjax(CatgIdx,PageNum);
+
+
     });
 
     });
@@ -147,7 +249,7 @@
 <body>
 
 	<!-- ================ start banner area ================= -->	
-	<section class="blog-banner-area" id="category">
+	<section class="blog-banner-area" id="category2">
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
@@ -176,7 +278,7 @@
               <li class="common-filter">
                 <form action="#">
                   <ul id="category">
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg"><label for="0">전체보기<span> (${list[10]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg" checked><label for="0">전체보기<span> (${list[10]})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="1" name="catg"><label for="1">한국시<span> (${list[0]})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="2" name="catg"><label for="2">외국시<span> (${list[1]})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="3" name="catg"><label for="3">인물 에세이<span> (${list[2]})</span></label></li>
@@ -405,14 +507,26 @@
             </div>
             <nav class="pagination-container">
             <div class="pagination">
-              <a class="pagination-newer" href="">PREV</a>
+              <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>
               <span class="pagination-inner">
-					<a class="pagination-active" href="#ㅇㅅㅇ">1</a>
-					<a href="#ㅇㅅㅇ">2</a>
-					<a href="#ㅇㅅㅇ">3</a>
-					<a href="#ㅇㅅㅇ">4</a>
-					<a href="#ㅇㅅㅇ">5</a>
-					<a href="#ㅇㅅㅇ">6</a>
+                    <c:set var="doneLoop" value="false"/>
+                    <c:forEach var="i" begin="${startPage}" end="${maxPage}" varStatus="status">
+                      <c:if test="${not doneLoop}">
+
+                          <c:choose >
+                            <c:when test="${i eq curPage}">
+                              <a class="pagination-active" href="#ㅇㅅㅇ"><c:out value="${i}"/></a>
+                            </c:when>
+                            <c:otherwise>
+                              <a href="#ㅇㅅㅇ"><c:out value="${i}"/></a>
+                            </c:otherwise>
+                          </c:choose>
+                        <c:if test="${status.count eq 10}">
+                          <c:set var="doneLoop" value="true"/>
+                        </c:if>
+                      </c:if>
+
+                    </c:forEach>
 				</span>
               <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>
             </div>
