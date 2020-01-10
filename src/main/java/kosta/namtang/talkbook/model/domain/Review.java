@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -28,10 +29,10 @@ public class Review {
     private String reviewContent;
 
     @CreationTimestamp
-    private String reviewDate;
+    private Date reviewDate;
 
     @UpdateTimestamp
-    private String reviewModify;
+    private Date reviewModify;
     private int reviewScore;
 
     private String reviewerId;
