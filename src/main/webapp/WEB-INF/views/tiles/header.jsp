@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/vendors/nouislider/nouislider.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
+
+
 </head>
 <body style="padding-top: 0px;">
 <!--================ Start Header Menu Area =================-->
@@ -67,7 +69,7 @@
 
                     <ul class="nav-shop">
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
-                        <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+                        <li class="nav-item"><button><a class="ti-shopping-cart" href="/cart"></a><span class="nav-shop__circle"></span></button> </li>
                         <li class="nav-item"><a class="button button-header" href="#">Login / Register</a></li>
                     </ul>
                 </div>

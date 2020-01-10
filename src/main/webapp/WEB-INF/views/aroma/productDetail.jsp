@@ -47,7 +47,7 @@
                                 <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
                                 <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
                                 <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                                <li class="nav-item"><a class="nav-link" href="../user/cart.jsp">Shopping Cart</a></li>
                             </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -440,19 +440,22 @@
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                             </ul>
                             <p>Outstanding</p>
-                            <form action="#/" class="form-contact form-review mt-3">
+                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
                                 <div class="form-group">
-                                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
+                                    <input class="form-control" name="reviewTitle" type="text" placeholder="Enter Subject">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+                                    <textarea class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+
+                                <div>
+                                    <input type="hidden" name="reviewDate" id="todayDate">
                                 </div>
+
+
                                 <div class="form-group text-center text-md-right mt-3">
                                     <button type="submit" class="button button--active button-review">Submit Now</button>
                                 </div>
@@ -682,5 +685,34 @@
 <script src="vendors/jquery.ajaxchimp.min.js"></script>
 <script src="vendors/mail-script.js"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript" >
+
+
+    window.onload = function(){
+        var td = new Date();                   //오늘 날짜
+
+        var yyyy = td.getFullYear();           //년도
+
+        var mm = "" + (td.getMonth()+1);    //월
+
+        var dd = "" + td.getDate();           //일
+
+
+
+        if(mm.length < 2) mm = "0" + mm;
+
+        if(dd.length < 2) dd = "0" + dd;
+
+
+
+        var Today = yyyy.toString() + mm + dd;
+
+
+
+        document.getElementById('todayDate').value = Today;
+
+    }
+
+</script>
 </body>
 </html>

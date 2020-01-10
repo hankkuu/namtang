@@ -1,3 +1,4 @@
+<%@ page import="javax.naming.Context" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +10,22 @@
   <title>Aroma Shop - Category</title>
 
   <style>
+
+    .pixel-radio:checked::after {
+      -webkit-animation: click-wave 0.65s;
+      -moz-animation: click-wave 0.65s;
+      animation: click-wave 0.65s;
+      background: #384aeb;
+      content: '';
+      display: block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+    }
+
     @import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
     .pagination-container {
       color: #2c3e50;
@@ -73,6 +90,57 @@
       $(this).siblings().removeClass('pagination-active');
       $(this).addClass('pagination-active');
     });
+
+    $("#category li input").click(function(){
+
+      $(".pagination-active").removeClass();
+      $(".pagination-inner a:first").addClass('pagination-active');
+      var CatgIdx = $(this).attr('id');
+      var PageNum = $(".pagination-active").text();
+      $.ajax({
+        url : "/catgCall", //서버요청주소
+        type : "get",//요청방식 (get,post,patch,delete,put)
+        dataType : "json",//서버가 보내온 데이터 타입 (text, html, xml, json)
+        data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum,//서버에게 보내는 parameter정보
+        success : function(result){
+          // console.log(result);
+          $("#bookCard").empty();
+
+          $.each(result, function(index, item){
+            var Img = item.bookImg;
+            var Title = item.bookTitle;
+            var Price = item.bookPrice;
+            var CatgName = item.category.catgName;
+
+            var str = " <div class=\"col-md-6 col-lg-4\">\n" +
+                    "                <div class=\"card text-center card-product\">\n" +
+                    "                  <div class=\"card-product__img\">\n" +
+                    "                    <img class=\"card-img\" src=\""+Img+"\" alt=\"\">\n" +
+                    "                    <ul class=\"card-product__imgOverlay\">\n" +
+                    "                      <li><button><i class=\"ti-search\"></i></button></li>\n" +
+                    "                      <li><button><i class=\"ti-shopping-cart\"></i></button></li>\n" +
+                    "                      <li><button><i class=\"ti-heart\"></i></button></li>\n" +
+                    "                    </ul>\n" +
+                    "                  </div>\n" +
+                    "                  <div class=\"card-body\">\n" +
+                    "                    <p>"+CatgName+"</p>\n" +
+                    "                    <h4 class=\"card-product__title\"><a href=\"#\">"+Title+"</a></h4>\n" +
+                    "                    <p class=\"card-product__price\">"+Price+"</p>\n" +
+                    "                  </div>\n" +
+                    "                </div>\n" +
+                    "              </div>"
+
+            $('#bookCard').append(str);
+          });
+
+
+        } , //성공했을때
+        error : function(err){
+
+        }// 실패했을때
+      });
+    });
+
     });
   </script>
 </head>
@@ -107,17 +175,18 @@
             <ul class="main-categories">
               <li class="common-filter">
                 <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">한국시<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">외국시<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">인물 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">여행 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">성공 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">독서 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food1" name="brand"><label for="food">명상 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food2" name="brand"><label for="poto">그림/포토 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food3" name="brand"><label for="love">연애/사랑 에세이<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food4" name="brand"><label for="wisdom">삶의 지혜/명언<span> (3600)</span></label></li>
+                  <ul id="category">
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg"><label for="0">전체보기<span> (${list[10]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="1" name="catg"><label for="1">한국시<span> (${list[0]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="2" name="catg"><label for="2">외국시<span> (${list[1]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="3" name="catg"><label for="3">인물 에세이<span> (${list[2]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="4" name="catg"><label for="4">여행 에세이<span> (${list[3]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="5" name="catg"><label for="5">성공 에세이<span> (${list[4]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="6" name="catg"><label for="6">독서 에세이<span> (${list[5]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="7" name="catg"><label for="7">명상 에세이<span> (${list[6]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="8" name="catg"><label for="8">그림/포토 에세이<span> (${list[7]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="9" name="catg"><label for="9">연애/사랑 에세이<span> (${list[8]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="10" name="catg"><label for="10">삶의 지혜/명언<span> (${list[9]})</span></label></li>
                   </ul>
                 </form>
               </li>
@@ -171,9 +240,7 @@
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-            <div class="row">
-
-
+            <div class="row" id="bookCard">
                 <c:forEach var="item" items="${booklist}" varStatus="status">
 <%--            <c:forEach var="i" begin="0" end="8">--%>
               <div class="col-md-6 col-lg-4">
@@ -333,22 +400,23 @@
                 </div>
               </div>--%>
 
-              <nav class="pagination-container">
-                <div class="pagination">
-                  <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>
-                  <span class="pagination-inner">
-					<a href="#ㅇㅅㅇ">1</a>
-					<a class="pagination-active" href="#ㅇㅅㅇ">2</a>
+
+
+            </div>
+            <nav class="pagination-container">
+            <div class="pagination">
+              <a class="pagination-newer" href="">PREV</a>
+              <span class="pagination-inner">
+					<a class="pagination-active" href="#ㅇㅅㅇ">1</a>
+					<a href="#ㅇㅅㅇ">2</a>
 					<a href="#ㅇㅅㅇ">3</a>
 					<a href="#ㅇㅅㅇ">4</a>
 					<a href="#ㅇㅅㅇ">5</a>
 					<a href="#ㅇㅅㅇ">6</a>
 				</span>
-                  <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>
-                </div>
-              </nav>
-
+              <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>
             </div>
+          </nav>
           </section>
           <!-- End Best Seller -->
         </div>

@@ -1,0 +1,426 @@
+2020:01:09 04:44:06.550 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on DESKTOP-2EUQSAF with PID 8336 (D:\project\web\spring\namtang\target\classes started by hankkuu in D:\project\web\spring\namtang) 
+2020:01:09 04:44:06.555 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 04:44:06.556 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 04:44:06.739 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in C:\Users\hankkuu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/hankkuu/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 04:44:06.744 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 04:44:06.745 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 04:44:08.120 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 04:44:08.317 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 175ms. Found 9 JPA repository interfaces. 
+2020:01:09 04:44:08.768 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 04:44:09.095 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 04:44:09.106 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:44:09.107 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 04:44:09.107 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 04:44:09.475 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 04:44:09.481 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 04:44:09.481 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 2736 ms 
+2020:01:09 04:44:09.815 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 04:44:09.893 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 04:44:10.033 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 04:44:10.137 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 04:44:10.335 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I) 
+2020:01:09 04:44:10.349 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 04:44:10.362 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 04:44:12.593 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 04:44:12.617 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 04:44:12.668 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 04:44:13.264 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 04:44:13.318 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 26aa7012-3828-4597-a700-da17dcbb264a
+ 
+2020:01:09 04:44:13.409 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72ad94cb, org.springframework.security.web.context.SecurityContextPersistenceFilter@5cd0bfa6, org.springframework.security.web.header.HeaderWriterFilter@58ac8492, org.springframework.security.web.csrf.CsrfFilter@1c6bdd42, org.springframework.security.web.authentication.logout.LogoutFilter@4c7c8547, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6307f671, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1ee320f0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@15803e1c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3403541c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6bdf216, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@313b3d30, org.springframework.security.web.session.SessionManagementFilter@538b8b82, org.springframework.security.web.access.ExceptionTranslationFilter@4dcbd8f5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@128046e6] 
+2020:01:09 04:44:13.586 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 04:44:14.128 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 04:44:14.155 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 04:44:14.158 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 8.488 seconds (JVM running for 10.014) 
+2020:01:09 04:44:14.161 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 04:44:14.161 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 04:44:14.161 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 04:44:14.161 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 04:44:29.515 INFO  --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020:01:09 04:44:29.516 INFO  --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet' 
+2020:01:09 04:44:29.523 INFO  --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 7 ms 
+2020:01:09 14:35:41.323 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on Kimui-MacBookPro.local with PID 1170 (/Users/ksw/IdeaProjects/FinalProject/namtang/target/classes started by ksw in /Users/ksw/IdeaProjects/FinalProject/namtang) 
+2020:01:09 14:35:41.325 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 14:35:41.325 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 14:35:41.384 INFO  --- [restartedMain] o.s.b.d.restart.ChangeableUrls : The Class-Path manifest attribute in /Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/Users/ksw/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar 
+2020:01:09 14:35:41.384 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2020:01:09 14:35:41.385 INFO  --- [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2020:01:09 14:35:42.067 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 14:35:42.140 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62ms. Found 10 JPA repository interfaces. 
+2020:01:09 14:35:42.420 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 14:35:42.711 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 14:35:42.719 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 14:35:42.720 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 14:35:42.720 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 14:35:42.917 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 14:35:42.923 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 14:35:42.923 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 1538 ms 
+2020:01:09 14:35:43.097 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 14:35:43.167 INFO  --- [restartedMain] org.hibernate.Version : HHH000412: Hibernate Core {5.4.9.Final} 
+2020:01:09 14:35:43.257 INFO  --- [restartedMain] o.h.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.0.1.Final} 
+2020:01:09 14:35:43.318 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting... 
+2020:01:09 14:35:43.581 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-1 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method abstract getNetworkTimeout()I of interface java.sql.Connection.) 
+2020:01:09 14:35:43.604 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed. 
+2020:01:09 14:35:43.617 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 14:35:45.387 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 14:35:45.395 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 14:35:45.429 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 14:35:45.899 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 14:35:45.950 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: aa16b18b-06ab-4cef-9c14-7e4c57bbae11
+ 
+2020:01:09 14:35:46.040 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65328933, org.springframework.security.web.context.SecurityContextPersistenceFilter@2dd42dc7, org.springframework.security.web.header.HeaderWriterFilter@75b38321, org.springframework.security.web.csrf.CsrfFilter@3ef5a8bb, org.springframework.security.web.authentication.logout.LogoutFilter@6fc73058, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4acc04fb, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@f4f69ee, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@23142d88, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5631065f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54baa732, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c1fb446, org.springframework.security.web.session.SessionManagementFilter@4a1dbec2, org.springframework.security.web.access.ExceptionTranslationFilter@6f792e93, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6c2d4e8e] 
+2020:01:09 14:35:46.156 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 14:35:46.335 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 14:35:46.353 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 14:35:46.357 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 5.333 seconds (JVM running for 5.975) 
+2020:01:09 14:35:46.359 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 14:35:46.359 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 14:35:46.359 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 14:35:46.359 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 14:36:07.150 INFO  --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020:01:09 14:36:07.151 INFO  --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet' 
+2020:01:09 14:36:07.159 INFO  --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 8 ms 
+2020:01:09 14:47:19.149 INFO  --- [Thread-6] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 14:47:19.150 INFO  --- [Thread-6] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 14:47:19.151 INFO  --- [Thread-6] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 14:47:19.153 INFO  --- [Thread-6] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated... 
+2020:01:09 14:47:19.231 INFO  --- [Thread-6] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed. 
+2020:01:09 14:47:19.361 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on Kimui-MacBookPro.local with PID 1170 (/Users/ksw/IdeaProjects/FinalProject/namtang/target/classes started by ksw in /Users/ksw/IdeaProjects/FinalProject/namtang) 
+2020:01:09 14:47:19.362 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 14:47:19.362 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 14:47:19.517 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 14:47:19.537 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20ms. Found 10 JPA repository interfaces. 
+2020:01:09 14:47:19.592 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 14:47:19.618 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 14:47:19.628 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 14:47:19.629 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 14:47:19.629 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 14:47:19.629 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 14:47:19.681 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 14:47:19.682 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 14:47:19.682 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 318 ms 
+2020:01:09 14:47:19.721 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 14:47:19.724 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Starting... 
+2020:01:09 14:47:19.818 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-2 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method abstract getNetworkTimeout()I of interface java.sql.Connection.) 
+2020:01:09 14:47:19.826 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Start completed. 
+2020:01:09 14:47:19.827 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 14:47:20.989 INFO  --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020:01:09 14:47:20.990 INFO  --- [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 14:47:21.001 INFO  --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729 
+2020:01:09 14:47:21.106 INFO  --- [restartedMain] org.apache.tiles.access.TilesAccess : Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 14:47:21.115 INFO  --- [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4975fe0f-4598-4444-a379-a94f969747f9
+ 
+2020:01:09 14:47:21.126 INFO  --- [restartedMain] o.s.s.w.DefaultSecurityFilterChain : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5de83594, org.springframework.security.web.context.SecurityContextPersistenceFilter@637234c1, org.springframework.security.web.header.HeaderWriterFilter@7cf2008, org.springframework.security.web.csrf.CsrfFilter@5207e814, org.springframework.security.web.authentication.logout.LogoutFilter@10965745, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4cff4f29, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@15be560d, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@29478035, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@244a667f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5afbdd9e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d7e5434, org.springframework.security.web.session.SessionManagementFilter@e582a56, org.springframework.security.web.access.ExceptionTranslationFilter@46b039e1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@733ae4e5] 
+2020:01:09 14:47:21.168 INFO  --- [restartedMain] o.s.s.c.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor' 
+2020:01:09 14:47:21.234 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"] 
+2020:01:09 14:47:21.236 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port(s): 8888 (http) with context path '' 
+2020:01:09 14:47:21.236 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Started TalkbookApplication in 1.918 seconds (JVM running for 700.843) 
+2020:01:09 14:47:21.237 INFO  --- [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged 
+2020:01:09 14:47:21.237 ERROR --- [restartedMain] k.n.talkbook.TalkbookApplication : error 
+2020:01:09 14:47:21.237 WARN  --- [restartedMain] k.n.talkbook.TalkbookApplication : warn 
+2020:01:09 14:47:21.237 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : info 
+2020:01:09 14:47:21.237 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : debug 
+2020:01:09 15:00:45.833 INFO  --- [Thread-10] o.s.s.c.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor' 
+2020:01:09 15:00:45.834 INFO  --- [Thread-10] org.apache.tiles.access.TilesAccess : Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext 
+2020:01:09 15:00:45.835 INFO  --- [Thread-10] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default' 
+2020:01:09 15:00:45.835 INFO  --- [Thread-10] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown initiated... 
+2020:01:09 15:00:45.936 INFO  --- [Thread-10] com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown completed. 
+2020:01:09 15:00:46.019 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on Kimui-MacBookPro.local with PID 1170 (/Users/ksw/IdeaProjects/FinalProject/namtang/target/classes started by ksw in /Users/ksw/IdeaProjects/FinalProject/namtang) 
+2020:01:09 15:00:46.019 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 15:00:46.019 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 15:00:46.116 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 15:00:46.130 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 10 JPA repository interfaces. 
+2020:01:09 15:00:46.171 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 15:00:46.193 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 15:00:46.202 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 15:00:46.202 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 15:00:46.202 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 15:00:46.202 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 15:00:46.246 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 15:00:46.247 INFO  --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 15:00:46.247 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 226 ms 
+2020:01:09 15:00:46.275 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 15:00:46.278 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Starting... 
+2020:01:09 15:00:46.549 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-3 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method abstract getNetworkTimeout()I of interface java.sql.Connection.) 
+2020:01:09 15:00:46.557 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Start completed. 
+2020:01:09 15:00:46.557 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 15:00:46.806 WARN  --- [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation 
+2020:01:09 15:00:46.806 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown initiated... 
+2020:01:09 15:00:46.846 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown completed. 
+2020:01:09 15:00:46.847 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Stopping service [Tomcat] 
+2020:01:09 15:00:46.854 INFO  --- [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+2020:01:09 15:00:46.863 ERROR --- [restartedMain] o.s.boot.SpringApplication : Application run failed 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at kosta.namtang.talkbook.TalkbookApplication.main(TalkbookApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation
+	at org.hibernate.tuple.TimestampGenerators.get(TimestampGenerators.java:116)
+	at org.hibernate.tuple.CreationTimestampGeneration.initialize(CreationTimestampGeneration.java:22)
+	at org.hibernate.tuple.CreationTimestampGeneration.initialize(CreationTimestampGeneration.java:16)
+	at org.hibernate.cfg.annotations.PropertyBinder.instantiateAndInitializeValueGeneration(PropertyBinder.java:427)
+	at org.hibernate.cfg.annotations.PropertyBinder.getValueGenerationFromAnnotation(PropertyBinder.java:395)
+	at org.hibernate.cfg.annotations.PropertyBinder.getValueGenerationFromAnnotations(PropertyBinder.java:360)
+	at org.hibernate.cfg.annotations.PropertyBinder.determineValueGenerationStrategy(PropertyBinder.java:335)
+	at org.hibernate.cfg.annotations.PropertyBinder.makeProperty(PropertyBinder.java:276)
+	at org.hibernate.cfg.annotations.PropertyBinder.makePropertyAndValue(PropertyBinder.java:195)
+	at org.hibernate.cfg.annotations.PropertyBinder.makePropertyValueAndBind(PropertyBinder.java:205)
+	at org.hibernate.cfg.AnnotationBinder.processElementAnnotations(AnnotationBinder.java:2282)
+	at org.hibernate.cfg.AnnotationBinder.processIdPropertiesIfNotAlready(AnnotationBinder.java:975)
+	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:802)
+	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.processEntityHierarchies(AnnotationMetadataSourceProcessorImpl.java:254)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.processEntityHierarchies(MetadataBuildingProcess.java:230)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:273)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1202)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1233)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 21 common frames omitted
+2020:01:09 15:25:10.945 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on Kimui-MacBookPro.local with PID 1170 (/Users/ksw/IdeaProjects/FinalProject/namtang/target/classes started by ksw in /Users/ksw/IdeaProjects/FinalProject/namtang) 
+2020:01:09 15:25:10.945 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 15:25:10.945 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 15:25:11.042 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 15:25:11.058 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 10 JPA repository interfaces. 
+2020:01:09 15:25:11.106 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 15:25:11.131 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 15:25:11.145 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 15:25:11.146 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 15:25:11.146 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 15:25:11.146 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 15:25:11.187 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 15:25:11.188 INFO  --- [restartedMain] o.a.c.c.C.[.[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 15:25:11.188 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 242 ms 
+2020:01:09 15:25:11.217 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 15:25:11.221 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Starting... 
+2020:01:09 15:25:11.421 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-4 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method abstract getNetworkTimeout()I of interface java.sql.Connection.) 
+2020:01:09 15:25:11.431 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Start completed. 
+2020:01:09 15:25:11.432 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 15:25:11.696 WARN  --- [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation 
+2020:01:09 15:25:11.696 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Shutdown initiated... 
+2020:01:09 15:25:11.742 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Shutdown completed. 
+2020:01:09 15:25:11.743 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Stopping service [Tomcat] 
+2020:01:09 15:25:11.748 INFO  --- [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+2020:01:09 15:25:11.749 ERROR --- [restartedMain] o.s.boot.SpringApplication : Application run failed 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at kosta.namtang.talkbook.TalkbookApplication.main(TalkbookApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation
+	at org.hibernate.tuple.TimestampGenerators.get(TimestampGenerators.java:116)
+	at org.hibernate.tuple.CreationTimestampGeneration.initialize(CreationTimestampGeneration.java:22)
+	at org.hibernate.tuple.CreationTimestampGeneration.initialize(CreationTimestampGeneration.java:16)
+	at org.hibernate.cfg.annotations.PropertyBinder.instantiateAndInitializeValueGeneration(PropertyBinder.java:427)
+	at org.hibernate.cfg.annotations.PropertyBinder.getValueGenerationFromAnnotation(PropertyBinder.java:395)
+	at org.hibernate.cfg.annotations.PropertyBinder.getValueGenerationFromAnnotations(PropertyBinder.java:360)
+	at org.hibernate.cfg.annotations.PropertyBinder.determineValueGenerationStrategy(PropertyBinder.java:335)
+	at org.hibernate.cfg.annotations.PropertyBinder.makeProperty(PropertyBinder.java:276)
+	at org.hibernate.cfg.annotations.PropertyBinder.makePropertyAndValue(PropertyBinder.java:195)
+	at org.hibernate.cfg.annotations.PropertyBinder.makePropertyValueAndBind(PropertyBinder.java:205)
+	at org.hibernate.cfg.AnnotationBinder.processElementAnnotations(AnnotationBinder.java:2282)
+	at org.hibernate.cfg.AnnotationBinder.processIdPropertiesIfNotAlready(AnnotationBinder.java:975)
+	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:802)
+	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.processEntityHierarchies(AnnotationMetadataSourceProcessorImpl.java:254)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.processEntityHierarchies(MetadataBuildingProcess.java:230)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:273)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1202)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1233)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 21 common frames omitted
+2020:01:09 15:29:25.602 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on Kimui-MacBookPro.local with PID 1170 (/Users/ksw/IdeaProjects/FinalProject/namtang/target/classes started by ksw in /Users/ksw/IdeaProjects/FinalProject/namtang) 
+2020:01:09 15:29:25.603 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 15:29:25.603 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 15:29:25.779 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 15:29:25.805 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 10 JPA repository interfaces. 
+2020:01:09 15:29:25.899 INFO  --- [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020:01:09 15:29:25.944 WARN  --- [restartedMain] o.a.tomcat.util.modeler.Registry : The MBean registry cannot be disabled because it has already been initialised 
+2020:01:09 15:29:25.966 INFO  --- [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8888 (http) 
+2020:01:09 15:29:25.967 INFO  --- [restartedMain] o.a.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"] 
+2020:01:09 15:29:25.967 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Starting service [Tomcat] 
+2020:01:09 15:29:25.968 INFO  --- [restartedMain] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.29] 
+2020:01:09 15:29:26.028 INFO  --- [restartedMain] o.apache.jasper.servlet.TldScanner : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time. 
+2020:01:09 15:29:26.030 INFO  --- [restartedMain] o.a.c.c.C.[.[localhost].[/] : Initializing Spring embedded WebApplicationContext 
+2020:01:09 15:29:26.030 INFO  --- [restartedMain] o.s.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 425 ms 
+2020:01:09 15:29:26.074 INFO  --- [restartedMain] o.h.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020:01:09 15:29:26.078 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Starting... 
+2020:01:09 15:29:26.493 INFO  --- [restartedMain] com.zaxxer.hikari.pool.PoolBase : HikariPool-5 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method abstract getNetworkTimeout()I of interface java.sql.Connection.) 
+2020:01:09 15:29:26.501 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Start completed. 
+2020:01:09 15:29:26.501 INFO  --- [restartedMain] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect 
+2020:01:09 15:29:26.746 WARN  --- [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation 
+2020:01:09 15:29:26.746 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Shutdown initiated... 
+2020:01:09 15:29:26.833 INFO  --- [restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Shutdown completed. 
+2020:01:09 15:29:26.833 INFO  --- [restartedMain] o.a.catalina.core.StandardService : Stopping service [Tomcat] 
+2020:01:09 15:29:26.837 INFO  --- [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+2020:01:09 15:29:26.838 ERROR --- [restartedMain] o.s.boot.SpringApplication : Application run failed 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at kosta.namtang.talkbook.TalkbookApplication.main(TalkbookApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hibernate.HibernateException: Unsupported property type [java.lang.String] for @CreationTimestamp or @UpdateTimestamp generator annotation
+	at org.hibernate.tuple.TimestampGenerators.get(TimestampGenerators.java:116)
+	at org.hibernate.tuple.CreationTimestampGeneration.initialize(CreationTimestampGeneration.java:22)
+	at org.hibernate.tuple.CreationTimestampGeneration.initialize(CreationTimestampGeneration.java:16)
+	at org.hibernate.cfg.annotations.PropertyBinder.instantiateAndInitializeValueGeneration(PropertyBinder.java:427)
+	at org.hibernate.cfg.annotations.PropertyBinder.getValueGenerationFromAnnotation(PropertyBinder.java:395)
+	at org.hibernate.cfg.annotations.PropertyBinder.getValueGenerationFromAnnotations(PropertyBinder.java:360)
+	at org.hibernate.cfg.annotations.PropertyBinder.determineValueGenerationStrategy(PropertyBinder.java:335)
+	at org.hibernate.cfg.annotations.PropertyBinder.makeProperty(PropertyBinder.java:276)
+	at org.hibernate.cfg.annotations.PropertyBinder.makePropertyAndValue(PropertyBinder.java:195)
+	at org.hibernate.cfg.annotations.PropertyBinder.makePropertyValueAndBind(PropertyBinder.java:205)
+	at org.hibernate.cfg.AnnotationBinder.processElementAnnotations(AnnotationBinder.java:2282)
+	at org.hibernate.cfg.AnnotationBinder.processIdPropertiesIfNotAlready(AnnotationBinder.java:975)
+	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:802)
+	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.processEntityHierarchies(AnnotationMetadataSourceProcessorImpl.java:254)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.processEntityHierarchies(MetadataBuildingProcess.java:230)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:273)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1202)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1233)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 21 common frames omitted
+2020:01:09 15:32:39.255 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : Starting TalkbookApplication on Kimui-MacBookPro.local with PID 1170 (/Users/ksw/IdeaProjects/FinalProject/namtang/target/classes started by ksw in /Users/ksw/IdeaProjects/FinalProject/namtang) 
+2020:01:09 15:32:39.255 DEBUG --- [restartedMain] k.n.talkbook.TalkbookApplication : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE 
+2020:01:09 15:32:39.255 INFO  --- [restartedMain] k.n.talkbook.TalkbookApplication : The following profiles are active: local 
+2020:01:09 15:32:39.364 INFO  --- [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2020:01:09 15:32:39.372 ERROR --- [restartedMain] o.s.boot.SpringApplication : Application run failed 
+java.lang.TypeNotPresentException: Type kosta.namtang.talkbook.model.domain.Review not present
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.visitor.Reifier.reifyTypeArguments(Reifier.java:68)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:138)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.repository.ClassRepository.computeSuperInterfaces(ClassRepository.java:117)
+	at java.base/sun.reflect.generics.repository.ClassRepository.getSuperInterfaces(ClassRepository.java:95)
+	at java.base/java.lang.Class.getGenericInterfaces(Class.java:1137)
+	at org.springframework.core.ResolvableType.getInterfaces(ResolvableType.java:492)
+	at org.springframework.core.GenericTypeResolver.buildTypeVariableMap(GenericTypeResolver.java:270)
+	at org.springframework.core.GenericTypeResolver.getTypeVariableMap(GenericTypeResolver.java:247)
+	at org.springframework.data.util.ClassTypeInformation.getTypeVariableMap(ClassTypeInformation.java:115)
+	at org.springframework.data.util.ClassTypeInformation.getTypeVariableMap(ClassTypeInformation.java:104)
+	at org.springframework.data.util.ClassTypeInformation.<init>(ClassTypeInformation.java:93)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.util.ClassTypeInformation.from(ClassTypeInformation.java:71)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.<init>(AbstractRepositoryMetadata.java:58)
+	at org.springframework.data.repository.core.support.DefaultRepositoryMetadata.<init>(DefaultRepositoryMetadata.java:52)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.getMetadata(AbstractRepositoryMetadata.java:73)
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.getRepositoryConfigurations(RepositoryConfigurationExtensionSupport.java:102)
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:148)
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:385)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:384)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:337)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:242)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:275)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:95)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:706)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:532)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at kosta.namtang.talkbook.TalkbookApplication.main(TalkbookApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.ClassNotFoundException: kosta.namtang.talkbook.model.domain.Review
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 45 common frames omitted
