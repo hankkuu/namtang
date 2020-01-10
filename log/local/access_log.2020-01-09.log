@@ -1,2 +1,0 @@
-2020-01-09 04:44:30	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36	-	0:0:0:0:0:0:0:1	32354
-2020-01-09 04:44:36	200	GET /aroma/category HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36	http://localhost:8888/	0:0:0:0:0:0:0:1	450574

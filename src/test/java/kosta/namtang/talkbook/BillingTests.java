@@ -1,6 +1,10 @@
 package kosta.namtang.talkbook;
 
 import kosta.namtang.talkbook.common.CancelCode;
+import kosta.namtang.talkbook.core.bill.IamportClient;
+import kosta.namtang.talkbook.core.bill.exception.IamportResponseException;
+import kosta.namtang.talkbook.core.bill.response.AccessToken;
+import kosta.namtang.talkbook.core.bill.response.IamportResponse;
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.User;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
@@ -15,10 +19,12 @@ import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import net.minidev.json.JSONUtil;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +42,15 @@ public class BillingTests {
     private BookService bookService;
     @Autowired
     private BillKeyRepository billKey;
+
+    private IamportClient client;
+
+    @Before
+    public void Setup() {
+        String test_api_key = "3310717107944454";
+        String test_api_secret = "TYVkJ2x8nJd4QZeVJ9oeyWHGkSxzHmdBl9V5ctdzcrE3qSYa2npAj7gEZOeHbsiwBeCNHPnUh1XIUWSW";
+        client = new IamportClient(test_api_key, test_api_secret);
+    }
 
     @Test
     void purchaseTest() throws Exception {
@@ -61,7 +76,7 @@ public class BillingTests {
         User user = new User();
         user.setUserIdx(1L);
 
-        BillKey key = purchaseService.insertPurchase(list, order, payment, user);
+        BillKey key = purchaseService.insertPurchase(list, order, payment, user, "");
         assertNotNull(key);
     }
 
@@ -80,10 +95,25 @@ public class BillingTests {
     void refundTest() throws Exception {
         //String billKey, String reason, int refundCode, List<Long> purchaseBookIdsList
 
-        BillKey key = purchaseService.refund("3c1ef832-ae41-47fd-9d3d-b7651dff5573", "개구려서"
+        BillKey key = purchaseService.refund("60bd18ad-a343-48b1-bfd9-093a5879c414", "개구려서"
                 , CancelCode.Buyer.getValue(), new ArrayList<PurchaseBook>() );
 
         assertNotNull(key);
+    }
+
+    @Test
+    void getTokenTest() throws IOException, IamportResponseException {
+        // client 설정
+        this.Setup();
+        IamportResponse<AccessToken> auth_response = client.getAuth();
+        String token = auth_response.getResponse().getToken();
+
+        String json = JsonUtil.toJson(auth_response.getResponse());
+        log.debug(json);
+
+        //if(get)
+
+
     }
 
 }
