@@ -1,5 +1,7 @@
 package kosta.namtang.talkbook.controller;
 
+import kosta.namtang.talkbook.common.ShopResponse;
+import kosta.namtang.talkbook.common.StatusCode;
 import kosta.namtang.talkbook.core.bill.IamportClient;
 import kosta.namtang.talkbook.core.bill.exception.IamportResponseException;
 import kosta.namtang.talkbook.core.bill.request.CancelData;
@@ -9,6 +11,7 @@ import kosta.namtang.talkbook.model.domain.User;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
 import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
 import kosta.namtang.talkbook.model.dto.request.PurchaseRequest;
+import kosta.namtang.talkbook.model.dto.request.PurchaseSetRequest;
 import kosta.namtang.talkbook.service.bill.BillKeySystem;
 import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
@@ -24,7 +27,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/purchase")
+@RequestMapping("api/v1/purchase")
 public class PurchaseController {
 
 
@@ -37,26 +40,36 @@ public class PurchaseController {
     @Autowired
     private BillKeySystem keySystem;
 
-    @PostMapping("getBillKey")
-    public String getBillKey() throws Exception {
+    @PostMapping("/getBillKey")
+    public ShopResponse getBillKey() throws Exception {
         String key = keySystem.issueBillKey();
 
-        if (key.isEmpty() == false)
-            return key;
-        else
+        if (key.isEmpty() == false) {
+            return new ShopResponse(StatusCode.Success, key);
+        }
+        else {
             throw new Exception();
+        }
     }
 
     @PostMapping("")
-    public String purchase(@RequestBody PurchaseRequest request, User user) throws Exception {
+    public ShopResponse purchase(@RequestBody PurchaseSetRequest request) throws Exception {
+        ShopResponse result = null;
+        log.debug(request.toString());
 
-        String result = "";
+        return result;
+    }
+
+    @PostMapping("/complete")
+    public ShopResponse purchaseComplete(@RequestBody PurchaseRequest request, User user) throws Exception {
+
+        ShopResponse result = null;
         String token = this.getToken();
         String paymentData = this.purchaseByImpUid(request.getImp_uid());
 
-        BigDecimal total = request.getPayment().getTotalPrice();
+        String total = request.getPaid_amount();
         Payment payment = JsonUtil.fromJson(paymentData, Payment.class);
-        if(total.equals(payment.getAmount())) {
+        if(total.equals(payment.getAmount().toString())) {
             // 결제 검증 성공
             String status = payment.getStatus();
             if(status.equals("ready")) {
@@ -68,7 +81,7 @@ public class PurchaseController {
 
                 if(key != null) {
                     // 구매 DB 입력 완료
-                    result = "success";
+                    result = new ShopResponse(StatusCode.Success, "");
                 } else {
                     throw new Exception();
                 }

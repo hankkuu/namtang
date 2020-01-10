@@ -60,13 +60,28 @@ public class BillingTests {
         // 구매 책 목록
 //        Pageable page = PageRequest.of(0, 10);
 //        Page<Book> bookList = bookService.selectAll(page);
-//        List<Book> list = new ArrayList<>();
-//        BigDecimal totalPrice = new BigDecimal(0);
-//        for(int i = 0 ; i < bookList.getSize() ; i ++) {
-//            Book b = bookList.get().get(i);
-//            list.add(b);
-//            totalPrice.add(b.getBookPrice());
-//        }
+        Book b1 = new Book();
+        b1.setBookPrice(new BigDecimal(100));
+
+        Book b2 = new Book();
+        b2.setBookPrice(new BigDecimal(500));
+
+        Book b3 = new Book();
+        b3.setBookPrice(new BigDecimal(40004.4444));
+        List<Book> list = new ArrayList<>();
+        list.add(b1);
+        list.add(b2);
+        list.add(b3);
+
+        BigDecimal bbb =  new BigDecimal(0);
+
+        for(int i = 0 ; i < list.size() ; i ++) {
+            bbb = bbb.add( list.get(i).getBookPrice() );
+
+        }
+        log.debug(bbb.toString());
+
+
 //
 //        PurchaseOrder order = new PurchaseOrder();
 //        order.setDeliveryAddress("경기도 판교시");

@@ -11,8 +11,8 @@
 		<put-attribute name="content" value =""/>
 	</definition>
 
-    <definition name="aroma/**" extends="layout">
-        <put-attribute name="content" value="/WEB-INF/views/aroma/{1}.jsp"/>
+    <definition name="user/**" extends="layout">
+        <put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp"/>
     </definition>
     <definition name="guest/**" extends="layout">
         <put-attribute name="content" value="/WEB-INF/views/guest/{1}.jsp"/>
