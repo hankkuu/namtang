@@ -1,6 +1,7 @@
 package kosta.namtang.talkbook.controller;
 
 import kosta.namtang.talkbook.model.domain.Cart;
+import kosta.namtang.talkbook.model.domain.CartId;
 import kosta.namtang.talkbook.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,12 +24,26 @@ public class CartController {
         return new ModelAndView("user/cart", "cartList", list);
     }
 
-    @RequestMapping("cart/delete")
-        public String delete(@RequestParam Long userIdx,@RequestParam Long bookIdx) {
+    @RequestMapping("cart/insert")
+    public void insert(Cart cart) {
+        CartId cartId = new CartId();
+        cartId.setBookIdx(1L);
+        cartId.setUserIdx(3L);
 
-            cartService.delete(userIdx,bookIdx);
+        cart.setBookPrice(114000);
+        cart.setBookTitle("테스트");
 
+        cartService.insert(cart);
 
-            return "redirect:/cart";
     }
+
+    @RequestMapping("cart/delete")
+    public String delete(@RequestParam Long userIdx, @RequestParam Long bookIdx) {
+
+        cartService.delete(userIdx, bookIdx);
+
+
+        return "redirect:/cart";
+    }
+
 }
