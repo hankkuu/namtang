@@ -21,5 +21,6 @@ public class Cart {
     private String bookTitle;
     private String bookImg;
     private int bookPrice;
+    private int qty;
     private LocalDateTime createDate;
 }
