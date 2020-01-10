@@ -44,18 +44,18 @@
                         <li class="nav-item submenu dropdown">
                             <%--                     <a href="aroma/mypage" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                                         aria-expanded="false">--%>
-                            <a href="/aroma/category" class="nav-link dropdown-toggle">Category</a>
+                            <a href="/aroma/category?catg=0" class="nav-link dropdown-toggle">Category</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">한국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">외국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">인물 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">여행 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">성공 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">독서 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">명상 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">그림/포토 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">연애/사랑 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">삶의 지혜/명언</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=1">한국시</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=2">외국시</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=3">인물 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=4">여행 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=5">성공 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=6">독서 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=7">명상 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=8">그림/포토 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=9">연애/사랑 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=10">삶의 지혜/명언</a></li>
                             </ul>
                         </li>
 

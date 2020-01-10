@@ -86,11 +86,15 @@
   </style>
   <script>
     $(function(){
-      var CatgIdx=0;
+
+      var CatgIdx=${CatgIdx};
       var startPage=${startPage};
       var maxPage=${maxPage};
       var curPage;
-      var pageInfo
+      var pageInfo;
+
+      $("#category li input[id=CatgIdx]").prop('checked',true);
+      alert($("#category li input[id=${CatgIdx}]").attr('id'));
       //AJAX기능
       function bookAjax(CatgIdx,PageNum){
         $.ajax({
@@ -189,6 +193,26 @@
 
         $('.pagination-active').prev().addClass('pagination-active');
         $('.pagination-active').next().removeClass('pagination-active');
+
+        if(PageNum == startPage-1) {
+          bookAjax(CatgIdx, PageNum);
+
+          $(".pagination-inner").empty();
+          var doneLoop = false;
+          for (var i = startPage; i <= maxPage; i++) {
+
+            if (doneLoop == false) {
+              if (i == PageNum) {
+                $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>" + i + "</a>");
+              } else {
+                $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">" + i + "</a>");
+              }
+              if (i == startPage + 9) {
+                doneLoop = true;
+              }
+            }
+          }
+        }
 
       } else if ($(this).text() == 'NEXT'){
 

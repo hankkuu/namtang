@@ -11,6 +11,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletContext;
@@ -28,10 +29,16 @@ public class BookController {
     BookService bookService;
 
     @RequestMapping("aroma/category")
-    String category(Model model){
+    String category(@RequestParam Long catg, Model model){
         Pageable page = PageRequest.of(0, 9);
-        Page<Book> pageList = bookService.selectAll(page);
+        Page<Book> pageList = null;
+        if(catg==0) {
+           pageList = bookService.selectAll(page);
+        }else {
+            pageList = bookService.CatgCall(catg,page);
+        }
 
+        model.addAttribute("CatgIdx",catg);
         model.addAttribute("booklist",pageList.getContent());
         model.addAttribute("list", bookService.countAll());
 
@@ -40,6 +47,7 @@ public class BookController {
         model.addAttribute("curPage",1);
         return "aroma/category";
     }
+
 
     @RequestMapping("/catgCall")
     @ResponseBody
@@ -55,7 +63,9 @@ public class BookController {
             bookList = bookService.CatgCall(CatgIdx, page);
         }
         int maxPage = bookList.getTotalPages();
+        if(PageNum % 10 ==0) PageNum -=10;
         int startPage = PageNum - (PageNum%10) + 1;
+
         pageInfo.add(startPage);
         pageInfo.add(maxPage);
         pageInfo.add(PageNum);
