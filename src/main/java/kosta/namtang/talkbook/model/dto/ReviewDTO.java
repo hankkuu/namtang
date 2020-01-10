@@ -12,14 +12,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReviewDTO {
 
+
     private Long reviewIdx;
+    private Long userIdx;
     private String reviewTitle;
     private String reviewContent;
+    private Long bookIdx;
+    private int reviewScore;
     private String reviewDate;
     private String reviewModify;
-    private int reviewScore;
-    private String reviewerId;
 
+
+//    리뷰테이블
+//
+//    리뷰인덱스
+//    작성자
+//    제목
+//    내용
+//    상품인덱스
+//    별점
+//    등록일
+//    수정일
 
 
 //    리뷰 테이블

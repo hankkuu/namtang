@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -22,19 +23,22 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "review_seq")
     private Long reviewIdx;
 
-    private Long bookIdx;
+    private Long userIdx;
 
     private String reviewTitle;
     private String reviewContent;
 
-    @CreationTimestamp
-    private String reviewDate;
+    private Long bookIdx;
 
-    @UpdateTimestamp
-    private String reviewModify;
     private int reviewScore;
 
-    private String reviewerId;
+    @CreationTimestamp
+    private Date reviewDate;
+
+    @UpdateTimestamp
+    private Date reviewModify;
+
+
 
 
 //    리뷰테이블
@@ -43,9 +47,10 @@ public class Review {
 //    제목
 //    내용
 //    상품인덱스
+//    별점
 //    등록일
 //    수정일
-//    별점
+
 
 
 //    리뷰 테이블
