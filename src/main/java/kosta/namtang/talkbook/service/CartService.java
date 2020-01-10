@@ -2,7 +2,6 @@ package kosta.namtang.talkbook.service;
 
 import com.google.common.collect.Lists;
 import kosta.namtang.talkbook.model.domain.Cart;
-import kosta.namtang.talkbook.model.dto.cart.CartDelRequestDto;
 import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,13 +26,15 @@ public class CartService {
         return Lists.newArrayList(cartRepository.findByCartIdUserIdx(userIdx));
     }
 
+    //추가
+    public void insert(Cart cart) {
+        cartRepository.save(cart);
+
+    }
+
     //삭제
     public void delete(Long userIdx, Long bookIdx) {
         cartRepository.deleteByCartIdUserIdxAndCartIdBookIdx(userIdx, bookIdx);
-//        if (list.isEmpty()) {
-//            // error
-//            System.out.println("삭제할 정보 없음");
-//        }
-//        return null;
+
     }
 }

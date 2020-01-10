@@ -1,14 +1,12 @@
 package kosta.namtang.talkbook.model.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import java.io.Serializable;
 
+@Setter
 @EqualsAndHashCode
 @Getter
 @NoArgsConstructor

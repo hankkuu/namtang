@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ksw
@@ -371,6 +372,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        <c:choose>
+                        <c:when test="${reviewcc eq null}">
                         <div class="review_list">
                             <div class="review_item">
                                 <div class="media">
@@ -378,7 +382,7 @@
                                         <img src="img/product/review-1.png" alt="">
                                     </div>
                                     <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
+                                        <h4>현재 리뷰 없음!</h4>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -386,48 +390,73 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo</p>
+                                <p>리뷰 데이터 없음!</p>
                             </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-2.png" alt="">
+                        </c:when>
+                            <c:otherwise>
+                            <c:forEach var="reviewc" items="${reviewcc}">
+                            <div class="review_list">
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="img/product/review-1.png" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>${reviewc.reviewIdx}</h4>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
+                                    <p>${reviewc.reviewContent}</p>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-3.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                        </div>
+                            </c:otherwise>
+                        </c:choose>
+
+
+
+<%--                            <div class="review_item">--%>
+<%--                                <div class="media">--%>
+<%--                                    <div class="d-flex">--%>
+<%--                                        <img src="img/product/review-2.png" alt="">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="media-body">--%>
+<%--                                        <h4>Blake Ruiz</h4>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et--%>
+<%--                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea--%>
+<%--                                    commodo</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="review_item">--%>
+<%--                                <div class="media">--%>
+<%--                                    <div class="d-flex">--%>
+<%--                                        <img src="img/product/review-3.png" alt="">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="media-body">--%>
+<%--                                        <h4>Blake Ruiz</h4>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                        <i class="fa fa-star"></i>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et--%>
+<%--                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea--%>
+<%--                                    commodo</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
+                   </c:forEach>
+
                     <div class="col-lg-6">
                         <div class="review_box">
                             <h4>Add a Review</h4>
@@ -441,9 +470,9 @@
                             </ul>
                             <p>Outstanding</p>
                             <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
-                                <div class="form-group">
-                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>
-                                </div>
+<%--                                <div class="form-group">--%>
+<%--                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>--%>
+<%--                                </div>--%>
                                 <div class="form-group">
                                     <input class="form-control" name="reviewTitle" type="text" placeholder="Enter Subject">
                                 </div>
@@ -451,10 +480,7 @@
                                     <textarea class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
                                 </div>
 
-                                <div>
-                                    <input type="hidden" name="reviewDate" id="todayDate">
-                                </div>
-
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
                                 <div class="form-group text-center text-md-right mt-3">
                                     <button type="submit" class="button button--active button-review">Submit Now</button>
@@ -685,34 +711,34 @@
 <script src="vendors/jquery.ajaxchimp.min.js"></script>
 <script src="vendors/mail-script.js"></script>
 <script src="js/main.js"></script>
-<script type="text/javascript" >
+<%--<script type="text/javascript" >--%>
 
 
-    window.onload = function(){
-        var td = new Date();                   //오늘 날짜
+<%--    window.onload = function(){--%>
+<%--        var td = new Date();                   //오늘 날짜--%>
 
-        var yyyy = td.getFullYear();           //년도
+<%--        var yyyy = td.getFullYear();           //년도--%>
 
-        var mm = "" + (td.getMonth()+1);    //월
+<%--        var mm = "" + (td.getMonth()+1);    //월--%>
 
-        var dd = "" + td.getDate();           //일
-
-
-
-        if(mm.length < 2) mm = "0" + mm;
-
-        if(dd.length < 2) dd = "0" + dd;
+<%--        var dd = "" + td.getDate();           //일--%>
 
 
 
-        var Today = yyyy.toString() + mm + dd;
+<%--        if(mm.length < 2) mm = "0" + mm;--%>
+
+<%--        if(dd.length < 2) dd = "0" + dd;--%>
 
 
 
-        document.getElementById('todayDate').value = Today;
+<%--        var Today = yyyy.toString() + mm + dd;--%>
 
-    }
 
-</script>
+
+<%--        document.getElementById('todayDate').value = Today;--%>
+
+<%--    }--%>
+
+<%--</script>--%>
 </body>
 </html>

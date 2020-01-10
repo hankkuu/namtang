@@ -21,7 +21,7 @@ public interface PurchaseService {
 	 * */
 	
 	public BillKey insertPurchase(List<Book> goodsList, PurchaseOrder order,
-							  PurchasePayment payment, User user) throws Exception;
+							  PurchasePayment payment, User user, String billKey) throws Exception;
 	
 	// 환불
 	public BillKey refund(String billKey, String reason, int refundType,  List<PurchaseBook> cancelBookList) throws Exception;

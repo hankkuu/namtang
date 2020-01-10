@@ -1,32 +1,25 @@
 package kosta.namtang.talkbook.model.dto.request;
 
+import kosta.namtang.talkbook.model.domain.Book;
+import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
+import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.util.List;
+
+@Getter
+@Setter
+@ToString
 public class PurchaseSetRequest {
 
-	public PurchaseSetRequest() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	private long goodsId;
-	private String name;
-	private int count;
-	private int colorCode;
-	private int sizeCode;
-	
-	private String imagebox;
-	private int pricebox; // total???'
-	private int paymentType;
-	private double price;
+	private String imp_uid;
+	private String merchant_uid;
 
-	private String orderertel;
-	private String orderermail;
-	
-	private String recipientaddr;
-	private String recipientname;
-	private String recipienttel;
-	private String recipientmemo;
-	
-
-	
-
+	private String billKey;
+	private List<Book> book;
+	private PurchaseOrder order;
+	private PurchasePayment payment;
 
 }
