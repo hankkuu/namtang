@@ -49,6 +49,7 @@
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.25" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE" />
@@ -67,9 +68,9 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.29" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.29" />
           <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest:2.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.2.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: com.oracle:ojdbc6:11.2.0.3" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:28.1-jre" />
           <element id="library" level="project" name="Maven: com.google.guava:failureaccess:1.0.1" />
@@ -132,6 +133,12 @@
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-template:3.0.5" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-autotag-core-runtime:1.1.0" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.6" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.3.1" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.8.0" />
+          <element id="library" level="project" name="Maven: com.squareup.retrofit2:retrofit:2.3.0" />
+          <element id="library" level="project" name="Maven: com.squareup.retrofit2:converter-gson:2.3.0" />
+          <element id="library" level="project" name="Maven: junit:junit:4.12" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:2.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -245,6 +245,7 @@
                               </tr>
                           </c:when>
                           <c:otherwise>
+                              <c:set var="test" value="1"/>
                               <c:forEach items="${cartList}" var="cartVO">
 
                                   <tr>
@@ -264,11 +265,13 @@
 
                                       <td>
 
-                                              <select name="amount" id="amount" onchange="amount_change()">
-                                                  <c:forEach begin="1" end="10" var="i">
-                                                      <option value="${i}">${i}</option>
-                                                  </c:forEach>
-                                              </select>
+<%--                                              <select name="amount" id=${test} onchange="amount_change()">--%>
+<%--                                                  <c:forEach begin="1" end="10" var="i">--%>
+<%--                                                      <option value="${i}">${i}</option>--%>
+<%--                                                  </c:forEach>--%>
+<%--                                                 <c:set target="test" value=--%>
+<%--                                                --%>
+<%--                                              </select>--%>
 <%--                                          <input class="aa-cart-quantity" type="number" value="${ cartVO.quantity}"  min="1" max="100" readonly="readonly">--%>
                                       </td>
                                       <td id="qty">
