@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/talkbook.iml" filepath="$PROJECT_DIR$/talkbook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/namtang.iml" filepath="$PROJECT_DIR$/.idea/namtang.iml" />
     </modules>
   </component>
 </project>
