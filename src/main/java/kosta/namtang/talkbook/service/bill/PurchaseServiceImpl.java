@@ -35,18 +35,17 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private PurchaseBookRepository purchaseBook;
 	@Autowired
 	private PurchaseCancelRepository purchaseCancel;
-	
-	
+
 	@Override
 	@Transactional
 	public BillKey insertPurchase(List<Book> booksList, PurchaseOrder order,
-							  PurchasePayment payment, User account) throws Exception{
+							  PurchasePayment payment, User account, String key) throws Exception{
 
 		BillKey keyResult = null;
 		try {
 			
 			// [0] 빌키 받아오기 //uuid
-			String key = keySystem.issueBillKey();
+			//String key = keySystem.issueBillKey();
 			// 시간 동기화
 			Timestamp purchaseDate = DateTimeHelper.timeStampNow();
 
@@ -175,6 +174,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 					cancel.setCreateDate(cancelDate);
 					cancel.setUpdateDate(cancelDate);
 					cancel.setCount(book.getCount());
+					cancel.setPrice(book.getPrice());
 					
 					//해당 Goods의 Cancel 정보를 insert
 					PurchaseCancel cancelResult = purchaseCancel.save(cancel);

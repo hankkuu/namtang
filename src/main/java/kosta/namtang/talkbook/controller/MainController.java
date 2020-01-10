@@ -18,6 +18,9 @@ public class MainController {
 
 		return "aroma/productDetail";
 	}
-
-
+	
+	@RequestMapping("adminLoginForm")
+	public String adminLogin() {
+		return "guest/adminLoginForm";
+	}
 }
