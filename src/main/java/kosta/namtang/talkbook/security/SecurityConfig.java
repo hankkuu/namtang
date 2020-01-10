@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	       System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
 	        auth.userDetailsService(userDetailService);
+	        
 	    }
 
 
@@ -36,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+    	
         http.authorizeRequests()
         .antMatchers("/*").permitAll()
         .antMatchers("/admin/dashBoard").hasRole("admin");
@@ -48,6 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .usernameParameter("username")
         .passwordParameter("password");
         http.exceptionHandling().accessDeniedPage("/");
+        
+        
 
     }
     @SuppressWarnings("deprecation")
