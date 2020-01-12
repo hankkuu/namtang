@@ -82,7 +82,7 @@
 
                     <ul class="nav-shop">
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
-                        <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+                        <li class="nav-item"><button><a class="ti-shopping-cart" href="/cart"></a><span class="nav-shop__circle"></span></button> </li>
                         <li class="nav-item"><a class="button button-header" href="#">Login / Register</a></li>
                     </ul>
                 </div>

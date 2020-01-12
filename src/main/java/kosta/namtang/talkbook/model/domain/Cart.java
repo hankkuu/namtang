@@ -1,20 +1,24 @@
 package kosta.namtang.talkbook.model.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Entity
 public class Cart {
     @EmbeddedId
     private CartId cartId;
 
+    private String bookTitle;
+    private String bookImg;
+    private int bookPrice;
+    private int qty;
     private LocalDateTime createDate;
 }

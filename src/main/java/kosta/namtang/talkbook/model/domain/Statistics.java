@@ -25,5 +25,11 @@ public class Statistics {
 	private int salePrice;
 	private String saleDate;
 	private long userCount;
+	public Statistics(int salePrice, String saleDate, long userCount) {
+		super();
+		this.salePrice = salePrice;
+		this.saleDate = saleDate;
+		this.userCount = userCount;
+	}
 
 }

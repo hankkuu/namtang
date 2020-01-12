@@ -4,6 +4,7 @@ package kosta.namtang.talkbook.common;
 public enum StatusCode {
 	None(0)
   , Success(1)
+  , Fail(2)
   
   // Account 관련
   , Not_Found_Id(10001)
