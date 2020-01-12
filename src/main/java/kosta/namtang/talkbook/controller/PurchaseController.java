@@ -57,6 +57,16 @@ public class PurchaseController {
         ShopResponse result = null;
         log.debug(request.toString());
 
+        BillKey key = purchaseService.insertPurchase(request.getBook(), request.getOrder(), request.getPayment()
+                    , request.getUser(), request.getBillKey());
+
+        if(key != null) {
+            // 구매 DB 입력 완료
+            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(key));
+        } else {
+            throw new Exception();
+        }
+
         return result;
     }
 
@@ -77,27 +87,14 @@ public class PurchaseController {
             } else if(status.equals("paid")) {
                 log.debug("paid");
 
-                BillKey key = purchaseService.insertPurchase(request.getBook(), request.getOrder(), request.getPayment(), user, request.getBillKey());
-
-                if(key != null) {
-                    // 구매 DB 입력 완료
-                    result = new ShopResponse(StatusCode.Success, "");
-                } else {
-                    throw new Exception();
-                }
-
-
+                result = new ShopResponse(StatusCode.Success, paymentData);
             } else {
                 throw new Exception();
             }
-
-
         } else {
             // 결제 검증 실패
             throw new Exception();
         }
-
-
         return result;
     }
 

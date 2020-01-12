@@ -20,7 +20,7 @@ public interface PurchaseService {
 	 * @throws Exception 
 	 * */
 	
-	public BillKey insertPurchase(List<Book> goodsList, PurchaseOrder order,
+	public BillKey insertPurchase(List<PurchaseBook> goodsList, PurchaseOrder order,
 							  PurchasePayment payment, User user, String billKey) throws Exception;
 	
 	// 환불

@@ -38,7 +38,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	@Transactional
-	public BillKey insertPurchase(List<Book> booksList, PurchaseOrder order,
+	public BillKey insertPurchase(List<PurchaseBook> booksList, PurchaseOrder order,
 							  PurchasePayment payment, User account, String key) throws Exception{
 
 		BillKey keyResult = null;
@@ -82,12 +82,14 @@ public class PurchaseServiceImpl implements PurchaseService {
 			}
 			// [4] 구매할 상품 정보 넣어 주기 (아마 insert?)
 			// 벌그인서트가 없다.. 아씨...ㅋㅋㅋ 아아아ㅏ아아ㅏ아얼닝런이런이러 일단 무식하게(추후 수정)
-			for (Book book : booksList) {
-				PurchaseBookId id = new PurchaseBookId(book.getBookIdx(), orderIdx);
-				PurchaseBook pBook = new PurchaseBook(id, book.getBookPrice(), PurchaseCode.Payment_Success.getValue()
-						,  book.getBookTitle(), book.getBookCount(), book.getBookImg(), key, purchaseDate, purchaseDate);
+			for (PurchaseBook book : booksList) {
+				book.setPurchaseBookId(new PurchaseBookId(book.getPurchaseBookId().getBookIdx(), orderIdx));
+				book.setStateCode(PurchaseCode.Payment_Success.getValue());
+				book.setBillKey(key);
+				book.setCreateDate(purchaseDate);
+				book.setUpdateDate(purchaseDate);
 
-				PurchaseBook purchaseBookResult = purchaseBook.save(pBook);
+				PurchaseBook purchaseBookResult = purchaseBook.save(book);
 				if (purchaseBookResult == null) {
 					// 완전 존망 ㅠㅜㅜ
 					throw new GlobalException("구매상품 입력실패", StatusCode.Fail_Add_PurchaseGoods);
