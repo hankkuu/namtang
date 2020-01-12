@@ -12,7 +12,13 @@ import java.util.Optional;
 
 public interface BookRepository extends CrudRepository<Book, Long> {
     public int countBookByCategory(Optional<Category> category);
-    public Page<Book> findAllByCategory(Optional<Category> category, Pageable pageable);
-    public Page<Book> findAll(Pageable pageable);
+
+    public Page<Book> findAllByCategoryOrderByBookTitle(Optional<Category> category, Pageable pageable);
+    public Page<Book> findAllByCategoryOrderByBookTitleDesc(Optional<Category> category, Pageable pageable);
+    public Page<Book> findAllByCategoryOrderByBookPubdate(Optional<Category> category, Pageable pageable);
+
+    public Page<Book> findAllByOrderByBookTitle(Pageable pageable);
+    public Page<Book> findAllByOrderByBookTitleDesc(Pageable pageable);
+    public Page<Book> findAllByOrderByBookPubdate(Pageable pageable);
 }
 

@@ -33,9 +33,9 @@ public class BookController {
         Pageable page = PageRequest.of(0, 9);
         Page<Book> pageList = null;
         if(catg==0) {
-           pageList = bookService.selectAll(page);
+           pageList = bookService.selectAll(page,1);
         }else {
-            pageList = bookService.CatgCall(catg,page);
+            pageList = bookService.CatgCall(catg,1,page);
         }
 
         model.addAttribute("CatgIdx",catg);
@@ -51,16 +51,21 @@ public class BookController {
 
     @RequestMapping("/catgCall")
     @ResponseBody
-    List<Object> catgCall(Long CatgIdx, int PageNum, HttpSession request){
+    List<Object> catgCall(Long CatgIdx, int PageNum, int Ordering, HttpSession request){
         Pageable page = PageRequest.of(PageNum-1, 9);
+        System.out.printf(CatgIdx + "|"+ PageNum +" | " + Ordering);
 
         Page<Book> bookList;
         List<Integer> pageInfo = new ArrayList<Integer>();
         List<Object> list = new ArrayList<Object>();
+
+        //카테고리 : 전체목록 선택
         if(CatgIdx==0L) {
-            bookList = bookService.selectAll(page);
-        } else {
-            bookList = bookService.CatgCall(CatgIdx, page);
+            bookList = bookService.selectAll(page,Ordering);
+        }
+        //카테고리 : 특정 카테고리 선택
+        else {
+            bookList = bookService.CatgCall(CatgIdx,Ordering, page);
         }
         int maxPage = bookList.getTotalPages();
         if(PageNum % 10 ==0) PageNum -=10;

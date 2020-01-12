@@ -93,16 +93,18 @@
       var curPage;
       var pageInfo;
 
-      $("#category li input[id=CatgIdx]").prop('checked',true);
-      alert($("#category li input[id=${CatgIdx}]").attr('id'));
+      $("#category li input[id=${CatgIdx}]").prop('checked',true);
+      // alert($('#sorting select option:selected').val());
+      <%--alert($("#category li input[id=${CatgIdx}]").attr('id'));--%>
+
       //AJAX기능
-      function bookAjax(CatgIdx,PageNum){
+      function bookAjax(CatgIdx,PageNum,Ordering){
         $.ajax({
           async: false,
           url : "/catgCall", //서버요청주소
           type : "get",//요청방식 (get,post,patch,delete,put)
           dataType : "json",//서버가 보내온 데이터 타입 (text, html, xml, json)
-          data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum,//서버에게 보내는 parameter정보
+          data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum+"&Ordering="+Ordering,//서버에게 보내는 parameter정보
           success : function(result){
             $("#bookCard").empty();
 
@@ -162,7 +164,7 @@
       CatgIdx = $(this).attr('id');
       // var PageNum = $(".pagination-active").text();
       var PageNum = 1;
-      bookAjax(CatgIdx,PageNum);
+      bookAjax(CatgIdx,PageNum,1);
 
       $(".pagination-inner").empty();
       var doneLoop = false;
@@ -178,7 +180,17 @@
           }
         }
       }
+      // $("#sorting select option:first").prop('selected', true);
+      // $("#sorting select option:first").prop('selected', 'selected').change();
 
+      //nice-select 작업
+      $("#sorting span").text($("#sorting div ul li:first").text());
+      $("#sorting div ul .option.selected").attr('class','option');
+      $("#sorting div ul li:first").addClass('option selected');
+
+
+
+      // alert($("#sorting select option:first").next().val());
     });
 
     // PREV, NEXT 버튼
@@ -267,6 +279,16 @@
 
     });
 
+    // Ordering 버튼
+      $("#sorting select").on('change',function(){
+        CatgIdx = $("#category li input:checked").attr('id');
+        var PageNum = 1;
+        alert(this.value);
+        var Ordering = this.value;
+        bookAjax(CatgIdx,PageNum,Ordering);
+        // alert($('#sorting select option:selected').val());
+      });
+
     });
   </script>
 </head>
@@ -340,14 +362,14 @@
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting mr-auto">
+            <div class="sorting mr-auto"  id="sorting">
               <select>
                 <option value="1">가나다 순</option>
-                <option value="1">가나다 역순</option>
-                <option value="1">출간일 순</option>
+                <option value="2">가나다 역순</option>
+                <option value="3">출간일 순</option>
               </select>
             </div>
-            <div class="sorting" style="margin-right: 5px;">
+            <div class="searching" style="margin-right: 5px;">
               <select>
                 <option value="1">제목별</option>
                 <option value="1">저자별</option>

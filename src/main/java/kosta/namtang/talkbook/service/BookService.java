@@ -21,9 +21,12 @@ public class BookService {
     @Autowired
     CategoryRepository catgRepo;
 
-    public Page<Book> selectAll(Pageable page){
-        Page<Book> it = bookRepo.findAll(page);
-        return it;
+    public Page<Book> selectAll(Pageable page, int Ordering){
+        Page<Book> book = null;
+        if(Ordering==1) book = bookRepo.findAllByOrderByBookTitle(page);
+        else if(Ordering==2) book = bookRepo.findAllByOrderByBookTitleDesc(page);
+        else if(Ordering==3) book = bookRepo.findAllByOrderByBookPubdate(page);
+        return book;
     }
 
     public List<Book> selectAll(){
@@ -49,8 +52,11 @@ public class BookService {
 
         return list;
      }
-     public Page<Book> CatgCall(Long CatgIdx,Pageable page){
-        Page<Book> book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
+     public Page<Book> CatgCall(Long CatgIdx, int Ordering,Pageable page){
+         Page<Book> book=null;
+        if(Ordering==1) book=bookRepo.findAllByCategoryOrderByBookTitle(catgRepo.findById(CatgIdx),page);
+        else if(Ordering==2) book=bookRepo.findAllByCategoryOrderByBookTitleDesc(catgRepo.findById(CatgIdx),page);
+        else if(Ordering==3) book=bookRepo.findAllByCategoryOrderByBookPubdate(catgRepo.findById(CatgIdx),page);
         return book;
      }
     }
