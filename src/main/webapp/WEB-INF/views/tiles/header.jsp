@@ -17,7 +17,16 @@
     <script src="/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 
+<script>
+    function CatgPage(catg){
+        var f=document.paging;
+        f.catg.value=catg;
+        f.action="/aroma/category";
+        f.method="post";
+        f.submit();
+    }
 
+</script>
 </head>
 <body style="padding-top: 0px;">
 <!--================ Start Header Menu Area =================-->
@@ -44,18 +53,22 @@
                         <li class="nav-item submenu dropdown">
                             <%--                     <a href="aroma/mypage" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                                         aria-expanded="false">--%>
-                            <a href="/aroma/category?catg=0" class="nav-link dropdown-toggle">Category</a>
+                                <form name="paging">
+                                    <input type="hidden" name="catg"/>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </form>
+                            <a href="#" onclick='CatgPage(0)' class="nav-link dropdown-toggle">Category</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=1">한국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=2">외국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=3">인물 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=4">여행 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=5">성공 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=6">독서 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=7">명상 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=8">그림/포토 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=9">연애/사랑 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category?catg=10">삶의 지혜/명언</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(1)'>한국시</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(2)'>외국시</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(3)'>인물 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(4)'>여행 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(5)'>성공 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(6)'>독서 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(7)'>명상 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(8)'>그림/포토 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(9)'>연애/사랑 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(10)'>삶의 지혜/명언</a></li>
                             </ul>
                         </li>
 

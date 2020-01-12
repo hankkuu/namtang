@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +31,11 @@ public class BookController {
 
     @RequestMapping("aroma/category")
     String category(@RequestParam Long catg, Model model){
-        Pageable page = PageRequest.of(0, 9);
         Page<Book> pageList = null;
         if(catg==0) {
-           pageList = bookService.selectAll(page,1);
+           pageList = bookService.selectAll(1,1);
         }else {
-            pageList = bookService.CatgCall(catg,1,page);
+            pageList = bookService.CatgCall(catg,1,1);
         }
 
         model.addAttribute("CatgIdx",catg);
@@ -51,9 +51,9 @@ public class BookController {
 
     @RequestMapping("/catgCall")
     @ResponseBody
-    List<Object> catgCall(Long CatgIdx, int PageNum, int Ordering, HttpSession request){
-        Pageable page = PageRequest.of(PageNum-1, 9);
-        System.out.printf(CatgIdx + "|"+ PageNum +" | " + Ordering);
+    List<Object> catgCall(Long CatgIdx, int PageNum, int Ordering, String Word){
+
+        System.out.printf(CatgIdx + " | "+ PageNum +" | " + Ordering + " | " + Word);
 
         Page<Book> bookList;
         List<Integer> pageInfo = new ArrayList<Integer>();
@@ -61,11 +61,17 @@ public class BookController {
 
         //카테고리 : 전체목록 선택
         if(CatgIdx==0L) {
-            bookList = bookService.selectAll(page,Ordering);
+            if(Ordering>=6) {
+                bookList = bookService.SearchWord(PageNum, Ordering, Word);
+            } else {
+                bookList = bookService.selectAll(PageNum,Ordering);
+            }
         }
         //카테고리 : 특정 카테고리 선택
         else {
-            bookList = bookService.CatgCall(CatgIdx,Ordering, page);
+            if(Ordering>=6){
+                bookList = bookService.SearchWordByCatg(CatgIdx,PageNum,Ordering,Word);
+            } else bookList = bookService.CatgCall(CatgIdx,PageNum,Ordering);
         }
         int maxPage = bookList.getTotalPages();
         if(PageNum % 10 ==0) PageNum -=10;

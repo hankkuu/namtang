@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MypageController {
 
-    @RequestMapping("aroma/mypage")
+    @RequestMapping("/aroma/mypage")
     void mypage(){
+    }
+
+    @RequestMapping("/aroma/recentBook")
+    void recentBook(){
     }
 }
