@@ -6,26 +6,19 @@ import kosta.namtang.talkbook.core.bill.exception.IamportResponseException;
 import kosta.namtang.talkbook.core.bill.response.AccessToken;
 import kosta.namtang.talkbook.core.bill.response.IamportResponse;
 import kosta.namtang.talkbook.model.domain.Book;
-import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
 import kosta.namtang.talkbook.model.domain.bill.PurchaseBook;
-import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
-import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 import kosta.namtang.talkbook.repository.bill.BillKeyRepository;
 import kosta.namtang.talkbook.service.BookService;
-import kosta.namtang.talkbook.service.bill.BillKeySystem;
 import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import net.minidev.json.JSONUtil;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -102,8 +95,8 @@ public class BillingTests {
     @Test
     void orderListTest() throws Exception {
 
-        User user = new User();
-        user.setUserIdx(1);
+        Users user = new Users();
+        user.setAccountIdx(1);
         List<PurchaseOrderResponse> list = purchaseService.selectOrderList(user);
         String json = JsonUtil.toJson(list);
 

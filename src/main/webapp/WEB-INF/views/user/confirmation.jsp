@@ -8,13 +8,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script type="text/javascript" >
     $(document).ready(function () {
+      let para = document.location.href.split("?");
+      console.log(para);
+
+
       let params = window.location.search;
       let decode = decodeURI(params);
       let str = decode.substring(decode.indexOf("=")+2);
-      let replaceStr = str.replace(/\\/ig,"");
-      replaceStr = replaceStr.slice(0,-1);
-      replaceStr = replaceStr.replace("\"\"{", "{");
-      replaceStr = replaceStr.replace("}\"\"", "}");
+      let replaceStr = str.slice(0,-1);
+      replaceStr = replaceStr.replace(/\\/ig,"").replace("\"\"{", "{").replace("}\"\"", "}");
       let json = JSON.parse(replaceStr);
 
       console.log(json);

@@ -4,9 +4,8 @@ package kosta.namtang.talkbook.service.bill;
 import kosta.namtang.talkbook.common.GlobalException;
 import kosta.namtang.talkbook.common.PurchaseCode;
 import kosta.namtang.talkbook.common.StatusCode;
-import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.bill.*;
-import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 import kosta.namtang.talkbook.repository.bill.PurchaseBookRepository;
@@ -39,7 +38,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	@Transactional
 	public BillKey insertPurchase(List<PurchaseBook> booksList, PurchaseOrder order,
-							  PurchasePayment payment, User account, String key) throws Exception{
+							  PurchasePayment payment, Users account, String key) throws Exception{
 
 		BillKey keyResult = null;
 		try {
@@ -50,10 +49,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 			Timestamp purchaseDate = DateTimeHelper.timeStampNow();
 
 			// [1] 계정 정보 알아오기 (로그인 세션에서 알수있음)
-			long userIdx = account.getUserIdx();
+			long accountIdx = account.getAccountIdx();
 
 			// 주문정보 셋팅
-			order.setUserIdx(userIdx);
+			order.setUserIdx(accountIdx);
 			order.setStateCode(PurchaseCode.Payment_Success.getValue());
 			order.setOrderDate(purchaseDate);
 			//order.setCreateDate(purchaseDate);
@@ -219,12 +218,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	@Transactional
-	public List<PurchaseOrderResponse> selectOrderList(User account) throws Exception {
+	public List<PurchaseOrderResponse> selectOrderList(Users account) throws Exception {
 
 		List<PurchaseOrderResponse> list = new ArrayList<>();
 		try {
 
-			List<PurchaseOrder> orderList = purchaseOrder.findByUserIdx(account.getUserIdx());
+			List<PurchaseOrder> orderList = purchaseOrder.findByUserIdx(account.getAccountIdx());
 			for(PurchaseOrder order : orderList) {
 				
 				PurchasePayment payment = purchasePayment.findByPurchaseOrderIdx(order.getPurchaseOrderIdx());
