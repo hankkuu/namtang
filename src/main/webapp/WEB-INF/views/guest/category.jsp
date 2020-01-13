@@ -1,6 +1,8 @@
 <%@ page import="javax.naming.Context" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,6 +104,11 @@
       // alert($('#sorting select option:selected').val());
       <%--alert($("#category li input[id=${CatgIdx}]").attr('id'));--%>
 
+      //돈 콤마 찍기
+      function addComma(num) {
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        return num.toString().replace(regexp, ',');
+      }
       //AJAX기능
       function bookAjax(CatgIdx,PageNum,Ordering,Word){
         if(Ordering==undefined) Ordering=1;
@@ -120,6 +127,9 @@
               var Img = item.bookImg;
               var Title = item.bookTitle;
               var Price = item.bookPrice;
+              Price = addComma(Price);
+              Price = Price + "￦";
+
               var CatgName = item.category.catgName;
               var bookIdx = item.bookIdx;
 
@@ -146,6 +156,10 @@
             // console.log(result[0]);
             pageInfo = result[1];
 
+            // startPage = result[1][0];
+            // maxPage = pageInfo[1][1];
+            // if(maxPage==0) maxPage=1;
+            // curPage = pageInfo[1][2];
           } , //성공했을때
           error : function(request){
           alert(request.responseText);
@@ -460,7 +474,8 @@
                   <div class="card-body">
                     <p>${item.category.catgName}</p>
                     <h4 class="card-product__title"><a href="#">${item.bookTitle}</a></h4>
-                    <p class="card-product__price">${item.bookPrice}</p>
+                    <p class="card-product__price"><f:formatNumber type='currency' currencySymbol="￦" value="${item.bookPrice}"/></p>
+
                   </div>
                 </div>
               </div>

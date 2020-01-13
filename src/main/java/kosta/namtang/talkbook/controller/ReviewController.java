@@ -18,7 +18,6 @@ public class ReviewController {
 
     @RequestMapping("reviewReg")
     public ModelAndView insert(ReviewDTO dto){
-        System.out.println("들어오나?");
         String title = dto.getReviewTitle();
         String content = dto.getReviewContent();
 

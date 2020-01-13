@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ksw
@@ -54,7 +55,7 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     <h3>${book.get().bookTitle}</h3>
-                    <h2>${book.get().bookPrice}</h2>
+                    <h2><f:formatNumber type='currency' currencySymbol="￦" value="${book.get().bookPrice}"/></h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : ${book.get().category.catgName}</a></li>
                         <li><a href="#"><span>Author</span> : ${book.get().bookAuthor}</a></li>
@@ -414,7 +415,7 @@
                                 <div class="form-group">
                                     <textarea class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
                                 </div>
-
+                                    <input type="hidden" name="bookIdx" value="${book.get().bookIdx}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
                                 <div class="form-group text-center text-md-right mt-3">
