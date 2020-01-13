@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Slf4j
-@RequestMapping("user")
+@RequestMapping("guest")
 public class AccountViewController {
 
     @RequestMapping("/login")
