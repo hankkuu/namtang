@@ -2,7 +2,8 @@ package kosta.namtang.talkbook.controller;
 
 import kosta.namtang.talkbook.model.domain.Cart;
 import kosta.namtang.talkbook.model.domain.CartId;
-import kosta.namtang.talkbook.model.domain.User;
+//import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.dto.cart.CartSetRequest;
 import kosta.namtang.talkbook.service.CartService;
 import kosta.namtang.talkbook.util.JsonUtil;
@@ -52,9 +53,9 @@ public class CartController {
     @RequestMapping(value = "/update",method = RequestMethod.GET)
     @ResponseBody
     public String update(CartSetRequest cart) throws Exception {
-        User u = new User();
-        u.setUserIdx(1L);
-        Cart c = cartService.update(cart, u);
+        Account account = new Account();
+        account.setAccountIdx(1L);
+        Cart c = cartService.update(cart, account);
         String s = JsonUtil.toJson(c);
         return s;
 

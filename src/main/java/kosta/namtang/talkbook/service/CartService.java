@@ -2,11 +2,13 @@ package kosta.namtang.talkbook.service;
 
 import com.google.common.collect.Lists;
 import kosta.namtang.talkbook.model.domain.Cart;
-import kosta.namtang.talkbook.model.domain.User;
+//import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.dto.cart.CartSetRequest;
 import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,8 +39,8 @@ public class CartService {
 
     }
 
-    public Cart update(CartSetRequest cart, User user) throws Exception {
-        Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(user.getUserIdx(),cart.getBookIdx());
+    public Cart update(CartSetRequest cart, Account account) throws Exception {
+        Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(account.getAccountIdx(),cart.getBookIdx());
         if(c != null) {
             c.setQty(cart.getQty());
             cartRepository.save(c);
