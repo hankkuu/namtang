@@ -29,7 +29,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @RequestMapping("aroma/category")
+    @RequestMapping("/category")
     String category(@RequestParam Long catg, Model model){
         Page<Book> pageList = null;
         if(catg==0) {
@@ -45,7 +45,7 @@ public class BookController {
         model.addAttribute("maxPage", pageList.getTotalPages());
         model.addAttribute("startPage",1);
         model.addAttribute("curPage",1);
-        return "aroma/category";
+        return "/guest/category";
     }
 
 

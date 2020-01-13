@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aroma Shop - Blog</title>
-    <link rel="icon" href="/img/Fevicon.png" type="image/png">
-    <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="vendors/linericon/style.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <!-- ================ start banner area ================= -->
@@ -45,7 +36,7 @@
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/1.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
-                            <a href="/aroma/recentBook">
+                            <a href="/mypage/recentBook">
                                 <h5>최근 본 책</h5>
                             </a>
                             <div class="border_line"></div>
