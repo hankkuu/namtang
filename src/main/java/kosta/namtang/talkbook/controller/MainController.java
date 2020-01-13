@@ -18,7 +18,7 @@ public class MainController {
 	@RequestMapping("/")
 	public String mainIndex() {
 		
-		return "guest/index";
+		return "/guest/index";
 	}
 
 	

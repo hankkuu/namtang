@@ -348,11 +348,11 @@
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
-					<h1>Shop Category</h1>
+					<h1>Recent BookList</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Shop Category</li>
+              <li class="breadcrumb-item active" aria-current="page">Recent BookList</li>
             </ol>
           </nav>
 				</div>
@@ -368,78 +368,149 @@
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
           <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
+            <div class="head">My Page</div>
             <ul class="main-categories">
               <li class="common-filter">
                 <form action="#">
                   <ul id="category">
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg" checked><label for="0">전체보기<span> (${list[10]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="1" name="catg"><label for="1">한국시<span> (${list[0]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="2" name="catg"><label for="2">외국시<span> (${list[1]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="3" name="catg"><label for="3">인물 에세이<span> (${list[2]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="4" name="catg"><label for="4">여행 에세이<span> (${list[3]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="5" name="catg"><label for="5">성공 에세이<span> (${list[4]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="6" name="catg"><label for="6">독서 에세이<span> (${list[5]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="7" name="catg"><label for="7">명상 에세이<span> (${list[6]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="8" name="catg"><label for="8">그림/포토 에세이<span> (${list[7]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="9" name="catg"><label for="9">연애/사랑 에세이<span> (${list[8]})</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="10" name="catg"><label for="10">삶의 지혜/명언<span> (${list[9]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg" checked><label for="0">최근 본 책</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="1" name="catg"><label for="1">결제 내역</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="2" name="catg"><label for="2">내 리뷰 관리</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="3" name="catg"><label for="3">내 정보 수정</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="4" name="catg"><label for="4">장바구니</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="5" name="catg"><label for="5">기타</label></li>
                   </ul>
                 </form>
               </li>
             </ul>
           </div>
-<%--          <div class="sidebar-filter">--%>
-<%--            <div class="top-filter-head">Product Filters</div>--%>
-<%--            <div class="common-filter">--%>
-<%--              <div id="slider">슬라이더 들어갈 곳</div>--%>
-<%--              <!--<div class="head">Price</div>--%>
-<%--              <div class="price-range-area">--%>
-<%--                <div id="price-range"></div>--%>
-<%--                <div class="value-wrapper d-flex">--%>
-<%--                  <div class="price">Price:</div>--%>
-<%--                  <span>$</span>--%>
-<%--                  <div id="lower-value"></div>--%>
-<%--                  <div class="to">to</div>--%>
-<%--                  <span>$</span>--%>
-<%--                  <div id="upper-value"></div>--%>
-<%--                </div>--%>
-<%--              </div>-->--%>
-<%--            </div>--%>
-<%--          </div>--%>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
-          <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting mr-auto"  id="sorting">
-              <select>
-                <option value="1">가나다 순</option>
-                <option value="2">가나다 역순</option>
-                <option value="3">낮은가격 순</option>
-                <option value="4">높은가격 순</option>
-                <option value="5">출간일 순</option>
-              </select>
-            </div>
-            <div class="searching" style="margin-right: 5px;
-            height: 35px;margin-top: 7px;">
-              <select>
-                <option value="6">제목별</option>
-                <option value="7">저자별</option>
-                <option value="8">출판사별</option>
-              </select>
-            </div>
-            <div>
-              <div class="input-group filter-bar-search">
-                <input type="text" id="SearchWord" placeholder="Search">
-                <div class="input-group-append">
-                  <button type="button" id="SearchBtn"><i class="ti-search"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
+<%--          <div class="filter-bar d-flex flex-wrap align-items-center">--%>
+<%--            <div class="sorting mr-auto"  id="sorting">--%>
+<%--              <select>--%>
+<%--                <option value="1">가나다 순</option>--%>
+<%--                <option value="2">가나다 역순</option>--%>
+<%--                <option value="3">낮은가격 순</option>--%>
+<%--                <option value="4">높은가격 순</option>--%>
+<%--                <option value="5">출간일 순</option>--%>
+<%--              </select>--%>
+<%--            </div>--%>
+<%--            <div class="searching" style="margin-right: 5px;--%>
+<%--            height: 35px;margin-top: 7px;">--%>
+<%--              <select>--%>
+<%--                <option value="6">제목별</option>--%>
+<%--                <option value="7">저자별</option>--%>
+<%--                <option value="8">출판사별</option>--%>
+<%--              </select>--%>
+<%--            </div>--%>
+<%--            <div>--%>
+<%--              <div class="input-group filter-bar-search">--%>
+<%--                <input type="text" id="SearchWord" placeholder="Search">--%>
+<%--                <div class="input-group-append">--%>
+<%--                  <button type="button" id="SearchBtn"><i class="ti-search"></i></button>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--          </div>--%>
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
+
+            <!-- ================ top product area start ================= -->
+            <div class="container">
+<%--              <div class="section-intro pb-60px">--%>
+<%--                <p>Popular Item in the market</p>--%>
+<%--                <h2>Top <span class="section-intro__style">Product</span></h2>--%>
+<%--              </div>--%>
+
+  <%--
+            <section class="related-product-area">
+              <div class="container">
+                <div class="row mt-30">
+                  <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+                    <div class="single-search-product-wrapper">
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-1.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-2.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-3.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+                    <div class="single-search-product-wrapper">
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-4.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-5.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-6.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+                    <div class="single-search-product-wrapper">
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-7.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-8.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                      <div class="single-search-product d-flex">
+                        <a href="#"><img src="/img/product/product-sm-9.png" alt=""></a>
+                        <div class="desc">
+                          <a href="#" class="title">Gray Coffee Cup</a>
+                          <div class="price">$170.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section> --%>
+            <!-- ================ top product area end ================= -->
+
             <div class="row" id="bookCard">
                 <c:forEach var="item" items="${booklist}" varStatus="status">
 <%--            <c:forEach var="i" begin="0" end="8">--%>
@@ -461,146 +532,6 @@
                 </div>
               </div>
             </c:forEach>
-
-<%--
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product2.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Beauty</p>
-                    <h4 class="card-product__title"><a href="#">Women Freshwash</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product3.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Decor</p>
-                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product4.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Decor</p>
-                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product5.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Man Office Bag</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product6.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Kids Toy</p>
-                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product7.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Blutooth Speaker</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product8.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Kids Toy</p>
-                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product1.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>--%>
-
-
 
             </div>
             <nav class="pagination-container">
@@ -638,122 +569,6 @@
   </section>
 	<!-- ================ category section end ================= -->
 
-
-	<!-- ================ top product area start ================= -->	
-	<section class="related-product-area">
-		<div class="container">
-			<div class="section-intro pb-60px">
-        <p>Popular Item in the market</p>
-        <h2>Top <span class="section-intro__style">Product</span></h2>
-      </div>
-			<div class="row mt-30">
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-1.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-2.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-3.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-4.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-5.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-6.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-7.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-8.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-9.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-          <div class="single-search-product-wrapper">
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-1.png" alt=""></a>
-              <div class="desc">
-                  <a href="#" class="title">Gray Coffee Cup</a>
-                  <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-2.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-            <div class="single-search-product d-flex">
-              <a href="#"><img src="/img/product/product-sm-3.png" alt=""></a>
-              <div class="desc">
-                <a href="#" class="title">Gray Coffee Cup</a>
-                <div class="price">$170.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-		</div>
-	</section>
-	<!-- ================ top product area end ================= -->		
 
 	<!-- ================ Subscribe section start ================= -->		  
   <section class="subscribe-position">
