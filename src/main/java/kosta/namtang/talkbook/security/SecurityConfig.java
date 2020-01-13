@@ -2,10 +2,12 @@ package kosta.namtang.talkbook.security;
 
 import kosta.namtang.talkbook.common.RoleCode;
 import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,9 +21,10 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 
 import javax.sql.DataSource;
 
-@Log
+@Slf4j
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	//@Autowired
@@ -35,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/static/**");
+		//web.ignoring().antMatchers("/**");
 	}
 
 //	@Override
@@ -51,14 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/guest/**").permitAll()
-                .antMatchers("/tiles/**").permitAll()
-                .antMatchers("/resources/**").permitAll().anyRequest().permitAll();
-                //.antMatchers("/admin/**").hasRole("admin")
-                //.antMatchers("/user/**").hasRole(RoleCode.Member.name());
+                .antMatchers("/login", "/register").permitAll()
+                .antMatchers("/user/**").hasRole(RoleCode.Member.name())
+                .antMatchers("/admin/**").hasRole("admin");
+                //.antMatchers("/resources/static/**").permitAll().anyRequest().permitAll();
 
-        http.formLogin().loginPage("/guest/login");
-        http.exceptionHandling().accessDeniedPage("/guest/register");
+
+        http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());;
+        http.exceptionHandling().accessDeniedPage("/register");
         http.logout().logoutUrl("/guest/logout").invalidateHttpSession(true);
 
         http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
@@ -88,12 +91,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	    log.info("build auth global....");
-	    auth.userDetailsService(simpleUserService).passwordEncoder(this.passwordEncoder());
+	    auth.userDetailsService(simpleUserService).passwordEncoder(this.encoder());
     }
 
-    @SuppressWarnings("deprecation")
-	@Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+    //@SuppressWarnings("deprecation")
+	//@Bean
+    //public PasswordEncoder passwordEncoder() {
+    //    return NoOpPasswordEncoder.getInstance();
+    //}
 }
