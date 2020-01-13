@@ -121,13 +121,14 @@
               var Title = item.bookTitle;
               var Price = item.bookPrice;
               var CatgName = item.category.catgName;
+              var bookIdx = item.bookIdx;
 
               var str = " <div class=\"col-md-6 col-lg-4\">\n" +
                       "                <div class=\"card text-center card-product\">\n" +
                       "                  <div class=\"card-product__img\">\n" +
                       "                    <img class=\"card-img\" src=\"" + Img + "\" alt=\"\">\n" +
                       "                    <ul class=\"card-product__imgOverlay\">\n" +
-                      "                      <li><button><i class=\"ti-search\"></i></button></li>\n" +
+                      "                      <li><button id='BookDetail'><i class=\"ti-search\"><a hidden>"+bookIdx+"</a></i></button></li>\n" +
                       "                      <li><button><i class=\"ti-shopping-cart\"></i></button></li>\n" +
                       "                      <li><button><i class=\"ti-heart\"></i></button></li>\n" +
                       "                    </ul>\n" +
@@ -142,8 +143,9 @@
               $('#bookCard').append(str);
 
             });
-
+            // console.log(result[0]);
             pageInfo = result[1];
+
           } , //성공했을때
           error : function(request){
           alert(request.responseText);
@@ -153,6 +155,7 @@
         maxPage = pageInfo[1];
         if(maxPage==0) maxPage=1;
         curPage = pageInfo[2];
+
 
       }
 
@@ -326,18 +329,20 @@
         $("#sorting div ul li:first").addClass('option selected');
 
       }
-
       $("#SearchWord").keydown(function(key) {
         if (key.keyCode == 13) {
           Search();
         }
       });
-
-
       $("#SearchBtn").click(function(){
         Search();
       });
 
+      //상품 디테일 버튼
+      $(document).on('click','#BookDetail',function(){
+        var id = $("i a",this).text();
+        location.href="/BookDetail?id="+id;
+      });
     });
   </script>
 </head>
@@ -442,13 +447,12 @@
           <section class="lattest-product-area pb-40 category-list">
             <div class="row" id="bookCard">
                 <c:forEach var="item" items="${booklist}" varStatus="status">
-<%--            <c:forEach var="i" begin="0" end="8">--%>
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
                     <img class="card-img" src="${item.bookImg}" alt="">
                     <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button id="BookDetail"><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
                       <li><button><i class="ti-shopping-cart"></i></button></li>
                       <li><button><i class="ti-heart"></i></button></li>
                     </ul>

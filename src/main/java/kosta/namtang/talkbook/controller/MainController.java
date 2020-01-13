@@ -22,7 +22,7 @@ public class MainController {
 	}
 
 	
-	@RequestMapping("detail")
+	@RequestMapping("/detail")
 	public ModelAndView detail() {
 		System.out.println("메인 디테일 들어옴.....");
 
