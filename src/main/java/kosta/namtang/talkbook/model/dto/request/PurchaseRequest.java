@@ -17,8 +17,10 @@ public class PurchaseRequest {
 	private String imp_uid;
 	private String merchant_uid;
 	private String billKey;
-	
-//	private long bookIdx;
+	private String paid_amount;
+
+
+	//	private long bookIdx;
 //	private String bookName;
 //	private int bookCount;
 //	private BigDecimal price;

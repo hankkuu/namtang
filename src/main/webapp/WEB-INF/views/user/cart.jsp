@@ -8,6 +8,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Cart</title>
+    <script>
+
+
+        function amount_change(){
+            var qtySelect = document.getElementById("amount");
+
+            var qty=qtySelect.options[qtySelect.selectedIndex].value;
+            console.log(qty);
+
+            document.getElementById("qty").innerHTML=qty;
+
+
+        }
+
+
+
+
+    </script>
 
 </head>
 <body>
@@ -48,6 +66,7 @@
                               <th scope="col">Total</th>
                           </tr>
                       </thead>
+
 <%--                      <tbody>--%>
 <%--                          <tr>--%>
 <%--                              <td>--%>
@@ -222,10 +241,11 @@
                       <c:choose>
                           <c:when test="${cartList.size() ==0 }">
                               <tr>
-                                  <td colspan="6">장바구니가 비었습니다.</td>
+                                  <td colspan="10">장바구니가 비었습니다.</td>
                               </tr>
                           </c:when>
                           <c:otherwise>
+                              <c:set var="test" value="1"/>
                               <c:forEach items="${cartList}" var="cartVO">
 
                                   <tr>
@@ -239,14 +259,27 @@
                                           ${cartVO.bookTitle}
                                       </td>
 
-                                      <td>
+                                      <td id="price">
                                           <fmt:formatNumber value="${cartVO.bookPrice}" type="currency"/>
                                       </td>
 
                                       <td>
+
+<%--                                              <select name="amount" id=${test} onchange="amount_change()">--%>
+<%--                                                  <c:forEach begin="1" end="10" var="i">--%>
+<%--                                                      <option value="${i}">${i}</option>--%>
+<%--                                                  </c:forEach>--%>
+<%--                                                 <c:set target="test" value=--%>
+<%--                                                --%>
+<%--                                              </select>--%>
 <%--                                          <input class="aa-cart-quantity" type="number" value="${ cartVO.quantity}"  min="1" max="100" readonly="readonly">--%>
                                       </td>
-                                      <td>
+                                      <td id="qty">
+
+
+<%--                                              <fmt:formatNumber  value="${cartVO.bookPrice}"  type="currency" />--%>
+
+
 <%--                                          <fmt:formatNumber  value="${cartVO.price2*cartVO.quantity }"  type="currency" />--%>
                                       </td>
                                   </tr>

@@ -19,57 +19,219 @@
 
         $(window).load(function() {
             console.log("start");
-            $("#purchase").click( () => {
-                let param = {};
 
-                purchase(param);
+            $("#purchase").click( async () => {
 
+                await purchaseProcess().then( async (result) => {
+                    console.log(result);
+
+                    if(result.statusCode === "Success") {
+                        const key = result.message;
+                        if (key !== undefined) {
+                            let purchaseObj = {
+                                purchasePayment : {
+                                    totalPrice : "100000", // $("#totalPrice").text(),
+                                    receiverName : "받는사람이름",
+                                    receiverPhone : "받는사람연락처",
+                                    deliveryComment : "배송요청사항",
+                                    paymentCode : "1",
+                                    shippingPrice : "0"
+                                },
+                                purchaseOrder : {
+                                    deliveryAddress : "우리집"
+                                },
+                                purchaseBook : [{
+                                    purchaseBookId : {
+                                        bookIdx : "10"
+                                    },
+                                    price : "10000",
+                                    name : "난책1",
+                                    count : "3",
+                                    imagePath : " "
+                                },{
+                                    purchaseBookId : {
+                                        bookIdx : "20"
+                                    },
+                                    price : "20000",
+                                    name : "난책2",
+                                    count : "1",
+                                    imagePath : "test"
+                                }
+                                ],
+                                billKey : key
+                            }
+
+                            // 구매하는 user 정보 필요
+                            // billkey 정보 필요
+                            // 총금액 and 구매 이름 필요
+                            let user = {
+                                email: "gildong@gmail.com",
+                                name: "홍길동",
+                                tel: "010-4242-4242",
+                                addr: "서울특별시 강남구 신사동",
+                                postcode: "01181"
+                            };
+                            let shop = {
+                                pg: "kakaopay",
+                                pay_method: "card",
+                                escrow : true,
+                                currency : "KRW",
+                                custom_data : purchaseObj
+                            };
+                            let param = {
+                                pg: shop.pg,
+                                pay_method: shop.pay_method,
+                                escrow: shop.escrow,
+                                currency: shop.currency,
+                                custom_data : shop.custom_data,
+                                merchant_uid: key,
+                                name: "임시로 사용하는 이름이다",
+                                amount: "100000",
+                                buyer_email: user.email,
+                                buyer_name: user.name,
+                                buyer_tel: user.tel,
+                                buyer_addr: user.addr,
+                                buyer_postcode: user.postcode
+                            };
+
+                            const test = await setPuchase(purchaseObj).then( async (dbResult) => {
+                                console.log(dbResult);
+                                    if (dbResult.data.statusCode === "Success") {
+                                        // const test2 = await verifyPurchase(param).then( (confirmResult) => {
+                                        //
+                                        //     if(confirmResult.data.statusCode === "Success") {
+                                        //         console.log(confirmResult);
+                                        //         alert("진짜 최종 완료");
+                                        //     }
+                                        // });
+                                        IMP.request_pay(param,
+                                            (rsp) => {
+                                                // callback
+                                                if (rsp.success) {
+                                                    console.log(rsp);
+                                                    // axios로 HTTP 요청
+                                                    axios({
+                                                        url: "/api/v1/purchase/complete", // 가맹점 서버
+                                                        method: "post",
+                                                        headers: { "Content-Type": "application/json" },
+                                                        data: {
+                                                            imp_uid: rsp.imp_uid,
+                                                            merchant_uid: rsp.merchant_uid,
+                                                            paid_amount: rsp.paid_amount,
+                                                        }
+                                                    }).then((result) => {
+                                                        // 가맹점 서버 결제 API 성공시 로직
+                                                        // 이제 DB 입력을 해도 된다
+                                                        //console.log(data);
+
+                                                        if(result.data.statusCode === "Success") {
+                                                            alert("최종 구매 성공 success");
+                                                            let param = JSON.stringify(result.data.message);
+                                                            location.replace('/confirmation?msg='+encodeURI(param));
+                                                            //location.href='/confirmation';
+                                                        } else {
+                                                            alert("최종 구매 실패");
+                                                        }
+                                                        return result;
+                                                    })
+                                                } else {
+                                                    alert("검증실패 data 확인하세요");
+                                                    //...,
+                                                    // 결제 실패 시 로직,
+                                                    //...
+                                                }
+                                            });
+                                }
+                            });
+                        }
+                    }
+                });
             });
-
         });
 
 
-
-        function purchase(param) {
-            // IMP.request_pay(param, callback) 호출
-            IMP.request_pay({ // param
-                pg: "kakaopay",
-                pay_method: "card",
-                merchant_uid: "ORD20180131-0000016",
-                name: "노르웨이 회전 의자",
-                amount: 64900,
-                buyer_email: "gildong@gmail.com",
-                buyer_name: "홍길동",
-                buyer_tel: "010-4242-4242",
-                buyer_addr: "서울특별시 강남구 신사동",
-                buyer_postcode: "01181"
-            }, rsp => { // callback
-                if (rsp.success) {
-                    // axios로 HTTP 요청
-                    axios({
-                        url: "/api/v1/completePayments", // 가맹점 서버
-                        method: "post",
-                        headers: { "Content-Type": "application/json" },
-                        data: {
-                            imp_uid: rsp.imp_uid,
-                            merchant_uid: rsp.merchant_uid
-                        }
-                    }).then((data) => {
-                        // 가맹점 서버 결제 API 성공시 로직
-                        alert("success");
-                    })
-
-                } else {
-                    alert("bbb");
-                    //...,
-                    // 결제 실패 시 로직,
-                    //...
+        const purchaseProcess = async () => {
+            const result = await $.ajax({
+                type: "post",
+                url: "/api/v1/purchase/getBillKey",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    if (result.statusCode === "Success") {
+                        alert("구매시작");
+                    } else {
+                        alert("입력이 잘못되었습니다");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert("오류 발생");
                 }
-            });
+            });//ajax끝
+            return result;
         }
 
+        const setPuchase = async (purchaseObj) => {
+            // 필요함 session
+            const user = {
 
+            }
+            // axios로 HTTP 요청
+            const result = await axios({
+                url: "/api/v1/purchase", // 가맹점 서버
+                method: "post",
+                headers: { "Content-Type": "application/json" },
+                data: {
+                    book: purchaseObj.purchaseBook,
+                    order: purchaseObj.purchaseOrder,
+                    payment: purchaseObj.purchasePayment,
+                    billKey: purchaseObj.billKey,
+                    user: {
+                        userIdx: "1"
+                    }
+                }
+            }).then((data) => {
+                // 가맹점 서버 결제 API 성공시 로직
+                // 이제 DB 입력을 해도 된다
+                alert("헬로 success");
+                return data;
+            })
+            return result;
+        }
 
+        // const verifyPurchase = async (param) => {
+        //     // IMP.request_pay(param, callback) 호출
+        //     const result = await IMP.request_pay(param,
+        //         async (rsp) => {
+        //         // callback
+        //         if (rsp.success) {
+        //             console.log(rsp);
+        //             // axios로 HTTP 요청
+        //             await axios({
+        //                 url: "/api/v1/purchase/complete", // 가맹점 서버
+        //                 method: "post",
+        //                 headers: { "Content-Type": "application/json" },
+        //                 data: {
+        //                     imp_uid: rsp.imp_uid,
+        //                     merchant_uid: rsp.merchant_uid,
+        //                     paid_amount: rsp.paid_amount,
+        //                 }
+        //             }).then((data) => {
+        //                 // 가맹점 서버 결제 API 성공시 로직
+        //                 // 이제 DB 입력을 해도 된다
+        //                 console.log(data);
+        //                 //alert("최종 구매 성공 success");
+        //                 return data;
+        //             })
+        //         } else {
+        //             alert("검증실패 data 확인하세요");
+        //             //...,
+        //             // 결제 실패 시 로직,
+        //             //...
+        //         }
+        //     });
+        //     return result;
+        // }
 
     </script>
 </head>
@@ -178,7 +340,7 @@
                             <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
                         </ul>
                         <ul class="list list_2">
-                            <li><a href="#">Subtotal <span>$2160.00</span></a></li>
+                            <li><a href="#">Subtotal <span id="totalPrice">$2160.00</span></a></li>
                             <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
                             <li><a href="#">Total <span>$2210.00</span></a></li>
                         </ul>

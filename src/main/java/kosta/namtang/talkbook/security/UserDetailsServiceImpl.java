@@ -15,9 +15,10 @@ import kosta.namtang.talkbook.repository.AdminRepository;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	private PasswordEncoder passwordEncoder;
-   
+
 	@Autowired
 	private AdminRepository adminRepository;
+
     public UserDetailsServiceImpl() {
     	System.out.println("UserDetailsServiceImpl 생성자............");
     }
@@ -37,10 +38,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		 * roles).build(); } else { throw new
 		 * UsernameNotFoundException("사용자를 찾을 수 없습니다."); }
 		 */
-		
+
 		Admin admin = adminRepository.findByAdminId(username);
 		System.out.println("admin : " + admin);
- 
+
 		return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
 		//return null;
 	}
