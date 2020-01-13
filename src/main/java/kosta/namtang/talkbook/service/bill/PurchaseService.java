@@ -1,12 +1,11 @@
 
 package kosta.namtang.talkbook.service.bill;
 
-import kosta.namtang.talkbook.model.domain.*;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
 import kosta.namtang.talkbook.model.domain.bill.PurchaseBook;
 import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
 import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
-import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 
 import java.util.List;
@@ -20,31 +19,31 @@ public interface PurchaseService {
 	 * @throws Exception 
 	 * */
 	
-	public BillKey insertPurchase(List<Book> goodsList, PurchaseOrder order,
-							  PurchasePayment payment, User user, String billKey) throws Exception;
+	BillKey insertPurchase(List<PurchaseBook> goodsList, PurchaseOrder order,
+							  PurchasePayment payment, Users user, String billKey) throws Exception;
 	
 	// 환불
-	public BillKey refund(String billKey, String reason, int refundType,  List<PurchaseBook> cancelBookList) throws Exception;
+	BillKey refund(String billKey, String reason, int refundType,  List<PurchaseBook> cancelBookList) throws Exception;
 	
 	// 구매 수정 
-	public BillKey changePurchase(String billKey, List<PurchaseBook> purchaseGoodsList) throws Exception;
+	BillKey changePurchase(String billKey, List<PurchaseBook> purchaseGoodsList) throws Exception;
 	
 	// 구매 내역 조회
-	public List<PurchaseOrderResponse> selectOrderList(User account) throws Exception;
+	List<PurchaseOrderResponse> selectOrderList(Users account) throws Exception;
 	
 	/**
 	 * 장바구니에서 구매 넘어갈때 들고갈 상품 정보(조회)
 	 * 주문자 정보 조회
 	 * 같이 뿌려주는 작업
 	 * */
-	//public PurchasePage selectProduct(String loginId, String billKey) throws Exception;
+	//PurchasePage selectProduct(String loginId, String billKey) throws Exception;
 	
 	
 	/**
 	 * 구매내역 조회
 	 * 
 	 * */
-	//public List<PurchaseBook> selectOrderHistory(String loginId) throws Exception;
+	//List<PurchaseBook> selectOrderHistory(String loginId) throws Exception;
 	
 	
 }

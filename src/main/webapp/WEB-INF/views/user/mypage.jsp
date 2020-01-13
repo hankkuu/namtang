@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aroma Shop - Blog</title>
-    <link rel="icon" href="/img/Fevicon.png" type="image/png">
-    <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="vendors/linericon/style.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <!-- ================ start banner area ================= -->
@@ -42,10 +33,10 @@
         <div class="row">
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
-                    <img class="card-img rounded-0" src="/img/blog/cat-post/1.jpg" alt="post">
-                    <div class="categories_details">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/1.jpg" alt="post">
+                    <div class="categories_details" onclick="location.href='/mypage/recentBook'">
                         <div class="categories_text">
-                            <a href="single-blog.html">
+                            <a>
                                 <h5>최근 본 책</h5>
                             </a>
                             <div class="border_line"></div>
@@ -56,7 +47,7 @@
             </div>
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
-                    <img class="card-img rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
                             <a href="single-blog.html">
@@ -70,7 +61,7 @@
             </div>
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
-                    <img class="card-img rounded-0" src="/img/blog/cat-post/4.jpg" alt="post">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/4.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
                             <a href="single-blog.html">
@@ -91,7 +82,7 @@
         <div class="row">
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
-                    <img class="card-img rounded-0" src="/img/blog/cat-post/5.jpg" alt="post">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/5.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
                             <a href="single-blog.html">
@@ -105,7 +96,7 @@
             </div>
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
-                    <img class="card-img rounded-0" src="/img/blog/cat-post/2.jpg" alt="post">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/2.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
                             <a href="single-blog.html">
@@ -119,7 +110,7 @@
             </div>
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
-                    <img class="card-img rounded-0" src="/img/blog/cat-post/3.jpg" alt="post">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/3.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
                             <a href="single-blog.html">

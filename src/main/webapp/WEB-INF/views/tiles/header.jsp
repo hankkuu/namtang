@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/vendors/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="/vendors/linericon/style.css">
+    <link rel="stylesheet" href="vendors/linericon/style.css">
     <link rel="stylesheet" href="/vendors/owl-carousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="/vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="/vendors/nice-select/nice-select.css">
@@ -17,7 +17,16 @@
     <script src="/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 
+<script>
+    function CatgPage(catg){
+        var f=document.paging;
+        f.catg.value=catg;
+        f.action="/category";
+        f.method="post";
+        f.submit();
+    }
 
+</script>
 </head>
 <body style="padding-top: 0px;">
 <!--================ Start Header Menu Area =================-->
@@ -38,24 +47,28 @@
                         <li class="nav-item submenu dropdown">
 <%--                     <a href="aroma/mypage" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false">--%>
-                                <a href="/aroma/mypage" class="nav-link dropdown-toggle">My Page</a>
+                                <a href="/mypage" class="nav-link dropdown-toggle">My Page</a>
                         </li>
 
                         <li class="nav-item submenu dropdown">
                             <%--                     <a href="aroma/mypage" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                                         aria-expanded="false">--%>
-                            <a href="/aroma/category" class="nav-link dropdown-toggle">Category</a>
+                                <form name="paging">
+                                    <input type="hidden" name="catg"/>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </form>
+                            <a href="#" onclick='CatgPage(0)' class="nav-link dropdown-toggle">Category</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">한국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">외국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">인물 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">여행 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">성공 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">독서 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">명상 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">그림/포토 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">연애/사랑 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/aroma/category">삶의 지혜/명언</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(1)'>한국시</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(2)'>외국시</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(3)'>인물 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(4)'>여행 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(5)'>성공 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(6)'>독서 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(7)'>명상 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(8)'>그림/포토 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(9)'>연애/사랑 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(10)'>삶의 지혜/명언</a></li>
                             </ul>
                         </li>
 
@@ -69,7 +82,7 @@
 
                     <ul class="nav-shop">
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
-                        <li class="nav-item"><button><a class="ti-shopping-cart" href="/cart"></a><span class="nav-shop__circle"></span></button> </li>
+                        <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
                         <li class="nav-item"><a class="button button-header" href="#">Login / Register</a></li>
                     </ul>
                 </div>

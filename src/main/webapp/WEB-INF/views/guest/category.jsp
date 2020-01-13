@@ -8,8 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Category</title>
-
   <style>
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean');
+    .card-product__title a {
+      color: #222;
+      font-size: initial;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
 
     .pixel-radio:checked::after {
       -webkit-animation: click-wave 0.65s;
@@ -86,68 +91,265 @@
   </style>
   <script>
     $(function(){
-    $('.pagination-inner a').on('click', function() {
+
+      var CatgIdx=${CatgIdx};
+      var startPage=${startPage};
+      var maxPage=${maxPage};
+      var curPage;
+      var pageInfo;
+
+      $("#category li input[id=${CatgIdx}]").prop('checked',true);
+      // alert($('#sorting select option:selected').val());
+      <%--alert($("#category li input[id=${CatgIdx}]").attr('id'));--%>
+
+      //AJAX기능
+      function bookAjax(CatgIdx,PageNum,Ordering,Word){
+        if(Ordering==undefined) Ordering=1;
+        if(Word==undefined) Word="";
+
+        $.ajax({
+          async: false,
+          url : "/catgCall", //서버요청주소
+          type : "get",//요청방식 (get,post,patch,delete,put)
+          dataType : "json",//서버가 보내온 데이터 타입 (text, html, xml, json)
+          data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum+"&Ordering="+Ordering+"&Word="+Word,//서버에게 보내는 parameter정보
+          success : function(result){
+            $("#bookCard").empty();
+            $.each(result[0], function(index, item) {
+
+              var Img = item.bookImg;
+              var Title = item.bookTitle;
+              var Price = item.bookPrice;
+              var CatgName = item.category.catgName;
+              var bookIdx = item.bookIdx;
+
+              var str = " <div class=\"col-md-6 col-lg-4\">\n" +
+                      "                <div class=\"card text-center card-product\">\n" +
+                      "                  <div class=\"card-product__img\">\n" +
+                      "                    <img class=\"card-img\" src=\"" + Img + "\" alt=\"\">\n" +
+                      "                    <ul class=\"card-product__imgOverlay\">\n" +
+                      "                      <li><button id='BookDetail'><i class=\"ti-search\"><a hidden>"+bookIdx+"</a></i></button></li>\n" +
+                      "                      <li><button><i class=\"ti-shopping-cart\"></i></button></li>\n" +
+                      "                      <li><button><i class=\"ti-heart\"></i></button></li>\n" +
+                      "                    </ul>\n" +
+                      "                  </div>\n" +
+                      "                  <div class=\"card-body\">\n" +
+                      "                    <p>" + CatgName + "</p>\n" +
+                      "                    <h4 class=\"card-product__title\"><a href=\"#\">" + Title + "</a></h4>\n" +
+                      "                    <p class=\"card-product__price\">" + Price + "</p>\n" +
+                      "                  </div>\n" +
+                      "                </div>\n" +
+                      "              </div>";
+              $('#bookCard').append(str);
+
+            });
+            // console.log(result[0]);
+            pageInfo = result[1];
+
+          } , //성공했을때
+          error : function(request){
+          alert(request.responseText);
+          }// 실패했을때
+        });
+        startPage = pageInfo[0];
+        maxPage = pageInfo[1];
+        if(maxPage==0) maxPage=1;
+        curPage = pageInfo[2];
+
+
+      }
+
+      //페이지 버튼
+      $(document).on('click','.pagination-inner a',function(){
+    // $('.pagination-inner a').on('click', function() {
       $(this).siblings().removeClass('pagination-active');
       $(this).addClass('pagination-active');
-    });
 
-    $("#category li input").click(function(){
-
-      $(".pagination-active").removeClass();
-      $(".pagination-inner a:first").addClass('pagination-active');
-      var CatgIdx = $(this).attr('id');
+      CatgIdx = $("#category li input:checked").attr('id');
       var PageNum = $(".pagination-active").text();
-      $.ajax({
-        url : "/catgCall", //서버요청주소
-        type : "get",//요청방식 (get,post,patch,delete,put)
-        dataType : "json",//서버가 보내온 데이터 타입 (text, html, xml, json)
-        data : "CatgIdx="+CatgIdx+"&PageNum="+PageNum,//서버에게 보내는 parameter정보
-        success : function(result){
-          // console.log(result);
-          $("#bookCard").empty();
+      var Ordering = $("#sorting div ul .option.selected").attr('data-value');
+      bookAjax(CatgIdx,PageNum,Ordering);
 
-          $.each(result, function(index, item){
-            var Img = item.bookImg;
-            var Title = item.bookTitle;
-            var Price = item.bookPrice;
-            var CatgName = item.category.catgName;
-
-            var str = " <div class=\"col-md-6 col-lg-4\">\n" +
-                    "                <div class=\"card text-center card-product\">\n" +
-                    "                  <div class=\"card-product__img\">\n" +
-                    "                    <img class=\"card-img\" src=\""+Img+"\" alt=\"\">\n" +
-                    "                    <ul class=\"card-product__imgOverlay\">\n" +
-                    "                      <li><button><i class=\"ti-search\"></i></button></li>\n" +
-                    "                      <li><button><i class=\"ti-shopping-cart\"></i></button></li>\n" +
-                    "                      <li><button><i class=\"ti-heart\"></i></button></li>\n" +
-                    "                    </ul>\n" +
-                    "                  </div>\n" +
-                    "                  <div class=\"card-body\">\n" +
-                    "                    <p>"+CatgName+"</p>\n" +
-                    "                    <h4 class=\"card-product__title\"><a href=\"#\">"+Title+"</a></h4>\n" +
-                    "                    <p class=\"card-product__price\">"+Price+"</p>\n" +
-                    "                  </div>\n" +
-                    "                </div>\n" +
-                    "              </div>"
-
-            $('#bookCard').append(str);
-          });
-
-
-        } , //성공했을때
-        error : function(err){
-
-        }// 실패했을때
-      });
     });
 
+    //카테고리 버튼
+    $("#category li input").on('click',function(){
+      // $(".pagination-active").removeClass();
+      // $(".pagination-inner a:first").addClass('pagination-active');
+
+      CatgIdx = $(this).attr('id');
+      // var PageNum = $(".pagination-active").text();
+      var PageNum = 1;
+      bookAjax(CatgIdx,PageNum,1);
+
+      $(".pagination-inner").empty();
+      var doneLoop = false;
+      for(var i = startPage; i <= maxPage; i++){
+        if(doneLoop==false){
+          if(i == curPage){
+            $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>"+i+"</a>");
+          } else {
+            $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">"+i+"</a>");
+          }
+          if(i==startPage+9){
+            doneLoop = true;
+          }
+        }
+      }
+      // $("#sorting select option:first").prop('selected', true);
+      // $("#sorting select option:first").prop('selected', 'selected').change();
+
+      //nice-select 작업
+      $("#sorting span").text($("#sorting div ul li:first").text());
+      $("#sorting div ul .option.selected").attr('class','option');
+      $("#sorting div ul li:first").addClass('option selected');
+
+      $("#SearchWord").val("");
+
+      // alert($("#sorting select option:first").next().val());
+    });
+
+    // PREV, NEXT 버튼
+    $(document).on('click','.pagination-older,.pagination-newer',function(){
+      var Ordering = $("#sorting div ul .option.selected").attr('data-value');
+      var PageNum = $(".pagination-active").text();
+      if($(this).text() == 'PREV'){
+        PageNum = PageNum*1 - 1;
+
+        if(PageNum < 1){
+          alert("이전 페이지가 존재하지 않습니다.");
+          return 0;
+        }
+
+        // $('.pagination-active').prev().addClass('pagination-active');
+        // $('.pagination-active').next().removeClass('pagination-active');
+
+          bookAjax(CatgIdx, PageNum,Ordering);
+
+          $(".pagination-inner").empty();
+          var doneLoop = false;
+          for (var i = startPage; i <= maxPage; i++) {
+            if (doneLoop == false) {
+              if (i == PageNum) {
+                $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>" + i + "</a>");
+              } else {
+                $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">" + i + "</a>");
+              }
+              if (i == startPage + 9) {
+                doneLoop = true;
+              }
+            }
+          }
+
+
+      } else if ($(this).text() == 'NEXT'){
+        PageNum = PageNum*1 + 1;
+
+        if(PageNum > maxPage){
+          alert("다음 페이지가 존재하지 않습니다.");
+          return 0;
+        }
+
+        bookAjax(CatgIdx,PageNum,Ordering);
+
+        $(".pagination-inner").empty();
+        var doneLoop=false;
+        for(var i = startPage; i <= maxPage; i++){
+
+          if(doneLoop==false){
+            if(i == PageNum){
+              $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>"+i+"</a>");
+            } else {
+              $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">"+i+"</a>");
+            }
+            if(i==startPage+9){
+              doneLoop = true;
+            }
+          }
+        }
+      }
+
+      // bookAjax(CatgIdx,PageNum);
+
+
+    });
+
+    // Ordering 버튼
+      $("#sorting select").on('change',function(){
+        CatgIdx = $("#category li input:checked").attr('id');
+        var PageNum = 1;
+        var Ordering = this.value;
+        bookAjax(CatgIdx,PageNum,Ordering);
+
+        $(".pagination-inner").empty();
+        var doneLoop = false;
+        for(var i = startPage; i <= maxPage; i++){
+          if(doneLoop==false){
+            if(i == curPage){
+              $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>"+i+"</a>");
+            } else {
+              $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">"+i+"</a>");
+            }
+            if(i==startPage+9){
+              doneLoop = true;
+            }
+          }
+        }
+        $("#SearchWord").val("");
+      });
+
+      //searching 버튼
+      function Search(){
+        var SearchType = $(".searching .nice-select .list .option.selected").attr('data-value');
+        var Word = $("#SearchWord").val();
+        CatgIdx = $("#category li input:checked").attr('id');
+        var PageNum = 1;
+        bookAjax(CatgIdx,PageNum,SearchType,Word);
+
+
+        $(".pagination-inner").empty();
+
+        var doneLoop = false;
+        for (var i = startPage; i <= maxPage; i++) {
+          if (doneLoop == false) {
+            if (i == PageNum) {
+              $(".pagination-inner").append("<a class='pagination-active' href='#ㅇㅅㅇ'>" + i + "</a>");
+            } else {
+              $(".pagination-inner").append("<a href=\"#ㅇㅅㅇ\">" + i + "</a>");
+            }
+            if (i == startPage + 9) {
+              doneLoop = true;
+            }
+          }
+        }
+
+        //nice-select 작업
+        $("#sorting span").text($("#sorting div ul li:first").text());
+        $("#sorting div ul .option.selected").attr('class','option');
+        $("#sorting div ul li:first").addClass('option selected');
+
+      }
+      $("#SearchWord").keydown(function(key) {
+        if (key.keyCode == 13) {
+          Search();
+        }
+      });
+      $("#SearchBtn").click(function(){
+        Search();
+      });
+
+      //상품 디테일 버튼
+      $(document).on('click','#BookDetail',function(){
+        var id = $("i a",this).text();
+        location.href="/BookDetail?id="+id;
+      });
     });
   </script>
 </head>
 <body>
 
 	<!-- ================ start banner area ================= -->	
-	<section class="blog-banner-area" id="category">
+	<section class="blog-banner-area" id="category2">
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
@@ -176,7 +378,7 @@
               <li class="common-filter">
                 <form action="#">
                   <ul id="category">
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg"><label for="0">전체보기<span> (${list[10]})</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="0" name="catg" checked><label for="0">전체보기<span> (${list[10]})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="1" name="catg"><label for="1">한국시<span> (${list[0]})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="2" name="catg"><label for="2">외국시<span> (${list[1]})</span></label></li>
                     <li class="filter-list"><input class="pixel-radio" type="radio" id="3" name="catg"><label for="3">인물 에세이<span> (${list[2]})</span></label></li>
@@ -192,47 +394,50 @@
               </li>
             </ul>
           </div>
-          <div class="sidebar-filter">
-            <div class="top-filter-head">Product Filters</div>
-            <div class="common-filter">
-              <div id="slider">슬라이더 들어갈 곳</div>
-              <!--<div class="head">Price</div>
-              <div class="price-range-area">
-                <div id="price-range"></div>
-                <div class="value-wrapper d-flex">
-                  <div class="price">Price:</div>
-                  <span>$</span>
-                  <div id="lower-value"></div>
-                  <div class="to">to</div>
-                  <span>$</span>
-                  <div id="upper-value"></div>
-                </div>
-              </div>-->
-            </div>
-          </div>
+<%--          <div class="sidebar-filter">--%>
+<%--            <div class="top-filter-head">Product Filters</div>--%>
+<%--            <div class="common-filter">--%>
+<%--              <div id="slider">슬라이더 들어갈 곳</div>--%>
+<%--              <!--<div class="head">Price</div>--%>
+<%--              <div class="price-range-area">--%>
+<%--                <div id="price-range"></div>--%>
+<%--                <div class="value-wrapper d-flex">--%>
+<%--                  <div class="price">Price:</div>--%>
+<%--                  <span>$</span>--%>
+<%--                  <div id="lower-value"></div>--%>
+<%--                  <div class="to">to</div>--%>
+<%--                  <span>$</span>--%>
+<%--                  <div id="upper-value"></div>--%>
+<%--                </div>--%>
+<%--              </div>-->--%>
+<%--            </div>--%>
+<%--          </div>--%>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting mr-auto">
+            <div class="sorting mr-auto"  id="sorting">
               <select>
                 <option value="1">가나다 순</option>
-                <option value="1">가나다 역순</option>
-                <option value="1">출간일 순</option>
+                <option value="2">가나다 역순</option>
+                <option value="3">낮은가격 순</option>
+                <option value="4">높은가격 순</option>
+                <option value="5">출간일 순</option>
               </select>
             </div>
-            <div class="sorting" style="margin-right: 5px;">
+            <div class="searching" style="margin-right: 5px;
+            height: 35px;margin-top: 7px;">
               <select>
-                <option value="1">제목별</option>
-                <option value="1">저자별</option>
-                <option value="1">출판사별</option>
+                <option value="6">제목별</option>
+                <option value="7">저자별</option>
+                <option value="8">출판사별</option>
               </select>
             </div>
             <div>
               <div class="input-group filter-bar-search">
-                <input type="text" placeholder="Search">
+                <input type="text" id="SearchWord" placeholder="Search">
                 <div class="input-group-append">
-                  <button type="button"><i class="ti-search"></i></button>
+                  <button type="button" id="SearchBtn"><i class="ti-search"></i></button>
                 </div>
               </div>
             </div>
@@ -242,13 +447,12 @@
           <section class="lattest-product-area pb-40 category-list">
             <div class="row" id="bookCard">
                 <c:forEach var="item" items="${booklist}" varStatus="status">
-<%--            <c:forEach var="i" begin="0" end="8">--%>
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
                     <img class="card-img" src="${item.bookImg}" alt="">
                     <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button id="BookDetail"><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
                       <li><button><i class="ti-shopping-cart"></i></button></li>
                       <li><button><i class="ti-heart"></i></button></li>
                     </ul>
@@ -262,157 +466,29 @@
               </div>
             </c:forEach>
 
-<%--
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product2.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Beauty</p>
-                    <h4 class="card-product__title"><a href="#">Women Freshwash</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product3.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Decor</p>
-                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product4.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Decor</p>
-                    <h4 class="card-product__title"><a href="#">Room Flash Light</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product5.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Man Office Bag</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product6.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Kids Toy</p>
-                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product7.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Blutooth Speaker</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product8.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Kids Toy</p>
-                    <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/img/product/product1.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                  </div>
-                </div>
-              </div>--%>
-
-
-
             </div>
             <nav class="pagination-container">
             <div class="pagination">
-              <a class="pagination-newer" href="">PREV</a>
+              <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>
               <span class="pagination-inner">
-					<a class="pagination-active" href="#ㅇㅅㅇ">1</a>
-					<a href="#ㅇㅅㅇ">2</a>
-					<a href="#ㅇㅅㅇ">3</a>
-					<a href="#ㅇㅅㅇ">4</a>
-					<a href="#ㅇㅅㅇ">5</a>
-					<a href="#ㅇㅅㅇ">6</a>
+                    <c:set var="doneLoop" value="false"/>
+                    <c:forEach var="i" begin="${startPage}" end="${maxPage}" varStatus="status">
+                      <c:if test="${not doneLoop}">
+
+                          <c:choose >
+                            <c:when test="${i eq curPage}">
+                              <a class="pagination-active" href="#ㅇㅅㅇ"><c:out value="${i}"/></a>
+                            </c:when>
+                            <c:otherwise>
+                              <a href="#ㅇㅅㅇ"><c:out value="${i}"/></a>
+                            </c:otherwise>
+                          </c:choose>
+                        <c:if test="${status.count eq 10}">
+                          <c:set var="doneLoop" value="true"/>
+                        </c:if>
+                      </c:if>
+
+                    </c:forEach>
 				</span>
               <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>
             </div>

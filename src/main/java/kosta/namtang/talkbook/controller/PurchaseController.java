@@ -6,24 +6,18 @@ import kosta.namtang.talkbook.core.bill.IamportClient;
 import kosta.namtang.talkbook.core.bill.exception.IamportResponseException;
 import kosta.namtang.talkbook.core.bill.request.CancelData;
 import kosta.namtang.talkbook.core.bill.response.*;
-import kosta.namtang.talkbook.model.domain.Book;
-import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
-import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
 import kosta.namtang.talkbook.model.dto.request.PurchaseRequest;
 import kosta.namtang.talkbook.model.dto.request.PurchaseSetRequest;
 import kosta.namtang.talkbook.service.bill.BillKeySystem;
 import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -57,11 +51,21 @@ public class PurchaseController {
         ShopResponse result = null;
         log.debug(request.toString());
 
+        BillKey key = purchaseService.insertPurchase(request.getBook(), request.getOrder(), request.getPayment()
+                    , request.getUser(), request.getBillKey());
+
+        if(key != null) {
+            // 구매 DB 입력 완료
+            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(key));
+        } else {
+            throw new Exception();
+        }
+
         return result;
     }
 
     @PostMapping("/complete")
-    public ShopResponse purchaseComplete(@RequestBody PurchaseRequest request, User user) throws Exception {
+    public ShopResponse purchaseComplete(@RequestBody PurchaseRequest request, Users user) throws Exception {
 
         ShopResponse result = null;
         String token = this.getToken();
@@ -77,27 +81,14 @@ public class PurchaseController {
             } else if(status.equals("paid")) {
                 log.debug("paid");
 
-                BillKey key = purchaseService.insertPurchase(request.getBook(), request.getOrder(), request.getPayment(), user, request.getBillKey());
-
-                if(key != null) {
-                    // 구매 DB 입력 완료
-                    result = new ShopResponse(StatusCode.Success, "");
-                } else {
-                    throw new Exception();
-                }
-
-
+                result = new ShopResponse(StatusCode.Success, paymentData);
             } else {
                 throw new Exception();
             }
-
-
         } else {
             // 결제 검증 실패
             throw new Exception();
         }
-
-
         return result;
     }
 

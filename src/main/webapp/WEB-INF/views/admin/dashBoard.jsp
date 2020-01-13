@@ -24,7 +24,7 @@ google.charts.load('current', {'packages':['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawStuff);
 
 function drawStuff() {
-	var dataArray = [['날짜', '유저수', '매출액']];
+	var dataArray = [['날짜', '매출액', '방문수']];
 	<c:forEach  items="${list}" var="liststr">
 			dataArray.push(['${liststr.saleDate}',${liststr.salePrice},${liststr.userCount}]);
 	</c:forEach>
@@ -36,12 +36,12 @@ function drawStuff() {
   var materialOptions = {
     width: 900,
     chart: {
-      title: 'Nearby galaxies',
-      subtitle: 'distance on the left, brightness on the right'
+      title: '일별 매출 및 방문수',
+      subtitle: '일별 매출 및 방문수 그래프'
     },
     series: {
-      0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
-      1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+      0: { axis: '매출' }, // Bind series 0 to an axis named 'distance'.
+      1: { axis: '방문수' } // Bind series 1 to an axis named 'brightness'.
     },
     axes: {
       y: {
@@ -57,11 +57,11 @@ function drawStuff() {
       0: {targetAxisIndex: 0},
       1: {targetAxisIndex: 1}
     },
-    title: 'Nearby galaxies - distance on the left, brightness on the right',
+    title: '일별 매출 및 방문수 그래프',
     vAxes: {
       // Adds titles to each axis.
-      0: {title: 'parsecs'},
-      1: {title: 'apparent magnitude'}
+      0: {title: '매출'},
+      1: {title: '방문수'}
     }
   };
 
@@ -97,15 +97,14 @@ function drawStuff() {
   <a href="dashBoard" class="w3-bar-item w3-button">종합 통계</a>
   <a href="상세 통계" class="w3-bar-item w3-button">상세 통계</a>
   <a href="회원 상품 통계" class="w3-bar-item w3-button">회원 상품 통계 </div></a>
-</div>
 <div style="margin-left:10%; background: red;">
-현재 관리자 : <br>
+현재 관리자 : ${pageContext.request.userPrincipal.name}<br>
 
 </div>
 <div style="margin-left:10%; height: 100%">
   <div style="background: blue;">
     <h1>종합 통계</h1>
-    <button id="change-chart">Change to Classic</button>
+    <button id="change-chart">Change to Classic </button>
   <div id="chart_div" style="width: 50%; height: 20%;"></div>
 </div>
 

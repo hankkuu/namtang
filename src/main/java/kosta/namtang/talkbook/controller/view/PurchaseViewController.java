@@ -13,8 +13,15 @@ public class PurchaseViewController {
 
 	@RequestMapping("purchase")
 	public ModelAndView checkout(){
-		log.debug("abc");
+		log.debug("purchase");
 		ModelAndView view = new ModelAndView("user/checkout");
+		return view;
+	}
+
+	@RequestMapping("confirmation")
+	public ModelAndView confirmation(String param){
+		log.debug("confirmation");
+		ModelAndView view = new ModelAndView("user/confirmation", "params", param);
 		return view;
 	}
 

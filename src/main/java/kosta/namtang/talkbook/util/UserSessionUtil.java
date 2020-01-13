@@ -1,18 +1,18 @@
 package kosta.namtang.talkbook.util;
 
-import kosta.namtang.talkbook.model.domain.User;
+import kosta.namtang.talkbook.model.domain.account.Users;
 
 import javax.servlet.http.HttpSession;
 
 public class UserSessionUtil {
     public static final String USER_SESSION_KEY = "user";
 
-    public static User getUserFromSession(HttpSession session) {
+    public static Users getUserFromSession(HttpSession session) {
         Object user = session.getAttribute(USER_SESSION_KEY);
         if (user == null) {
             return null;
         }
-        return (User) user;
+        return (Users) user;
     }
 
     public static boolean isLogined(HttpSession session) {
