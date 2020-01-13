@@ -7,19 +7,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Slf4j
+@RequestMapping("guest")
 public class AccountViewController {
 
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public ModelAndView login(){
         log.debug("login");
         ModelAndView view = new ModelAndView("guest/login");
         return view;
     }
 
-    @RequestMapping("register")
+    @RequestMapping("/register")
     public ModelAndView register(){
         log.debug("register");
         ModelAndView view = new ModelAndView("guest/register");
+        return view;
+    }
+
+    @RequestMapping("/logout")
+    public ModelAndView logout() {
+        log.debug("register");
+        ModelAndView view = new ModelAndView("guest/index");
         return view;
     }
 }
