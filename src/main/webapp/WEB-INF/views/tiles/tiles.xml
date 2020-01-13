@@ -7,9 +7,9 @@
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
     </definition>
     
-<!--    <definition name="empty" template ="/WEB-INF/views/guest/adminLogin.jsp">-->
-<!--		<put-attribute name="content" value =""/>-->
-<!--	</definition>-->
+    <definition name="empty" template ="/WEB-INF/views/guest/adminLogin.jsp">
+		<put-attribute name="content" value =""/>
+	</definition>
 
     <definition name="/user/**" extends="layout">
         <put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp"/>
@@ -19,9 +19,9 @@
         <put-attribute name="content" value="/WEB-INF/views/guest/{1}.jsp"/>
     </definition>
 
-<!--    <definition name="guest/adminLogin" extends ="empty">-->
-<!--		<put-attribute name="content" value ="/WEB-INF/views/guest/adminLogin.jsp"/>-->
-<!--	</definition>-->
+    <definition name="guest/adminLogin" extends ="empty">
+		<put-attribute name="content" value ="/WEB-INF/views/guest/adminLogin.jsp"/>
+	</definition>
 
 
 </tiles-definitions>

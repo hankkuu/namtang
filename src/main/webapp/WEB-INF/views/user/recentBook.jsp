@@ -92,9 +92,9 @@
   <script>
     $(function(){
 
-      var CatgIdx=${CatgIdx};
-      var startPage=${startPage};
-      var maxPage=${maxPage};
+      var CatgIdx=${CatgIdx}+"";
+      var startPage=${startPage}+"";
+      var maxPage=${maxPage}+"";
       var curPage;
       var pageInfo;
 

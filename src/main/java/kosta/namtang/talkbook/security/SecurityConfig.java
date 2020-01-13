@@ -42,9 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 //	@Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//	    System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
-//	    auth.userDetailsService(userDetailService);
+//	public void configure(WebSecurity web) {
+//		web.ignoring().antMatchers("/static/**");
 //	}
 
     @Override
