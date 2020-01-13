@@ -368,7 +368,7 @@
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
           <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
+            <div class="head">My Page</div>
             <ul class="main-categories">
               <li class="common-filter">
                 <form action="#">
@@ -384,24 +384,6 @@
               </li>
             </ul>
           </div>
-<%--          <div class="sidebar-filter">--%>
-<%--            <div class="top-filter-head">Product Filters</div>--%>
-<%--            <div class="common-filter">--%>
-<%--              <div id="slider">슬라이더 들어갈 곳</div>--%>
-<%--              <!--<div class="head">Price</div>--%>
-<%--              <div class="price-range-area">--%>
-<%--                <div id="price-range"></div>--%>
-<%--                <div class="value-wrapper d-flex">--%>
-<%--                  <div class="price">Price:</div>--%>
-<%--                  <span>$</span>--%>
-<%--                  <div id="lower-value"></div>--%>
-<%--                  <div class="to">to</div>--%>
-<%--                  <span>$</span>--%>
-<%--                  <div id="upper-value"></div>--%>
-<%--                </div>--%>
-<%--              </div>-->--%>
-<%--            </div>--%>
-<%--          </div>--%>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
@@ -437,6 +419,13 @@
           <section class="lattest-product-area pb-40 category-list">
 
             <!-- ================ top product area start ================= -->
+            <div class="container">
+<%--              <div class="section-intro pb-60px">--%>
+<%--                <p>Popular Item in the market</p>--%>
+<%--                <h2>Top <span class="section-intro__style">Product</span></h2>--%>
+<%--              </div>--%>
+
+  <%--
             <section class="related-product-area">
               <div class="container">
                 <div class="row mt-30">
@@ -517,86 +506,60 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </section> --%>
+            <!-- ================ top product area end ================= -->
 
-                  <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                      <div class="single-search-product d-flex">
-                        <a href="#"><img src="/img/product/product-sm-1.png" alt=""></a>
-                        <div class="desc">
-                          <a href="#" class="title">Gray Coffee Cup</a>
-                          <div class="price">$170.00</div>
-                        </div>
-                      </div>
-                      <div class="single-search-product d-flex">
-                        <a href="#"><img src="/img/product/product-sm-2.png" alt=""></a>
-                        <div class="desc">
-                          <a href="#" class="title">Gray Coffee Cup</a>
-                          <div class="price">$170.00</div>
-                        </div>
-                      </div>
-                      <div class="single-search-product d-flex">
-                        <a href="#"><img src="/img/product/product-sm-3.png" alt=""></a>
-                        <div class="desc">
-                          <a href="#" class="title">Gray Coffee Cup</a>
-                          <div class="price">$170.00</div>
-                        </div>
-                      </div>
-                    </div>
+            <div class="row" id="bookCard">
+                <c:forEach var="item" items="${booklist}" varStatus="status">
+<%--            <c:forEach var="i" begin="0" end="8">--%>
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="${item.bookImg}" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>${item.category.catgName}</p>
+                    <h4 class="card-product__title"><a href="#">${item.bookTitle}</a></h4>
+                    <p class="card-product__price">${item.bookPrice}</p>
                   </div>
                 </div>
               </div>
-            </section>
-            <!-- ================ top product area end ================= -->
+            </c:forEach>
 
-<%--            <div class="row" id="bookCard">--%>
-<%--                <c:forEach var="item" items="${booklist}" varStatus="status">--%>
-<%--&lt;%&ndash;            <c:forEach var="i" begin="0" end="8">&ndash;%&gt;--%>
-<%--              <div class="col-md-6 col-lg-4">--%>
-<%--                <div class="card text-center card-product">--%>
-<%--                  <div class="card-product__img">--%>
-<%--                    <img class="card-img" src="${item.bookImg}" alt="">--%>
-<%--                    <ul class="card-product__imgOverlay">--%>
-<%--                      <li><button><i class="ti-search"></i></button></li>--%>
-<%--                      <li><button><i class="ti-shopping-cart"></i></button></li>--%>
-<%--                      <li><button><i class="ti-heart"></i></button></li>--%>
-<%--                    </ul>--%>
-<%--                  </div>--%>
-<%--                  <div class="card-body">--%>
-<%--                    <p>${item.category.catgName}</p>--%>
-<%--                    <h4 class="card-product__title"><a href="#">${item.bookTitle}</a></h4>--%>
-<%--                    <p class="card-product__price">${item.bookPrice}</p>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--              </div>--%>
-<%--            </c:forEach>--%>
+            </div>
+            <nav class="pagination-container">
+            <div class="pagination">
+              <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>
+              <span class="pagination-inner">
+                    <c:set var="doneLoop" value="false"/>
+                    <c:forEach var="i" begin="${startPage}" end="${maxPage}" varStatus="status">
+                      <c:if test="${not doneLoop}">
 
-<%--            </div>--%>
-<%--            <nav class="pagination-container">--%>
-<%--            <div class="pagination">--%>
-<%--              <a class="pagination-newer" href="#ㅇㅅㅇ">PREV</a>--%>
-<%--              <span class="pagination-inner">--%>
-<%--                    <c:set var="doneLoop" value="false"/>--%>
-<%--                    <c:forEach var="i" begin="${startPage}" end="${maxPage}" varStatus="status">--%>
-<%--                      <c:if test="${not doneLoop}">--%>
+                          <c:choose >
+                            <c:when test="${i eq curPage}">
+                              <a class="pagination-active" href="#ㅇㅅㅇ"><c:out value="${i}"/></a>
+                            </c:when>
+                            <c:otherwise>
+                              <a href="#ㅇㅅㅇ"><c:out value="${i}"/></a>
+                            </c:otherwise>
+                          </c:choose>
+                        <c:if test="${status.count eq 10}">
+                          <c:set var="doneLoop" value="true"/>
+                        </c:if>
+                      </c:if>
 
-<%--                          <c:choose >--%>
-<%--                            <c:when test="${i eq curPage}">--%>
-<%--                              <a class="pagination-active" href="#ㅇㅅㅇ"><c:out value="${i}"/></a>--%>
-<%--                            </c:when>--%>
-<%--                            <c:otherwise>--%>
-<%--                              <a href="#ㅇㅅㅇ"><c:out value="${i}"/></a>--%>
-<%--                            </c:otherwise>--%>
-<%--                          </c:choose>--%>
-<%--                        <c:if test="${status.count eq 10}">--%>
-<%--                          <c:set var="doneLoop" value="true"/>--%>
-<%--                        </c:if>--%>
-<%--                      </c:if>--%>
-
-<%--                    </c:forEach>--%>
-<%--				</span>--%>
-<%--              <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>--%>
-<%--            </div>--%>
-<%--          </nav>--%>
+                    </c:forEach>
+				</span>
+              <a class="pagination-older" href="#ㅇㅅㅇ">NEXT</a>
+            </div>
+          </nav>
           </section>
           <!-- End Best Seller -->
         </div>

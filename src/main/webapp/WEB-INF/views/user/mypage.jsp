@@ -34,9 +34,9 @@
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/1.jpg" alt="post">
-                    <div class="categories_details">
+                    <div class="categories_details" onclick="location.href='/mypage/recentBook'">
                         <div class="categories_text">
-                            <a href="/mypage/recentBook">
+                            <a>
                                 <h5>최근 본 책</h5>
                             </a>
                             <div class="border_line"></div>
