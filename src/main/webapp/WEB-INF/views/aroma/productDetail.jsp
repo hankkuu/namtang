@@ -412,6 +412,8 @@
                                     </div>
                                     <p>${reviewc.reviewContent}</p>
                                 </div>
+                            </div>
+                                </c:forEach>
                             </c:otherwise>
                         </c:choose>
 
@@ -454,8 +456,6 @@
 <%--                                    commodo</p>--%>
 <%--                            </div>--%>
 <%--                        </div>--%>
-                    </div>
-                   </c:forEach>
 
                     <div class="col-lg-6">
                         <div class="review_box">
