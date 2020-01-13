@@ -24,8 +24,8 @@
 //@EnableWebSecurity
 //public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //
-//	@Autowired
-//	private UserDetailsService userDetailService;
+//	//@Autowired
+//	//private UserDetailsService userDetailService;
 //
 //	@Autowired
 //    private DataSource dataSource;
@@ -38,11 +38,11 @@
 //		web.ignoring().antMatchers("/static/**");
 //	}
 //
-//	@Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//	    System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
-//	    auth.userDetailsService(userDetailService);
-//	}
+////	@Override
+////    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+////	    System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
+////	    auth.userDetailsService(userDetailService);
+////	}
 //
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
@@ -52,12 +52,14 @@
 //
 //        http.authorizeRequests()
 //                .antMatchers("/guest/**").permitAll()
-//                .antMatchers("/admin/**").hasRole("admin")
-//                .antMatchers("/user/**").hasRole(RoleCode.Member.name());
+//                .antMatchers("/tiles/**").permitAll()
+//                .antMatchers("/resources/**").permitAll().anyRequest().permitAll();
+//                //.antMatchers("/admin/**").hasRole("admin")
+//                //.antMatchers("/user/**").hasRole(RoleCode.Member.name());
 //
-//        http.formLogin().loginPage("/user/login");
-//        http.exceptionHandling().accessDeniedPage("/user/register");
-//        http.logout().logoutUrl("/logout").invalidateHttpSession(true);
+//        http.formLogin().loginPage("/guest/login");
+//        http.exceptionHandling().accessDeniedPage("/guest/register");
+//        http.logout().logoutUrl("/guest/logout").invalidateHttpSession(true);
 //
 //        http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
 //                .tokenValiditySeconds(60 * 60 * 24);

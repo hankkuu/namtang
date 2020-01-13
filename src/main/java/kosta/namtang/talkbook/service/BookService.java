@@ -1,7 +1,6 @@
 package kosta.namtang.talkbook.service;
 
 import kosta.namtang.talkbook.model.domain.Book;
-import kosta.namtang.talkbook.model.domain.Category;
 import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -39,15 +39,15 @@ public class BookService {
             book = bookRepo.findAll(page);
         }
         else if(Ordering==3){
-            page = PageRequest.of(PageNum-1,9,Sort.Direction.ASC,"bookPrice");
+            page = PageRequest.of(PageNum-1, 9, Sort.by("bookPrice").ascending().and(Sort.by("bookTitle")));
             book = bookRepo.findAll(page);
         }
         else if(Ordering==4){
-            page = PageRequest.of(PageNum-1,9,Sort.Direction.DESC,"bookPrice");
+            page = PageRequest.of(PageNum-1, 9, Sort.by("bookPrice").descending().and(Sort.by("bookTitle")));
             book = bookRepo.findAll(page);
         }
         else if(Ordering==5){
-            page = PageRequest.of(PageNum-1,9,Sort.Direction.ASC,"bookPubdate");
+            page = PageRequest.of(PageNum-1, 9, Sort.by("bookPubdate").ascending().and(Sort.by("bookTitle")));
             book = bookRepo.findAll(page);
         }
         return book;
@@ -88,15 +88,18 @@ public class BookService {
             book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
         }
         else if(Ordering==3){
-            page = PageRequest.of(PageNum-1,9,Sort.Direction.ASC,"bookPrice");
-            book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
+            System.out.println("여기왔다.....................................");
+            System.out.printf(CatgIdx + " | " + PageNum + " | " + Ordering + " | " );
+
+            page = PageRequest.of(PageNum-1, 9, Sort.by("bookPrice").ascending().and(Sort.by("bookTitle")));
+            book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx), page);
         }
         else if(Ordering==4){
-            page = PageRequest.of(PageNum-1,9,Sort.Direction.DESC,"bookPrice");
+            page = PageRequest.of(PageNum-1, 9, Sort.by("bookPrice").descending().and(Sort.by("bookTitle")));
             book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
         }
         else if(Ordering==5) {
-            page = PageRequest.of(PageNum-1,9,Sort.Direction.ASC,"bookPubdate");
+            page = PageRequest.of(PageNum-1, 9, Sort.by("bookPubdate").ascending().and(Sort.by("bookTitle")));
             book = bookRepo.findAllByCategory(catgRepo.findById(CatgIdx),page);
         }
         return book;
@@ -120,5 +123,11 @@ public class BookService {
             else if(Ordering==8) book=bookRepo.searchByPublisher(catgRepo.findById(CatgIdx),Word,page);
             return book;
 
+        }
+
+        public Optional<Book> BookDetail(Long bookIdx){
+
+
+            return bookRepo.findById(bookIdx);
         }
     }
