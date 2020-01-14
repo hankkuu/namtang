@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ksw
@@ -53,8 +54,9 @@
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
+
                     <h3>${book.get().bookTitle}</h3>
-                    <h2>${book.get().bookPrice}</h2>
+                    <h2><fmt:formatNumber  value="${book.get().bookPrice}"  type="currency" /></h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : ${book.get().category.catgName}</a></li>
                         <li><a href="#"><span>Author</span> : ${book.get().bookAuthor}</a></li>

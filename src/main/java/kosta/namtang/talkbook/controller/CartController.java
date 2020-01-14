@@ -2,7 +2,6 @@ package kosta.namtang.talkbook.controller;
 
 import kosta.namtang.talkbook.model.domain.Cart;
 import kosta.namtang.talkbook.model.domain.CartId;
-//import kosta.namtang.talkbook.model.domain.User;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.dto.cart.CartSetRequest;
 import kosta.namtang.talkbook.service.CartService;
@@ -16,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("cart")
+@RequestMapping("/cart")
 public class CartController {
 
     private final CartService cartService;

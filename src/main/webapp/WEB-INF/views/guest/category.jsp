@@ -1,5 +1,6 @@
 <%@ page import="javax.naming.Context" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -460,7 +461,8 @@
                   <div class="card-body">
                     <p>${item.category.catgName}</p>
                     <h4 class="card-product__title"><a href="#">${item.bookTitle}</a></h4>
-                    <p class="card-product__price">${item.bookPrice}</p>
+                    <p class="card-product__price"><fmt:formatNumber  value="${item.bookPrice}"  type="currency" /></p>
+
                   </div>
                 </div>
               </div>
