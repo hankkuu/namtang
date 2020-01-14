@@ -97,17 +97,18 @@ public class BookController {
     }
 
     @RequestMapping("/BookDetail")
-    ModelAndView catgCall(@RequestParam Long id) {
-        ModelAndView mv = new ModelAndView();
+        ModelAndView catgCall(@RequestParam Long id) {
 
-        Optional<Book> book = bookService.BookDetail(id);
-        mv.addObject("book",book);
-        mv.setViewName("/guest/productDetail");
+            ModelAndView mv = new ModelAndView();
 
-        //리뷰
-        List<Review> rv = reviewService.selectUser(1L);
-        mv.addObject("reviewcc", rv);
+            Optional<Book> book = bookService.BookDetail(id);
+            mv.addObject("book",book);
+            mv.setViewName("/guest/productDetail");
 
-        return mv;
+            //리뷰
+            List<Review> rv = reviewService.selectReview(id);
+            mv.addObject("reviewcc", rv);
+
+            return mv;
     }
 }

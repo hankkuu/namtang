@@ -31,6 +31,12 @@ public class ReviewService {
         return rv;
     }
 
+    public List<Review> selectReview(Long idx){
+
+        List<Review> rv = repo.findByBookIdx(idx);
+
+        return rv;
+    }
 
 
 
