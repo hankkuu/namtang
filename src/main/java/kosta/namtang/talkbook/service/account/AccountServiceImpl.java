@@ -83,10 +83,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account login(Account account) throws Exception {
 
-        Account a = accountRepository.findById(account.getAccountIdx()).orElse(null);
+        Account a = accountRepository.findByUserId(account.getUserId());
         if(a != null) {
-            String encryptPw = pwEncoder.encode(account.getUserPassword());
-            if(encryptPw.equals(a.getUserPassword()) == true) {
+            Boolean matched = pwEncoder.matches(account.getUserPassword(), a.getUserPassword());
+            if(matched == true) {
                 return a;
             } else {
                 throw new Exception();

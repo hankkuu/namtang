@@ -1,7 +1,6 @@
 package kosta.namtang.talkbook.security;
 
 import kosta.namtang.talkbook.common.RoleCode;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -63,8 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedPage("/register");
         http.logout().logoutUrl("/guest/logout").invalidateHttpSession(true);
 
-        http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
-                .tokenValiditySeconds(60 * 60 * 24);
+        http.userDetailsService(simpleUserService);
+
+        //http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
+        //        .tokenValiditySeconds(60 * 60 * 24);
 
 //        http.formLogin()
 //        .loginPage("/adminLoginForm")
@@ -88,13 +88,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    return new BCryptPasswordEncoder();
     }
 
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	    log.info("build auth global....");
 	    auth.userDetailsService(simpleUserService).passwordEncoder(this.encoder());
     }
 
     //@SuppressWarnings("deprecation")
-	//@Bean
+    //@Bean
     //public PasswordEncoder passwordEncoder() {
     //    return NoOpPasswordEncoder.getInstance();
     //}
