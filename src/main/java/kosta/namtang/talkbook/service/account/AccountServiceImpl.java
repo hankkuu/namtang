@@ -3,10 +3,12 @@ package kosta.namtang.talkbook.service.account;
 import kosta.namtang.talkbook.common.RoleCode;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.domain.account.Users;
+import kosta.namtang.talkbook.model.dto.request.UserSetRequest;
 import kosta.namtang.talkbook.repository.account.AccountRepository;
 import kosta.namtang.talkbook.repository.account.UserRepository;
 import kosta.namtang.talkbook.util.DateTimeHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,11 +22,19 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    PasswordEncoder pwEncoder;
 
     @Transactional
     @Override
-    public Account createAccount(Account acc, Users user) throws Exception {
+    public Account createAccount(UserSetRequest request) throws Exception {
+
+        String encryptPw = pwEncoder.encode(request.getPassword());
         Timestamp createDate = DateTimeHelper.timeStampNow();
+
+        Account acc = new Account();
+        acc.setUserId(request.getEmail());
+        acc.setUserPassword(encryptPw);
         acc.setCreateDate(createDate);
         acc.setDeleteDate(DateTimeHelper.timeStamp("1900-01-01 00:00:00"));
         acc.setLastLoginDate(DateTimeHelper.timeStamp("1900-01-01 00:00:00"));
@@ -34,7 +44,12 @@ public class AccountServiceImpl implements AccountService {
         if(member == null) {
             throw new Exception();
         }
-
+        Users user = new Users();
+        user.setUserAddress(request.getAddress());
+        user.setUserAge(request.getAge());
+        user.setUserName(request.getUserName());
+        user.setUserPhone(request.getPhone());
+        user.setUserSex(request.getSex());
         user.setAccountIdx(member.getAccountIdx());
         user.setCreateDate(createDate);
         user.setUpdateDate(createDate);
@@ -66,7 +81,17 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account login(Account acc) {
-        return null;
+    public Account login(Account account) throws Exception {
+
+        Account a = accountRepository.findById(account.getAccountIdx()).orElse(null);
+        if(a != null) {
+            String encryptPw = pwEncoder.encode(account.getUserPassword());
+            if(encryptPw.equals(a.getUserPassword()) == true) {
+                return a;
+            } else {
+                throw new Exception();
+            }
+        }
+        return a;
     }
 }

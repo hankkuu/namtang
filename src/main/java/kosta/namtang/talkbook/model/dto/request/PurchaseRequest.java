@@ -19,8 +19,7 @@ public class PurchaseRequest {
 	private String billKey;
 	private String paid_amount;
 
-
-	//	private long bookIdx;
+//	private long bookIdx;
 //	private String bookName;
 //	private int bookCount;
 //	private BigDecimal price;
