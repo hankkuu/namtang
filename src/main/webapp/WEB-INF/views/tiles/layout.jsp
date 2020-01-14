@@ -9,6 +9,9 @@
 </head>
 <body>
 <div id="container">
+    <div id="BGM">
+        <tiles:insertAttribute  name="BGM"/>
+    </div>
     <div id="header">
         <tiles:insertAttribute  name="header"/>
     </div>

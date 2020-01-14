@@ -28,9 +28,9 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 
         String dest = request.getParameter("dest");
 
-        if(dest != null){
+        //if(dest != null){
             request.getSession().setAttribute("dest",  dest);
-        }
+        //}
 
         return super.preHandle(request, response, handler);
     }

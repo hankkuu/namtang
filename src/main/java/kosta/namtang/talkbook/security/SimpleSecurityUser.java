@@ -3,6 +3,7 @@ package kosta.namtang.talkbook.security;
 import kosta.namtang.talkbook.common.RoleCode;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Getter
+@Setter
 public class SimpleSecurityUser extends User {
 
     private static final String ROLE_PREFIX ="ROLE_";
