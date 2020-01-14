@@ -83,15 +83,6 @@ public class MainController {
 		//URL url = UR
 		return obj;
 	}
-	
-	@RequestMapping("clearSky")
-	public String clearSky() {
-		return "guest/clearSky";
-	}
-
-
-
-
 }
 
 
