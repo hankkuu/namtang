@@ -22,13 +22,45 @@
 
             $("#purchase").click( async () => {
 
-                await purchaseProcess().then( (ret) => {
-                    console.log(ret);
+                await purchaseProcess().then( async (result) => {
+                    console.log(result);
 
-                    if(ret.statusCode === "Success") {
-                        const key = ret.message;
+                    if(result.statusCode === "Success") {
+                        const key = result.message;
                         if (key !== undefined) {
-                            let total = $("#totalPrice").text();
+                            let purchaseObj = {
+                                purchasePayment : {
+                                    totalPrice : "100000", // $("#totalPrice").text(),
+                                    receiverName : "받는사람이름",
+                                    receiverPhone : "받는사람연락처",
+                                    deliveryComment : "배송요청사항",
+                                    paymentCode : "1",
+                                    shippingPrice : "0"
+                                },
+                                purchaseOrder : {
+                                    deliveryAddress : "우리집"
+                                },
+                                purchaseBook : [{
+                                    purchaseBookId : {
+                                        bookIdx : "10"
+                                    },
+                                    price : "10000",
+                                    name : "난책1",
+                                    count : "3",
+                                    imagePath : " "
+                                },{
+                                    purchaseBookId : {
+                                        bookIdx : "20"
+                                    },
+                                    price : "20000",
+                                    name : "난책2",
+                                    count : "1",
+                                    imagePath : "test"
+                                }
+                                ],
+                                billKey : key
+                            }
+
                             // 구매하는 user 정보 필요
                             // billkey 정보 필요
                             // 총금액 and 구매 이름 필요
@@ -42,13 +74,19 @@
                             let shop = {
                                 pg: "kakaopay",
                                 pay_method: "card",
+                                escrow : true,
+                                currency : "KRW",
+                                custom_data : purchaseObj
                             };
                             let param = {
                                 pg: shop.pg,
                                 pay_method: shop.pay_method,
+                                escrow: shop.escrow,
+                                currency: shop.currency,
+                                custom_data : shop.custom_data,
                                 merchant_uid: key,
                                 name: "임시로 사용하는 이름이다",
-                                amount: total,
+                                amount: "100000",
                                 buyer_email: user.email,
                                 buyer_name: user.name,
                                 buyer_tel: user.tel,
@@ -56,16 +94,57 @@
                                 buyer_postcode: user.postcode
                             };
 
-                            const ret = setPuchase();
-                            if (ret === 1) {
-                                purchase(param);
-                            }
+                            const test = await setPuchase(purchaseObj).then( async (dbResult) => {
+                                console.log(dbResult);
+                                    if (dbResult.data.statusCode === "Success") {
+                                        // const test2 = await verifyPurchase(param).then( (confirmResult) => {
+                                        //
+                                        //     if(confirmResult.data.statusCode === "Success") {
+                                        //         console.log(confirmResult);
+                                        //         alert("진짜 최종 완료");
+                                        //     }
+                                        // });
+                                        IMP.request_pay(param,
+                                            (rsp) => {
+                                                // callback
+                                                if (rsp.success) {
+                                                    console.log(rsp);
+                                                    // axios로 HTTP 요청
+                                                    axios({
+                                                        url: "/api/v1/purchase/complete", // 가맹점 서버
+                                                        method: "post",
+                                                        headers: { "Content-Type": "application/json" },
+                                                        data: {
+                                                            imp_uid: rsp.imp_uid,
+                                                            merchant_uid: rsp.merchant_uid,
+                                                            paid_amount: rsp.paid_amount,
+                                                        }
+                                                    }).then((result) => {
+                                                        // 가맹점 서버 결제 API 성공시 로직
+                                                        // 이제 DB 입력을 해도 된다
+                                                        //console.log(data);
+
+                                                        if(result.data.statusCode === "Success") {
+                                                            alert("최종 구매 성공 success");
+                                                            let param = JSON.stringify(result.data.message);
+                                                            location.replace('/confirmation?msg='+encodeURI(param));
+                                                            //location.href='/confirmation';
+                                                        } else {
+                                                            alert("최종 구매 실패");
+                                                        }
+                                                        return result;
+                                                    })
+                                                } else {
+                                                    alert("검증실패 data 확인하세요");
+                                                    //...,
+                                                    // 결제 실패 시 로직,
+                                                    //...
+                                                }
+                                            });
+                                }
+                            });
                         }
                     }
-
-
-
-
                 });
             });
         });
@@ -76,12 +155,10 @@
                 type: "post",
                 url: "/api/v1/purchase/getBillKey",
                 dataType: "json",
-                //contentType: 'application/json; charset=utf-8',
                 success: function (result) {
                     console.log(result);
                     if (result.statusCode === "Success") {
                         alert("구매시작");
-
                     } else {
                         alert("입력이 잘못되었습니다");
                     }
@@ -91,81 +168,70 @@
                     alert("오류 발생");
                 }
             });//ajax끝
-
             return result;
         }
 
-        const setPuchase = async () => {
-
-            const book = [
-                            { bookIdx: 1, bookPrice: 1000, bookCount: 3, bookTitle: "test", bookImg: "" },
-                            { bookIdx: 2, bookPrice: 1000, bookCount: 3, bookTitle: "test", bookImg: "" },
-                            { bookIdx: 3, bookPrice: 1000, bookCount: 3, bookTitle: "test", bookImg: "" }
-                         ]
-            const purchaseOrder = {
-                deliveryAddress: "dddddddddddd"
-            }
-
-            const purchasePayment = {
+        const setPuchase = async (purchaseObj) => {
+            // 필요함 session
+            const user = {
 
             }
-
-            const user = {}
             // axios로 HTTP 요청
-            axios({
+            const result = await axios({
                 url: "/api/v1/purchase", // 가맹점 서버
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 data: {
-                    book: book,
-                    purchaseOrder: purchaseOrder,
-                    purchasePayment: purchasePayment
+                    book: purchaseObj.purchaseBook,
+                    order: purchaseObj.purchaseOrder,
+                    payment: purchaseObj.purchasePayment,
+                    billKey: purchaseObj.billKey,
+                    user: {
+                        userIdx: "1"
+                    }
                 }
             }).then((data) => {
                 // 가맹점 서버 결제 API 성공시 로직
                 // 이제 DB 입력을 해도 된다
                 alert("헬로 success");
-                return 1;
+                return data;
             })
+            return result;
         }
 
-        function purchase(param) {
-            // IMP.request_pay(param, callback) 호출
-            IMP.request_pay(param,
-                rsp => {
-                // callback
-                if (rsp.success) {
-                    console.log(rsp);
-                    // axios로 HTTP 요청
-                    axios({
-                        url: "/api/v1/completePurchase", // 가맹점 서버
-                        method: "post",
-                        headers: { "Content-Type": "application/json" },
-                        data: {
-                            imp_uid: rsp.imp_uid,
-                            merchant_uid: rsp.merchant_uid,
-                            paid_amount: rsp.paid_amount,
-                        }
-                    }).then((data) => {
-                        // 가맹점 서버 결제 API 성공시 로직
-                        // 이제 DB 입력을 해도 된다
-                        console.log(data);
-                        alert("success");
-
-
-
-                    })
-                } else {
-                    alert("bbb");
-                    //...,
-                    // 결제 실패 시 로직,
-                    //...
-                }
-            });
-        }
-
-
-
+        // const verifyPurchase = async (param) => {
+        //     // IMP.request_pay(param, callback) 호출
+        //     const result = await IMP.request_pay(param,
+        //         async (rsp) => {
+        //         // callback
+        //         if (rsp.success) {
+        //             console.log(rsp);
+        //             // axios로 HTTP 요청
+        //             await axios({
+        //                 url: "/api/v1/purchase/complete", // 가맹점 서버
+        //                 method: "post",
+        //                 headers: { "Content-Type": "application/json" },
+        //                 data: {
+        //                     imp_uid: rsp.imp_uid,
+        //                     merchant_uid: rsp.merchant_uid,
+        //                     paid_amount: rsp.paid_amount,
+        //                 }
+        //             }).then((data) => {
+        //                 // 가맹점 서버 결제 API 성공시 로직
+        //                 // 이제 DB 입력을 해도 된다
+        //                 console.log(data);
+        //                 //alert("최종 구매 성공 success");
+        //                 return data;
+        //             })
+        //         } else {
+        //             alert("검증실패 data 확인하세요");
+        //             //...,
+        //             // 결제 실패 시 로직,
+        //             //...
+        //         }
+        //     });
+        //     return result;
+        // }
 
     </script>
 </head>
@@ -291,7 +357,7 @@
                             <div class="radion_btn">
                                 <input type="radio" id="f-option6" name="selector">
                                 <label for="f-option6">Paypal </label>
-                                <img src="/static/img/product/card.jpg" alt="">
+                                <img src="/img/product/card.jpg" alt="">
                                 <div class="check"></div>
                             </div>
                             <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal

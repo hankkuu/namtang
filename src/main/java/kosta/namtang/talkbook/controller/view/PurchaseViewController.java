@@ -9,12 +9,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Slf4j
+@RequestMapping("user")
 public class PurchaseViewController {
 
-	@RequestMapping("purchase")
+	@RequestMapping("/purchase")
 	public ModelAndView checkout(){
-		log.debug("abc");
-		ModelAndView view = new ModelAndView("user/checkout");
+		log.debug("purchase");
+		ModelAndView view = new ModelAndView("/user/checkout");
+		return view;
+	}
+
+	@RequestMapping("/confirmation")
+	public ModelAndView confirmation(String param){
+		log.debug("confirmation");
+		ModelAndView view = new ModelAndView("/user/confirmation", "params", param);
 		return view;
 	}
 

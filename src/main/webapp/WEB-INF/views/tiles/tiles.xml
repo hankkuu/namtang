@@ -12,13 +12,14 @@
 		<put-attribute name="content" value =""/>
 	</definition>
 
-    <definition name="user/**" extends="layout">
+    <definition name="/user/**" extends="layout">
         <put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp"/>
     </definition>
-    <definition name="guest/**" extends="layout">
+
+    <definition name="/guest/**" extends="layout">
         <put-attribute name="content" value="/WEB-INF/views/guest/{1}.jsp"/>
     </definition>
-    
+
     <definition name="guest/adminLogin" extends ="empty">
 		<put-attribute name="content" value ="/WEB-INF/views/guest/adminLogin.jsp"/>
 	</definition>

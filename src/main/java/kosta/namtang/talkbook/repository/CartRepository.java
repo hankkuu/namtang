@@ -12,6 +12,9 @@ public interface CartRepository extends CrudRepository<Cart, CartId> {
     //find => userIdx기준으로 찾기
     List<Cart> findByCartIdUserIdx(Long userIdx);
 
+    //update
+    Cart findByCartIdUserIdxAndCartIdBookIdx(Long userIdx,Long bookIdx);
+
 
     //delete => useridx BookIdx 로 삭제
     void deleteByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
