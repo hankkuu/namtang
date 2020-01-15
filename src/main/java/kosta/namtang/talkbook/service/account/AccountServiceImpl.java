@@ -77,12 +77,18 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deleteAccount(Account acc) {
+        Optional<Account> account = accountRepository.findById(acc.getAccountIdx());
+        account.ifPresent( (update) -> {
+            update.setDeleteDate(DateTimeHelper.timeStampNow());
+            accountRepository.save(update);
+        });
         return;
     }
 
     @Override
     public Account login(Account account) throws Exception {
 
+        // security로 대체된 기능
         Account a = accountRepository.findByUserId(account.getUserId());
         if(a != null) {
             Boolean matched = pwEncoder.matches(account.getUserPassword(), a.getUserPassword());

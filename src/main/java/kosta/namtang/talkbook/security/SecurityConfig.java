@@ -39,6 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//web.ignoring().antMatchers("/**");
 	}
 
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
+//        auth.userDetailsService(userDetailService);
+//    }
+
+
 //	@Override
 //	public void configure(WebSecurity web) {
 //		web.ignoring().antMatchers("/static/**");
@@ -54,21 +61,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login", "/register").permitAll()
                 .antMatchers("/user/**").hasRole(RoleCode.Member.name())
                 .antMatchers("/admin/**").hasRole("admin");
-                //.antMatchers("/resources/static/**").permitAll().anyRequest().permitAll();
 
 
         http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());;
         http.exceptionHandling().accessDeniedPage("/register");
-        http.logout().logoutUrl("/guest/logout").invalidateHttpSession(true);
+        http.logout().logoutUrl("/logout").invalidateHttpSession(true);
 
-        http.userDetailsService(simpleUserService);
+        //http.userDetailsService(simpleUserService);
 
-        //http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
-        //        .tokenValiditySeconds(60 * 60 * 24);
+        http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
+                .tokenValiditySeconds(60 * 60 * 24);
 
 //        http.formLogin()
 //        .loginPage("/adminLoginForm")
-//       // .loginProcessingUrl("/admin/adminloginCheck")
+//        // .loginProcessingUrl("/admin/adminloginCheck")
 //        .defaultSuccessUrl("/", true)
 //        .usernameParameter("username")
 //        .passwordParameter("password");
@@ -88,8 +94,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
 	    log.info("build auth global....");
 	    auth.userDetailsService(simpleUserService).passwordEncoder(this.encoder());
     }

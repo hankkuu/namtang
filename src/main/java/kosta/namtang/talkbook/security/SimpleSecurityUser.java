@@ -14,18 +14,19 @@ import java.util.Collection;
 import java.util.List;
 
 @Getter
-@Setter
 public class SimpleSecurityUser extends User {
 
     private static final String ROLE_PREFIX ="ROLE_";
 
     private Account account;
     private String accountId;
+    private String text;
 
     public SimpleSecurityUser(Account acc) {
-        super(acc.getUserId(), acc.getUserPassword(), makeGrantedAuthority(acc.getRole()));
+        super(String.valueOf(acc.getAccountIdx()), acc.getUserPassword(), makeGrantedAuthority(acc.getRole()));
         this.account = acc;
-        this.accountId = acc.getUserId();
+        this.accountId = String.valueOf(acc.getAccountIdx());
+        this.text = acc.getLastLoginDate().toString();
     }
 
     public static List<GrantedAuthority> makeGrantedAuthority(RoleCode role) {
