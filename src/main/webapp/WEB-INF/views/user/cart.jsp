@@ -9,21 +9,71 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Cart</title>
     <script>
+        var Total_qty;
+        var Total_price;
+        <%! int test =1;%>
 
+
+        <%--for (var i=<%test%>)--%>
 
         function amount_change(){
-            var qtySelect = document.getElementById("amount");
+            var qtySelect = document.getElementById("amount<%=test%>");
 
             var qty=qtySelect.options[qtySelect.selectedIndex].value;
             console.log(qty);
 
             document.getElementById("qty").innerHTML=qty;
 
-
         }
 
+        $(document).on('click',".nice-select .list li",function(){
+            // alert($(".nice-select ul .option.selected").attr('data-value'));
+            var result = qty($(this).attr('data-value'),$(this).parent().parent().next().val());
+            $(this).parent().parent().parent().parent().next().text(result);
+        });
+
+        function qty(qty,bookIdx){
+            let sum;
+            let tt = bookIdx;
+
+            console.log(tt);
+            let cart = {
+                qty : qty,
+                bookIdx : tt
+            }
+            //$("#id option:eq(2)").attr("selected", "selected");
 
 
+            console.log(cart);
+                $.ajax({
+                    async: false,
+                    type: "get",
+                    url: "/cart/update",
+                    dataType:"json",
+                    data: cart,
+                    //contentType:"application/json",
+                    success: function (result) {
+                        // let a=$("#"+id+" option").val(result.qty);
+                        console.log(result);
+                        console.log(result.qty);
+                        Total_qty = result.qty;
+                        Total_price = result.bookPrice;
+                        CartId = result.cartId;
+                        //$("#Total").text(Total_qty*Total_price);
+                        sum = (Total_qty*Total_price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");//천단위 콤마 찍기
+                    },
+                    error: function (request, status, error) {
+                        console.log('code:' + request.status + "\n" + 'message : ' + request.responseText + "\n" + 'error:' + error);
+                    }
+
+                });
+            return "￦"+sum;
+        }
+
+        $(document).ready(function(){
+
+            $("from[name=form1] input[name=bookIdx]").attr(id)
+        });
 
     </script>
 
@@ -245,7 +295,9 @@
                               </tr>
                           </c:when>
                           <c:otherwise>
-                              <c:set var="test" value="1"/>
+<%--                              <c:set var="test" value="1"/>--%>
+<%--                              <%! int test =1;%>--%>
+
                               <c:forEach items="${cartList}" var="cartVO">
 
                                   <tr>
@@ -258,29 +310,42 @@
                                       <td>
                                           ${cartVO.bookTitle}
                                       </td>
-
                                       <td id="price">
                                           <fmt:formatNumber value="${cartVO.bookPrice}" type="currency"/>
                                       </td>
-
                                       <td>
+                                          <form name="form1" method="post" action="/cart/update">
+                                              <input type="hidden" name="userIdx" value="${cartVO.cartId.userIdx}">
+<%--                                              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >--%>
+                                              <select name="amount" id='<%=test%>'>
+                                                  <c:forEach begin="1" end="10" var="i">
+                                                      <c:choose>
+                                                          <c:when test="${cartVO.qty eq i}">
+                                                              <option value="${i}" selected>${i}</option>
+                                                          </c:when>
+                                                          <c:otherwise>
+                                                              <option value="${i}">${i}</option>
+                                                          </c:otherwise>
+                                                      </c:choose>
+                                                  </c:forEach>
+                                                  <input type="hidden" name="bookIdx" id=bookIdx<%=test%> value="${cartVO.cartId.bookIdx}">
+<%--                                                  <select id="searchOption" name="searchOption">--%>
+<%--                                                      <option value="">구분</option>--%>
+<%--                                                      <option value="name" <c:if test="${param.searchOption}">selected="selected"</c:if>>작성자</option>--%>
+<%--                                                      <option value="subject" <c:if test="${param.searchOption}">selected="selected"</c:if>>제목</option>--%>
+<%--                                                  </select>--%>
 
-<%--                                              <select name="amount" id=${test} onchange="amount_change()">--%>
-<%--                                                  <c:forEach begin="1" end="10" var="i">--%>
-<%--                                                      <option value="${i}">${i}</option>--%>
-<%--                                                  </c:forEach>--%>
+
 <%--                                                 <c:set target="test" value=--%>
-<%--                                                --%>
-<%--                                              </select>--%>
+                                                  <% test += 1;%>
+                                              </select>
+
+                                          </form>
 <%--                                          <input class="aa-cart-quantity" type="number" value="${ cartVO.quantity}"  min="1" max="100" readonly="readonly">--%>
                                       </td>
-                                      <td id="qty">
+                                      <td id=Total<%=test%>>
 
-
-<%--                                              <fmt:formatNumber  value="${cartVO.bookPrice}"  type="currency" />--%>
-
-
-<%--                                          <fmt:formatNumber  value="${cartVO.price2*cartVO.quantity }"  type="currency" />--%>
+                                          <fmt:formatNumber  value="${cartVO.bookPrice*cartVO.qty}"  type="currency" />
                                       </td>
                                   </tr>
 

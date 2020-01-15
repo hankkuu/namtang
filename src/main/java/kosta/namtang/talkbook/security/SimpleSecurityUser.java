@@ -1,8 +1,10 @@
 package kosta.namtang.talkbook.security;
 
 import kosta.namtang.talkbook.common.RoleCode;
+import kosta.namtang.talkbook.model.domain.Admin;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -19,11 +21,22 @@ public class SimpleSecurityUser extends User {
 
     private Account account;
     private String accountId;
+    private String text;            // 원하는 값을 넣을 수 있음
+
+    private Admin admin;
+    private String adminId;
 
     public SimpleSecurityUser(Account acc) {
-        super(acc.getUserId(), acc.getUserPassword(), makeGrantedAuthority(acc.getRole()));
+        super(String.valueOf(acc.getAccountIdx()), acc.getUserPassword(), makeGrantedAuthority(acc.getRole()));
         this.account = acc;
-        this.accountId = acc.getUserId();
+        this.accountId = String.valueOf(acc.getAccountIdx());
+        this.text = acc.getLastLoginDate().toString();
+    }
+
+    public SimpleSecurityUser(Admin admin) {
+        super(admin.getAdminId(), admin.getAdminPassword(), makeGrantedAuthority(RoleCode.Admin));
+        this.admin = admin;
+        this.adminId = String.valueOf(admin.getAdminId());
     }
 
     public static List<GrantedAuthority> makeGrantedAuthority(RoleCode role) {
