@@ -51,8 +51,6 @@
 
         $(function () {
             $("#add_cart").on('click' , function(){
-                let ex=sessionStorage.getItem("tp")
-                alert(ex);
 
                 let bookIdx = ${book.get().bookIdx};
                 let bookTitle = "${book.get().bookTitle}";
