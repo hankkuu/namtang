@@ -18,6 +18,16 @@
         IMP.init("imp13182886"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.'
 
         $(window).load(function () {
+
+            $(function () {
+                let test = sessionStorage.getItem("cartlist");
+                console.log(test);
+            });
+
+
+
+
+
             console.log("start");
 
             $("#purchase").click(async () => {

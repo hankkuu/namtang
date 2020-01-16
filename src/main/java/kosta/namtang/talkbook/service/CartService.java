@@ -2,7 +2,6 @@ package kosta.namtang.talkbook.service;
 
 import com.google.common.collect.Lists;
 import kosta.namtang.talkbook.model.domain.Cart;
-//import kosta.namtang.talkbook.model.domain.User;
 import kosta.namtang.talkbook.model.domain.CartId;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.dto.cart.CartSetRequest;
@@ -10,7 +9,6 @@ import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CartRepository;
 import kosta.namtang.talkbook.util.DateTimeHelper;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
