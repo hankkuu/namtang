@@ -27,6 +27,13 @@ public class AccountViewController {
         ModelAndView view = new ModelAndView("/guest/register");
         return view;
     }
+
+    @RequestMapping("/user/update")
+    public ModelAndView update() {
+        log.debug("update");
+        ModelAndView view = new ModelAndView("/user/update");
+        return view;
+    }
     
     @RequestMapping("findPassword")
     public ModelAndView findPassword(){

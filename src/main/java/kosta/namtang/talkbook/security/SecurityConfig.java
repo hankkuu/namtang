@@ -67,11 +67,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.exceptionHandling().accessDeniedPage("/register");
         http.logout().logoutUrl("/logout").invalidateHttpSession(true);
+        http.sessionManagement() .maximumSessions(1) /* session 허용 갯수 */ .expiredUrl("/login") /* session 만료시 이동 페이지*/ .maxSessionsPreventsLogin(true); /* 동일한 사용자 로그인시 x, false 일 경우 기존 사용자 session 종료*/
+
+
         http.userDetailsService(simpleUserService);
 
         //http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
         //        .tokenValiditySeconds(60 * 60 * 24);
-        http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
+        //http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
 
 //        http.formLogin()
 //        .loginPage("/adminLoginForm")

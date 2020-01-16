@@ -56,7 +56,7 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.logout().logoutUrl("/logout").invalidateHttpSession(true);
 //
 
-        http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
+        //http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }
