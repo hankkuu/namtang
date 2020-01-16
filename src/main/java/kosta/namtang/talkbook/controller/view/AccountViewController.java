@@ -22,11 +22,25 @@ public class AccountViewController {
         ModelAndView view = new ModelAndView("/guest/register");
         return view;
     }
-
+    
+    @RequestMapping("findPassword")
+    public ModelAndView findPassword(){
+        log.debug("findPassword");
+        ModelAndView view = new ModelAndView("/guest/findPassword");
+        return view;
+    }
+ 
     @RequestMapping(value = "user/logout")
     public ModelAndView logout() {
         log.debug("logout");
         ModelAndView view = new ModelAndView("/guest/index");
         return view;
     }
+    
+//    @RequestMapping("update")
+//	public ModelAndView update(){
+//		log.debug("update");
+//		ModelAndView view = new ModelAndView("/guest/update");
+//		return view;
+//	}
 }
