@@ -26,6 +26,18 @@ public class Account {
     private String userPassword;
     @Column(name = "ROLE", nullable = false)
     private RoleCode role;
+    @Column(name = "USER_NAME", nullable = false)
+    private String userName;
+    @Column(name = "USER_SEX", nullable = false)
+    private String userSex;
+    @Column(name = "USER_PHONE", nullable = false)
+    private String userPhone;
+    @Column(name = "USER_POST", nullable = false)
+    private String userPost;
+    @Column(name = "USER_ADDRESS", nullable = false)
+    private String userAddress;
+    @Column(name = "USER_ADDRESSDETAIL", nullable = false)
+    private String userAddressDetail;
     @Column(name = "CREATE_DATE", nullable = false)
     private Timestamp createDate;
     @Column(name = "DELETE_DATE", nullable = false)

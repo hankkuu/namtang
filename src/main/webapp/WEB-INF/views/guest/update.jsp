@@ -176,9 +176,6 @@
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userAge" name="userAge" placeholder="나이" onfocus="this.placeholder = ''" onblur="this.placeholder = '나이'">
-							</div>
-							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
@@ -191,7 +188,7 @@
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
 								<input type="text" id="address" value="" style="width:355px;" readonly/>
-								<input type="text" id="address_etc" value="" style="width:355px;" placeholder="상세주소"/>
+								<input type="text" id="address_detail" value="" style="width:355px;" placeholder="상세주소"/>
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="button button-register w-100">개인정보 수정</button>
