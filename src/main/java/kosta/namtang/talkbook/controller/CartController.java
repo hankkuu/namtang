@@ -7,6 +7,7 @@ import kosta.namtang.talkbook.model.domain.CartId;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.dto.cart.CartSetRequest;
 import kosta.namtang.talkbook.service.CartService;
+import kosta.namtang.talkbook.util.HotItemManager;
 import kosta.namtang.talkbook.util.JsonUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,6 @@ public class CartController {
     public String insert(CartSetRequest cart, HttpServletRequest req) {
         Long idx = Long.valueOf(String.valueOf(req.getSession().getAttribute("userIdx")));
 
-
         cartService.insert(cart,idx);
         String result = JsonUtil.toJson(new ShopResponse(StatusCode.Success, "장바구니 추가되었습니다"));
         return result;
@@ -46,7 +46,6 @@ public class CartController {
     public String delete(@RequestParam Long userIdx, @RequestParam Long bookIdx,HttpServletRequest req) {
         Long idx = Long.valueOf(String.valueOf(req.getSession().getAttribute("userIdx")));
         cartService.delete(idx, bookIdx);
-
 
         return "redirect:/cart";
     }

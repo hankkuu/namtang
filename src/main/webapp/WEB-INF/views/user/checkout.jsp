@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +21,31 @@
         $(window).load(function () {
 
             $(function () {
-                let test = sessionStorage.getItem("cartlist");
-                console.log(test);
+                let list = JSON.parse(sessionStorage.getItem("cartlist"));
+                let str = "";
+                for(let i = 0 ; i < list.length ; i++) {
+                    console.log(list[i]);
+
+                    str += '<td>'
+                    str += '<img class=\"card-img\" src=\" \">'
+                    str += '<input type="hidden" name="bookIdx" id=bookIdx value="">'
+                    str += '</td>'
+                    str += '<td class="card-title">' + list[i].title + '</td>'
+                    str += '<td id="price">1000</td>'
+                    str += '<td>'
+                    str += '<select name="amount" id=\'\'> <option value="">1</option> </select>'
+                    str += '</td>'
+                    str += '<td id=Total>111</td>'
+
+                    // str += '<tr>'
+                    // str += '<td></td>'
+                    // str += '<td></td>'
+                    // str += '<td><h5>Subtotal</h5></td>'
+                    // str += '<td> <h5 id="priceSum">￦0</h5> </td>'
+                    // str += '</tr>'
+                }
+                $("#cartList").html(str);
+
             });
 
 
@@ -246,18 +270,39 @@
 <body>
 
 <!-- ================ start banner area ================= -->
-<section class="blog-banner-area" id="category">
-    <div class="container h-100">
-        <div class="blog-banner">
-            <div class="text-center">
-                <h1>Product Checkout</h1>
-                <nav aria-label="breadcrumb" class="banner-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-                    </ol>
-                </nav>
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">ProductName</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="cartList">
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <tr class="out_button_area">
+                <td class="d-none-l">
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <div class="checkout_btn_inner d-flex align-items-center">
+                        <a class="button primary-btn" href="#">계속 쇼핑하기</a>
+                    </div>
+                </td>
+            </tr>
         </div>
     </div>
 </section>
