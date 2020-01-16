@@ -1,8 +1,9 @@
 package kosta.namtang.talkbook.controller;
 
+import kosta.namtang.talkbook.common.ShopResponse;
+import kosta.namtang.talkbook.common.StatusCode;
 import kosta.namtang.talkbook.model.domain.Cart;
 import kosta.namtang.talkbook.model.domain.CartId;
-//import kosta.namtang.talkbook.model.domain.User;
 import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.model.dto.cart.CartSetRequest;
 import kosta.namtang.talkbook.service.CartService;
@@ -25,20 +26,18 @@ public class CartController {
     public ModelAndView index() {
         List<Cart> list = cartService.selectByUserIdx(1L);
 
-        return new ModelAndView("user/cart", "cartList", list);
+        return new ModelAndView("/user/cart", "cartList", list);
     }
 
     @RequestMapping("/insert")
-    public void insert(Cart cart) {
-        CartId cartId = new CartId();
-        cartId.setBookIdx(1L);
-        cartId.setUserIdx(3L);      ///
+    @ResponseBody
+    public String insert(CartSetRequest cart) {
+        Account account = new Account();
+        account.setAccountIdx(1L);
 
-        cart.setBookPrice(114000);
-        cart.setBookTitle("테스트");
-
-        cartService.insert(cart);
-
+        cartService.insert(cart,1L);
+        String result = JsonUtil.toJson(new ShopResponse(StatusCode.Success, "장바구니 추가되었습니다"));
+        return result;
     }
 
     @RequestMapping("/delete")

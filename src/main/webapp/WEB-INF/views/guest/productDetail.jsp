@@ -48,6 +48,47 @@
 
     </style>
     <script>
+
+        $(function () {
+            $("#add_cart").on('click' , function(){
+
+                let bookIdx = ${book.get().bookIdx};
+                let bookTitle = "${book.get().bookTitle}";
+                let bookPrice = ${book.get().bookPrice};
+                let bookImg = "${book.get().bookImg}";
+                let qty =$("#cate_amount option:selected").val();
+
+                let add_to = {
+                    bookIdx : bookIdx,
+                    bookTitle : bookTitle,
+                    bookImg : bookImg,
+                    bookPrice : bookPrice,
+                    qty : qty
+                }
+                console.log(add_to);
+
+                $.ajax({
+                    type : "get",
+                    url : "/cart/insert",
+                    dataType : "json",
+                    data : add_to,
+                    error : function(err){
+
+                        console.log(err);
+                    },
+                    success : function(result){
+                        // $("#content").html(Parse_data); //div에 받아온 값을 넣는다.
+                        if(result.statusCode === "Success") {
+                            alert(result.message);
+                        }
+
+                    }
+
+                });
+            });
+
+        })
+
         $(document).ready(function(){
             $('.starRev span').click(function(){
                 $(this).parent().children('span').removeClass('on');
@@ -115,8 +156,9 @@
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
+
                     <h3>${book.get().bookTitle}</h3>
-                    <h2>${book.get().bookPrice}</h2>
+                    <h2><fmt:formatNumber  value="${book.get().bookPrice}"  type="currency" /></h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : ${book.get().category.catgName}</a></li>
                         <li><a href="#"><span>Author</span> : ${book.get().bookAuthor}</a></li>
@@ -124,14 +166,24 @@
                     </ul>
                     <p>${book.get().bookDesc}</p>
                     <div class="product_count">
-                        <label for="qty">Quantity:</label>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
-                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:"
-                               class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
-                        <a class="button primary-btn" href="#">Add to Cart</a>
+                        <%--                        <label for="qty">Quantity:</label>--%>
+                        <h6>Quantity</h6>
+                        <select name="cate_amount" id='cate_amount'>
+                            <c:forEach begin="1" end="10" var="i">
+                                <option value="${i}">${i}</option>
+                            </c:forEach>
+
+                        </select>
+                        <p></p>
+                        <%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"--%>
+                        <%--                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--%>
+                        <%--                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">--%>
+
+                        <%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"--%>
+                        <%--                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>--%>
+
+                        &emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;<a class="button primary-btn" href="#" id="add_cart">Add to Cart</a>
+
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>

@@ -1,6 +1,7 @@
 <%@ page import="javax.naming.Context" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -425,6 +426,13 @@
                             </form>
                         </li>
                     </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>${item.category.catgName}</p>
+                    <h4 class="card-product__title"><a href="#">${item.bookTitle}</a></h4>
+                    <p class="card-product__price"><fmt:formatNumber  value="${item.bookPrice}"  type="currency" /></p>
+
+                  </div>
                 </div>
                 <%--          <div class="sidebar-filter">--%>
                 <%--            <div class="top-filter-head">Product Filters</div>--%>
