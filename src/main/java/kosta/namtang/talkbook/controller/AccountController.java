@@ -22,48 +22,50 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/account")
 public class AccountController {
 
-    @Autowired
-    AccountService accountService;
+    //@Autowired
+    //AccountService accountService;
 
-    @Autowired
-    PasswordEncoder pwEncoder;
+    //@Autowired
+    //PasswordEncoder pwEncoder;
 
     @PostMapping("")
     public ShopResponse purchase(@RequestBody UserSetRequest user) throws Exception {
-        ShopResponse result = null;
-        log.debug(user.toString());
-
-        Account account = accountService.createAccount(user);
-
-        if(account != null) {
-            // 구매 DB 입력 완료
-            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(account));
-        } else {
-            throw new Exception();
-        }
-
-        return result;
+//        ShopResponse result = null;
+//        log.debug(user.toString());
+//
+//        Account account = accountService.createAccount(user);
+//
+//        if(account != null) {
+//            // 구매 DB 입력 완료
+//            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(account));
+//        } else {
+//            throw new Exception();
+//        }
+//
+//        return result;
+        return null;
     }
 
     @PostMapping("/login")
     public ShopResponse login(@RequestBody UserSetRequest user) throws Exception {
-        ShopResponse result = null;
-        log.debug(user.toString());
-
-        Account acc = new Account();
-        acc.setUserId(user.getEmail());
-        acc.setUserPassword(user.getPassword());
-
-        Account account = accountService.login(acc);
-
-        if(account != null) {
-            // 구매 DB 입력 완료
-            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(account));
-        } else {
-            throw new Exception();
-        }
-
-        return result;
+//        ShopResponse result = null;
+//        log.debug(user.toString());
+//
+//        Account acc = new Account();
+//        acc.setUserId(user.getEmail());
+//        acc.setUserPassword(user.getPassword());
+//
+//        Account account = accountService.login(acc);
+//
+//        if(account != null) {
+//            // 구매 DB 입력 완료
+//            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(account));
+//        } else {
+//            throw new Exception();
+//        }
+//
+//        return result;
+        return null;
     }
 
 }

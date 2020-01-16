@@ -16,6 +16,68 @@
     <title>Aroma Shop - Product Details</title>
 </head>
 <body>
+<script>
+
+    // $(document).ready(function() {
+    //
+    //     var js_func = "alert('안녕하세요'); return false;";
+    //
+    //     var clickEvent = new Function(js_func);
+    //
+    //     $("#anchor_test2').attr('onclick', '').click(clickEvent);
+    //
+    // });
+
+
+    // $(document).on('click',".nice-select .list li",function(){
+    //     // alert($(".nice-select ul .option.selected").attr('data-value'));
+    //     // var result = qty($(this).attr('data-value'),$(this).parent().parent().next().val());
+    //     var result=$(this).attr('data-value');
+    //     $(this).parent().parent().parent().parent().next().text(result);
+    // });
+$(function () {
+    $("#add_cart").on('click' , function(){
+        let ex=sessionStorage.getItem("tp")
+        alert(ex);
+
+        let bookIdx = ${book.get().bookIdx};
+        let bookTitle = "${book.get().bookTitle}";
+        let bookPrice = ${book.get().bookPrice};
+        let bookImg = "${book.get().bookImg}";
+        let qty =$("#cate_amount option:selected").val();
+
+        let add_to = {
+            bookIdx : bookIdx,
+            bookTitle : bookTitle,
+            bookImg : bookImg,
+            bookPrice : bookPrice,
+            qty : qty
+        }
+        console.log(add_to);
+
+        $.ajax({
+            type : "get",
+            url : "/cart/insert",
+            dataType : "json",
+            data : add_to,
+            error : function(err){
+                // alert("전송실패");
+                console.log(err);
+            },
+            success : function(result){
+                // $("#content").html(Parse_data); //div에 받아온 값을 넣는다.
+                if(result.statusCode === "Success") {
+                    alert(result.message);
+                }
+
+            }
+
+        });
+    });
+
+})
+
+</script>
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="blog">
     <div class="container h-100">
@@ -64,13 +126,24 @@
                     </ul>
                     <p>${book.get().bookDesc}</p>
                     <div class="product_count">
-                        <label for="qty">Quantity:</label>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
-                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
-                        <a class="button primary-btn" href="#">Add to Cart</a>
+<%--                        <label for="qty">Quantity:</label>--%>
+                        <h6>Quantity</h6>
+                        <select name="cate_amount" id='cate_amount'>
+                            <c:forEach begin="1" end="10" var="i">
+                                <option value="${i}">${i}</option>
+                            </c:forEach>
+
+                        </select>
+    <p></p>
+<%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"--%>
+<%--                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--%>
+<%--                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">--%>
+
+<%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"--%>
+<%--                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>--%>
+
+    &emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;<a class="button primary-btn" href="#" id="add_cart">Add to Cart</a>
+
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
