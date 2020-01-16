@@ -17,22 +17,21 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Admin {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "ADMIN_SEQ_NO")
-	@SequenceGenerator(sequenceName = "ADMIN_SEQ_NO", name = "ADMIN_SEQ_NO", allocationSize = 1)
-	private int adminIdx;
-	
-	private String adminId;
-	private String adminPassword;
-	private String adminRoleName;
-	private int adminEnabled;
-	
-	public Admin(String adminId, String adminPassword) {
-		this.adminId = adminId;
-		this.adminPassword = adminPassword;
-	}
-	
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "ADMIN_SEQ_NO")
+    @SequenceGenerator(sequenceName = "ADMIN_SEQ_NO", name = "ADMIN_SEQ_NO", allocationSize = 1)
+    private int adminIdx;
+
+    private String adminId;
+    private String adminPassword;
+    private String adminRoleName;
+    private int adminEnabled;
+
+    public Admin(String adminId, String adminPassword) {
+        this.adminId = adminId;
+        this.adminPassword = adminPassword;
+    }
+
 
 }

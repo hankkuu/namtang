@@ -18,13 +18,13 @@ import java.sql.Timestamp;
 @Getter
 public class BillKey {
 
-	@Id
-	private String billKey;
-	@Column(name = "ISSUE_DATE", nullable = false)
-	private Timestamp issueDate;
-	@Column(name = "CANCEL_DATE", nullable = false)
-	private Timestamp cancelDate;
-	@Column(name = "UPDATE_DATE", nullable = false)
-	private Timestamp updateDate;
+    @Id
+    private String billKey;
+    @Column(name = "ISSUE_DATE", nullable = false)
+    private Timestamp issueDate;
+    @Column(name = "CANCEL_DATE", nullable = false)
+    private Timestamp cancelDate;
+    @Column(name = "UPDATE_DATE", nullable = false)
+    private Timestamp updateDate;
 
 }

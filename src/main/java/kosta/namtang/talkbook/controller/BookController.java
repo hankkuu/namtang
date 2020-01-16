@@ -104,6 +104,8 @@ public class BookController {
 
 
 
+
+
             ModelAndView mv = new ModelAndView();
 
             Optional<Book> book = bookService.BookDetail(id);

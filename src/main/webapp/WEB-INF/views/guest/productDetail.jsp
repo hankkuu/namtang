@@ -143,7 +143,8 @@
             <div>
                 <div>
                     <div class>
-                        <img class="img-fluid" src="${book.get().bookImg}" style="width: 250px;margin-right: 100px;border-top-width: 30px;margin-top: 70px;">
+                        <img class="img-fluid" src="${book.get().bookImg}"
+                             style="width: 250px;margin-right: 100px;border-top-width: 30px;margin-top: 70px;">
                     </div>
                     <!-- <div class="single-prd-item">
                         <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
@@ -200,37 +201,54 @@
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                   aria-selected="true">Description</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                   aria-controls="profile"
                    aria-selected="false">Specification</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                   aria-controls="contact"
                    aria-selected="false">Comments</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+                <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                   aria-controls="review"
                    aria-selected="false">Reviews</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-                    and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-                    Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
-                    London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
-                    officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
-                    job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
-                    showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
-                    child’s painting set for her birthday and it was with this that she produced her first significant work, a
-                    half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
+                <p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of
+                    all shapes
+                    and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick
+                    School in
+                    Reading at the age of 15, where she went to secretarial school and then into an insurance office.
+                    After moving to
+                    London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He
+                    was an
+                    officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before
+                    John took a
+                    job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours,
+                    and when
+                    showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently
+                    bought her a
+                    child’s painting set for her birthday and it was with this that she produced her first significant
+                    work, a
+                    half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It
+                    was aptly
                     named ‘Hangover’ by Beryl’s husband and</p>
-                <p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-                    more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-                    the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-                    more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
+                <p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are
+                    seeing
+                    more and more recipe books and Internet websites that are dedicated to the act of cooking for one.
+                    Divorce and
+                    the death of spouses or grown children leaving for college are all reasons that someone accustomed
+                    to cooking for
+                    more than one would suddenly need to learn how to adjust all the cooking practices utilized before
+                    into a
                     streamlined plan of cooking that is more efficient for one person creating less</p>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -320,8 +338,10 @@
                                         <a class="reply_btn" href="#">Reply</a>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut aliquip ex ea
                                     commodo</p>
                             </div>
                             <div class="review_item reply">
@@ -335,8 +355,10 @@
                                         <a class="reply_btn" href="#">Reply</a>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut aliquip ex ea
                                     commodo</p>
                             </div>
                             <div class="review_item">
@@ -350,8 +372,10 @@
                                         <a class="reply_btn" href="#">Reply</a>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut aliquip ex ea
                                     commodo</p>
                             </div>
                         </div>
@@ -359,25 +383,30 @@
                     <div class="col-lg-6">
                         <div class="review_box">
                             <h4>Post a comment</h4>
-                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
+                                  novalidate="novalidate">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                               placeholder="Your Full name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="Email Address">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
+                                        <input type="text" class="form-control" id="number" name="number"
+                                               placeholder="Phone Number">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
+                                        <textarea class="form-control" name="message" id="message" rows="1"
+                                                  placeholder="Message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
@@ -403,15 +432,20 @@
                                 <div class="rating_list">
                                     <h3>Based on 3 Reviews</h3>
                                     <ul class="list">
-                                        <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
                                                 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
                                                 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
                                                 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
                                                 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
                                                 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
                                     </ul>
                                 </div>
@@ -419,173 +453,132 @@
                         </div>
 
                         <c:choose>
-                        <c:when test="${fn:length(reviewcc) == 0}">
-                        <div class="review_list">
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-1.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>현재 리뷰 없음!</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                            <c:when test="${reviewcc eq null}">
+                                <div class="review_list">
+                                    <div class="review_item">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="img/product/review-1.png" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>현재 리뷰 없음!</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <p>리뷰 데이터 없음!</p>
                                     </div>
                                 </div>
-                                <p>리뷰 데이터 없음!</p>
-                            </div>
-                        </div>
-                        </c:when>
-                        <c:otherwise>
-                            <c:forEach var="reviewc" items="${reviewcc}">
-                            <div class="review_list">
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/review-1.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>${reviewc.reviewTitle}</h4>
-                                            <c:choose>
-                                                <c:when test="${reviewc.reviewScore == 2}">
-                                                    <i class="fa fa-star"></i>
-                                                </c:when>
-                                                <c:when test="${reviewc.reviewScore == 4}">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </c:when>
-                                                <c:when test="${reviewc.reviewScore == 6}">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </c:when>
-                                                <c:when test="${reviewc.reviewScore == 8}">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </c:when>
-                                                <c:when test="${reviewc.reviewScore == 10}">
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="reviewc" items="${reviewcc}">
+                                    <div class="review_list">
+                                        <div class="review_item">
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="img/product/review-1.png" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4>${reviewc.reviewIdx}</h4>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </c:when>
-                                            </c:choose>
+                                                </div>
+                                            </div>
+                                            <p>${reviewc.reviewContent}</p>
                                         </div>
                                     </div>
-                                    <p>${reviewc.reviewContent}</p>
-                                </div>
-                            </div>
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
 
 
+                        <%--
+                                                    <div class="review_item">
+                                                        <div class="media">
+                                                            <div class="d-flex">
+                                                                <img src="img/product/review-2.png" alt="">
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h4>Blake Ruiz</h4>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                            commodo</p>
+                                                    </div>
+                                                    <div class="review_item">
+                                                        <div class="media">
+                                                            <div class="d-flex">
+                                                                <img src="img/product/review-3.png" alt="">
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h4>Blake Ruiz</h4>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                            commodo</p>
+                                                    </div>
+                        --%>
 
 
-<%--
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-2.png" alt="">
+                        <div class="col-lg-6">
+                            <div class="review_box">
+                                <h4>Add a Review</h4>
+                                <p>Your Rating:</p>
+                                <ul class="list">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Outstanding</p>
+                                <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
+                                    <%--                                <div class="form-group">--%>
+                                    <%--                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>--%>
+                                    <%--                                </div>--%>
+                                    <div class="form-group">
+                                        <input class="form-control" name="reviewTitle" type="text"
+                                               placeholder="Enter Subject">
                                     </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                                    <div class="form-group">
+                                        <textarea class="form-control different-control w-100" name="reviewContent"
+                                                  id="textarea" cols="30" rows="5"
+                                                  placeholder="Enter Message"></textarea>
                                     </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-3.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
---%>
-
-<%--                    <div class="col-lg-6">--%>
-<%--                        <div class="review_box">--%>
-                    <div>
-                        <div>
-                            <h4>Add a Review</h4>
-                            <p>Your Rating:</p>
-<%--                            <ul class="list">--%>
-                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
-                                <div class="starRev" id="starRate">
-                                    <span class="starR on" id="half" onclick="clicka();">별1</span>
-                                    <span class="starR" id="one" onclick="clickb();">별2</span>
-                                    <span class="starR" id="onehalf" onclick="clickc();">별3</span>
-                                    <span class="starR" id="two" onclick="clickd();">별4</span>
-                                    <span class="starR" id="twohalf" onclick="clicke();">별5</span>
-                                </div>
-<%--                            <div class="starRev" id="starRate">--%>
-<%--                                <span class="starR1 on" id="half" onclick="clicka();">별1_왼쪽</span>--%>
-<%--                                <span class="starR2" id="one" onclick="clickb();">별1_오른쪽</span>--%>
-<%--                                <span class="starR1" id="onehalf" onclick="clickc();">별2_왼쪽</span>--%>
-<%--                                <span class="starR2" id="two" onclick="clickd();">별2_오른쪽</span>--%>
-<%--                                <span class="starR1" id="twohalf" onclick="clicke();">별3_왼쪽</span>--%>
-<%--                                <span class="starR2" id="three" onclick="clickf();">별3_오른쪽</span>--%>
-<%--                                <span class="starR1" id="threehalf" onclick="clickg();">별4_왼쪽</span>--%>
-<%--                                <span class="starR2" id="four" onclick="clickh();">별4_오른쪽</span>--%>
-<%--                                <span class="starR1" id="fourhalf" onclick="clicki();">별5_왼쪽</span>--%>
-<%--                                <span class="starR2" id="five" onclick="clickj();">별5_오른쪽</span>--%>
-<%--                            </div>--%>
-<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
-<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
-<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
-<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
-<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
-<%--                            </ul>--%>
-                            <p>Outstanding</p>
-<%--                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>--%>
-<%--                                </div>--%>
-                                <div class="form-group">
-                                    <input class="form-control" name="reviewTitle" type="text" placeholder="Enter Subject">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
-                                </div>
 
                                     <input type="hidden" name="reviewScore" id="reviewScore" value=2>
                                     <input type="hidden" name="bookIdx" value="${book.get().bookIdx}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-                                <div class="form-group text-center text-md-right mt-3">
-                                    <button type="submit" class="button button--active button-review">Submit Now</button>
-                                </div>
-                            </form>
+                                    <div class="form-group text-center text-md-right mt-3">
+                                        <button type="submit" class="button button--active button-review">Submit Now
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <!--================End Product Description Area =================-->
@@ -717,15 +710,12 @@
 <%--        var dd = "" + td.getDate();           //일--%>
 
 
-
 <%--        if(mm.length < 2) mm = "0" + mm;--%>
 
 <%--        if(dd.length < 2) dd = "0" + dd;--%>
 
 
-
 <%--        var Today = yyyy.toString() + mm + dd;--%>
-
 
 
 <%--        document.getElementById('todayDate').value = Today;--%>

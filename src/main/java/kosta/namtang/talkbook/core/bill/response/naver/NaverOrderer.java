@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class NaverOrderer {
 
-	@SerializedName("name")
-	private String name;
-	
-	@SerializedName("id")
-	private String id;
-	
-	@SerializedName("tel")
-	private String tel;
+    @SerializedName("name")
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    @SerializedName("id")
+    private String id;
 
-	public String getId() {
-		return id;
-	}
+    @SerializedName("tel")
+    private String tel;
 
-	public String getTel() {
-		return tel;
-	}
-	
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
 }

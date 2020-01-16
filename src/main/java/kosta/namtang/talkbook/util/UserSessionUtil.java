@@ -21,12 +21,12 @@ public class UserSessionUtil {
         }
         return true;
     }
-    
+
     public static void clearSession(HttpSession session) {
-    	if (getUserFromSession(session) == null) {
+        if (getUserFromSession(session) == null) {
             return;
         }
-    	
-    	session.invalidate();
+
+        session.invalidate();
     }
 }

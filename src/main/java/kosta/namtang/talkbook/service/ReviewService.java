@@ -17,15 +17,15 @@ public class ReviewService {
     private ReviewRepository repo;
 
 
-    public void insert(Review review){
+    public void insert(Review review) {
 
         repo.save(review);
 
     }
 
-    public List<Review> selectUser(Long idx){
+    public List<Review> selectUser(Long idx) {
 
-       List<Review> rv = repo.findByUserIdx(idx);
+        List<Review> rv = repo.findByUserIdx(idx);
 
 
         return rv;
@@ -37,9 +37,5 @@ public class ReviewService {
 
         return rv;
     }
-
-
-
-
 
 }

@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
         acc.setTermsAgreeDate(createDate);
         acc.setRole(RoleCode.Member);
         Account member = accountRepository.save(acc);
-        if(member == null) {
+        if (member == null) {
             throw new Exception();
         }
         Users user = new Users();
@@ -54,7 +54,7 @@ public class AccountServiceImpl implements AccountService {
         user.setCreateDate(createDate);
         user.setUpdateDate(createDate);
         Users u = userRepository.save(user);
-        if(u == null) {
+        if (u == null) {
             throw new Exception();
         }
 
@@ -64,7 +64,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void updateUser(Users user) {
         Optional<Users> u = userRepository.findById(user.getAccountIdx());
-        u.ifPresent( (update) -> {
+        u.ifPresent((update) -> {
             update.setUpdateDate(DateTimeHelper.timeStampNow());
             update.setUserAddress(user.getUserAddress());
             update.setUserAge(user.getUserAge());
@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void deleteAccount(Account acc) {
         Optional<Account> account = accountRepository.findById(acc.getAccountIdx());
-        account.ifPresent( (update) -> {
+        account.ifPresent((update) -> {
             update.setDeleteDate(DateTimeHelper.timeStampNow());
             accountRepository.save(update);
         });
@@ -90,14 +90,23 @@ public class AccountServiceImpl implements AccountService {
 
         // security로 대체된 기능
         Account a = accountRepository.findByUserId(account.getUserId());
-        if(a != null) {
+        if (a != null) {
             Boolean matched = pwEncoder.matches(account.getUserPassword(), a.getUserPassword());
-            if(matched == true) {
+            if (matched == true) {
                 return a;
             } else {
                 throw new Exception();
             }
         }
         return a;
+    }
+
+    @Override
+    public Boolean checkId(String id) {
+        Account acc = accountRepository.findByUserId(id);
+        if (acc != null) {
+            return true;
+        }
+        return false;
     }
 }

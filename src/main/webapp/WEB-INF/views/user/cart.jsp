@@ -1,13 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aroma Shop - Cart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aroma Shop - Cart</title>
     <script>
 
         var Total_Sum;
@@ -25,9 +25,9 @@
 
         <%--}--%>
 
-        $(document).on('click',".nice-select .list li",function(){
+        $(document).on('click', ".nice-select .list li", function () {
             // alert($(".nice-select ul .option.selected").attr('data-value'));
-            var result = qty($(this).attr('data-value'),$(this).parent().parent().next().val());
+            var result = qty($(this).attr('data-value'), $(this).parent().parent().next().val());
             $(this).parent().parent().parent().parent().next().text(result);
             $(this).parent().eq(0).parent().eq(0).parent().eq(0).parent().eq(0).parent().eq(0).children().eq(0).children().eq(0).text(Total_Sum);
             Sum();
@@ -49,14 +49,14 @@
             $("#priceSum").text(Sum);
         }
 
-        function qty(qty,bookIdx){
+        function qty(qty, bookIdx) {
             let sum;
             let tt = bookIdx;
 
             console.log(tt);
             let cart = {
-                qty : qty,
-                bookIdx : tt
+                qty: qty,
+                bookIdx: tt
             }
 
             console.log(cart);
@@ -162,20 +162,20 @@
 </head>
 <body>
 
-	<!-- ================ start banner area ================= -->	
-	<section class="blog-banner-area" id="category">
-		<div class="container h-100">
-			<div class="blog-banner">
-				<div class="text-center">
-					<h1>Shopping Cart</h1>
-					<nav aria-label="breadcrumb" class="banner-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
-            </ol>
-          </nav>
-				</div>
-			</div>
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="category">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Shopping Cart</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->

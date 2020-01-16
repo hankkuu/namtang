@@ -14,25 +14,25 @@ import java.util.List;
 @Setter
 public class PurchaseRequest {
 
-	private String imp_uid;
-	private String merchant_uid;
-	private String billKey;
-	private String paid_amount;
+    private String imp_uid;
+    private String merchant_uid;
+    private String billKey;
+    private String paid_amount;
 
-//	private long bookIdx;
+    //	private long bookIdx;
 //	private String bookName;
 //	private int bookCount;
 //	private BigDecimal price;
-	private List<Book> book;
-	
-	//private String imagebox;
-	//private BigDecimal totalPricae;
-	//private BigDecimal shippingPrice;
-	//private int paymentCode;
-	//private String
+    private List<Book> book;
 
-	private PurchaseOrder order;
-	private PurchasePayment payment;
+    //private String imagebox;
+    //private BigDecimal totalPricae;
+    //private BigDecimal shippingPrice;
+    //private int paymentCode;
+    //private String
+
+    private PurchaseOrder order;
+    private PurchasePayment payment;
 
 
 }

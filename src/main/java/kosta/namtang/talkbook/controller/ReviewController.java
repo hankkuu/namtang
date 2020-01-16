@@ -25,9 +25,8 @@ public class ReviewController {
     BookService bookService;
 
     @RequestMapping("reviewReg")
-    public ModelAndView insert(ReviewDTO dto){
-
-        // 리뷰 저장
+    public ModelAndView insert(ReviewDTO dto) {
+        System.out.println("들어오나?");
         String title = dto.getReviewTitle();
         String content = dto.getReviewContent();
         Long bookIdx = dto.getBookIdx();

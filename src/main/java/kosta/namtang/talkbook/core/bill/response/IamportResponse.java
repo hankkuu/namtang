@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class IamportResponse<T> {
 
-	@SerializedName("code")
-	int code;
-	
-	@SerializedName("message")
-	String message;
-	
-	@SerializedName("response")
-	T response;
+    @SerializedName("code")
+    int code;
 
-	public int getCode() {
-		return code;
-	}
+    @SerializedName("message")
+    String message;
 
-	public String getMessage() {
-		return message;
-	}
+    @SerializedName("response")
+    T response;
 
-	public T getResponse() {
-		return response;
-	}
-	
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public T getResponse() {
+        return response;
+    }
+
 }

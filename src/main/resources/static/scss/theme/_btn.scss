@@ -1,5 +1,5 @@
 /*=================== custo button rule start ====================*/
-.button{
+.button {
   display: inline-block;
   border: 1px solid $primary-color;
   border-radius: 30px;
@@ -10,111 +10,111 @@
   color: #fff;
   transition: all .4s ease;
 
-  @media(max-width: 767px){
-    padding: 8px 25px !important;    
+  @media(max-width: 767px) {
+    padding: 8px 25px !important;
   }
 
-  &-subscribe{
+  &-subscribe {
     // background: transparent;
     font-size: 14px;
     padding: 10px 20px;
 
-    @media(min-width: 800px){
+    @media(min-width: 800px) {
       padding: 12px 35px;
       font-size: 15px;
     }
   }
 
-  &-blog{
-    padding:5px 31px;
+  &-blog {
+    padding: 5px 31px;
     font-size: 14px;
     background: #f9f9ff;
     border-color: #EEEEEE;
     border-radius: 0;
     color: $title-color;
 
-    &:hover{
+    &:hover {
       background: $primary-color !important;
       color: #fff !important;
     }
   }
 
-  &-postComment{
+  &-postComment {
     border-radius: 4px;
     font-size: 14px;
     margin-top: 5px;
   }
 
-  &-contact{
+  &-contact {
     border-radius: 0;
     padding: 12px 26px;
   }
 
-  &-tracking{
+  &-tracking {
     font-size: 14px;
     padding: 8px 42px;
   }
 
-  &-login{
+  &-login {
     font-size: 15px;
     padding: 7px 44px;
   }
 
 
-  &-coupon{
+  &-coupon {
     font-size: 15px;
     padding: 6px 45px;
   }
 
-  &-paypal{
+  &-paypal {
     width: 100%;
     padding: 8px 30px;
   }
 
-  &-account{
+  &-account {
     padding: 7px 42px;
     background: transparent;
     border-color: #fff;
 
-    &:hover{
+    &:hover {
       border-color: #fff !important;
     }
   }
 
-  &-header{
+  &-header {
     padding: 10px 45px;
     background: transparent;
     color: $title-color;
     border-color: #EEEEEE;
   }
 
-  &-hero{
+  &-hero {
     padding: 12px 41px;
   }
 
-  &--active{
+  &--active {
     background: $primary-color;
     color: #fff;
   }
 
-  &-contactForm{
+  &-contactForm {
     border: 1px solid $primary-color !important;
     border-radius: 0;
     padding: 11px 26px;
   }
 
-  &-review{
+  &-review {
     padding: 12px 40px;
     border-radius: 30px;
   }
 
-  &:hover{
+  &:hover {
     border-color: $primary-color;
     background: transparent;
     color: $title-color;
   }
 
-  &-register{
+  &-register {
     font-size: 14px;
     border: 0;
     border-radius: 0;
@@ -122,7 +122,7 @@
     text-transform: uppercase;
     background: #c5322d;
 
-    &:hover{
+    &:hover {
       background: #c5322d;
       opacity: .7;
       color: #fff;

@@ -17,5 +17,4 @@ public class CartId implements Serializable {
     private Long bookIdx;
 
 
-
 }

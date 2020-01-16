@@ -26,31 +26,35 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 //    public Page<Book> findAllByOrderByBookPriceDesc(Pageable pageable);
 //    public Page<Book> findAllByOrderByBookPubdate(Pageable pageable);
 
-    public Page<Book> findAllByBookTitle(String Word,Pageable pageable);
-    public Page<Book> findAllByBookAuthor(String Word,Pageable pageable);
-    public Page<Book> findAllByBookPublisher(String Word,Pageable pageable);
+    public Page<Book> findAllByBookTitle(String Word, Pageable pageable);
 
-    public Page<Book> findByCategoryAndBookTitleLike(Optional<Category> category, String Word,Pageable pageable);
-    public Page<Book> findByCategoryAndBookAuthorLike(Optional<Category> category, String Word,Pageable pageable);
-    public Page<Book> findByCategoryAndBookPublisherLike(Optional<Category> category, String Word,Pageable pageable);
+    public Page<Book> findAllByBookAuthor(String Word, Pageable pageable);
+
+    public Page<Book> findAllByBookPublisher(String Word, Pageable pageable);
+
+    public Page<Book> findByCategoryAndBookTitleLike(Optional<Category> category, String Word, Pageable pageable);
+
+    public Page<Book> findByCategoryAndBookAuthorLike(Optional<Category> category, String Word, Pageable pageable);
+
+    public Page<Book> findByCategoryAndBookPublisherLike(Optional<Category> category, String Word, Pageable pageable);
 
     @Query("select b from Book As b where b.category = ?1 And b.bookTitle like ?2")
-    public Page<Book> searchByTitle(Optional<Category> category, String Word,Pageable pageable);
+    public Page<Book> searchByTitle(Optional<Category> category, String Word, Pageable pageable);
 
     @Query("select b from Book As b where b.category = ?1 And b.bookAuthor like ?2")
-    public Page<Book> searchByAuthor(Optional<Category> category, String Word,Pageable pageable);
+    public Page<Book> searchByAuthor(Optional<Category> category, String Word, Pageable pageable);
 
     @Query("select b from Book As b where b.category = ?1 And b.bookPublisher like ?2")
-    public Page<Book> searchByPublisher(Optional<Category> category, String Word,Pageable pageable);
+    public Page<Book> searchByPublisher(Optional<Category> category, String Word, Pageable pageable);
 
     @Query("select b from Book As b where b.bookTitle like ?1")
-    public Page<Book> searchByTitleAll(String Word,Pageable pageable);
+    public Page<Book> searchByTitleAll(String Word, Pageable pageable);
 
     @Query("select b from Book As b where b.bookAuthor like ?1")
-    public Page<Book> searchByAuthorAll(String Word,Pageable pageable);
+    public Page<Book> searchByAuthorAll(String Word, Pageable pageable);
 
     @Query("select b from Book As b where b.bookPublisher like ?1")
-    public Page<Book> searchByPublisherAll(String Word,Pageable pageable);
+    public Page<Book> searchByPublisherAll(String Word, Pageable pageable);
 
 
 }
