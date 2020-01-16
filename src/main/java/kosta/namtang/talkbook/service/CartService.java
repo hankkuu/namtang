@@ -37,7 +37,7 @@ public class CartService {
     }
 
     //추가
-    public void insert(CartSetRequest cart,long userIdx) {
+    public void insert(CartSetRequest cart,Long userIdx) {
         Cart c = new Cart();
         c.setCartId(new CartId(userIdx, cart.getBookIdx()));
         c.setCreateDate(LocalDateTime.now());
@@ -49,8 +49,8 @@ public class CartService {
 
     }
 
-    public Cart update(CartSetRequest cart, Account account) throws Exception {
-        Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(account.getAccountIdx(),cart.getBookIdx());
+    public Cart update(CartSetRequest cart,Long userIdx) throws Exception {
+        Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(userIdx,cart.getBookIdx());
         if(c != null) {
             c.setQty(cart.getQty());
             cartRepository.save(c);

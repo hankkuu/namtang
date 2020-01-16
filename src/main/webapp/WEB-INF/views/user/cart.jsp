@@ -284,7 +284,7 @@
 
                       <div class="checkout_btn_inner d-flex align-items-center">
                           <a class="button primary-btn" href="#">계속 쇼핑하기</a>
-                          <a class="button primary-btn ml-2" href="#" onclick="check()" id="purchase_btn">결제하기</a>
+                          <a class="button primary-btn ml-2" href="/user/purchase" onclick="check()" id="purchase_btn">결제하기</a>
 
                       </div>
                   </td>
