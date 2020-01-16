@@ -244,7 +244,7 @@
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
 								<input type="text" id="userAddress" name="userAddress" value="주소" readonly/>
-								<input type="text" id="userAddressDetail" name="userAddressDetail" value="상세주소" style="width:355px;" placeholder="상세주소"/>
+								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
 							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">

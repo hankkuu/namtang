@@ -49,4 +49,10 @@ public class AccountViewController {
         return view;
     }
     
+    @RequestMapping("update")
+    public ModelAndView update(){
+        log.debug("update");
+        ModelAndView view = new ModelAndView("/guest/update");
+        return view;
+    }
 }
