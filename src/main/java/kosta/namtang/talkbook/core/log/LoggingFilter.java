@@ -14,7 +14,7 @@ public class LoggingFilter implements Filter {
                          final FilterChain chain) throws IOException, ServletException {
         final String url = ((HttpServletRequest) req).getRequestURI();
 
-        if(url.matches("/(health|.+\\.(ico|js|css|jpg|png|woff|woff2))")) {
+        if (url.matches("/(health|.+\\.(ico|js|css|jpg|png|woff|woff2))")) {
             req.setAttribute("ignoreLogging", true);
         }
 
@@ -22,8 +22,10 @@ public class LoggingFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) {}
+    public void init(FilterConfig filterConfig) {
+    }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+    }
 }

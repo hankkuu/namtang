@@ -40,7 +40,7 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("admin");
 
         http.formLogin()
-        .loginPage("/adminLoginForm").failureUrl("/adminLoginForm?error=loginError")
+                .loginPage("/adminLoginForm").failureUrl("/adminLoginForm?error=loginError")
                 .defaultSuccessUrl("/admin/dashBoard");
         // .loginProcessingUrl("/admin/adminloginCheck")
         //.defaultSuccessUrl("/admin/dashBoard", true)

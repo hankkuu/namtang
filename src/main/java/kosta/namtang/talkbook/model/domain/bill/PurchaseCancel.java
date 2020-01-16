@@ -18,20 +18,20 @@ import java.util.Date;
 @NoArgsConstructor
 public class PurchaseCancel {
 
-	@EmbeddedId
-	private PurchaseBookId purchaseBookId;
+    @EmbeddedId
+    private PurchaseBookId purchaseBookId;
 
-	@Column(name = "PRICE", nullable = false)
-	private BigDecimal price;
-	@Column(name = "REASON", nullable = false)
-	private String reason;
-	private int count;
-	private int refundCode;
-	@Column(name = "CREATE_DATE", nullable = false)
-	private Timestamp createDate;
-	@Column(name = "UPDATE_DATE", nullable = false)
-	private Timestamp updateDate;
-	@Column(name = "BILL_KEY", nullable = false)
-	private String billKey;
+    @Column(name = "PRICE", nullable = false)
+    private BigDecimal price;
+    @Column(name = "REASON", nullable = false)
+    private String reason;
+    private int count;
+    private int refundCode;
+    @Column(name = "CREATE_DATE", nullable = false)
+    private Timestamp createDate;
+    @Column(name = "UPDATE_DATE", nullable = false)
+    private Timestamp updateDate;
+    @Column(name = "BILL_KEY", nullable = false)
+    private String billKey;
 
 }

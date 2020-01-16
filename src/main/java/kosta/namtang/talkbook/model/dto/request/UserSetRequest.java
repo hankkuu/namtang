@@ -11,13 +11,13 @@ import javax.validation.constraints.Email;
 @Setter
 public class UserSetRequest {
 
-	@Email
-	private String email;
-	private String password;
-	private String userName;
-	private String sex;
-	private String age;
-	private String phone;
-	private String address;
-	
+    @Email
+    private String email;
+    private String password;
+    private String userName;
+    private String sex;
+    private String age;
+    private String phone;
+    private String address;
+
 }

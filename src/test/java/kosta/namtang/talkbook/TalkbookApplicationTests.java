@@ -42,88 +42,87 @@ import static java.lang.System.*;
 @SpringBootTest
 class TalkbookApplicationTests {
 
-	@Autowired
-	private BookRepository bookRepo;
-	@Autowired
-	private CategoryRepository catgRepo;
+    @Autowired
+    private BookRepository bookRepo;
+    @Autowired
+    private CategoryRepository catgRepo;
 
-//	@Transactional
-	@Test
-	void contextLoads() throws UnsupportedEncodingException {
+    //	@Transactional
+    @Test
+    void contextLoads() throws UnsupportedEncodingException {
 
-		StringBuilder sb;
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setNamespaceAware(true);
-		DocumentBuilder builder;
-		Document doc;
+        StringBuilder sb;
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder;
+        Document doc;
 
-		String clientId = "7FZwEYvppDhLr3RUcauR";// 애플리케이션 클라이언트 아이디값";
-		String clientSecret = "fy7bRsApnt";// 애플리케이션 클라이언트 시크릿값";\
-		String text = URLEncoder.encode("책이있는풍경", "UTF-8");
+        String clientId = "7FZwEYvppDhLr3RUcauR";// 애플리케이션 클라이언트 아이디값";
+        String clientSecret = "fy7bRsApnt";// 애플리케이션 클라이언트 시크릿값";\
+        String text = URLEncoder.encode("책이있는풍경", "UTF-8");
 //        int display = 100; // 검색결과갯수. 최대100개
-		//문학과지성사
-		//난다
-		//밝은세상
+        //문학과지성사
+        //난다
+        //밝은세상
 
-		String catgNum = "110100";
-		Long catgNumId = 10L;
-		//대상 카테고리
+        String catgNum = "110100";
+        Long catgNumId = 10L;
+        //대상 카테고리
 
-		Category category = catgRepo.findById(catgNumId).orElse(null);
+        Category category = catgRepo.findById(catgNumId).orElse(null);
 //			out.println(category);
 
-		try {
+        try {
 //			String apiURL = "https://openapi.naver.com/v1/search/book.xml?query=java&display=2&start=1";
-			//기본검색
+            //기본검색
 //			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=110010&d_cont=2017&display=100&start=1";
 //			한글깨짐
-			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg="+catgNum+"&d_publ="+text+"&display=100&start=1";
-			//상세검색
+            String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=" + catgNum + "&d_publ=" + text + "&display=100&start=1";
+            //상세검색
 
-			URL url = new URL(apiURL);
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setRequestMethod("GET");
-			con.setRequestProperty("X-Naver-Client-Id", clientId);
-			con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-			int responseCode = con.getResponseCode();
-			BufferedReader br;
-			if (responseCode == 200) {
-				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			} else {
-				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-			}
-			sb = new StringBuilder();
-			String line;
-			String result = "";
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("X-Naver-Client-Id", clientId);
+            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+            int responseCode = con.getResponseCode();
+            BufferedReader br;
+            if (responseCode == 200) {
+                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            } else {
+                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            }
+            sb = new StringBuilder();
+            String line;
+            String result = "";
 
-			while ((line = br.readLine()) != null) {
-				sb.append(line + "\n");
-				result = result + line.trim();
-			}
-			br.close();
-			con.disconnect();
+            while ((line = br.readLine()) != null) {
+                sb.append(line + "\n");
+                result = result + line.trim();
+            }
+            br.close();
+            con.disconnect();
             System.out.println(sb);
 
 
+            // xml 파싱하기
+            InputSource is = new InputSource(new StringReader(result));
+            builder = factory.newDocumentBuilder();
+            doc = builder.parse(is);
+            XPathFactory xpathFactory = XPathFactory.newInstance();
+            XPath xpath = xpathFactory.newXPath();
+            // XPathExpression expr = xpath.compile("/response/body/items/item");
+            XPathExpression expr = xpath.compile("//item");
+            NodeList nodeList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
 
-			// xml 파싱하기
-			InputSource is = new InputSource(new StringReader(result));
-			builder = factory.newDocumentBuilder();
-			doc = builder.parse(is);
-			XPathFactory xpathFactory = XPathFactory.newInstance();
-			XPath xpath = xpathFactory.newXPath();
-			// XPathExpression expr = xpath.compile("/response/body/items/item");
-			XPathExpression expr = xpath.compile("//item");
-			NodeList nodeList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
-
-			String author= null;
-			String desc= null;
-			String img= null;
-			String isbn= null;
-			BigDecimal price = null;
-			String pubdate= null;
-			String publisher= null;
-			String title = null;
+            String author = null;
+            String desc = null;
+            String img = null;
+            String isbn = null;
+            BigDecimal price = null;
+            String pubdate = null;
+            String publisher = null;
+            String title = null;
 
 //			catgRepo.save(new Category(1L,"한국시",null));
 //			catgRepo.save(new Category(2L,"외국시",null));
@@ -137,11 +136,10 @@ class TalkbookApplicationTests {
 //			catgRepo.save(new Category(10L,"삶의 지혜/명언",null));
 
 
-
-			for (int i = 0; i < nodeList.getLength(); i++) {
-				NodeList child = nodeList.item(i).getChildNodes();
-				for (int j = 0; j < child.getLength(); j++) {
-					Node node = child.item(j);
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                NodeList child = nodeList.item(i).getChildNodes();
+                for (int j = 0; j < child.getLength(); j++) {
+                    Node node = child.item(j);
 
 //					System.out.println("현재 노드 이름 : " + node.getNodeName());
 //					System.out.println("현재 노드 타입 : " + node.getNodeType());
@@ -150,34 +148,32 @@ class TalkbookApplicationTests {
 //					System.out.println("현재 노드의 다음 노드 : " + node.getNextSibling());
 //					System.out.println();
 
-					if(j==0) {
-						title = node.getTextContent();
-						out.println(title);
-					} else if(j==2) {
-						img = node.getTextContent();
-						out.println(img);
-					}
-					else if(j==3) author = node.getTextContent();
-					else if(j==4) price = new BigDecimal(node.getTextContent());
-					else if(j==6) {
-						publisher = node.getTextContent();
-						publisher = publisher.replace("<b>", "");
-						publisher = publisher.replace("</b>", "");
-					}
-					else if(j==7) pubdate = node.getTextContent();
-					else if(j==8) isbn = node.getTextContent();
-					else if(j==9) desc = node.getTextContent();
-				}
-				Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, 0, isbn, category);
+                    if (j == 0) {
+                        title = node.getTextContent();
+                        out.println(title);
+                    } else if (j == 2) {
+                        img = node.getTextContent();
+                        out.println(img);
+                    } else if (j == 3) author = node.getTextContent();
+                    else if (j == 4) price = new BigDecimal(node.getTextContent());
+                    else if (j == 6) {
+                        publisher = node.getTextContent();
+                        publisher = publisher.replace("<b>", "");
+                        publisher = publisher.replace("</b>", "");
+                    } else if (j == 7) pubdate = node.getTextContent();
+                    else if (j == 8) isbn = node.getTextContent();
+                    else if (j == 9) desc = node.getTextContent();
+                }
+                Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, 0, isbn, category);
 //					System.out.println(book);
-				bookRepo.save(book);
-			}
+                bookRepo.save(book);
+            }
 
 
-		} catch (Exception e) {
-			out.print(e.getMessage());
-		}
+        } catch (Exception e) {
+            out.print(e.getMessage());
+        }
 
-	}
+    }
 }
 

@@ -14,16 +14,17 @@ import kosta.namtang.talkbook.repository.AdminRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private AdminRepository adminRepository;
+    @Autowired
+    private AdminRepository adminRepository;
 
     public UserDetailsServiceImpl() {
-    	System.out.println("UserDetailsServiceImpl 생성자............");
+        System.out.println("UserDetailsServiceImpl 생성자............");
     }
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("loadUserByUsername(String username)  : username : " + username);
 
 //		  Optional<AccountModel> accountModelOptional = repository.findByUsername(username);
@@ -37,11 +38,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //		  	throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
 //		  }
 
-		Admin admin = adminRepository.findByAdminId(username);
-		System.out.println("admin : " + admin);
+        Admin admin = adminRepository.findByAdminId(username);
+        System.out.println("admin : " + admin);
 
-		return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
-		//return null;
-	}
+        return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
+        //return null;
+    }
 
 }

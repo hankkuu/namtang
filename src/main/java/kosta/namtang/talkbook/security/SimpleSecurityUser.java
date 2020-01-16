@@ -17,7 +17,7 @@ import java.util.List;
 @Getter
 public class SimpleSecurityUser extends User {
 
-    private static final String ROLE_PREFIX ="ROLE_";
+    private static final String ROLE_PREFIX = "ROLE_";
 
     private Account account;
     private String accountId;

@@ -16,19 +16,19 @@ import javax.servlet.http.HttpSession;
 public class PurchaseViewController {
 
 
-	@RequestMapping("/purchase")
-	public ModelAndView checkout(){
-		log.debug("purchase");
+    @RequestMapping("/purchase")
+    public ModelAndView checkout() {
+        log.debug("purchase");
 
-		ModelAndView view = new ModelAndView("/user/checkout");
-		return view;
-	}
+        ModelAndView view = new ModelAndView("/user/checkout");
+        return view;
+    }
 
-	@RequestMapping("/confirmation")
-	public ModelAndView confirmation(){
-		log.debug("confirmation");
-		ModelAndView view = new ModelAndView("/user/confirmation");
-		return view;
-	}
+    @RequestMapping("/confirmation")
+    public ModelAndView confirmation() {
+        log.debug("confirmation");
+        ModelAndView view = new ModelAndView("/user/confirmation");
+        return view;
+    }
 
 }

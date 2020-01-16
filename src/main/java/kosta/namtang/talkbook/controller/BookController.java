@@ -98,9 +98,6 @@ public class BookController {
 
     @RequestMapping("/BookDetail")
         ModelAndView catgCall(@RequestParam Long id) {
-//            HttpServletRequest request 써서
-//            유저인덱스 가져오기
-//            Object object = request.getSession().getAttribute("userIdx");
 
 
 

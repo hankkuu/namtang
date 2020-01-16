@@ -7,10 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface PurchaseBookRepository extends CrudRepository<PurchaseBook, PurchaseBookId> {
-	
-	List<PurchaseBook> findByPurchaseBookIdPurchaseOrderIdx(long orderIdx);
 
-	PurchaseBook findByPurchaseBookIdBookIdx(long bookIdx);
+    List<PurchaseBook> findByPurchaseBookIdPurchaseOrderIdx(long orderIdx);
+
+    PurchaseBook findByPurchaseBookIdBookIdx(long bookIdx);
 //
 //	int update(PurchaseGoodsDTO dto);
 }

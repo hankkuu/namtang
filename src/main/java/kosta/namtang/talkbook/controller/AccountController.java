@@ -12,10 +12,7 @@ import kosta.namtang.talkbook.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -32,7 +29,7 @@ public class AccountController {
 
         Account account = accountService.createAccount(user);
 
-        if(account != null) {
+        if (account != null) {
             // 구매 DB 입력 완료
             result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(account));
         } else {
@@ -40,6 +37,18 @@ public class AccountController {
         }
 
         return result;
+    }
+
+    @GetMapping("/checkId")
+    public ShopResponse checkId(String id) {
+        log.debug(id);
+
+        Boolean result = accountService.checkId(id);
+        if (result == true)
+            return new ShopResponse(StatusCode.Success, "중복 ID 입니다");
+        else
+            return new ShopResponse(StatusCode.Fail, "사용가능합니다 ID 입니다");
+
     }
 
     // Security로 대체

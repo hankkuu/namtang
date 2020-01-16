@@ -15,14 +15,14 @@ import java.util.List;
 public class AccountViewController {
 
     @RequestMapping("/login")
-    public ModelAndView login(){
+    public ModelAndView login() {
         log.debug("login");
         ModelAndView view = new ModelAndView("/guest/login");
         return view;
     }
 
     @RequestMapping("/register")
-    public ModelAndView register(){
+    public ModelAndView register() {
         log.debug("register");
         ModelAndView view = new ModelAndView("/guest/register");
         return view;

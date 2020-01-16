@@ -32,9 +32,9 @@ public class SimpleUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 
         String userType = (String) RequestContextHolder.getRequestAttributes().getAttribute(USER_TYPE, RequestAttributes.SCOPE_SESSION);
-        log.debug("user type :" +userType);
+        log.debug("user type :" + userType);
 
-        if("admin".equals(userType) == true) {
+        if ("admin".equals(userType) == true) {
             Admin admin = adminRepository.findByAdminId(id);
             SimpleSecurityUser user = new SimpleSecurityUser(admin);
             //return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
@@ -42,7 +42,7 @@ public class SimpleUserService implements UserDetailsService {
         }
 
         Account acc = accountRepository.findByUserId(id);
-        if(acc != null) {
+        if (acc != null) {
             acc.setLastLoginDate(DateTimeHelper.timeStampNow());
             accountRepository.save(acc);
         }
