@@ -86,4 +86,31 @@ public class ReviewController {
         return mv;
 
     }
+
+    @RequestMapping("/reviewDel")
+    public String delete(@RequestParam String reviewTitle, @RequestParam String reviewContent, Long bookIdx, HttpServletRequest req){
+
+        Object idxobj = req.getSession().getAttribute("userIdx");
+        String idxstr = (String) idxobj;
+        Long uIdx = Long.valueOf(idxstr);
+
+        // 리뷰 저장
+        Review review = new Review(null, uIdx, reviewTitle, reviewContent, bookIdx, 2, null, null);
+
+        service.delete(review);
+
+        // 저장 후 페이지 돌아오기
+        ModelAndView mv = new ModelAndView();
+        Optional<Book> book = bookService.BookDetail(bookIdx);
+        mv.addObject("book", book);
+        mv.setViewName("/guest/productDetail");
+
+        //리뷰 뿌리기
+        List<Review> rv = service.selectReview(bookIdx);
+        mv.addObject("reviewcc", rv);
+
+        return "good";
+
+    }
+
 }

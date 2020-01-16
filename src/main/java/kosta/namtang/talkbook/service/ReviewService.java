@@ -57,7 +57,17 @@ public class ReviewService {
         return rv;
     }
 
+    public void delete(Review review) {
 
+        List<Review> reviews = repo.findByBookIdx(review.getBookIdx());
+        for (Review a : reviews) {
+            if (a.getUserIdx() == review.getUserIdx()) {
+
+                    repo.delete(a);
+
+            }
+        }
+    }
 
 
 

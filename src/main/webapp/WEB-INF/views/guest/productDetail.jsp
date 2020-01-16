@@ -80,9 +80,36 @@
             $("#reviewScore").val(10);
         }
 
-        function moveScroll() {
-            let rt = $("#updateB").parent().children().children().next().children().next().text();
-            let rc = $("#updateB").prev().text();
+        // $(document).ready(function () {
+        //     $("#updateB").on("click",function () {
+        //         let rt = $(this).parent().children().children().next().children().next().text();
+        //         let rc = $(this).prev().text();
+        //
+        //         $("#titleForm").empty();
+        //         $("#textarea").empty();
+        //
+        //         $("#titleForm").val(rt);
+        //         $("#textarea").append(rc);
+        //
+        //         //$("#formRoot").contents().unwrap().wrap("<form action='/reviewModi' class='form-contact form-review mt-3' id='formRoot' method='post'>");
+        //         $("#formRoot").attr("action", "/reviewModi");
+        //         $("#h4").text("리뷰 수정하기");
+        //         $("#submitForm").text("수정하기");
+        //
+        //         var menuHeight = 450;
+        //
+        //         var location = document.querySelector("#submitForm").offsetTop;
+        //
+        //         window.scrollTo({top: location + menuHeight, behavior: 'smooth'});
+        //
+        //
+        //     });
+        // });
+
+
+        function moveScroll(a) {
+            let rt = $(a).parent().children().children().next().children().next().text();
+            let rc = $(a).prev().text();
 
             $("#titleForm").empty();
             $("#textarea").empty();
@@ -100,6 +127,33 @@
             var location = document.querySelector("#submitForm").offsetTop;
 
             window.scrollTo({top: location + menuHeight, behavior: 'smooth'});
+
+        }
+
+        function deleteReview(b) {
+            var reviewTitlef = $(b).parent().children().children().next().children().next().text();
+            var reviewContentf = $(b).prev().prev().text();
+            var reviewBookIdx = $("#thisBookIdx").val();
+
+            var ajaxContent = {
+                reviewTitle: reviewTitlef,
+                reviewContent: reviewContentf,
+                bookIdx: reviewBookIdx
+            }
+
+            $.ajax({
+                url: "/reviewDel",
+                type: "GET",
+                data: ajaxContent,
+                dataType: "text",
+                success: function (result) {
+                alert(result);
+                },
+                error: function (err) {
+                    location.reload();
+                }
+
+            })
 
         }
 
@@ -496,8 +550,8 @@
                                             <p>${reviewc.reviewContent}</p>
                                             <c:choose>
                                                 <c:when test="${reviewc.userIdx == sessionScope.userIdx}">
-                                                    <input type="button" value="수정하기" id="updateB"
-                                                           onclick="moveScroll()">
+                                                    <input type="button" value="수정하기" id="updateB" onclick="moveScroll(this)">
+                                                    <input type="button" value="삭제하기" id="deleteB" onclick="deleteReview(this)">
                                                 </c:when>
                                                 <c:otherwise>
                                                     <div></div>
@@ -606,7 +660,7 @@
                                     </div>
 
                                     <input type="hidden" name="reviewScore" id="reviewScore" value=2>
-                                    <input type="hidden" name="bookIdx" value="${book.get().bookIdx}">
+                                    <input type="hidden" name="bookIdx" id="thisBookIdx" value="${book.get().bookIdx}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
                                     <div class="form-group text-center text-md-right mt-3">
