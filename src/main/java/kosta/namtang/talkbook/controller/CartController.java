@@ -50,7 +50,7 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
     @ResponseBody
     public String update(CartSetRequest cart) throws Exception {
         Account account = new Account();

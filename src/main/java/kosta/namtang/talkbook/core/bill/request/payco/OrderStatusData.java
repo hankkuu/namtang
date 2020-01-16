@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class OrderStatusData {
 
-	@SerializedName("status")
-	private String status;
-	
-	public OrderStatusData(String status) {
-		this.status = status;
-	}
-	
+    @SerializedName("status")
+    private String status;
+
+    public OrderStatusData(String status) {
+        this.status = status;
+    }
+
 }

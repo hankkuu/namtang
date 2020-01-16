@@ -102,6 +102,9 @@ public class BookController {
 //            유저인덱스 가져오기
 //            Object object = request.getSession().getAttribute("userIdx");
 
+        Optional<Book> book = bookService.BookDetail(id);
+        mv.addObject("book", book);
+        mv.setViewName("/guest/productDetail");
 
 
             ModelAndView mv = new ModelAndView();

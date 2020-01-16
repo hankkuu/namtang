@@ -40,8 +40,8 @@ public class CartService {
     }
 
     public Cart update(CartSetRequest cart, Account account) throws Exception {
-        Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(account.getAccountIdx(),cart.getBookIdx());
-        if(c != null) {
+        Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(account.getAccountIdx(), cart.getBookIdx());
+        if (c != null) {
             c.setQty(cart.getQty());
             cartRepository.save(c);
 
@@ -57,7 +57,7 @@ public class CartService {
     //삭제
     public void delete(Long userIdx, Long bookIdx) {
         Cart c = cartRepository.findByCartIdUserIdxAndCartIdBookIdx(userIdx, bookIdx);
-        if(c != null) {
+        if (c != null) {
             cartRepository.delete(c);
         }
         //cartRepository.deleteByCartIdUserIdxAndCartIdBookIdx(userIdx, bookIdx);

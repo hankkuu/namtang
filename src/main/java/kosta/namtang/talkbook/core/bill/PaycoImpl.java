@@ -12,11 +12,11 @@ import retrofit2.http.Path;
 
 public interface PaycoImpl {
 
-	@POST("/payco/orders/status/{imp_uid}")
-	Call<IamportResponse<OrderStatus>> updateStatus(
-		@Header("Authorization") String token,
-		@Path("imp_uid") String imp_uid,
-		@Body OrderStatusData statusData
-	);
-	
+    @POST("/payco/orders/status/{imp_uid}")
+    Call<IamportResponse<OrderStatus>> updateStatus(
+            @Header("Authorization") String token,
+            @Path("imp_uid") String imp_uid,
+            @Body OrderStatusData statusData
+    );
+
 }

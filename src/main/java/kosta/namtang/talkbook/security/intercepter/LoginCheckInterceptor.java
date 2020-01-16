@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Slf4j
-public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
+public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -19,7 +19,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 
         Enumeration<String> en = request.getSession().getAttributeNames();
 
-        while(en.hasMoreElements()){
+        while (en.hasMoreElements()) {
             String name = en.nextElement();
             log.info("NAME: " + name);
             log.info("" + request.getSession().getAttribute(name));
@@ -28,8 +28,8 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 
         String dest = request.getParameter("dest");
 
-        if(dest != null){
-            request.getSession().setAttribute("dest",  dest);
+        if (dest != null) {
+            request.getSession().setAttribute("dest", dest);
         }
 
         return super.preHandle(request, response, handler);

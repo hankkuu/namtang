@@ -41,8 +41,6 @@ public class Review {
     private Date reviewModify;
 
 
-
-
 //    리뷰테이블
 //
 //    작성자
@@ -54,7 +52,6 @@ public class Review {
 //    수정일
 
 
-
 //    리뷰 테이블
 //    인덱스 pk - review_idx (number)
 //    리뷰 제목 - review_title (varchar2)
@@ -64,7 +61,6 @@ public class Review {
 //    리뷰 평점 - review_score (number)
 //    리뷰 작성자 ID FK - reviewer_id (varchar2)
 //    (user 테이블의 user_id 사용)
-
 
 
 }

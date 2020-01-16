@@ -14,7 +14,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "Book_seq_no")
-    @SequenceGenerator(sequenceName = "Book_seq_no",name="Book_seq_no",allocationSize = 1)
+    @SequenceGenerator(sequenceName = "Book_seq_no", name = "Book_seq_no", allocationSize = 1)
     private Long bookIdx;
     private String bookTitle;
     private String bookImg;
@@ -27,7 +27,7 @@ public class Book {
     private String bookIsbn;
 
     @ManyToOne
-    @JoinColumn(name="catgIdx")
+    @JoinColumn(name = "catgIdx")
     private Category category;
 
 }
