@@ -146,52 +146,56 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>개인정보 수정</h3>
-						<form class="row login_form" action="#/" id="register_form" >
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+						<form class="row login_form" action="/#" id="register_form" method="post">
+							<div class="col-md-12 form-group" id="userIdC">
+								<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디" onblur="this.placeholder = '아이디'">
+								<input type="button" name="confitm-id" class="confitm-id" value="중복확인" >	
 			                </div>
+			                
+			                <div class="check_font" id="checkId"></div>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userPassword" name="userPassword" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
+								<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
 			                </div>
 			                <p id="textP"></p>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
+								<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
 							</div>
 							<div class="pw" id="pw-success">비밀번호가 일치합니다.</div>
 							<div class="pw" id="pw-fail">비밀번호가 일치하지 않습니다.</div>
+							<!-- <div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+			                </div> -->
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="sex-div">
-									<input type="radio" id="name" name="userSex" class="input_radio"value="1" >
-									<label for="">남자</label>
+									<input type="radio" id="man" name="userSex" class="input_radio"value="1" >
+									<label>남자</label>
 								</div>
 								<div class="sex-div">
-									<input type="radio" id="name" name="userSex" class="input_radio"value="2" >
-									<label for="">여자</label>
+									<input type="radio" id="woman" name="userSex" class="input_radio"value="2" >
+									<label>여자</label>
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input id="postcode1" type="text" value="" style="width:50px;" readonly/>
-								&nbsp;-&nbsp;
-								<input id="postcode2" type="text" value="" style="width:50px;" readonly/>
-								&nbsp;&nbsp;
-								<input id="zonecode" type="text" value="" style="width:50px;" readonly/>
-								&nbsp;
+								
+								<input type="text" id="userPost" name="userPost" width="278px" value="우편번호" readonly/>
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
-								<input type="text" id="address" value="" style="width:355px;" readonly/>
-								<input type="text" id="address_detail" value="" style="width:355px;" placeholder="상세주소"/>
+								<input type="text" id="userAddress" name="userAddress" value="주소" readonly/>
+								<input type="text" id="userAddressDetail" name="userAddressDetail" value="상세주소" style="width:355px;" placeholder="상세주소"/>
 							</div>
+							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77?category=1062143" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">개인정보 수정</button>
+								<input type="button" value="submit" id="register" class="button button-register w-100">개인정보 수정
 							</div>
 						</form>
 					</div>
