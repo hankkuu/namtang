@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Slf4j
@@ -47,7 +48,8 @@ public class PurchaseController {
     }
 
     @PostMapping("")
-    public ShopResponse purchase(@RequestBody PurchaseSetRequest request) throws Exception {
+    public ShopResponse purchase(HttpServletRequest req, @RequestBody PurchaseSetRequest request) throws Exception {
+        Object obj = req.getSession().getAttribute("userIdx");
         ShopResponse result = null;
         log.debug(request.toString());
 

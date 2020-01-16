@@ -9,30 +9,32 @@
 	<script type="text/javascript" src="/js/json.js"></script>
 	<script type="text/javascript" >
 		$(function(){
-			$("#login").click(function(){
-				let user = $("#contactForm").serializeObject();
 
-				console.log(user);
-				$.ajax({
-					type : "post" ,
-					url : "/api/v1/account/login",
-					dataType : "json",
-					data : JSON.stringify(user),
-					contentType: 'application/json; charset=utf-8',
-					success : function(result) {
-						console.log(result.statusCode);
-						if(result.statusCode === "Success") {
-							location.replace('/');
-						} else {
-							alert("로그인 실패");
-						}
-					},
-					error : function(error) {
-						console.log(error);
-						alert("오류 발생");
-					}
-				});//ajax끝
-			})
+			// $("#login").click(function(){
+			// 	let user = $("#contactForm").serializeObject();
+			//
+			// 	console.log(user);
+			// 	$.ajax({
+			// 		type : "post" ,
+			// 		url : "/api/v1/account/login",
+			// 		dataType : "json",
+			// 		data : JSON.stringify(user),
+			// 		contentType: 'application/json; charset=utf-8',
+			// 		success : function(result) {
+			// 			console.log(result.statusCode);
+			// 			if(result.statusCode === "Success") {
+			// 				location.replace('/');
+			// 			} else {
+			// 				alert("로그인 실패");
+			// 			}
+			// 		},
+			// 		error : function(error) {
+			// 			console.log(error);
+			// 			alert("오류 발생");
+			// 		}
+			// 	});//ajax끝
+			// });
+
 		});
 
 	</script>
@@ -75,17 +77,27 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>로그인</h3>
-						<form class="row login_form" action="#/" id="contactForm" >
+						<form class="row login_form" method="post" > <%--action="#/" id="contactForm" >--%>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="email" name="email" placeholder="이메일" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
+								<input type="text" class="form-control" id="username" name="username" placeholder="이메일" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="password" name="password" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
 							</div>
-							<div class="col-md-12 form-group">
-								<button type="button" value="submit" id="login" class="button button-login w-100">로그인</button>
-								<a href="findPassword">비밀번호 찾기</a>
+							<div class="col-md-12-form-group">
+								<div class="create_account">
+									<input type="checkbox" id="remember-me" name="remember-me">
+									<label for="remember-me">Keep me logged in</label>
+								</div>
 							</div>
+							<div class="col-md-12 form-group">
+								<div class="col-md-12 form-group">
+									<button type="submit" value="submit" id="login" class="button button-login w-100">로그인</button>
+									<a href="findPassword">비밀번호 찾기</a>
+								</div>
+							</div>
+							<input type="hidden" name="${_csrf.parameterName}"
+								   value="${_csrf.token}" />
 						</form>
 					</div>
 				</div>
