@@ -115,7 +115,7 @@
         //     });
         //
         // })
-        var Cartlist = new Array();
+        // var Cartlist = new Array();
         function check() {
             <%--let checkbox = document.getElementById("check<%=test%>");--%>
             // let checkbox2 = document.getElementsByName("check").length;
@@ -127,32 +127,36 @@
 
 
             var checkbox = $("input:checkbox[name=check]:checked");//체크된 모든박스
+            var list = [];
             checkbox.each(function(i) {
-                var list = new Array();
+
                 var tr = checkbox.parent().parent().eq(i);
                 var td = tr.children();
 
-                var img = td.eq(1).children().attr('src'); // td의 0번째는 이름
-                var title = td.eq(2).text(); // td의 1번째는 아이디
-                var price = td.eq(3).text();
-                var id = td.eq(4).children().children().next().next().next().val();
-                var qty = td.eq(4).children().children().next().next().children().eq(0).text();
-                // var qty=td.eq(4).children().children().next().children('selected').text();
-                var total = td.eq(5).text();
+                let book = {
+                     img : td.eq(1).children().attr('src'), // td의 0번째는 이름
+                     title : td.eq(2).text(), // td의 1번째는 아이디
+                     price : td.eq(3).text(),
+                     id : td.eq(4).children().children().next().next().next().val(),
+                     qty : td.eq(4).children().children().next().next().children().eq(0).text(),
+                    // var qty=td.eq(4).children().children().next().children('selected').text();
+                    total : td.eq(5).text()
+            }
 
+                //list.push(book);
+                // list.push(img);
+                // list.push(title);
+                // list.push(price);
+                // list.push(id);
+                // list.push(qty);
+                // list.push(total);
 
-                list.push(img);
-                list.push(title);
-                list.push(price);
-                list.push(id);
-                list.push(qty);
-                list.push(total);
+                // Cartlist.push(book);
+                list.push(book);
 
-                Cartlist.push(list);
-
-                console.log(total);
+                console.log(list);
             });
-            console.log(Cartlist);
+
             sessionStorage.setItem("cartlist",Cartlist);
 
         }
