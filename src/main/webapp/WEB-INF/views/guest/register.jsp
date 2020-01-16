@@ -6,24 +6,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Login</title>
-	<style type="text/css">
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <style type="text/css">
 
-		.login_box_area .login_box_img:before{
-			height:731.6px;
-		}
-		.login_form div:nth-child(5) div{
-			border-bottom: 1px solid #cccccc;
-		}
+		#textP{
+  		font-size:10px; color:red; margin-top: -20px; margin-left:20px;
+  	}
+  	
+  	.pw{
+  		margin-top: -20px; margin-left:20px;
+  	}
+  	
+  	#pw-success{
+  		color:blue; font-size:10px;
+  	}
+  	
+  	#pw-fail{
+  		color:red; font-size:10px;
+  	}
+  
+  	.login_box_area .login_box_img:before{
+  		height:810px;
+  	}
+  	
+  	
+  	
+  	#userId{
+  		 width:284px; display:inline-block; 
+  	}
+  	
+  	#userId .confitm-id{
+  		display:inline-block;
+  	}
 
-		.login_form .sex-div{
-			float:left;
-			width:50%;
-		}
+	.login_form .sex-div{
+		float:left;
+		width:50%;
+		border-bottom: 1px solid #cccccc;
+	}
 	</style>
 
 	<script type="text/javascript" src="/js/json.js"></script>
 	<script type="text/javascript" >
 		$(function(){
+			
+			/*아이디 중복체크*/
+			$(".confitm-id").click(function(){
+				let check=$("#userId").val();
+				console.log(check);
+				$.ajax({
+					type : "get",
+					url : "/api/v1/account",
+					dataType : "json",
+					data : JSON.stringify(check),
+					contentType: 'application/json; charset=utf-8',
+					success : function(result){
+						console.log("1=중복o / 0 = 중복x : " + result);
+						if(data == 1){
+							$("#checkId").text("아이디가 중복됩니다.");
+							$("#checkId").css("color","red");
+						} else {
+							$("#checkId").text("아이디 사용가능합니다.");
+							$("#checkId").css("color","blue");
+						}
+					},
+					error : function(error) {
+						console.log(error);
+						alert("오류 발생");
+					}
+				});
+			});//아이디 중복체크 끝
+			
 			$("#register").click(function(){
 				let user = $("#register_form").serializeObject();
 
@@ -48,7 +101,51 @@
 					}
 				});//ajax끝
 			})
-		});
+			
+			/* 비밀번호 입력 */
+	  		$("#userPassword").mouseenter(function(){
+	  			$("#textP").text("숫자 또는 문자로만 4~12자리 입력하세요.")
+	  		});
+	  		$("#userPassword").mouseleave(function(){
+	  			$("#textP").text(" ");
+	  		});
+	  		
+	  		/* 비밀번호 일치여부*/
+				$("#pw-success").hide();
+					$("#pw-fail").hide();
+					$("input").keyup(function() {
+						var pwd1 = $("#userPassword").val();
+						var pwd2 = $("#confirmPassword").val();
+						if (pwd1 != "" || pwd2 != "") {
+							if (pwd1 == pwd2) {
+								$("#pw-success").show();
+								$("#pw-fail").hide();
+								$("#submit").removeAttr("disabled");
+							} else {
+								$("#pw-success").hide();
+								$("#pw-fail").show();
+								$("#submit").attr("disabled", "disabled");
+							}
+						}
+						$("#userName").click(function(){
+							$("#pw-success").hide();
+						});
+					});
+			});
+		
+		/* 주소찾기 */
+	  	function openDaumZipAddress() {
+			new daum.Postcode({
+				oncomplete:function(data) {
+					$("#postcode1").val(data.postcode1);
+					$("#postcode2").val(data.postcode2);
+					$("#zonecode").val(data.zonecode);
+					$("#address").val(data.address);
+					$("#address_etc").focus();
+					console.log(data);
+				}
+			}).open();
+		}
 
 	</script>
 
@@ -90,39 +187,55 @@
 					<div class="login_form_inner register_form_inner">
 						<h3>회원가입</h3>
 						<form class="row login_form" action="/#" id="register_form" method="post">
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="email" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+							<div class="col-md-12 form-group" id="userIdC">
+								<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디" onblur="this.placeholder = '아이디'"><input type="button" name="confitm-id" class="confitm-id" value="중복확인" >
 			                </div>
+			                <div class="check_font" id="checkId"></div>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="password" name="password" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
+								<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
 			                </div>
+			                <p id="textP"></p>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
+								<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
 							</div>
+							<div class="pw" id="pw-success">비밀번호가 일치합니다.</div>
+							<div class="pw" id="pw-fail">비밀번호가 일치하지 않습니다.</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+			                </div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="sex-div">
-									<input type="radio" id="man" name="sex" class="input_radio"value="1" >
+									<input type="radio" id="man" name="userSex" class="input_radio"value="1" >
 									<label>남자</label>
 								</div>
 								<div class="sex-div">
-									<input type="radio" id="woman" name="sex" class="input_radio"value="2" >
+									<input type="radio" id="woman" name="userSex" class="input_radio"value="2" >
 									<label>여자</label>
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="age" name="age" placeholder="나이" onfocus="this.placeholder = ''" onblur="this.placeholder = '나이'">
+								<input type="text" class="form-control" id="userAge" name="userAge" placeholder="나이" onfocus="this.placeholder = ''" onblur="this.placeholder = '나이'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="phone" name="phone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
+								<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="address" name="address" placeholder="주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '주소'">
+								<input id="postcode1" type="text" value="" style="width:50px;" readonly/>
+								&nbsp;-&nbsp;
+								<input id="postcode2" type="text" value="" style="width:50px;" readonly/>
+								&nbsp;&nbsp;
+								<input id="zonecode" type="text" value="" style="width:50px;" readonly/>
+								&nbsp;
+								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
+								<br/>
+								<input type="text" id="address" value="" style="width:355px;" readonly/>
+								<input type="text" id="address_etc" value="" style="width:355px;" placeholder="상세주소"/>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="button" value="submit" id="register" class="button button-register w-100">회원가입</input>
+								<input type="button" value="submit" id="register" class="button button-register w-100">회원가입
 							</div>
 						</form>
 					</div>
@@ -131,6 +244,5 @@
 		</div>
 	</section>
 	<!--================End Login Box Area =================-->
-
 </body>
 </html>

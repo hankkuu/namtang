@@ -97,17 +97,23 @@ public class BookController {
     }
 
     @RequestMapping("/BookDetail")
-    ModelAndView catgCall(@RequestParam Long id) {
-        ModelAndView mv = new ModelAndView();
+        ModelAndView catgCall(@RequestParam Long id) {
+//            HttpServletRequest request 써서
+//            유저인덱스 가져오기
+//            Object object = request.getSession().getAttribute("userIdx");
 
-        Optional<Book> book = bookService.BookDetail(id);
-        mv.addObject("book",book);
-        mv.setViewName("/guest/productDetail");
 
-        //리뷰
-        List<Review> rv = reviewService.selectUser(1L);
-        mv.addObject("reviewcc", rv);
 
-        return mv;
+            ModelAndView mv = new ModelAndView();
+
+            Optional<Book> book = bookService.BookDetail(id);
+            mv.addObject("book",book);
+            mv.setViewName("/guest/productDetail");
+
+            //리뷰
+            List<Review> rv = reviewService.selectReview(id);
+            mv.addObject("reviewcc", rv);
+
+            return mv;
     }
 }

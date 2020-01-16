@@ -12,4 +12,6 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
     List<Review> findByUserIdx(Long idx);
 
+    List<Review> findByBookIdx(Long idx);
+
 }

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.xml.ws.spi.http.HttpContext;
 
 import org.apache.velocity.runtime.directive.Parse;
@@ -21,11 +22,13 @@ import kosta.namtang.talkbook.service.AdminService;
 public class Scheduler {
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	ServletContext servletContext;
 	
 	@Autowired
 	PurchasePaymentRepository purchasePaymentRepository;
 	
-	   @Scheduled(cron = "1 * * * * ?")
+	   @Scheduled(cron = "* * 23 * * ?")
 	   public void cronJobSch() {
 		  BigDecimal total = new BigDecimal("0");
 	      SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
@@ -35,7 +38,12 @@ public class Scheduler {
 	      }
 	      Date now = new Date();
 	      String strDate = sdf.format(now);
+	      if(servletContext.getAttribute("userCount")==null) {
+	    	  servletContext.setAttribute("userCount", 0);
+	      }
+	      int usercounttotal = (int)servletContext.getAttribute("userCount");
 	      System.out.println("오늘 마감 시작 : " + strDate+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-	      //adminService.insertStatistics(new Statistics(total.intValue(), strDate, 222));
+	      //adminService.insertStatistics(new Statistics(total.intValue(), strDate, usercounttotal));
+	      servletContext.setAttribute("userCount", 0);
 	   }
 }

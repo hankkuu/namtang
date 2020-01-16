@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: ksw
@@ -14,70 +14,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aroma Shop - Product Details</title>
+    <style>
+        .starR{
+            background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+            background-size: auto 100%;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-indent: -9999px;
+            cursor: pointer;
+        }
+        .starR.on{background-position:0 0;}
+        /*.starR1{*/
+        /*    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;*/
+        /*    background-size: auto 100%;*/
+        /*    width: 15px;*/
+        /*    height: 30px;*/
+        /*    float:left;*/
+        /*    text-indent: -9999px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.starR2{*/
+        /*    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;*/
+        /*    background-size: auto 100%;*/
+        /*    width: 15px;*/
+        /*    height: 30px;*/
+        /*    float:left;*/
+        /*    text-indent: -9999px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.starR1.on{background-position:0 0;}*/
+        /*.starR2.on{background-position:-15px 0;}*/
+
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.starRev span').click(function(){
+                $(this).parent().children('span').removeClass('on');
+                $(this).addClass('on').prevAll('span').addClass('on');
+                return false;
+            });
+        });
+
+         function clicka() {
+             $("#reviewScore").val(2);
+         }
+         function clickb() {
+             $("#reviewScore").val(4);
+         }
+        function clickc() {
+            $("#reviewScore").val(6);
+        }
+        function clickd() {
+            $("#reviewScore").val(8);
+        }
+        function clicke() {
+            $("#reviewScore").val(10);
+        }
+
+    </script>
+
 </head>
 <body>
-<script>
-
-    // $(document).ready(function() {
-    //
-    //     var js_func = "alert('안녕하세요'); return false;";
-    //
-    //     var clickEvent = new Function(js_func);
-    //
-    //     $("#anchor_test2').attr('onclick', '').click(clickEvent);
-    //
-    // });
-
-
-    // $(document).on('click',".nice-select .list li",function(){
-    //     // alert($(".nice-select ul .option.selected").attr('data-value'));
-    //     // var result = qty($(this).attr('data-value'),$(this).parent().parent().next().val());
-    //     var result=$(this).attr('data-value');
-    //     $(this).parent().parent().parent().parent().next().text(result);
-    // });
-$(function () {
-    $("#add_cart").on('click' , function(){
-        let ex=sessionStorage.getItem("tp")
-        alert(ex);
-
-        let bookIdx = ${book.get().bookIdx};
-        let bookTitle = "${book.get().bookTitle}";
-        let bookPrice = ${book.get().bookPrice};
-        let bookImg = "${book.get().bookImg}";
-        let qty =$("#cate_amount option:selected").val();
-
-        let add_to = {
-            bookIdx : bookIdx,
-            bookTitle : bookTitle,
-            bookImg : bookImg,
-            bookPrice : bookPrice,
-            qty : qty
-        }
-        console.log(add_to);
-
-        $.ajax({
-            type : "get",
-            url : "/cart/insert",
-            dataType : "json",
-            data : add_to,
-            error : function(err){
-                // alert("전송실패");
-                console.log(err);
-            },
-            success : function(result){
-                // $("#content").html(Parse_data); //div에 받아온 값을 넣는다.
-                if(result.statusCode === "Success") {
-                    alert(result.message);
-                }
-
-            }
-
-        });
-    });
-
-})
-
-</script>
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="blog">
     <div class="container h-100">
@@ -116,9 +114,8 @@ $(function () {
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-
                     <h3>${book.get().bookTitle}</h3>
-                    <h2><fmt:formatNumber  value="${book.get().bookPrice}"  type="currency" /></h2>
+                    <h2>${book.get().bookPrice}</h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : ${book.get().category.catgName}</a></li>
                         <li><a href="#"><span>Author</span> : ${book.get().bookAuthor}</a></li>
@@ -126,24 +123,13 @@ $(function () {
                     </ul>
                     <p>${book.get().bookDesc}</p>
                     <div class="product_count">
-<%--                        <label for="qty">Quantity:</label>--%>
-                        <h6>Quantity</h6>
-                        <select name="cate_amount" id='cate_amount'>
-                            <c:forEach begin="1" end="10" var="i">
-                                <option value="${i}">${i}</option>
-                            </c:forEach>
-
-                        </select>
-    <p></p>
-<%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"--%>
-<%--                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--%>
-<%--                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">--%>
-
-<%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"--%>
-<%--                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>--%>
-
-    &emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;<a class="button primary-btn" href="#" id="add_cart">Add to Cart</a>
-
+                        <label for="qty">Quantity:</label>
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
+                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
+                        <a class="button primary-btn" href="#">Add to Cart</a>
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
@@ -380,7 +366,7 @@ $(function () {
                         </div>
 
                         <c:choose>
-                        <c:when test="${reviewcc eq null}">
+                        <c:when test="${fn:length(reviewcc) == 0}">
                         <div class="review_list">
                             <div class="review_item">
                                 <div class="media">
@@ -409,12 +395,34 @@ $(function () {
                                             <img src="img/product/review-1.png" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <h4>${reviewc.reviewIdx}</h4>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            <h4>${reviewc.reviewTitle}</h4>
+                                            <c:choose>
+                                                <c:when test="${reviewc.reviewScore == 2}">
+                                                    <i class="fa fa-star"></i>
+                                                </c:when>
+                                                <c:when test="${reviewc.reviewScore == 4}">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </c:when>
+                                                <c:when test="${reviewc.reviewScore == 6}">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </c:when>
+                                                <c:when test="${reviewc.reviewScore == 8}">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </c:when>
+                                                <c:when test="${reviewc.reviewScore == 10}">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </c:when>
+                                            </c:choose>
                                         </div>
                                     </div>
                                     <p>${reviewc.reviewContent}</p>
@@ -466,20 +474,41 @@ $(function () {
                             </div>
 --%>
 
-
-                    <div class="col-lg-6">
-                        <div class="review_box">
+<%--                    <div class="col-lg-6">--%>
+<%--                        <div class="review_box">--%>
+                    <div>
+                        <div>
                             <h4>Add a Review</h4>
                             <p>Your Rating:</p>
-                            <ul class="list">
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                            </ul>
-                            <p>Outstanding</p>
+<%--                            <ul class="list">--%>
                             <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
+                                <div class="starRev" id="starRate">
+                                    <span class="starR on" id="half" onclick="clicka();">별1</span>
+                                    <span class="starR" id="one" onclick="clickb();">별2</span>
+                                    <span class="starR" id="onehalf" onclick="clickc();">별3</span>
+                                    <span class="starR" id="two" onclick="clickd();">별4</span>
+                                    <span class="starR" id="twohalf" onclick="clicke();">별5</span>
+                                </div>
+<%--                            <div class="starRev" id="starRate">--%>
+<%--                                <span class="starR1 on" id="half" onclick="clicka();">별1_왼쪽</span>--%>
+<%--                                <span class="starR2" id="one" onclick="clickb();">별1_오른쪽</span>--%>
+<%--                                <span class="starR1" id="onehalf" onclick="clickc();">별2_왼쪽</span>--%>
+<%--                                <span class="starR2" id="two" onclick="clickd();">별2_오른쪽</span>--%>
+<%--                                <span class="starR1" id="twohalf" onclick="clicke();">별3_왼쪽</span>--%>
+<%--                                <span class="starR2" id="three" onclick="clickf();">별3_오른쪽</span>--%>
+<%--                                <span class="starR1" id="threehalf" onclick="clickg();">별4_왼쪽</span>--%>
+<%--                                <span class="starR2" id="four" onclick="clickh();">별4_오른쪽</span>--%>
+<%--                                <span class="starR1" id="fourhalf" onclick="clicki();">별5_왼쪽</span>--%>
+<%--                                <span class="starR2" id="five" onclick="clickj();">별5_오른쪽</span>--%>
+<%--                            </div>--%>
+<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+<%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+<%--                            </ul>--%>
+                            <p>Outstanding</p>
+<%--                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">--%>
 <%--                                <div class="form-group">--%>
 <%--                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>--%>
 <%--                                </div>--%>
@@ -490,6 +519,8 @@ $(function () {
                                     <textarea class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
                                 </div>
 
+                                    <input type="hidden" name="reviewScore" id="reviewScore" value=2>
+                                    <input type="hidden" name="bookIdx" value="${book.get().bookIdx}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
                                 <div class="form-group text-center text-md-right mt-3">
