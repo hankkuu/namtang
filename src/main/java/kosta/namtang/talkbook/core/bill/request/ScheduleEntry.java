@@ -7,31 +7,31 @@ import com.google.gson.annotations.SerializedName;
 
 public class ScheduleEntry {
 
-	@SerializedName("merchant_uid")
-	private String merchant_uid;
-	
-	@SerializedName("schedule_at")
-	private Date schedule_at;
-	
-	@SerializedName("amount")
-	private BigDecimal amount;
+    @SerializedName("merchant_uid")
+    private String merchant_uid;
 
-	public ScheduleEntry(String merchant_uid, Date schedule_at, BigDecimal amount) {
-		this.merchant_uid = merchant_uid;
-		this.schedule_at = schedule_at;
-		this.amount = amount;
-	}
+    @SerializedName("schedule_at")
+    private Date schedule_at;
 
-	public String getMerchantUid() {
-		return merchant_uid;
-	}
+    @SerializedName("amount")
+    private BigDecimal amount;
 
-	public Date getScheduleAt() {
-		return schedule_at;
-	}
+    public ScheduleEntry(String merchant_uid, Date schedule_at, BigDecimal amount) {
+        this.merchant_uid = merchant_uid;
+        this.schedule_at = schedule_at;
+        this.amount = amount;
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
-	
+    public String getMerchantUid() {
+        return merchant_uid;
+    }
+
+    public Date getScheduleAt() {
+        return schedule_at;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
 }

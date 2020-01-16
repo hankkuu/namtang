@@ -4,46 +4,46 @@ import com.google.gson.annotations.SerializedName;
 
 public class NaverShippingAddress {
 
-	@SerializedName("base")
-	private String base;
-	
-	@SerializedName("detail")
-	private String detail;
-	
-	@SerializedName("postcode")
-	private String postcode;
-	
-	@SerializedName("tel1")
-	private String tel1;
-	
-	@SerializedName("tel2")
-	private String tel2;
-	
-	@SerializedName("name")
-	private String name;
+    @SerializedName("base")
+    private String base;
 
-	public String getBase() {
-		return base;
-	}
+    @SerializedName("detail")
+    private String detail;
 
-	public String getDetail() {
-		return detail;
-	}
+    @SerializedName("postcode")
+    private String postcode;
 
-	public String getPostcode() {
-		return postcode;
-	}
+    @SerializedName("tel1")
+    private String tel1;
 
-	public String getTel1() {
-		return tel1;
-	}
+    @SerializedName("tel2")
+    private String tel2;
 
-	public String getTel2() {
-		return tel2;
-	}
+    @SerializedName("name")
+    private String name;
 
-	public String getName() {
-		return name;
-	}
-	
+    public String getBase() {
+        return base;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public String getTel1() {
+        return tel1;
+    }
+
+    public String getTel2() {
+        return tel2;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }

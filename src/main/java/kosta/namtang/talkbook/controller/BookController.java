@@ -99,6 +99,8 @@ public class BookController {
     @RequestMapping("/BookDetail")
         ModelAndView catgCall(@RequestParam Long id) {
 
+
+
             ModelAndView mv = new ModelAndView();
 
             Optional<Book> book = bookService.BookDetail(id);

@@ -15,24 +15,30 @@ import java.util.List;
 public class AccountViewController {
 
     @RequestMapping("/login")
-    public ModelAndView login(){
+    public ModelAndView login() {
         log.debug("login");
         ModelAndView view = new ModelAndView("/guest/login");
         return view;
     }
 
     @RequestMapping("/register")
-    public ModelAndView register(){
+    public ModelAndView register() {
         log.debug("register");
         ModelAndView view = new ModelAndView("/guest/register");
         return view;
     }
-
-    @RequestMapping(value = "/logout")
+    
+    @RequestMapping("findPassword")
+    public ModelAndView findPassword(){
+        log.debug("findPassword");
+        ModelAndView view = new ModelAndView("/guest/findPassword");
+        return view;
+    }
+ 
+    @RequestMapping(value = "logout")
     public ModelAndView logout() {
         log.debug("logout");
         ModelAndView view = new ModelAndView("/guest/index");
         return view;
     }
-
 }

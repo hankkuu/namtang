@@ -15,28 +15,28 @@ import kosta.namtang.talkbook.repository.StatisticsRepository;
 
 @Service
 public class AdminService {
-	 
-	@Autowired
-	private StatisticsRepository statisticsRepository;
-	
-	@Autowired
-	private AdminRepository adminRepository;
-	
-	public List<Statistics> selectAll(){
-		return Lists.newArrayList(statisticsRepository.findAll());
-	}
-	
-	public Optional<Admin> selectById(Admin admin) {
-		Optional<Admin> result = adminRepository.findById(admin.getAdminId());
-		System.out.println(admin + "ddddddddd");
-		return null;
-	}
-	
-	public String insertStatistics(Statistics statistics) {
-		Statistics result= statisticsRepository.save(statistics);
-		System.out.println(result);
-		return null;
-	}
-	
+
+    @Autowired
+    private StatisticsRepository statisticsRepository;
+
+    @Autowired
+    private AdminRepository adminRepository;
+
+    public List<Statistics> selectAll() {
+        return Lists.newArrayList(statisticsRepository.findAll());
+    }
+
+    public Optional<Admin> selectById(Admin admin) {
+        Optional<Admin> result = adminRepository.findById(admin.getAdminId());
+        System.out.println(admin + "ddddddddd");
+        return null;
+    }
+
+    public String insertStatistics(Statistics statistics) {
+        Statistics result = statisticsRepository.save(statistics);
+        System.out.println(result);
+        return null;
+    }
+
 
 }

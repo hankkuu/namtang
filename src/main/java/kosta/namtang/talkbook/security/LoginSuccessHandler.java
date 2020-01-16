@@ -32,14 +32,14 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
         String userId = "";
         String test = "";
-        if(authentication.getPrincipal() instanceof Principal) {
-            userId = ((Principal)authentication.getPrincipal()).getName();
+        if (authentication.getPrincipal() instanceof Principal) {
+            userId = ((Principal) authentication.getPrincipal()).getName();
 
-        }else {
-            if( authentication.getPrincipal() instanceof SimpleSecurityUser) {
-                test = ((SimpleSecurityUser)authentication.getPrincipal()).getText();
+        } else {
+            if (authentication.getPrincipal() instanceof SimpleSecurityUser) {
+                test = ((SimpleSecurityUser) authentication.getPrincipal()).getText();
             }
-            userId = ((User)authentication.getPrincipal()).getUsername();
+            userId = ((User) authentication.getPrincipal()).getUsername();
         }
         logger.info("userName: " + userId);
         logger.debug("test message: " + test);
@@ -71,7 +71,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
             nextURL = super.determineTargetUrl(request, response);
         }
 
-        log.info("-------------------"+nextURL+"========================");
+        log.info("-------------------" + nextURL + "========================");
         return nextURL;
     }
 }

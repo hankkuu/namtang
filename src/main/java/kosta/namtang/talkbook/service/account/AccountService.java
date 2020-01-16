@@ -14,5 +14,5 @@ public interface AccountService {
 
     Account login(Account acc) throws Exception;
 
-
+    Boolean checkId(String id);
 }

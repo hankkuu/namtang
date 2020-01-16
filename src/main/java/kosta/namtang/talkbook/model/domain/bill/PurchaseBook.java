@@ -23,26 +23,26 @@ public class PurchaseBook {
     private PurchaseBookId purchaseBookId;
 
     @Column(name = "PRICE", nullable = false)
-	private BigDecimal price;
+    private BigDecimal price;
     @Column(name = "STATE_CODE", nullable = false)
-	private int stateCode;
+    private int stateCode;
     @Column(name = "NAME", nullable = false)
-	private String name;
+    private String name;
     @Column(name = "COUNT", nullable = false)
     private int count;
     @Column(name = "IMAGE_PATH", nullable = false)
     private String imagePath;
 
     @Column(name = "BILL_KEY", nullable = false)
-	private String billKey;
-	//private long bookIdx;
+    private String billKey;
+    //private long bookIdx;
 
     @Column(name = "CREATE_DATE", nullable = false)
     private Timestamp createDate;
     @Column(name = "UPDATE_DATE", nullable = false)
     private Timestamp updateDate;
-    
+
     //private PurchaseOrder purchaseOrder;
     //private PurchaseCancel cancel;
-    
+
 }

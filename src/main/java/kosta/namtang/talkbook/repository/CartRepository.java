@@ -13,7 +13,7 @@ public interface CartRepository extends CrudRepository<Cart, CartId> {
     List<Cart> findByCartIdUserIdx(Long userIdx);
 
     //update
-    Cart findByCartIdUserIdxAndCartIdBookIdx(Long userIdx,Long bookIdx);
+    Cart findByCartIdUserIdxAndCartIdBookIdx(Long userIdx, Long bookIdx);
 
 
     //delete => useridx BookIdx 로 삭제

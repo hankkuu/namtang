@@ -9,46 +9,46 @@ import lombok.ToString;
 @ToString
 public class PaymentBalance {
 
-	@SerializedName("amount")
-	BigDecimal amount;
-	
-	@SerializedName("cash_receipt")
-	Balance cash_receipt;
-	
-	@SerializedName("primary")
-	Balance primary;
-	
-	@SerializedName("secondary")
-	Balance secondary;
-	
-	@SerializedName("discount")
-	Balance discount;
-	
-	@SerializedName("histories")
-	List<PaymentBalanceEntry> histories;
+    @SerializedName("amount")
+    BigDecimal amount;
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    @SerializedName("cash_receipt")
+    Balance cash_receipt;
 
-	public List<PaymentBalanceEntry> getHistories() {
-		return histories;
-	}
-	
-	public Balance getCashReceipt() {
-		return cash_receipt;
-	}
+    @SerializedName("primary")
+    Balance primary;
 
-	public Balance getPrimary() {
-		return primary;
-	}
+    @SerializedName("secondary")
+    Balance secondary;
 
-	public Balance getSecondary() {
-		return secondary;
-	}
+    @SerializedName("discount")
+    Balance discount;
 
-	public Balance getDiscount() {
-		return discount;
-	}
+    @SerializedName("histories")
+    List<PaymentBalanceEntry> histories;
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public List<PaymentBalanceEntry> getHistories() {
+        return histories;
+    }
+
+    public Balance getCashReceipt() {
+        return cash_receipt;
+    }
+
+    public Balance getPrimary() {
+        return primary;
+    }
+
+    public Balance getSecondary() {
+        return secondary;
+    }
+
+    public Balance getDiscount() {
+        return discount;
+    }
 
 }

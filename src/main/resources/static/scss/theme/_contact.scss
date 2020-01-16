@@ -1,38 +1,38 @@
 /*=================== contact banner start ====================*/
-.contact-banner{
+.contact-banner {
   position: relative;
 
-  h4,h1,a{
+  h4, h1, a {
     text-transform: uppercase;
     color: #fff;
   }
 
-  h4{
+  h4 {
     font-size: 18px;
     margin-bottom: 15px;
   }
 
-  h1{
+  h1 {
     font-size: 37px;
     margin-bottom: 5px;
 
-    @media(min-width: 992px){
+    @media(min-width: 992px) {
       font-size: 48px;
     }
   }
 
-  &-area{
+  &-area {
     height: 280px;
     background: url('../../assets/images/contact-bg.png') center center no-repeat;
     background-size: cover;
     position: relative;
     z-index: 1;
 
-    @media(min-width: 991px){
+    @media(min-width: 991px) {
       height: 450px;
     }
 
-    .contact-banner{
+    .contact-banner {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -41,7 +41,7 @@
     }
 
 
-    &::after{
+    &::after {
       content: "";
       display: block;
       position: absolute;
@@ -54,77 +54,78 @@
     }
   }
 
-  &-btn{
-    border:2px solid $primary-color;
+  &-btn {
+    border: 2px solid $primary-color;
     padding: 10px 45px;
 
-    &:hover{
+    &:hover {
       background: $primary-color;
       color: #fff;
     }
   }
 }
 
-.contact-info{
+.contact-info {
 
-  &__icon{
+  &__icon {
     margin-right: 20px;
 
-    i,span{
+    i, span {
       color: $primary-color;
       font-size: 20px;
     }
   }
 
-  .media-body{
+  .media-body {
 
-    h3{
+    h3 {
       font-size: 16px;
       margin-bottom: 0;
 
-      a{
+      a {
         color: $title-color;
       }
     }
 
-    p{
+    p {
       color: #999999;
     }
   }
 }
+
 /*=================== contact banner end ====================*/
 
 
 /*=================== contact form start ====================*/
-.form-contact{
+.form-contact {
 
-  .form-group{
+  .form-group {
     margin-bottom: 10px;
   }
 
-  .form-control{
+  .form-control {
     border-radius: 0;
     height: 40px;
     padding-left: 18px;
     border-color: transparent;
     background: rgba(130, 139, 178, 0.1);
 
-    &:focus{
+    &:focus {
       outline: 0;
       box-shadow: none;
     }
 
-    &::placeholder{
+    &::placeholder {
       font-size: 14px;
       color: #999999;
     }
   }
 
-  .different-control{
+  .different-control {
     height: 100% !important;
   }
 
-  button{
+  button {
     border: 0;
   }
 }
