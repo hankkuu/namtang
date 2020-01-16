@@ -115,7 +115,7 @@
         //     });
         //
         // })
-        // var Cartlist = new Array();
+
         function check() {
             <%--let checkbox = document.getElementById("check<%=test%>");--%>
             // let checkbox2 = document.getElementsByName("check").length;
@@ -143,21 +143,12 @@
                     total : td.eq(5).text()
             }
 
-                //list.push(book);
-                // list.push(img);
-                // list.push(title);
-                // list.push(price);
-                // list.push(id);
-                // list.push(qty);
-                // list.push(total);
-
-                // Cartlist.push(book);
                 list.push(book);
 
                 console.log(list);
             });
 
-            sessionStorage.setItem("cartlist",Cartlist);
+            sessionStorage.setItem("cartlist",list);
 
         }
 
