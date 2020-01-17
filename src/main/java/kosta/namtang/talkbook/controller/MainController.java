@@ -35,6 +35,10 @@ public class MainController {
     public String BGM() {
         return "guest/BGM";
     }
+    @RequestMapping("login")
+    public String login() {
+        return "guest/login";
+    }
 
     @RequestMapping("/detail")
     public ModelAndView detail() {
