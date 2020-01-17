@@ -1,14 +1,17 @@
 package kosta.namtang.talkbook.service;
 
 import kosta.namtang.talkbook.model.domain.Book;
+import kosta.namtang.talkbook.model.domain.BookCount;
 import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CategoryRepository;
+import kosta.namtang.talkbook.repository.CountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +25,8 @@ public class BookService {
     BookRepository bookRepo;
     @Autowired
     CategoryRepository catgRepo;
+    @Autowired
+    CountRepository countRepo;
 
     public Page<Book> selectAll(int PageNum, int Ordering){
         Page<Book> book = null;
@@ -125,9 +130,38 @@ public class BookService {
 
         }
 
+        @Transactional
         public Optional<Book> BookDetail(Long bookIdx){
-
-
-            return bookRepo.findById(bookIdx);
+            countRepo.totalCountup(bookIdx);
+            countRepo.MonthCountup(bookIdx);
+             return bookRepo.findById(bookIdx);
         }
+
+    @Transactional
+    public List<Book>findBestSeller(){
+        Pageable page = PageRequest.of(0,8);
+        Page<BookCount> bookCount = countRepo.findBestSeller(page);
+        List<Long> idList= new ArrayList<>();
+        for(BookCount b : bookCount.getContent()) {
+            idList.add(b.getBookIdx());
+        }
+        List<Book> book = bookRepo.findBestCount(idList);
+//            List<Book> book = bookRepo.findById
+        return book;
+    }
+    @Transactional
+    public List<Book>findMonthBestSeller(){
+        Pageable page = PageRequest.of(0,8);
+        Page<BookCount> bookCount = countRepo.findMonthbestSeller(page);
+        List<Long> idList= new ArrayList<>();
+        for(BookCount b : bookCount.getContent()) {
+            idList.add(b.getBookIdx());
+        }
+        List<Book> book = bookRepo.findBestCount(idList);
+//            List<Book> book = bookRepo.findById
+        return book;
+    }
+
+
+
     }

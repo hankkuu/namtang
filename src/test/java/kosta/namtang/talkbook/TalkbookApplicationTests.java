@@ -1,5 +1,6 @@
 package kosta.namtang.talkbook;
 
+import kosta.namtang.talkbook.common.BookCode;
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.Category;
 import kosta.namtang.talkbook.repository.BookRepository;
@@ -59,11 +60,17 @@ class TalkbookApplicationTests {
 
 		String clientId = "7FZwEYvppDhLr3RUcauR";// 애플리케이션 클라이언트 아이디값";
 		String clientSecret = "fy7bRsApnt";// 애플리케이션 클라이언트 시크릿값";\
-		String text = URLEncoder.encode("책이있는풍경", "UTF-8");
+		String text = URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8");
+
 //        int display = 100; // 검색결과갯수. 최대100개
+		//&d_publ
 		//문학과지성사
 		//난다
 		//밝은세상
+		//책이있는 풍경
+		//////////////
+		//d_titl
+		//새벽 1시 45분, 나의 그림 산책
 
 		String catgNum = "110100";
 		Long catgNumId = 10L;
@@ -77,8 +84,9 @@ class TalkbookApplicationTests {
 			//기본검색
 //			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=110010&d_cont=2017&display=100&start=1";
 //			한글깨짐
-			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg="+catgNum+"&d_publ="+text+"&display=100&start=1";
+			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_titl="+text+"&display=100&start=1";
 			//상세검색
+
 
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -152,7 +160,9 @@ class TalkbookApplicationTests {
 
 					if(j==0) {
 						title = node.getTextContent();
-						out.println(title);
+						title = title.replace("<b>", "");
+						title = title.replace("</b>", "");
+//						out.println(title);
 					} else if(j==2) {
 						img = node.getTextContent();
 						out.println(img);
@@ -166,11 +176,16 @@ class TalkbookApplicationTests {
 					}
 					else if(j==7) pubdate = node.getTextContent();
 					else if(j==8) isbn = node.getTextContent();
-					else if(j==9) desc = node.getTextContent();
+					else if(j==9) {
+						desc = node.getTextContent();
+						desc = desc.replace("<b>", "");
+						desc = desc.replace("</b>", "");
+					}
 				}
-				Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, 0, isbn, category);
-//					System.out.println(book);
-				bookRepo.save(book);
+
+				Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, BookCode.Theme1.getValue(), isbn, category);
+				System.out.println(book);
+//				bookRepo.save(book);
 			}
 
 

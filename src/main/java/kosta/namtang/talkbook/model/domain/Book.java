@@ -1,8 +1,11 @@
 package kosta.namtang.talkbook.model.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
+import java.awt.geom.NoninvertibleTransformException;
 import java.math.BigDecimal;
 
 @Entity
@@ -10,6 +13,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "category")
 public class Book {
 
     @Id
@@ -23,11 +27,13 @@ public class Book {
     private String bookPublisher;
     private String bookDesc;
     private String bookPubdate;
-    private int bookCount;
+    @ColumnDefault("0")
+    private int bookType;
     private String bookIsbn;
 
     @ManyToOne
     @JoinColumn(name="catgIdx")
     private Category category;
+
 
 }

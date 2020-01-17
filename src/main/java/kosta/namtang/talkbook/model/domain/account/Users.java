@@ -20,7 +20,7 @@ public class Users {
     private String userName;
     @Column(name = "USER_SEX", nullable = false)
     private String userSex;
-    @Column(name = "USER_AGE", nullable = false)
+    @Column(name = "USER_AGE", nullable = true)
     private String userAge;
     @Column(name = "USER_PHONE", nullable = false)
     private String userPhone;

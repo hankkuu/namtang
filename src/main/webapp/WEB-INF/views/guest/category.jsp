@@ -109,6 +109,7 @@
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
         return num.toString().replace(regexp, ',');
       }
+
       //AJAX기능
       function bookAjax(CatgIdx,PageNum,Ordering,Word){
         if(Ordering==undefined) Ordering=1;
@@ -183,7 +184,7 @@
       var PageNum = $(".pagination-active").text();
       var Ordering = $("#sorting div ul .option.selected").attr('data-value');
       bookAjax(CatgIdx,PageNum,Ordering);
-
+      MoveScreen();
     });
 
     //카테고리 버튼
@@ -253,6 +254,7 @@
                 doneLoop = true;
               }
             }
+
           }
 
 
@@ -357,6 +359,23 @@
         var id = $("i a",this).text();
         location.href="/BookDetail?id="+id;
       });
+      $(document).on('click','.card-img',function(){
+        var id = $(this).next().children().children().children().text();
+        location.href="/BookDetail?id="+id;
+      });
+
+      function MoveScreen(){
+        // var offset = $("#catgSection").offset();
+        // $('html, body').animate({scrollTop : offset.top}, 400);
+        // window.scrollBy(0,500);
+
+        // var Height = document.querySelector("#catgSection").offsetHeight;
+        // console.log(Height);
+
+        var location = document.querySelector("#catgSection").offsetTop;
+        var Height = 330;
+        window.scrollTo({top:location + Height, behavior:'smooth'});
+      }
     });
   </script>
 </head>
@@ -364,14 +383,14 @@
 
 	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category2">
-		<div class="container h-100">
+		<div class="container h-100"  >
 			<div class="blog-banner">
 				<div class="text-center">
 					<h1>Shop Category</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Shop Category</li>
+              <li class="breadcrumb-item active" id="catgSection" aria-current="page">Shop Category</li>
             </ol>
           </nav>
 				</div>
@@ -464,7 +483,7 @@
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
-                    <img class="card-img" src="${item.bookImg}" alt="">
+                    <img class="card-img" src="${item.bookImg}"  alt="">
                     <ul class="card-product__imgOverlay">
                       <li><button id="BookDetail"><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
                       <li><button><i class="ti-shopping-cart"></i></button></li>

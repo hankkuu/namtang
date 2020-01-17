@@ -54,6 +54,19 @@ public class BookController {
         return "/guest/category";
     }
 
+    @RequestMapping("/SearchWord")
+    String SearchWord(@RequestParam String Word, Model model){
+        Page<Book> pageList = bookService.SearchWord(1,6,Word);
+
+        model.addAttribute("CatgIdx", 0);
+        model.addAttribute("booklist", pageList.getContent());
+        model.addAttribute("list", bookService.countAll());
+
+        model.addAttribute("maxPage", pageList.getTotalPages());
+        model.addAttribute("startPage", 1);
+        model.addAttribute("curPage", 1);
+        return "/guest/category";
+    }
 
     @RequestMapping("/catgCall")
     @ResponseBody
@@ -99,8 +112,9 @@ public class BookController {
     @RequestMapping("/BookDetail")
     ModelAndView catgCall(@RequestParam Long id) {
         ModelAndView mv = new ModelAndView();
-
+        System.out.println("몇번!?--------------------------------------------------------------");
         Optional<Book> book = bookService.BookDetail(id);
+
         mv.addObject("book",book);
         mv.setViewName("/guest/productDetail");
 
@@ -110,4 +124,6 @@ public class BookController {
 
         return mv;
     }
+
+
 }
