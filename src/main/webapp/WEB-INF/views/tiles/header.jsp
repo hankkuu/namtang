@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,17 +16,109 @@
     <link rel="stylesheet" href="/vendors/nouislider/nouislider.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-
-    <script>
-        function CatgPage(catg) {
-            var f = document.paging;
-            f.catg.value = catg;
-            f.action = "/category";
-            f.method = "post";
-            f.submit();
+    <style>
+        .nav-item2{
+            position:   relative;
         }
 
-    </script>
+        .togglesearch{
+            border-radius: 10px     ;
+            background: #fff;
+            position: absolute;
+            top: 64px;
+            right: 30%;
+            width: 255px;
+            height: 45px;
+            line-height: 60px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            border-top:4px solid #fff;
+            display: none;
+        }
+
+        .togglesearch:before{
+            content: "";
+            position: absolute;
+            top: -32px;
+            right: 13px;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid #fff;
+        }
+
+        .togglesearch input[type="text"]{
+            width: 170px;
+            height: 25px;
+            margin-top:3px;
+            /*padding: 5px 10px;*/
+            margin-left: 10px;
+            top : -12.5px;
+            border: 1px solid #6900f9;
+            outline: none;
+            position: relative;
+        }
+
+        .togglesearch input[type="button"]{
+            width: 55px;
+            line-height: 15px;
+            padding: 5px 0;
+            position: relative;
+            background: #6900f9;
+            color: #fff;
+            bottom: 14px;
+            left:2px;
+            border: 1px solid #fff;
+            outline: none;
+            cursor: pointer;
+            font-size:12px;
+        }
+
+
+        @media all and (min-width:0px) and (max-width:990px){
+            .togglesearch{
+                left: 8%;
+                top: 255px;
+            }
+            .togglesearch:before{
+                right: 215px;
+            }
+        }
+        @media all and (min-width:990px)and (max-width:1200px){
+            .togglesearch{
+                right: 35%;
+            }
+        }
+    </style>
+<script>
+    function searchCall(){
+        document.searchForm.submit();
+    }
+
+    $(document).ready(function() {
+        $(document).mouseup(function (e) {
+            var container = $(".nav-item2");
+            if (!$(".textbox, .textbtn, .togglesearch").is(e.target) && !container.is(e.target) && container.has(e.target).length === 0){
+                $(".togglesearch").css('display','none');
+                $(".textbox").val("");
+            }
+
+        });
+
+        $(".nav-item2").click(function() {
+            $(".togglesearch").toggle();
+            $(".textbox").focus();
+        });
+
+    });
+    function CatgPage(catg){
+        var f=document.paging;
+        f.catg.value=catg;
+        f.action="/category";
+        f.method="post";
+        f.submit();
+    }
+
+</script>
 </head>
 <body style="padding-top: 0px;">
 <!--================ Start Header Menu Area =================-->
@@ -75,7 +167,9 @@
                                 </li>
                             </ul>
                         </li>
-
+                        <li class="nav-item submenu dropdown">
+                            <a href="/Contact" class="nav-link dropdown-toggle">Contact Us</a>
+                        </li>
 
                         <%--                        <li class="nav-item submenu dropdown">
                                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -85,9 +179,27 @@
                     </ul>
 
                     <ul class="nav-shop">
-                        <li class="nav-item"><button><i class="ti-search"></i></button></li>
+
+
+                        <li class="searchbar">
+<%--                                <li class="nav-item"><button><i class="ti-search"></i></button></li>--%>
+                        <li class="nav-item2"><button><i class="ti-search" aria-hidden="true"></i></button></li>
+<%--                            <i class="fa fa-search" aria-hidden="true"></i>--%>
+                            <div class="togglesearch">
+                                <form name="searchForm" id="searchForm" action="/SearchWord" method="post">
+                                    <script>
+
+                                    </script>
+                                <input class="textbox" type="text" name="Word" placeholder=""/>
+                                <input class="textbtn" type="button" value="Search" onclick="searchCall();"/>
+                                </form>
+                            </div>
+
+                        </li>
+
                         <li class="nav-item"><a href="/cart"><button><i class="ti-shopping-cart"></i></button></a> </li>
-                        <li class="nav-item"><a class="button button-header" href="#">Login / Register</a></li>
+                        <li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>
+
                     </ul>
                 </div>
             </div>

@@ -20,7 +20,7 @@ public class EscrowLogisInvoiceData {
         this.invoice = invoice;
         this.sent_at = sent_at;
     }
-    
+
     public void setCompany(String company) {
         this.company = company;
     }

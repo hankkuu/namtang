@@ -53,16 +53,15 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
     @Override
     protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
 
-
         log.info("--------------determineTargetUrl------------------------");
 
-        Object dest = request.getSession().getAttribute("dest");
+        Object dest = request.getSession().getAttribute("destination");
 
         String nextURL = null;
 
         if (dest != null) {
 
-            request.getSession().removeAttribute("dest");
+            request.getSession().removeAttribute("destination");
 
             nextURL = (String) dest;
 
