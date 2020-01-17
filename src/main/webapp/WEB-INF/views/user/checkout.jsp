@@ -19,23 +19,25 @@
         IMP.init("imp13182886"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.'
 
         $(window).load(function () {
-
             $(function () {
                 let list = JSON.parse(sessionStorage.getItem("cartlist"));
                 let str = "";
                 for(let i = 0 ; i < list.length ; i++) {
                     console.log(list[i]);
-
+                    
+					str += '<tr>'
                     str += '<td>'
-                    str += '<img class=\"card-img\" src=\" \">'
+                    /* str += '<img class=\"card-img\" src=\" \">'list[i].img */
+                    str += '<img class="card-img" src=' + list[i].img + '>'
                     str += '<input type="hidden" name="bookIdx" id=bookIdx value="">'
                     str += '</td>'
                     str += '<td class="card-title">' + list[i].title + '</td>'
-                    str += '<td id="price">1000</td>'
+                    str += '<td id="price">' + list[i].price + '</td>'
                     str += '<td>'
-                    str += '<select name="amount" id=\'\'> <option value="">1</option> </select>'
+                    str += "&emsp;" + list[i].qty
                     str += '</td>'
-                    str += '<td id=Total>111</td>'
+                    str += '<td id=Total>'+ list[i].total +'</td>'
+                    str += '</tr>'
 
                     // str += '<tr>'
                     // str += '<td></td>'
@@ -120,7 +122,7 @@
                                 custom_data: shop.custom_data,
                                 merchant_uid: key,
                                 name: "임시로 사용하는 이름이다",
-                                amount: "100000",
+                                amount: "100000", //total값 넣기
                                 buyer_email: user.email,
                                 buyer_name: user.name,
                                 buyer_tel: user.tel,
@@ -284,9 +286,8 @@
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr id="cartList">
-                        </tr>
+                    <tbody id="cartList">
+                     
                     </tbody>
                 </table>
             </div>
@@ -386,7 +387,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="order_box">
-                        <h2>Your Order</h2>
+                        <h2>주문 정보</h2>
                         <ul class="list">
                             <li><a href="#"><h4>Product <span>Total</span></h4></a></li>
                             <li><a href="#">Fresh Blackberry <span class="middle">x 02</span> <span
@@ -403,8 +404,8 @@
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
-                                <input type="radio" id="f-option5" name="selector">
-                                <label for="f-option5">Check payments</label>
+                                <input type="radio" id="f-option5" name="selector" value="0">
+                                <label for="f-option5">가상계좌</label>
                                 <div class="check"></div>
                             </div>
                             <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,
@@ -412,8 +413,8 @@
                         </div>
                         <div class="payment_item active">
                             <div class="radion_btn">
-                                <input type="radio" id="f-option6" name="selector">
-                                <label for="f-option6">Paypal </label>
+                                <input type="radio" id="f-option6" name="selector" value="1">
+                                <label for="f-option6">카드 </label>
                                 <img src="/img/product/card.jpg" alt="">
                                 <div class="check"></div>
                             </div>
