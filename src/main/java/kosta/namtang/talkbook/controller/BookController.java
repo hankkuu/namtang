@@ -112,17 +112,16 @@ public class BookController {
     @RequestMapping("/BookDetail")
     ModelAndView catgCall(@RequestParam Long id) {
         ModelAndView mv = new ModelAndView();
-        System.out.println("몇번!?--------------------------------------------------------------");
-        Optional<Book> book = bookService.BookDetail(id);
 
+        Optional<Book> book = bookService.BookDetail(id);
         mv.addObject("book",book);
         mv.setViewName("/guest/productDetail");
 
-        //리뷰
-        List<Review> rv = reviewService.selectUser(1L);
-        mv.addObject("reviewcc", rv);
+            //리뷰
+            List<Review> rv = reviewService.selectReview(id);
+            mv.addObject("reviewcc", rv);
 
-        return mv;
+            return mv;
     }
 
 

@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MypageController {
 
     @RequestMapping("/mypage")
-    String mypage(){
+    String mypage() {
         return "/user/mypage";
     }
 
     @RequestMapping("/mypage/recentBook")
-    String recentBook(){
+    String recentBook() {
         return "/user/recentBook";
     }
 }

@@ -15,13 +15,13 @@ import java.util.List;
 @ToString
 public class PurchaseSetRequest {
 
-	private String imp_uid;
-	private String merchant_uid;
-	private String billKey;
+    private String imp_uid;
+    private String merchant_uid;
+    private String billKey;
 
-	private Users user;
-	private List<PurchaseBook> book;
-	private PurchaseOrder order;
-	private PurchasePayment payment;
+    private Users user;
+    private List<PurchaseBook> book;
+    private PurchaseOrder order;
+    private PurchasePayment payment;
 
 }

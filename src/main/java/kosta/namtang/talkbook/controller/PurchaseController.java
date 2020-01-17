@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Slf4j
@@ -40,21 +41,21 @@ public class PurchaseController {
 
         if (key.isEmpty() == false) {
             return new ShopResponse(StatusCode.Success, key);
-        }
-        else {
+        } else {
             throw new Exception();
         }
     }
 
     @PostMapping("")
-    public ShopResponse purchase(@RequestBody PurchaseSetRequest request) throws Exception {
+    public ShopResponse purchase(HttpServletRequest req, @RequestBody PurchaseSetRequest request) throws Exception {
+        Object obj = req.getSession().getAttribute("userIdx");
         ShopResponse result = null;
         log.debug(request.toString());
 
         BillKey key = purchaseService.insertPurchase(request.getBook(), request.getOrder(), request.getPayment()
-                    , request.getUser(), request.getBillKey());
+                , request.getUser(), request.getBillKey());
 
-        if(key != null) {
+        if (key != null) {
             // 구매 DB 입력 완료
             result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(key));
         } else {
@@ -73,12 +74,12 @@ public class PurchaseController {
 
         String total = request.getPaid_amount();
         Payment payment = JsonUtil.fromJson(paymentData, Payment.class);
-        if(total.equals(payment.getAmount().toString())) {
+        if (total.equals(payment.getAmount().toString())) {
             // 결제 검증 성공
             String status = payment.getStatus();
-            if(status.equals("ready")) {
+            if (status.equals("ready")) {
                 log.debug("ready");
-            } else if(status.equals("paid")) {
+            } else if (status.equals("paid")) {
                 log.debug("paid");
 
                 result = new ShopResponse(StatusCode.Success, paymentData);

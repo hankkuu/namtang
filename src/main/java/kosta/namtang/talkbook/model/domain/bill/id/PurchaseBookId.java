@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class PurchaseBookId  implements Serializable {
+public class PurchaseBookId implements Serializable {
 
     private long bookIdx;
     private long purchaseOrderIdx;

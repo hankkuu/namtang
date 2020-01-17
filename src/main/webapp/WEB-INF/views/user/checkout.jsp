@@ -1,64 +1,98 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aroma Shop - Checkout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aroma Shop - Checkout</title>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-    <script type="text/javascript" >
+    <script type="text/javascript">
         const IMP = window.IMP; // 생략해도 괜찮습니다.
         IMP.init("imp13182886"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.'
 
-        $(window).load(function() {
+        $(window).load(function () {
+
+            $(function () {
+                let list = JSON.parse(sessionStorage.getItem("cartlist"));
+                let str = "";
+                for(let i = 0 ; i < list.length ; i++) {
+                    console.log(list[i]);
+
+                    str += '<td>'
+                    str += '<img class=\"card-img\" src=\" \">'
+                    str += '<input type="hidden" name="bookIdx" id=bookIdx value="">'
+                    str += '</td>'
+                    str += '<td class="card-title">' + list[i].title + '</td>'
+                    str += '<td id="price">1000</td>'
+                    str += '<td>'
+                    str += '<select name="amount" id=\'\'> <option value="">1</option> </select>'
+                    str += '</td>'
+                    str += '<td id=Total>111</td>'
+ 
+                    // str += '<tr>'
+                    // str += '<td></td>'
+                    // str += '<td></td>'
+                    // str += '<td><h5>Subtotal</h5></td>'
+                    // str += '<td> <h5 id="priceSum">￦0</h5> </td>'
+                    // str += '</tr>'
+                }
+                $("#cartList").html(str);
+
+            });
+
+
+
+
+
             console.log("start");
 
-            $("#purchase").click( async () => {
+            $("#purchase").click(async () => {
 
-                await purchaseProcess().then( async (result) => {
+                await purchaseProcess().then(async (result) => {
                     console.log(result);
 
-                    if(result.statusCode === "Success") {
+                    if (result.statusCode === "Success") {
                         const key = result.message;
                         if (key !== undefined) {
                             let purchaseObj = {
-                                purchasePayment : {
-                                    totalPrice : "100000", // $("#totalPrice").text(),
-                                    receiverName : "받는사람이름",
-                                    receiverPhone : "받는사람연락처",
-                                    deliveryComment : "배송요청사항",
-                                    paymentCode : "1",
-                                    shippingPrice : "0"
+                                purchasePayment: {
+                                    totalPrice: "100000", // $("#totalPrice").text(),
+                                    receiverName: "받는사람이름",
+                                    receiverPhone: "받는사람연락처",
+                                    deliveryComment: "배송요청사항",
+                                    paymentCode: "1",
+                                    shippingPrice: "0"
                                 },
-                                purchaseOrder : {
-                                    deliveryAddress : "우리집"
+                                purchaseOrder: {
+                                    deliveryAddress: "우리집"
                                 },
-                                purchaseBook : [{
-                                    purchaseBookId : {
-                                        bookIdx : "10"
+                                purchaseBook: [{
+                                    purchaseBookId: {
+                                        bookIdx: "10"
                                     },
-                                    price : "10000",
-                                    name : "난책1",
-                                    count : "3",
-                                    imagePath : " "
-                                },{
-                                    purchaseBookId : {
-                                        bookIdx : "20"
+                                    price: "10000",
+                                    name: "난책1",
+                                    count: "3",
+                                    imagePath: " "
+                                }, {
+                                    purchaseBookId: {
+                                        bookIdx: "20"
                                     },
-                                    price : "20000",
-                                    name : "난책2",
-                                    count : "1",
-                                    imagePath : "test"
+                                    price: "20000",
+                                    name: "난책2",
+                                    count: "1",
+                                    imagePath: "test"
                                 }
                                 ],
-                                billKey : key
+                                billKey: key
                             }
 
                             // 구매하는 user 정보 필요
@@ -74,16 +108,16 @@
                             let shop = {
                                 pg: "kakaopay",
                                 pay_method: "card",
-                                escrow : true,
-                                currency : "KRW",
-                                custom_data : purchaseObj
+                                escrow: true,
+                                currency: "KRW",
+                                custom_data: purchaseObj
                             };
                             let param = {
                                 pg: shop.pg,
                                 pay_method: shop.pay_method,
                                 escrow: shop.escrow,
                                 currency: shop.currency,
-                                custom_data : shop.custom_data,
+                                custom_data: shop.custom_data,
                                 merchant_uid: key,
                                 name: "임시로 사용하는 이름이다",
                                 amount: "100000",
@@ -94,53 +128,53 @@
                                 buyer_postcode: user.postcode
                             };
 
-                            const test = await setPuchase(purchaseObj).then( async (dbResult) => {
+                            const test = await setPuchase(purchaseObj).then(async (dbResult) => {
                                 console.log(dbResult);
-                                    if (dbResult.data.statusCode === "Success") {
-                                        // const test2 = await verifyPurchase(param).then( (confirmResult) => {
-                                        //
-                                        //     if(confirmResult.data.statusCode === "Success") {
-                                        //         console.log(confirmResult);
-                                        //         alert("진짜 최종 완료");
-                                        //     }
-                                        // });
-                                        IMP.request_pay(param,
-                                            (rsp) => {
-                                                // callback
-                                                if (rsp.success) {
-                                                    console.log(rsp);
-                                                    // axios로 HTTP 요청
-                                                    axios({
-                                                        url: "/api/v1/purchase/complete", // 가맹점 서버
-                                                        method: "post",
-                                                        headers: { "Content-Type": "application/json" },
-                                                        data: {
-                                                            imp_uid: rsp.imp_uid,
-                                                            merchant_uid: rsp.merchant_uid,
-                                                            paid_amount: rsp.paid_amount,
-                                                        }
-                                                    }).then((result) => {
-                                                        // 가맹점 서버 결제 API 성공시 로직
-                                                        // 이제 DB 입력을 해도 된다
-                                                        //console.log(data);
+                                if (dbResult.data.statusCode === "Success") {
+                                    // const test2 = await verifyPurchase(param).then( (confirmResult) => {
+                                    //
+                                    //     if(confirmResult.data.statusCode === "Success") {
+                                    //         console.log(confirmResult);
+                                    //         alert("진짜 최종 완료");
+                                    //     }
+                                    // });
+                                    IMP.request_pay(param,
+                                        (rsp) => {
+                                            // callback
+                                            if (rsp.success) {
+                                                console.log(rsp);
+                                                // axios로 HTTP 요청
+                                                axios({
+                                                    url: "/api/v1/purchase/complete", // 가맹점 서버
+                                                    method: "post",
+                                                    headers: {"Content-Type": "application/json"},
+                                                    data: {
+                                                        imp_uid: rsp.imp_uid,
+                                                        merchant_uid: rsp.merchant_uid,
+                                                        paid_amount: rsp.paid_amount,
+                                                    }
+                                                }).then((result) => {
+                                                    // 가맹점 서버 결제 API 성공시 로직
+                                                    // 이제 DB 입력을 해도 된다
+                                                    //console.log(data);
 
-                                                        if(result.data.statusCode === "Success") {
-                                                            alert("최종 구매 성공 success");
-                                                            let param = JSON.stringify(result.data.message);
-                                                            location.replace('/confirmation?msg='+encodeURI(param));
-                                                            //location.href='/confirmation';
-                                                        } else {
-                                                            alert("최종 구매 실패");
-                                                        }
-                                                        return result;
-                                                    })
-                                                } else {
-                                                    alert("검증실패 data 확인하세요");
-                                                    //...,
-                                                    // 결제 실패 시 로직,
-                                                    //...
-                                                }
-                                            });
+                                                    if (result.data.statusCode === "Success") {
+                                                        alert("최종 구매 성공 success");
+                                                        let param = JSON.stringify(result.data.message);
+                                                        location.replace('/confirmation?msg=' + encodeURI(param));
+                                                        //location.href='/confirmation';
+                                                    } else {
+                                                        alert("최종 구매 실패");
+                                                    }
+                                                    return result;
+                                                })
+                                            } else {
+                                                alert("검증실패 data 확인하세요");
+                                                //...,
+                                                // 결제 실패 시 로직,
+                                                //...
+                                            }
+                                        });
                                 }
                             });
                         }
@@ -173,14 +207,12 @@
 
         const setPuchase = async (purchaseObj) => {
             // 필요함 session
-            const user = {
-
-            }
+            const user = {}
             // axios로 HTTP 요청
             const result = await axios({
                 url: "/api/v1/purchase", // 가맹점 서버
                 method: "post",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 data: {
                     book: purchaseObj.purchaseBook,
                     order: purchaseObj.purchaseOrder,
@@ -237,27 +269,48 @@
 </head>
 <body>
 
-	<!-- ================ start banner area ================= -->	
-	<section class="blog-banner-area" id="category">
-		<div class="container h-100">
-			<div class="blog-banner">
-				<div class="text-center">
-					<h1>Product Checkout</h1>
-					<nav aria-label="breadcrumb" class="banner-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-            </ol>
-          </nav>
-				</div>
-			</div>
+<!-- ================ start banner area ================= -->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">ProductName</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="cartList">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <tr class="out_button_area">
+                <td class="d-none-l">
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <div class="checkout_btn_inner d-flex align-items-center">
+                        <a class="button primary-btn" href="#">계속 쇼핑하기</a>
+                    </div>
+                </td>
+            </tr>
+        </div>
     </div>
-	</section>
-	<!-- ================ end banner area ================= -->
-  
-  
-  <!--================Checkout Area =================-->
-  <section class="checkout_area section-margin--small">
+</section>
+<!-- ================ end banner area ================= -->
+
+
+<!--================Checkout Area =================-->
+<section class="checkout_area section-margin--small">
     <div class="container">
 
         <div class="billing_details">
@@ -326,7 +379,8 @@
                                 <input type="checkbox" id="f-option3" name="selector">
                                 <label for="f-option3">Ship to a different address?</label>
                             </div>
-                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
+                            <textarea class="form-control" name="message" id="message" rows="1"
+                                      placeholder="Order Notes"></textarea>
                         </div>
                     </form>
                 </div>
@@ -335,9 +389,12 @@
                         <h2>Your Order</h2>
                         <ul class="list">
                             <li><a href="#"><h4>Product <span>Total</span></h4></a></li>
-                            <li><a href="#">Fresh Blackberry <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                            <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                            <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
+                            <li><a href="#">Fresh Blackberry <span class="middle">x 02</span> <span
+                                    class="last">$720.00</span></a></li>
+                            <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span
+                                    class="last">$720.00</span></a></li>
+                            <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span
+                                    class="last">$720.00</span></a></li>
                         </ul>
                         <ul class="list list_2">
                             <li><a href="#">Subtotal <span id="totalPrice">$2160.00</span></a></li>
@@ -369,18 +426,16 @@
                             <a href="#">terms & conditions*</a>
                         </div>
                         <div class="text-center">
-                          <input type="button" id="purchase" class="button button-paypal" value="Proceed to Paypal"></input>
+                            <input type="button" id="purchase" class="button button-paypal"
+                                   value="Proceed to Paypal"></input>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </section>
-  <!--================End Checkout Area =================-->
-
-
-
+</section>
+<!--================End Checkout Area =================-->
 
 
 </body>

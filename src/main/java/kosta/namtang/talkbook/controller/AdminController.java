@@ -23,16 +23,16 @@ import kosta.namtang.talkbook.service.AdminService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	@Autowired
-    private	AdminService service;
-	
-	@RequestMapping("dashBoard")
-	public String dashBoard(Model model) {
-		List<Statistics> list = service.selectAll();
-		model.addAttribute("list",list);
-		
-		return "admin/dashBoard"; 
-	}
+    @Autowired
+    private AdminService service;
+
+    @RequestMapping("dashBoard")
+    public String dashBoard(Model model) {
+        List<Statistics> list = service.selectAll();
+        model.addAttribute("list", list);
+
+        return "admin/dashBoard";
+    }
 	/*
 	@RequestMapping("dashBoardList")
 	@ResponseBody
@@ -47,12 +47,12 @@ public class AdminController {
 	}
 	*/
 
-	@RequestMapping("adminDOM")
-	public String adminDOM(Model model) {
-		return "admin/adminDOM";
-	}
-	
-//	@RequestMapping("adminloginCheck")
+    @RequestMapping("adminDOM")
+    public String adminDOM(Model model) {
+        return "admin/adminDOM";
+    }
+
+    //	@RequestMapping("adminloginCheck")
 //	public String adminloginCheck(Admin admin) {
 //		
 //		System.out.println(admin +"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
@@ -60,14 +60,14 @@ public class AdminController {
 //		return "/";
 //		
 //	}
-	@RequestMapping("/adminLoginForm")
-	public String adminlogin(Admin admin) {
-		
-		System.out.println(admin +"불꽅남자");
-		//service.selectById(admin); 
-		return "/adminLoginForm";
-		
-	}
-	
+    @RequestMapping("/adminLoginForm")
+    public String adminlogin(Admin admin) {
+
+        System.out.println(admin + "불꽅남자");
+        //service.selectById(admin);
+        return "/adminLoginForm";
+
+    }
+
 
 }

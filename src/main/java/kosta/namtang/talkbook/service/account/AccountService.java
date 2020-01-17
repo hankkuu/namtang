@@ -8,11 +8,13 @@ public interface AccountService {
 
     Account createAccount(UserSetRequest request) throws Exception;
 
-    void updateUser(Users user);
+    void updateUser(UserSetRequest user);
+
+    Users updateAccount(long userIdx);
 
     void deleteAccount(Account acc);
 
     Account login(Account acc) throws Exception;
 
-
+    Boolean checkId(String id);
 }

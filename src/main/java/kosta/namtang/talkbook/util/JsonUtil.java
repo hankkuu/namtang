@@ -10,44 +10,44 @@ import com.google.gson.internal.Primitives;
 
 public class JsonUtil {
 
-	private static Gson gson = new Gson();
+    private static Gson gson = new Gson();
 
-	public static String toJson(Object data) {
-		String str = gson.toJson(data);
-		return str;
-	}
+    public static String toJson(Object data) {
+        String str = gson.toJson(data);
+        return str;
+    }
 
-	public static <T> T fromJson(String json, Class<T> classOfT) throws Exception {
-		Object object = gson.fromJson(json, (Type) classOfT);
-		return Primitives.wrap(classOfT).cast(object);
-	}
+    public static <T> T fromJson(String json, Class<T> classOfT) throws Exception {
+        Object object = gson.fromJson(json, (Type) classOfT);
+        return Primitives.wrap(classOfT).cast(object);
+    }
 
-	public static <T> List<T> toList(String json, Class<T> typeClass) {
-		return gson.fromJson(json, new ListOfJson<T>(typeClass));
-	}
+    public static <T> List<T> toList(String json, Class<T> typeClass) {
+        return gson.fromJson(json, new ListOfJson<T>(typeClass));
+    }
 
-	static class ListOfJson<T> implements ParameterizedType {
-		private Class<?> wrapped;
+    static class ListOfJson<T> implements ParameterizedType {
+        private Class<?> wrapped;
 
-		public ListOfJson(Class<T> wrapper) {
-			this.wrapped = wrapper;
-		}
+        public ListOfJson(Class<T> wrapper) {
+            this.wrapped = wrapper;
+        }
 
-		@Override
-		public Type[] getActualTypeArguments() {
-			return new Type[] { wrapped };
-		}
+        @Override
+        public Type[] getActualTypeArguments() {
+            return new Type[]{wrapped};
+        }
 
-		@Override
-		public Type getRawType() {
-			return List.class;
-		}
+        @Override
+        public Type getRawType() {
+            return List.class;
+        }
 
-		@Override
-		public Type getOwnerType() {
-			return null;
-		}
-	}
+        @Override
+        public Type getOwnerType() {
+            return null;
+        }
+    }
 }
 
 

@@ -7,39 +7,39 @@ import com.google.gson.annotations.SerializedName;
 
 public class Schedule {
 
-	@SerializedName("customer_uid")
-	private String customer_uid;
-	
-	@SerializedName("merchant_uid")
-	private String merchant_uid;
-	
-	@SerializedName("schedule_at")
-	private Date schedule_at;
-	
-	@SerializedName("amount")
-	private BigDecimal amount;
+    @SerializedName("customer_uid")
+    private String customer_uid;
 
-	public Schedule(String customer_uid, String merchant_uid, Date schedule_at, BigDecimal amount) {
-		this.customer_uid = customer_uid;
-		this.merchant_uid = merchant_uid;
-		this.schedule_at = schedule_at;
-		this.amount = amount;
-	}
+    @SerializedName("merchant_uid")
+    private String merchant_uid;
 
-	public String getCustomerUid() {
-		return customer_uid;
-	}
+    @SerializedName("schedule_at")
+    private Date schedule_at;
 
-	public String getMerchantUid() {
-		return merchant_uid;
-	}
+    @SerializedName("amount")
+    private BigDecimal amount;
 
-	public Date getScheduleAt() {
-		return schedule_at;
-	}
+    public Schedule(String customer_uid, String merchant_uid, Date schedule_at, BigDecimal amount) {
+        this.customer_uid = customer_uid;
+        this.merchant_uid = merchant_uid;
+        this.schedule_at = schedule_at;
+        this.amount = amount;
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
-	
+    public String getCustomerUid() {
+        return customer_uid;
+    }
+
+    public String getMerchantUid() {
+        return merchant_uid;
+    }
+
+    public Date getScheduleAt() {
+        return schedule_at;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
 }

@@ -12,4 +12,16 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
     List<Review> findByUserIdx(Long idx);
 
+    List<Review> findByBookIdx(Long idx);
+
+    List<Review> findByReviewTitle(String title);
+
+    List<Review> findByReviewContent(String content);
+
+    void deleteByUserIdx(Long idx);
+
+    void deleteByBookIdx(Long idx);
+
+
+
 }

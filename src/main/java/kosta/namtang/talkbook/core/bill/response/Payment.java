@@ -9,249 +9,249 @@ import lombok.ToString;
 @ToString
 public class Payment {
 
-	@SerializedName("imp_uid")
-	String imp_uid;
-	
-	@SerializedName("merchant_uid")
-	String merchant_uid;
-	
-	@SerializedName("pay_method")
-	String pay_method;
-	
-	@SerializedName("pg_provider")
-	String pg_provider;
-	
-	@SerializedName("pg_tid")
-	String pg_tid;
-	
-	@SerializedName("escrow")
-	boolean escrow;
-	
-	@SerializedName("apply_num")
-	String apply_num;
-	
-	@SerializedName("bank_code")
-	String bank_code;
-	
-	@SerializedName("bank_name")
-	String bank_name;
-	
-	@SerializedName("card_code")
-	String card_code;
-	
-	@SerializedName("card_name")
-	String card_name;
-	
-	@SerializedName("card_quota")
-	int card_quota;
-	
-	@SerializedName("vbank_code")
-	String vbank_code;
-	
-	@SerializedName("vbank_name")
-	String vbank_name;
-	
-	@SerializedName("vbank_num")
-	String vbank_num;
-	
-	@SerializedName("vbank_holder")
-	String vbank_holder;
-	
-	@SerializedName("vbank_date")
-	long vbank_date;
-	
-	@SerializedName("name")
-	String name;
-	
-	@SerializedName("amount")
-	BigDecimal amount;
-	
-	@SerializedName("cancel_amount")
-	BigDecimal cancel_amount;
-	
-	@SerializedName("buyer_name")
-	String buyer_name;
-	
-	@SerializedName("buyer_email")
-	String buyer_email;
-	
-	@SerializedName("buyer_tel")
-	String buyer_tel;
-	
-	@SerializedName("buyer_addr")
-	String buyer_addr;
-	
-	@SerializedName("buyer_postcode")
-	String buyer_postcode;
-	
-	@SerializedName("custom_data")
-	String custom_data;
-	
-	@SerializedName("status")
-	String status;
-	
-	@SerializedName("paid_at")
-	long paid_at;
-	
-	@SerializedName("failed_at")
-	long failed_at;
-	
-	@SerializedName("cancelled_at")
-	long cancelled_at;
-	
-	@SerializedName("fail_reason")
-	String fail_reason;
-	
-	@SerializedName("cancel_reason")
-	String cancel_reason;
-	
-	@SerializedName("receipt_url")
-	String receipt_url;
-	
-	@SerializedName("cancel_history")
-	PaymentCancelDetail[] cancel_history;
-	
-	@SerializedName("cash_receipt_issued")
-	boolean cash_receipt_issued;
-	
-	public String getImpUid() {
-		return imp_uid;
-	}
-	
-	public String getMerchantUid() {
-		return merchant_uid;
-	}
+    @SerializedName("imp_uid")
+    String imp_uid;
 
-	public String getPayMethod() {
-		return pay_method;
-	}
+    @SerializedName("merchant_uid")
+    String merchant_uid;
 
-	public String getPgProvider() {
-		return pg_provider;
-	}
+    @SerializedName("pay_method")
+    String pay_method;
 
-	public String getPgTid() {
-		return pg_tid;
-	}
+    @SerializedName("pg_provider")
+    String pg_provider;
 
-	public boolean isEscrow() {
-		return escrow;
-	}
+    @SerializedName("pg_tid")
+    String pg_tid;
 
-	public String getApplyNum() {
-		return apply_num;
-	}
+    @SerializedName("escrow")
+    boolean escrow;
 
-	public String getBankCode() {
-		return bank_code;
-	}
-	
-	public String getBankName() {
-		return bank_name;
-	}
-	
-	public String getCardCode() {
-		return card_code;
-	}
-	
-	public String getCardName() {
-		return card_name;
-	}
+    @SerializedName("apply_num")
+    String apply_num;
 
-	public int getCardQuota() {
-		return card_quota;
-	}
+    @SerializedName("bank_code")
+    String bank_code;
 
-	public String getVbankCode() {
-		return vbank_code;
-	}
-	
-	public String getVbankName() {
-		return vbank_name;
-	}
+    @SerializedName("bank_name")
+    String bank_name;
 
-	public String getVbankNum() {
-		return vbank_num;
-	}
+    @SerializedName("card_code")
+    String card_code;
 
-	public String getVbankHolder() {
-		return vbank_holder;
-	}
+    @SerializedName("card_name")
+    String card_name;
 
-	public Date getVbankDate() {
-		return new Date( vbank_date * 1000L );
-	}
+    @SerializedName("card_quota")
+    int card_quota;
 
-	public String getName() {
-		return name;
-	}
+    @SerializedName("vbank_code")
+    String vbank_code;
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    @SerializedName("vbank_name")
+    String vbank_name;
 
-	public BigDecimal getCancelAmount() {
-		return cancel_amount;
-	}
+    @SerializedName("vbank_num")
+    String vbank_num;
 
-	public String getBuyerName() {
-		return buyer_name;
-	}
+    @SerializedName("vbank_holder")
+    String vbank_holder;
 
-	public String getBuyerEmail() {
-		return buyer_email;
-	}
+    @SerializedName("vbank_date")
+    long vbank_date;
 
-	public String getBuyerTel() {
-		return buyer_tel;
-	}
+    @SerializedName("name")
+    String name;
 
-	public String getBuyerAddr() {
-		return buyer_addr;
-	}
+    @SerializedName("amount")
+    BigDecimal amount;
 
-	public String getBuyerPostcode() {
-		return buyer_postcode;
-	}
+    @SerializedName("cancel_amount")
+    BigDecimal cancel_amount;
 
-	public String getCustomData() {
-		return custom_data;
-	}
+    @SerializedName("buyer_name")
+    String buyer_name;
 
-	public String getStatus() {
-		return status;
-	}
+    @SerializedName("buyer_email")
+    String buyer_email;
 
-	public Date getPaidAt() {
-		return new Date( paid_at * 1000L );
-	}
+    @SerializedName("buyer_tel")
+    String buyer_tel;
 
-	public Date getFailedAt() {
-		return new Date( failed_at * 1000L );
-	}
+    @SerializedName("buyer_addr")
+    String buyer_addr;
 
-	public Date getCancelledAt() {
-		return new Date( cancelled_at * 1000L );
-	}
+    @SerializedName("buyer_postcode")
+    String buyer_postcode;
 
-	public String getFailReason() {
-		return fail_reason;
-	}
+    @SerializedName("custom_data")
+    String custom_data;
 
-	public String getCancelReason() {
-		return cancel_reason;
-	}
+    @SerializedName("status")
+    String status;
 
-	public String getReceiptUrl() {
-		return receipt_url;
-	}
+    @SerializedName("paid_at")
+    long paid_at;
 
-	public PaymentCancelDetail[] getCancelHistory() {
-		return cancel_history;
-	}
+    @SerializedName("failed_at")
+    long failed_at;
 
-	public boolean isCashReceiptIssued() {
-		return cash_receipt_issued;
-	}
-	
+    @SerializedName("cancelled_at")
+    long cancelled_at;
+
+    @SerializedName("fail_reason")
+    String fail_reason;
+
+    @SerializedName("cancel_reason")
+    String cancel_reason;
+
+    @SerializedName("receipt_url")
+    String receipt_url;
+
+    @SerializedName("cancel_history")
+    PaymentCancelDetail[] cancel_history;
+
+    @SerializedName("cash_receipt_issued")
+    boolean cash_receipt_issued;
+
+    public String getImpUid() {
+        return imp_uid;
+    }
+
+    public String getMerchantUid() {
+        return merchant_uid;
+    }
+
+    public String getPayMethod() {
+        return pay_method;
+    }
+
+    public String getPgProvider() {
+        return pg_provider;
+    }
+
+    public String getPgTid() {
+        return pg_tid;
+    }
+
+    public boolean isEscrow() {
+        return escrow;
+    }
+
+    public String getApplyNum() {
+        return apply_num;
+    }
+
+    public String getBankCode() {
+        return bank_code;
+    }
+
+    public String getBankName() {
+        return bank_name;
+    }
+
+    public String getCardCode() {
+        return card_code;
+    }
+
+    public String getCardName() {
+        return card_name;
+    }
+
+    public int getCardQuota() {
+        return card_quota;
+    }
+
+    public String getVbankCode() {
+        return vbank_code;
+    }
+
+    public String getVbankName() {
+        return vbank_name;
+    }
+
+    public String getVbankNum() {
+        return vbank_num;
+    }
+
+    public String getVbankHolder() {
+        return vbank_holder;
+    }
+
+    public Date getVbankDate() {
+        return new Date(vbank_date * 1000L);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public BigDecimal getCancelAmount() {
+        return cancel_amount;
+    }
+
+    public String getBuyerName() {
+        return buyer_name;
+    }
+
+    public String getBuyerEmail() {
+        return buyer_email;
+    }
+
+    public String getBuyerTel() {
+        return buyer_tel;
+    }
+
+    public String getBuyerAddr() {
+        return buyer_addr;
+    }
+
+    public String getBuyerPostcode() {
+        return buyer_postcode;
+    }
+
+    public String getCustomData() {
+        return custom_data;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Date getPaidAt() {
+        return new Date(paid_at * 1000L);
+    }
+
+    public Date getFailedAt() {
+        return new Date(failed_at * 1000L);
+    }
+
+    public Date getCancelledAt() {
+        return new Date(cancelled_at * 1000L);
+    }
+
+    public String getFailReason() {
+        return fail_reason;
+    }
+
+    public String getCancelReason() {
+        return cancel_reason;
+    }
+
+    public String getReceiptUrl() {
+        return receipt_url;
+    }
+
+    public PaymentCancelDetail[] getCancelHistory() {
+        return cancel_history;
+    }
+
+    public boolean isCashReceiptIssued() {
+        return cash_receipt_issued;
+    }
+
 }

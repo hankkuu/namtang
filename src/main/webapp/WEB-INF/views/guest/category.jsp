@@ -18,29 +18,29 @@
       font-family: 'Noto Sans KR', sans-serif;
     }
 
-    .pixel-radio:checked::after {
-      -webkit-animation: click-wave 0.65s;
-      -moz-animation: click-wave 0.65s;
-      animation: click-wave 0.65s;
-      background: #384aeb;
-      content: '';
-      display: block;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-    }
+        .pixel-radio:checked::after {
+            -webkit-animation: click-wave 0.65s;
+            -moz-animation: click-wave 0.65s;
+            animation: click-wave 0.65s;
+            background: #384aeb;
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+        }
 
-    @import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
-    .pagination-container {
-      color: #2c3e50;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400;
-      margin: 15px auto;
-      padding-right: 40px;
-      text-align: center;
+        @import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
+        .pagination-container {
+            color: #2c3e50;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            margin: 15px auto;
+            padding-right: 40px;
+            text-align: center;
 
     }
     .pagination {
@@ -94,15 +94,15 @@
   <script>
     $(function(){
 
-      var CatgIdx=${CatgIdx};
-      var startPage=${startPage};
-      var maxPage=${maxPage};
-      var curPage;
-      var pageInfo;
+            var CatgIdx =${CatgIdx};
+            var startPage =${startPage};
+            var maxPage =${maxPage};
+            var curPage;
+            var pageInfo;
 
-      $("#category li input[id=${CatgIdx}]").prop('checked',true);
-      // alert($('#sorting select option:selected').val());
-      <%--alert($("#category li input[id=${CatgIdx}]").attr('id'));--%>
+            $("#category li input[id=${CatgIdx}]").prop('checked', true);
+            // alert($('#sorting select option:selected').val());
+            <%--alert($("#category li input[id=${CatgIdx}]").attr('id'));--%>
 
       //돈 콤마 찍기
       function addComma(num) {
@@ -157,10 +157,6 @@
             // console.log(result[0]);
             pageInfo = result[1];
 
-            // startPage = result[1][0];
-            // maxPage = pageInfo[1][1];
-            // if(maxPage==0) maxPage=1;
-            // curPage = pageInfo[1][2];
           } , //성공했을때
           error : function(request){
           alert(request.responseText);
@@ -236,10 +232,10 @@
           return 0;
         }
 
-        // $('.pagination-active').prev().addClass('pagination-active');
-        // $('.pagination-active').next().removeClass('pagination-active');
+                    // $('.pagination-active').prev().addClass('pagination-active');
+                    // $('.pagination-active').next().removeClass('pagination-active');
 
-          bookAjax(CatgIdx, PageNum,Ordering);
+                    bookAjax(CatgIdx, PageNum, Ordering);
 
           $(".pagination-inner").empty();
           var doneLoop = false;
@@ -400,7 +396,7 @@
 	<!-- ================ end banner area ================= -->
 
 
-	<!-- ================ category section start ================= -->		  
+	<!-- ================ category section start ================= -->
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
@@ -537,7 +533,7 @@
 	<!-- ================ category section end ================= -->
 
 
-	<!-- ================ top product area start ================= -->	
+	<!-- ================ top product area start ================= -->
 	<section class="related-product-area">
 		<div class="container">
 			<div class="section-intro pb-60px">
@@ -651,9 +647,9 @@
       </div>
 		</div>
 	</section>
-	<!-- ================ top product area end ================= -->		
+	<!-- ================ top product area end ================= -->
 
-	<!-- ================ Subscribe section start ================= -->		  
+	<!-- ================ Subscribe section start ================= -->
   <section class="subscribe-position">
     <div class="container">
       <div class="subscribe text-center">
@@ -672,11 +668,11 @@
 
           </form>
         </div>
-        
+
       </div>
     </div>
   </section>
-	<!-- ================ Subscribe section end ================= -->		  
+	<!-- ================ Subscribe section end ================= -->
 
 
 

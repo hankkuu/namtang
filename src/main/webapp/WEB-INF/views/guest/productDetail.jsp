@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: ksw
@@ -14,6 +15,185 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aroma Shop - Product Details</title>
+    <style>
+        .starR{
+            background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+            background-size: auto 100%;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-indent: -9999px;
+            cursor: pointer;
+        }
+        .starR.on{background-position:0 0;}
+        /*.starR1{*/
+        /*    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;*/
+        /*    background-size: auto 100%;*/
+        /*    width: 15px;*/
+        /*    height: 30px;*/
+        /*    float:left;*/
+        /*    text-indent: -9999px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.starR2{*/
+        /*    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;*/
+        /*    background-size: auto 100%;*/
+        /*    width: 15px;*/
+        /*    height: 30px;*/
+        /*    float:left;*/
+        /*    text-indent: -9999px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.starR1.on{background-position:0 0;}*/
+        /*.starR2.on{background-position:-15px 0;}*/
+
+    </style>
+    <script>
+
+        $(function () {
+            $("#add_cart").on('click' , function(){
+
+                let bookIdx = ${book.get().bookIdx};
+                let bookTitle = "${book.get().bookTitle}";
+                let bookPrice = ${book.get().bookPrice};
+                let bookImg = "${book.get().bookImg}";
+                let qty =$("#cate_amount option:selected").val();
+
+                let add_to = {
+                    bookIdx : bookIdx,
+                    bookTitle : bookTitle,
+                    bookImg : bookImg,
+                    bookPrice : bookPrice,
+                    qty : qty
+                }
+                console.log(add_to);
+
+                $.ajax({
+                    type : "get",
+                    url : "/cart/insert",
+                    dataType : "json",
+                    data : add_to,
+                    error : function(err){
+
+                        console.log(err);
+                    },
+                    success : function(result){
+                        // $("#content").html(Parse_data); //div에 받아온 값을 넣는다.
+                        if(result.statusCode === "Success") {
+                            alert(result.message);
+                        }
+
+                    }
+
+                });
+            });
+
+        })
+
+        $(document).ready(function(){
+            $('.starRev span').click(function(){
+                $(this).parent().children('span').removeClass('on');
+                $(this).addClass('on').prevAll('span').addClass('on');
+                return false;
+            });
+        });
+
+         function clicka() {
+             $("#reviewScore").val(2);
+         }
+         function clickb() {
+             $("#reviewScore").val(4);
+         }
+        function clickc() {
+            $("#reviewScore").val(6);
+        }
+        function clickd() {
+            $("#reviewScore").val(8);
+        }
+        function clicke() {
+            $("#reviewScore").val(10);
+        }
+
+        // $(document).ready(function () {
+        //     $("#updateB").on("click",function () {
+        //         let rt = $(this).parent().children().children().next().children().next().text();
+        //         let rc = $(this).prev().text();
+        //
+        //         $("#titleForm").empty();
+        //         $("#textarea").empty();
+        //
+        //         $("#titleForm").val(rt);
+        //         $("#textarea").append(rc);
+        //
+        //         //$("#formRoot").contents().unwrap().wrap("<form action='/reviewModi' class='form-contact form-review mt-3' id='formRoot' method='post'>");
+        //         $("#formRoot").attr("action", "/reviewModi");
+        //         $("#h4").text("리뷰 수정하기");
+        //         $("#submitForm").text("수정하기");
+        //
+        //         var menuHeight = 450;
+        //
+        //         var location = document.querySelector("#submitForm").offsetTop;
+        //
+        //         window.scrollTo({top: location + menuHeight, behavior: 'smooth'});
+        //
+        //
+        //     });
+        // });
+
+
+        function moveScroll(a) {
+            let rt = $(a).parent().children().children().next().children().next().text();
+            let rc = $(a).prev().text();
+
+            $("#titleForm").empty();
+            $("#textarea").empty();
+
+            $("#titleForm").val(rt);
+            $("#textarea").append(rc);
+
+            //$("#formRoot").contents().unwrap().wrap("<form action='/reviewModi' class='form-contact form-review mt-3' id='formRoot' method='post'>");
+            $("#formRoot").attr("action", "/reviewModi");
+            $("#h4").text("리뷰 수정하기");
+            $("#submitForm").text("수정하기");
+
+            var menuHeight = 450;
+
+            var location = document.querySelector("#submitForm").offsetTop;
+
+            window.scrollTo({top: location + menuHeight, behavior: 'smooth'});
+
+        }
+
+        function deleteReview(b) {
+            var reviewTitlef = $(b).parent().children().children().next().children().next().text();
+            var reviewContentf = $(b).prev().prev().text();
+            var reviewBookIdx = $("#thisBookIdx").val();
+
+            var ajaxContent = {
+                reviewTitle: reviewTitlef,
+                reviewContent: reviewContentf,
+                bookIdx: reviewBookIdx
+            }
+
+            $.ajax({
+                url: "/reviewDel",
+                type: "GET",
+                data: ajaxContent,
+                dataType: "text",
+                success: function (result) {
+                alert(result);
+                },
+                error: function (err) {
+                    location.reload();
+                }
+
+            })
+
+        }
+
+
+    </script>
+
 </head>
 <body>
 <!-- ================ start banner area ================= -->
@@ -55,7 +235,7 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     <h3>${book.get().bookTitle}</h3>
-                    <h2><f:formatNumber type='currency' currencySymbol="￦" value="${book.get().bookPrice}"/></h2>
+                    <h2><fmt:formatNumber  value="${book.get().bookPrice}"  type="currency" /></h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : ${book.get().category.catgName}</a></li>
                         <li><a href="#"><span>Author</span> : ${book.get().bookAuthor}</a></li>
@@ -63,13 +243,24 @@
                     </ul>
                     <p>${book.get().bookDesc}</p>
                     <div class="product_count">
-                        <label for="qty">Quantity:</label>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
-                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
-                        <a class="button primary-btn" href="#">Add to Cart</a>
+                        <%--                        <label for="qty">Quantity:</label>--%>
+                        <h6>Quantity</h6>
+                        <select name="cate_amount" id='cate_amount'>
+                            <c:forEach begin="1" end="10" var="i">
+                                <option value="${i}">${i}</option>
+                            </c:forEach>
+
+                        </select>
+                        <p></p>
+                        <%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"--%>
+                        <%--                                class="increase items-count" type="button"><i class="ti-angle-left"></i></button>--%>
+                        <%--                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">--%>
+
+                        <%--                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"--%>
+                        <%--                                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>--%>
+
+                        &emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;<a class="button primary-btn" href="#" id="add_cart">Add to Cart</a>
+
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
@@ -306,46 +497,78 @@
                         </div>
 
                         <c:choose>
-                        <c:when test="${reviewcc eq null}">
-                        <div class="review_list">
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-1.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>현재 리뷰 없음!</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                            <c:when test="${fn:length(reviewcc) == 0}">
+                                <div class="review_list">
+                                    <div class="review_item">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="img/product/review-1.png" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>현재 리뷰 없음!</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <p>리뷰 데이터 없음!</p>
                                     </div>
                                 </div>
-                                <p>리뷰 데이터 없음!</p>
-                            </div>
-                        </div>
-                        </c:when>
-                        <c:otherwise>
-                            <c:forEach var="reviewc" items="${reviewcc}">
-                            <div class="review_list">
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/review-1.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>${reviewc.reviewIdx}</h4>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="reviewc" items="${reviewcc}">
+                                    <div class="review_list">
+                                        <div class="review_item">
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="img/product/review-1.png" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4>${reviewc.userIdx}</h4>
+                                                    <h4>${reviewc.reviewTitle}</h4>
+                                                    <c:choose>
+                                                        <c:when test="${reviewc.reviewScore == 2}">
+                                                            <i class="fa fa-star"></i>
+                                                        </c:when>
+                                                        <c:when test="${reviewc.reviewScore == 4}">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </c:when>
+                                                        <c:when test="${reviewc.reviewScore == 6}">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </c:when>
+                                                        <c:when test="${reviewc.reviewScore == 8}">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </c:when>
+                                                        <c:when test="${reviewc.reviewScore == 10}">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </c:when>
+                                                    </c:choose>
+                                                </div>
+                                            </div>
+                                            <p>${reviewc.reviewContent}</p>
+                                            <c:choose>
+                                                <c:when test="${reviewc.userIdx == sessionScope.userIdx}">
+                                                    <input type="button" value="수정하기" id="updateB" onclick="moveScroll(this)">
+                                                    <input type="button" value="삭제하기" id="deleteB" onclick="deleteReview(this)">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div></div>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
-                                    <p>${reviewc.reviewContent}</p>
-                                </div>
-                            </div>
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
@@ -392,42 +615,78 @@
                             </div>
 --%>
 
+                        <%--                    <div class="col-lg-6">--%>
+                        <%--                        <div class="review_box">--%>
+                        <div>
+                            <div>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <h4 id="h4">리뷰 추가하기</h4>
+                                <p></p>
+                                <p></p>
+                                <p>별점 매기기:</p>
+                                <%--                            <ul class="list">--%>
+                                <form action="/reviewReg" class="form-contact form-review mt-3" id="formRoot" method="post">
+                                    <div class="starRev" id="starRate">
+                                        <span class="starR on" id="half" onclick="clicka();">별1</span>
+                                        <span class="starR" id="one" onclick="clickb();">별2</span>
+                                        <span class="starR" id="onehalf" onclick="clickc();">별3</span>
+                                        <span class="starR" id="two" onclick="clickd();">별4</span>
+                                        <span class="starR" id="twohalf" onclick="clicke();">별5</span>
+                                    </div>
+                                    <%--                            <div class="starRev" id="starRate">--%>
+                                    <%--                                <span class="starR1 on" id="half" onclick="clicka();">별1_왼쪽</span>--%>
+                                    <%--                                <span class="starR2" id="one" onclick="clickb();">별1_오른쪽</span>--%>
+                                    <%--                                <span class="starR1" id="onehalf" onclick="clickc();">별2_왼쪽</span>--%>
+                                    <%--                                <span class="starR2" id="two" onclick="clickd();">별2_오른쪽</span>--%>
+                                    <%--                                <span class="starR1" id="twohalf" onclick="clicke();">별3_왼쪽</span>--%>
+                                    <%--                                <span class="starR2" id="three" onclick="clickf();">별3_오른쪽</span>--%>
+                                    <%--                                <span class="starR1" id="threehalf" onclick="clickg();">별4_왼쪽</span>--%>
+                                    <%--                                <span class="starR2" id="four" onclick="clickh();">별4_오른쪽</span>--%>
+                                    <%--                                <span class="starR1" id="fourhalf" onclick="clicki();">별5_왼쪽</span>--%>
+                                    <%--                                <span class="starR2" id="five" onclick="clickj();">별5_오른쪽</span>--%>
+                                    <%--                            </div>--%>
+                                    <%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+                                    <%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+                                    <%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+                                    <%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+                                    <%--                                <li><a href="#"><i class="fa fa-star"></i></a></li>--%>
+                                    <%--                            </ul>--%>
+                                    <%--                            <p>Outstanding</p>--%>
+                                    <p></p>
+                                    <%--                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">--%>
+                                    <%--                                <div class="form-group">--%>
+                                    <%--                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>--%>
+                                    <%--                                </div>--%>
+                                    <div class="form-group">
+                                        <input class="form-control" name="reviewTitle" id="titleForm" type="text"
+                                               placeholder="Enter Subject">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control different-control w-100" name="reviewContent"
+                                                  id="textarea" cols="30" rows="5"
+                                                  placeholder="Enter Message"></textarea>
+                                    </div>
 
-                    <div class="col-lg-6">
-                        <div class="review_box">
-                            <h4>Add a Review</h4>
-                            <p>Your Rating:</p>
-                            <ul class="list">
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                            </ul>
-                            <p>Outstanding</p>
-                            <form action="/reviewReg" class="form-contact form-review mt-3" method="post">
-<%--                                <div class="form-group">--%>
-<%--                                    <input class="form-control" name="reviewerId" type="text" placeholder="Enter your name" required>--%>
-<%--                                </div>--%>
-                                <div class="form-group">
-                                    <input class="form-control" name="reviewTitle" type="text" placeholder="Enter Subject">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
-                                </div>
-                                    <input type="hidden" name="bookIdx" value="${book.get().bookIdx}">
+                                    <input type="hidden" name="reviewScore" id="reviewScore" value=2>
+                                    <input type="hidden" name="bookIdx" id="thisBookIdx" value="${book.get().bookIdx}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-                                <div class="form-group text-center text-md-right mt-3">
-                                    <button type="submit" class="button button--active button-review">Submit Now</button>
-                                </div>
-                            </form>
+                                    <div class="form-group text-center text-md-right mt-3">
+                                        <button type="submit" class="button button--active button-review"
+                                                id="submitForm">작성하기
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <!--================End Product Description Area =================-->

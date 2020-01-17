@@ -28,12 +28,12 @@ public class BookService {
     @Autowired
     CountRepository countRepo;
 
-    public Page<Book> selectAll(int PageNum, int Ordering){
+    public Page<Book> selectAll(int PageNum, int Ordering) {
         Page<Book> book = null;
 
         List<String> list = new ArrayList<String>();
         list.add("Title");
-        Pageable page = PageRequest.of(PageNum-1,9,Sort.Direction.ASC,"bookTitle");
+        Pageable page = PageRequest.of(PageNum - 1, 9, Sort.Direction.ASC, "bookTitle");
 //        PageRequest page = new PageRequest(PageNum-1,9,new Sort(Sort.Direction.ASC,list));
         if(Ordering==1) {
             page = PageRequest.of(PageNum-1,9,Sort.Direction.ASC,"bookTitle");

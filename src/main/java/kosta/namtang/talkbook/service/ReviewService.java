@@ -23,6 +23,25 @@ public class ReviewService {
 
     }
 
+    public void update(Review review){
+
+        List<Review> reviews = repo.findByBookIdx(review.getBookIdx());
+        for(Review a : reviews){
+            if (a.getUserIdx() == review.getUserIdx()) {
+                String reTitle = review.getReviewTitle();
+                String reContent = review.getReviewContent();
+                int reScore = review.getReviewScore();
+
+                a.setReviewTitle(reTitle);
+                a.setReviewContent(reContent);
+                a.setReviewScore(reScore);
+
+                repo.save(a);
+            }
+        }
+    }
+
+
     public List<Review> selectUser(Long idx){
 
        List<Review> rv = repo.findByUserIdx(idx);
@@ -31,8 +50,24 @@ public class ReviewService {
         return rv;
     }
 
+    public List<Review> selectReview(Long idx){
 
+        List<Review> rv = repo.findByBookIdx(idx);
 
+        return rv;
+    }
+
+    public void delete(Review review) {
+
+        List<Review> reviews = repo.findByBookIdx(review.getBookIdx());
+        for (Review a : reviews) {
+            if (a.getUserIdx() == review.getUserIdx()) {
+
+                    repo.delete(a);
+
+            }
+        }
+    }
 
 
 
