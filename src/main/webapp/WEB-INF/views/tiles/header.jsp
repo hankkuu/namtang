@@ -87,7 +87,8 @@
                     <ul class="nav-shop">
                         <li class="nav-item"><button><i class="ti-search"></i></button></li>
                         <li class="nav-item"><a href="/cart"><button><i class="ti-shopping-cart"></i></button></a> </li>
-                        <li class="nav-item"><a class="button button-header" href="#">Login / Register</a></li>
+					<li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>
+					
                     </ul>
                 </div>
             </div>
