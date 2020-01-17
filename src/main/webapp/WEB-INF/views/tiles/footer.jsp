@@ -97,9 +97,9 @@
                     All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by
                     <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-				<sec:authorize access="hasRole('ADMIN')">
+				<security:authorize access="hasRole('Admin')">
 <li class="nav-item"><a class="button button-header" href="admin/dashBoard">adminLogin</a></li>
-</sec:authorize>
+</security:authorize>
 			</div>
         </div>
     </div>
