@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import kosta.namtang.talkbook.model.domain.Admin;
 import kosta.namtang.talkbook.repository.AdminRepository;
 
+// 미사용
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 

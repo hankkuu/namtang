@@ -39,16 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        //web.ignoring().antMatchers("/**");
 //    }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
-//        auth.userDetailsService(userDetailService);
-//    }
-
-
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/static/**");
+
+	    web.ignoring().antMatchers("/static/**");
 	}
 
     @Override
@@ -59,9 +53,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/login", "/register", "/adminLoginForm").permitAll()
+                .antMatchers("/admin/login").permitAll()
+                .antMatchers("/admin/**").hasRole(RoleCode.Admin.name())
+                .antMatchers("/user/**").hasRole(RoleCode.Admin.name())
                 .antMatchers("/user/**").hasRole(RoleCode.Member.name());
-
-        //http.formLogin().loginPage("/adminLoginForm").successHandler(new LoginSuccessHandler());
 
         http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());
 
@@ -71,15 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //http.rememberMe().key("namtang").userDetailsService(simpleUserService).tokenRepository(getJDBCRepository())
         //        .tokenValiditySeconds(60 * 60 * 24);
-        http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
-
-//        http.formLogin()
-//        .loginPage("/adminLoginForm")
-//        // .loginProcessingUrl("/admin/adminloginCheck")
-//        .defaultSuccessUrl("/", true)
-//        .usernameParameter("username")
-//        .passwordParameter("password");
-//        http.exceptionHandling().accessDeniedPage("/");
+        //http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 
@@ -101,9 +88,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(simpleUserService).passwordEncoder(this.encoder());
     }
 
-    //@SuppressWarnings("deprecation")
-    //@Bean
-    //public PasswordEncoder passwordEncoder() {
-    //    return NoOpPasswordEncoder.getInstance();
-    //}
 }
