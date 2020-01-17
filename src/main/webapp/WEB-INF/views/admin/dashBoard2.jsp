@@ -98,16 +98,16 @@
     <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
     <a href="dashBoard" class="w3-bar-item w3-button">종합 통계</a>
     <a href="상세 통계" class="w3-bar-item w3-button">상세 통계</a>
-    <a href="회원 상품 통계" class="w3-bar-item w3-button">회원 상품 통계</a>
+    <a href="회원 상품 통계" class="w3-bar-item w3-button">회원 상품 통계</div>
     <a href="/logout" class="w3-bar-item w3-button">Logout</div>
     
 </a>
-<div style="margin-left:10%; ">
+<div style="margin-left:10%; background: red;">
     현재 관리자 : ${pageContext.request.userPrincipal.name}<br>
 
 </div>
 <div style="margin-left:10%; height: 100%">
-    <div style=" margin-left:10%;">
+    <div style="background: blue;">
         <h1>종합 통계</h1>
         <button id="change-chart">Change to Classic</button>
         <div id="chart_div" style="width: 50%; height: 20%;"></div>
