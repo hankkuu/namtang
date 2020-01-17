@@ -12,15 +12,14 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @Slf4j
-@RequestMapping("")
+@RequestMapping("user")
 public class PurchaseViewController {
 
 
     @RequestMapping("/purchase")
     public ModelAndView checkout() {
         log.debug("purchase");
-
-        ModelAndView view = new ModelAndView("/guest/checkout");
+        ModelAndView view = new ModelAndView("/user/checkout");
         return view;
     }
 
