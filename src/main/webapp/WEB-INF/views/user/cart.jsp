@@ -62,7 +62,7 @@
             console.log(cart);
                 $.ajax({
                     async: false,
-                    url: "/cart/update",
+                    url: "/user/cart/update",
                     dataType:"json",
                     data: cart,
                     //contentType:"application/json",
@@ -208,7 +208,7 @@
                                   <tr>
                                       <td>
                                           <a id="hiddenSum"hidden>${cartVO.bookPrice*cartVO.qty}</a>
-                                          <a href="${path}/cart/delete?userIdx=${cartVO.cartId.userIdx}&bookIdx=${cartVO.cartId.bookIdx}">[삭제]</a>
+                                          <a href="${path}/user/cart/delete?userIdx=${cartVO.cartId.userIdx}&bookIdx=${cartVO.cartId.bookIdx}">[삭제]</a>
                                       </td>
                                       <td>
                                           <img class="card-img" src="${cartVO.bookImg}">
@@ -216,7 +216,7 @@
                                       <td class="card-title">${cartVO.bookTitle}</td>
                                       <td id="price"><fmt:formatNumber value="${cartVO.bookPrice}" type="currency"/></td>
                                       <td>
-                                          <form name="form1" method="post" action="/cart/update">
+                                          <form name="form1" method="post" action="/user/cart/update">
                                               <input type="hidden" name="userIdx" value="${cartVO.cartId.userIdx}">
 <%--                                              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >--%>
 <%--                                              <input type="text" list='<%=test%>'>--%>
