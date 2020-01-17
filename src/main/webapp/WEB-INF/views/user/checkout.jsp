@@ -36,7 +36,7 @@
                     str += '<select name="amount" id=\'\'> <option value="">1</option> </select>'
                     str += '</td>'
                     str += '<td id=Total>111</td>'
- 
+
                     // str += '<tr>'
                     // str += '<td></td>'
                     // str += '<td></td>'
