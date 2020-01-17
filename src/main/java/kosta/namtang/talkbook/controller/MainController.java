@@ -6,9 +6,13 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
+import kosta.namtang.talkbook.model.domain.Book;
+import kosta.namtang.talkbook.service.BookService;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,27 +26,35 @@ import kosta.namtang.talkbook.service.ReviewService;
 @Controller
 public class MainController {
 
-    @Autowired
-    ReviewService reviewService;
+	@Autowired
+	ReviewService reviewService;
+	@Autowired
+	BookService bookService;
 
-    @RequestMapping("/")
-    public String mainIndex() {
+	@RequestMapping("/")
+	public String mainIndex(Model model) {
+		List<Book> bestSeller = bookService.findBestSeller();
+		List<Book> MonthbestSeller = bookService.findMonthBestSeller();
 
-        return "/guest/index";
-    }
+		model.addAttribute("booklist", bestSeller);
+		model.addAttribute("booklist2", MonthbestSeller);
 
-    @RequestMapping("BGM")
-    public String BGM() {
-        return "guest/BGM";
-    }
-//    @RequestMapping("login")
-//    public String login() {
-//        return "guest/login";
-//    }
+		return "/guest/index";
+	}
 
-    @RequestMapping("/detail")
-    public ModelAndView detail() {
-        System.out.println("메인 디테일 들어옴.....");
+	@RequestMapping("/Contact")
+	public String contactUs(){
+		return "/guest/contact";
+	}
+	
+	@RequestMapping("BGM")
+	public String BGM() {
+		return "guest/BGM";
+	}
+	
+	@RequestMapping("/detail")
+	public ModelAndView detail() {
+		System.out.println("메인 디테일 들어옴.....");
 
         ModelAndView mv = new ModelAndView();
         mv.setViewName("aroma/productDetail");

@@ -20,7 +20,6 @@ public class Users {
     private String userName;
     @Column(name = "USER_SEX", nullable = false)
     private String userSex;
-
     @Column(name = "USER_PHONE", nullable = false)
     private String userPhone;
     @Column(name = "USER_EMAIL", nullable = false)
@@ -31,7 +30,6 @@ public class Users {
     private String userAddress;
     @Column(name = "USER_ADDRESS_DETAIL", nullable = false)
     private String userAddressDetail;
-
     @Column(name = "CREATE_DATE", nullable = false)
     private Timestamp createDate;
     @Column(name = "UPDATE_DATE", nullable = false)
