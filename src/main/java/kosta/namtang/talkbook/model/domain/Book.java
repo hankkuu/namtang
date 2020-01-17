@@ -23,7 +23,7 @@ public class Book {
     private String bookPublisher;
     private String bookDesc;
     private String bookPubdate;
-    private int bookCount;
+    private int bookType;
     private String bookIsbn;
 
     @ManyToOne
