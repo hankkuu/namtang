@@ -180,7 +180,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>개인정보 수정</h3>
@@ -189,8 +188,6 @@
 								<input type="text" class="form-control" id="userId" name="userId" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
 								<input type="button" id="confirmId" name="confirmId" class="confirmId" value="중복확인" >	
 			                </div>
-			                
-			                <div class="check_font" id="checkId"></div>
 			                <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
 			                </div>
@@ -217,7 +214,6 @@
 								<input type="text" id="userAddress" name="userAddress" style="width:355px;" value="주소" readonly/>
 								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
-							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77?category=1062143" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
 								<button type="button" value="button" class="button button-register w-100">개인정보 수정</button>
 							</div>
