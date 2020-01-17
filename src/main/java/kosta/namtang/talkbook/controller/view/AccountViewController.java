@@ -28,10 +28,17 @@ public class AccountViewController {
         return view;
     }
 
-    @RequestMapping("/user/update")
+    @RequestMapping("/update")
     public ModelAndView update() {
         log.debug("update");
-        ModelAndView view = new ModelAndView("/user/update");
+        ModelAndView view = new ModelAndView("/guest/update");
+        return view;
+    }
+    
+    @RequestMapping("/findId")
+    public ModelAndView findId(){
+        log.debug("findId");
+        ModelAndView view = new ModelAndView("/guest/findId");
         return view;
     }
     
@@ -48,5 +55,4 @@ public class AccountViewController {
         ModelAndView view = new ModelAndView("/guest/index");
         return view;
     }
-
 }

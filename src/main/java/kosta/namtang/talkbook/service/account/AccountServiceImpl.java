@@ -46,6 +46,7 @@ public class AccountServiceImpl implements AccountService {
         }
         Users user = new Users();
         user.setUserEmail(request.getEmail());
+        System.out.println(request.getEmail());
         user.setUserPost(request.getUserPost());
         user.setUserAddress(request.getUserAddress());
         user.setUserAddressDetail(request.getUserAddressDetail());

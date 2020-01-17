@@ -55,6 +55,10 @@
 						let obj = JSON.parse(result.message);
 						// user 정보 뿌리기
 						$("#userName").val(obj.userName);
+						$("#userPhone").val(obj.userPhone);
+						$("#userPost").val(obj.userPost);
+						$("#userAddress").val(obj.userAddress);
+						$("#userAddressDetail").val(obj.userAddressDetail);
 
 					} else {
 						alert("회원요청이 잘못되었습니다");
@@ -62,7 +66,7 @@
 				},
 				error : function(error) {
 					console.log(error);
-					alert("오류 발생");
+					//alert("a오류 발생");
 				}
 			});//ajax끝
 		})
@@ -88,7 +92,7 @@
 					},
 					error : function(error) {
 						console.log(error);
-						alert("오류 발생");
+						alert("b오류 발생");
 					}
 				});//ajax끝
 			})
@@ -217,7 +221,6 @@
 								<input type="text" id="userAddress" name="userAddress" style="width:355px;" value="주소" readonly/>
 								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
-							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77?category=1062143" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
 								<button type="button" value="button" class="button button-register w-100">개인정보 수정</button>
 							</div>
