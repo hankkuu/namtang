@@ -20,14 +20,14 @@ public class PurchaseViewController {
     public ModelAndView checkout() {
         log.debug("purchase");
 
-        ModelAndView view = new ModelAndView("/user/checkout");
+        ModelAndView view = new ModelAndView("/guest/checkout");
         return view;
     }
 
     @RequestMapping("/confirmation")
     public ModelAndView confirmation() {
         log.debug("confirmation");
-        ModelAndView view = new ModelAndView("/user/confirmation");
+        ModelAndView view = new ModelAndView("/guest/confirmation");
         return view;
     }
 

@@ -9,7 +9,7 @@
  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <style type="text/css">
 
-		#textP{
+	#textP{
   		font-size:10px; color:red; margin-top: -20px; margin-left:20px;
   	}
   	
@@ -28,13 +28,16 @@
   	.login_box_area .login_box_img:before{
   		height:810px;
   	}
+  	
+  	#userId{
+  		 width:280px; display:inline-block; 
+  	}
+  	
+  	#userIdC div:nth-child(1){
+  		display:inline-block;	
+  	}
 	
-	.login_form .sex-div{
-		float:left;
-		width:50%;
-		border-bottom: 1px solid #cccccc
-		
-	}
+	
 	</style>
 
 	<script type="text/javascript" src="/js/json.js"></script>
@@ -52,6 +55,10 @@
 						let obj = JSON.parse(result.message);
 						// user 정보 뿌리기
 						$("#userName").val(obj.userName);
+						$("#userPhone").val(obj.userPhone);
+						$("#userPost").val(obj.userPost);
+						$("#userAddress").val(obj.userAddress);
+						$("#userAddressDetail").val(obj.userAddressDetail);
 
 					} else {
 						alert("회원요청이 잘못되었습니다");
@@ -63,8 +70,6 @@
 				}
 			});//ajax끝
 		})
-
-
 
 		$(function(){
 			$("#register").click(function(){
@@ -87,7 +92,7 @@
 					},
 					error : function(error) {
 						console.log(error);
-						alert("오류 발생");
+						alert("b오류 발생");
 					}
 				});//ajax끝
 			})
@@ -184,9 +189,11 @@
 						<h3>개인정보 수정</h3>
 						<form class="row login_form" action="/#" id="register_form" method="post">
 							<div class="col-md-12 form-group" id="userIdC">
-								<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디" onblur="this.placeholder = '아이디'">
+								<input type="text" class="form-control" id="userId" name="userId" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
 								<input type="button" id="confirmId" name="confirmId" class="confirmId" value="중복확인" >	
 			                </div>
+			                
+			                <div class="check_font" id="checkId"></div>
 			                <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
 			                </div>

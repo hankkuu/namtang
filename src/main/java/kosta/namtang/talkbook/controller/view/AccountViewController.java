@@ -35,18 +35,24 @@ public class AccountViewController {
         return view;
     }
     
-    @RequestMapping("findPassword")
+    @RequestMapping("/findId")
+    public ModelAndView findId(){
+        log.debug("findId");
+        ModelAndView view = new ModelAndView("/guest/findId");
+        return view;
+    }
+    
+    @RequestMapping("/findPassword")
     public ModelAndView findPassword(){
         log.debug("findPassword");
         ModelAndView view = new ModelAndView("/guest/findPassword");
         return view;
     }
     
-    @RequestMapping(value = "logout")
+    @RequestMapping(value = "/logout")
     public ModelAndView logout() {
         log.debug("logout");
         ModelAndView view = new ModelAndView("/guest/index");
         return view;
     }
-
 }

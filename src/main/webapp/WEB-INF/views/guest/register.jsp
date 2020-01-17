@@ -46,6 +46,7 @@
 	#personalDate{
 		margin-top:-2px; font-size:10px; 
 	}
+	
 	</style>
 
 	<script type="text/javascript" src="/js/json.js"></script>
@@ -75,11 +76,12 @@
 					},
 					error : function(error) {
 						console.log(error);
-						alert("오류 발생");
+						alert("아이디 중복 체크 오류 발생");
 					}
 				});
 			}); //아이디 중복체크 끝
 			
+			//회원가입
 			$("#register").click(function(){
 				let user = $("#register_form").serializeObject();
 
@@ -93,14 +95,15 @@
 					success : function(result) {
 						console.log(result.statusCode);
 						if(result.statusCode === "Success") {
-							location.replace('/');
+ 
+							location.replace('/login');
 						} else {
 							alert("회원가입이 잘못되었습니다");
 						}
 					},
 					error : function(error) {
 						console.log(error);
-						alert("오류 발생");
+						alert("회원가입 오류 발생");
 					}
 				});//ajax끝
 			})
@@ -224,9 +227,9 @@
 							</div>
 							<div class="pw" id="pwSuccess">비밀번호가 일치합니다.</div>
 							<div class="pw" id="pwFail">비밀번호가 일치하지 않습니다.</div>
-							<!-- <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
-			                </div> -->
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+			                </div>
 
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
