@@ -354,6 +354,7 @@
             $(document).on('click', '#BookDetail', function () {
                 var id = $("i a", this).text();
                 location.href = "/BookDetail?id=" + id;
+
             });
         });
     </script>
