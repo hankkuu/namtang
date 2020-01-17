@@ -9,6 +9,5 @@ import lombok.*;
 @ToString
 public class bookApiDomain{
     private String text;
-    private String catgNum;
     private Long catgNumId;
 }

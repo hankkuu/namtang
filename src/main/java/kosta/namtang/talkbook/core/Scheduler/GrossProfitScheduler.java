@@ -1,25 +1,20 @@
-package kosta.namtang.talkbook.util;
+package kosta.namtang.talkbook.core.Scheduler;
 
+import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
+import kosta.namtang.talkbook.repository.bill.PurchasePaymentRepository;
+import kosta.namtang.talkbook.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.ServletContext;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.xml.ws.spi.http.HttpContext;
-
-import org.apache.velocity.runtime.directive.Parse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
-import kosta.namtang.talkbook.model.domain.Statistics;
-import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
-import kosta.namtang.talkbook.repository.bill.PurchasePaymentRepository;
-import kosta.namtang.talkbook.service.AdminService;
-
 @Component
-public class Scheduler {
+public class GrossProfitScheduler {
     @Autowired
     AdminService adminService;
     @Autowired

@@ -7,7 +7,8 @@ public enum BookCode{
         , MonthBest(2)
         , Theme1(3)
         , Theme2(4)
-        , Theme3(5);
+        , Theme3(5)
+        , Theme4(6);
 
 private int value;
 private BookCode(int value) {

@@ -8,6 +8,7 @@ import kosta.namtang.talkbook.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.codec.EncodingException;
 import org.xml.sax.InputSource;
 
 import java.io.BufferedReader;
@@ -50,7 +51,6 @@ class TalkbookApplicationTests {
 	@Autowired
 	private CategoryRepository catgRepo;
 
-//	@Transactional
 	@Test
 	void contextLoads() throws UnsupportedEncodingException {
 
@@ -64,35 +64,28 @@ class TalkbookApplicationTests {
 		String clientSecret = "fy7bRsApnt";// 애플리케이션 클라이언트 시크릿값";\
 
 
-//        int display = 100; // 검색결과갯수. 최대100개
-		//&d_publ
-		//문학과지성사
-		//난다
-		//밝은세상
-		//책이있는 풍경
-		//////////////
-		//d_titl
-		//새벽 1시 45분, 나의 그림 산책
-        List<bookApiDomain> list = new ArrayList<bookApiDomain>();
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
-        list.add(new bookApiDomain(URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8"),"110100",10L);
 
+//        카테고리 정보
+//        110	시/에세이
+//        110010	한국시 1
+//        110020	외국시 2
+//        110030	인물 에세이  3
+//        110040	여행 에세이  4
+//        110050	성공 에세이  5
+//        110060	독서 에세이  6
+//        110070	명상 에세이  7
+//        110080	그림/포토 에세이   8
+//        110090	연애/사랑 에세이   9
+//        110100	삶의 지혜/명언    10
 
-        String text = URLEncoder.encode("새벽 1시 45분, 나의 그림 산책", "UTF-8");
+//        검색 옵션
+//        책 제목(d_titl), 저자명(d_auth), 목차(d_cont), ISBN(d_isbn), 출판사(d_publ)
+        //bookTitle를 List로 만들어 for문을 통해 일괄 검색하기
+//        List<bookApiDomain> list = new ArrayList<bookApiDomain>();
+//        list.add(new bookApiDomain(URLEncoder.encode("aa", "UTF-8"),1L));
+
+        //하나의 질의문으로 검색하기
+      String text = URLEncoder.encode("aa", "UTF-8");
 		String catgNum = "110100";
 		Long catgNumId = 10L;
 
@@ -103,12 +96,14 @@ class TalkbookApplicationTests {
 			//기본검색
 //			String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_catg=110010&d_cont=2017&display=100&start=1";
 //			한글깨짐
+//          String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?d_titl=" + text + "&display=1&start=1";
+            //상세검색
 
-            for(int a=0;a<=20;a++) {
+//            일괄검색을 위해 for문 사용
+//            for(int a=0;a<=4;a++) {
                 Category category = catgRepo.findById(catgNumId).orElse(null);
-                String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?&d_titl=" + text + "&display=100&start=1";
-                //상세검색
 
+                String apiURL = "https://openapi.naver.com/v1/search/book_adv.xml?d_titl=" + text + "&display=1&start=1";
 
                 URL url = new URL(apiURL);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -154,6 +149,7 @@ class TalkbookApplicationTests {
                 String publisher = null;
                 String title = null;
 
+//                카테고리 목록 insert
 //			catgRepo.save(new Category(1L,"한국시",null));
 //			catgRepo.save(new Category(2L,"외국시",null));
 //			catgRepo.save(new Category(3L,"인물 에세이",null));
@@ -186,7 +182,11 @@ class TalkbookApplicationTests {
                         } else if (j == 2) {
                             img = node.getTextContent();
                             out.println(img);
-                        } else if (j == 3) author = node.getTextContent();
+                        } else if (j == 3) {
+                            author = node.getTextContent();
+                            author = author.replace("<b>", "");
+                            author = author.replace("</b>", "");
+                        }
                         else if (j == 4) price = new BigDecimal(node.getTextContent());
                         else if (j == 6) {
                             publisher = node.getTextContent();
@@ -201,11 +201,11 @@ class TalkbookApplicationTests {
                         }
                     }
 
-                    Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, BookCode.Theme1.getValue(), isbn, category);
+                    Book book = new Book(null, title, img, author, price, publisher, desc, pubdate, BookCode.Theme4.getValue(), isbn, category);
                     System.out.println(book);
-//				bookRepo.save(book);
+				bookRepo.save(book);
                 }
-            }
+//            }
 
 
 		} catch (Exception e) {
