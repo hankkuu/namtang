@@ -28,7 +28,7 @@ public class AccountController {
     public ShopResponse signUp(@RequestBody UserSetRequest user) throws Exception {
         ShopResponse result = null;
         log.debug(user.toString());
-
+        System.out.println("1" + user.getEmail());
         Account account = accountService.createAccount(user);
 
         if (account != null) {
