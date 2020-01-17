@@ -164,9 +164,11 @@
                                 <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(10)'>삶의 지혜/명언</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="/Contact" class="nav-link dropdown-toggle">Contact Us</a>
+                        </li>
 
-
-<%--                        <li class="nav-item submenu dropdown">
+                    <%--                        <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false">Cart</a>
                         </li>--%>

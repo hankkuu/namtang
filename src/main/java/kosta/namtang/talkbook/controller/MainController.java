@@ -41,6 +41,11 @@ public class MainController {
 
 		return "/guest/index";
 	}
+
+	@RequestMapping("/Contact")
+	public String contactUs(){
+		return "/guest/contact";
+	}
 	
 	@RequestMapping("BGM")
 	public String BGM() {
