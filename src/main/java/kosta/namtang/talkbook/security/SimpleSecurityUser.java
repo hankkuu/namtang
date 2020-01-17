@@ -23,8 +23,8 @@ public class SimpleSecurityUser extends User {
     private String accountId;
     private String text;            // 원하는 값을 넣을 수 있음
 
-    private Admin admin;
-    private String adminId;
+//    private Admin admin;
+//    private String adminId;
 
     public SimpleSecurityUser(Account acc) {
         super(String.valueOf(acc.getAccountIdx()), acc.getUserPassword(), makeGrantedAuthority(acc.getRole()));
@@ -33,11 +33,11 @@ public class SimpleSecurityUser extends User {
         this.text = acc.getLastLoginDate().toString();
     }
 
-    public SimpleSecurityUser(Admin admin) {
-        super(admin.getAdminId(), admin.getAdminPassword(), makeGrantedAuthority(RoleCode.Admin));
-        this.admin = admin;
-        this.adminId = String.valueOf(admin.getAdminId());
-    }
+//    public SimpleSecurityUser(Admin admin) {
+//        super(admin.getAdminId(), admin.getAdminPassword(), makeGrantedAuthority(RoleCode.Admin));
+//        this.admin = admin;
+//        this.adminId = String.valueOf(admin.getAdminId());
+//    }
 
     public static List<GrantedAuthority> makeGrantedAuthority(RoleCode role) {
         List<GrantedAuthority> list = new ArrayList<>();

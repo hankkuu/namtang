@@ -114,7 +114,7 @@
                     <div class="categories_details">
                         <div class="categories_text">
                             <a href="single-blog.html">
-                                <h5>기타</h5>
+                                <h5>회원 탈퇴</h5>
                             </a>
                             <div class="border_line"></div>
                             <p>Let the food be finished</p>
