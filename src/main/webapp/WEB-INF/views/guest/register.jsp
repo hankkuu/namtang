@@ -53,17 +53,19 @@
 		$(function(){
 			
 			/*아이디 중복체크*/
-			 $("#confirmId").click(function(){
-				let check=$("#userId").val();
-				console.log(check);
+
+			$("#confirmId").click(function(){
+				let id=$("#userId").val();
+				console.log(id);
 				$.ajax({
 					type : "get",
 					url : "/api/v1/account/checkId",
 					dataType : "json",
-					data : check,
+					data : { id: id },
 					success : function(result){
 						console.log("1 = 중복o / 0 = 중복x : " + result);
-						if(check == false){
+
+						if(result.statusCode === "Fail" ){
 							$("#checkId").text("아이디가 중복됩니다.");
 							$("#checkId").css("color","red");
 						} else {
@@ -91,7 +93,7 @@
 					success : function(result) {
 						console.log(result.statusCode);
 						if(result.statusCode === "Success") {
-							location.replace('/login');
+							location.replace('/');
 						} else {
 							alert("회원가입이 잘못되었습니다");
 						}
@@ -104,6 +106,7 @@
 			})
 			
 			/* 비밀번호 입력 */
+
 	  		/* $("#userPassword").blur(function(){
 	  			let userIdCheck = $("#userId").val();
 	  			let userPwCheck = $("#userPassword").val();
@@ -119,6 +122,7 @@
   				 	$("#textP").css("color","blue");
   					$("#textP").text("성공");
   				}
+
   				
 	  		}); */
 	  		
@@ -204,13 +208,15 @@
 						<form class="row login_form" action="/#" id="register_form" method="post">
 							<div class="col-md-12 form-group" id="userIdC">
 								<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디" onblur="this.placeholder = '아이디'">
+
 								<input type="button" id="confirmId" name="confirmId" class="confirmId" value="중복확인" >	
+
 			                </div>
 			                
 			                <div class="check_font" id="checkId"></div>
 			                
 			                <div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
+								<input type="password" class="form-control" id="userPassword" name="password" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
 			                </div>
 			                <p id="textP"></p>
 			                <div class="col-md-12 form-group">
@@ -221,31 +227,34 @@
 							<!-- <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
 			                </div> -->
+
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="sex-div">
-									<input type="radio" id="man" name="userSex" class="input_radio"value="1" >
+									<input type="radio" id="man" name="sex" class="input_radio"value="1" >
 									<label>남자</label>
 								</div>
 								<div class="sex-div">
-									<input type="radio" id="woman" name="userSex" class="input_radio"value="2" >
+									<input type="radio" id="woman" name="sex" class="input_radio"value="2" >
 									<label>여자</label>
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
+								<input type="text" class="form-control" id="userPhone" name="phone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
 								
 								<input type="text" id="userPost" name="userPost" style="width:278px;" value="우편번호" readonly/>
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
+
 								<input type="text" id="userAddress" name="userAddress" style="width:355px;" value="주소" readonly/>
+
 								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
-							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77?category=1062143" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
+							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
 								<input type="button" value="submit" id="register" class="button button-register w-100">회원가입
 							</div>

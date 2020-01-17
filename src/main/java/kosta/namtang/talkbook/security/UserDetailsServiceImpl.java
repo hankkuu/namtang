@@ -9,12 +9,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kosta.namtang.talkbook.model.domain.Admin;
+import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.repository.AdminRepository;
+import kosta.namtang.talkbook.repository.account.AccountRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @Autowired
     private AdminRepository adminRepository;
@@ -42,7 +47,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("admin : " + admin);
 
         return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
-        //return null;
     }
 
 }

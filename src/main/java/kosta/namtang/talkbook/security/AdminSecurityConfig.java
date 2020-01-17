@@ -51,12 +51,10 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
         http.userDetailsService(simpleUserService);
 
 //        http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());
-//
 //        http.exceptionHandling().accessDeniedPage("/register");
-//        http.logout().logoutUrl("/logout").invalidateHttpSession(true);
 //
 
-        http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
+        //http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }

@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Slf4j
 @RestController
 @RequestMapping("api/v1/account")
@@ -40,14 +42,39 @@ public class AccountController {
     }
 
     @GetMapping("/checkId")
-    public ShopResponse checkId(String id) {
+    public ShopResponse checkId(@RequestParam String id) {
         log.debug(id);
 
         Boolean result = accountService.checkId(id);
         if (result == true)
-            return new ShopResponse(StatusCode.Success, "중복 ID 입니다");
+            return new ShopResponse(StatusCode.Fail, "중복 ID 입니다");
         else
-            return new ShopResponse(StatusCode.Fail, "사용가능합니다 ID 입니다");
+            return new ShopResponse(StatusCode.Success, "사용가능합니다 ID 입니다");
+
+    }
+
+    @GetMapping("/updateAccount")
+    public ShopResponse updateAccount(HttpServletRequest request) {
+        log.debug("updateAccount");
+        long userIdx = Long.valueOf(String.valueOf(request.getSession().getAttribute("userIdx")));
+
+        Users user = accountService.updateAccount(userIdx);
+        if (user != null)
+            return new ShopResponse(StatusCode.Success, JsonUtil.toJson(user));
+        else
+            return new ShopResponse(StatusCode.Fail, "user 검색 실패");
+    }
+
+    @GetMapping("/updateUser")
+    public ShopResponse updateUser(@RequestBody UserSetRequest user, HttpServletRequest request) {
+        log.debug("updateUser");
+        long userIdx = Long.valueOf(String.valueOf(request.getSession().getAttribute("userIdx")));
+        user.setUserIdx(userIdx);
+        accountService.updateUser(user);
+        if (user != null)
+            return new ShopResponse(StatusCode.Success, "user 정보 업데이트");
+        else
+            return new ShopResponse(StatusCode.Fail, "user 검색 실패");
 
     }
 
