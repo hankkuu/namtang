@@ -30,15 +30,15 @@ public class SimpleUserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 
-        String userType = (String) RequestContextHolder.getRequestAttributes().getAttribute(USER_TYPE, RequestAttributes.SCOPE_SESSION);
-        log.debug("user type :" + userType);
-
-        if ("admin".equals(userType) == true) {
-            Admin admin = adminRepository.findByAdminId(id);
-            SimpleSecurityUser user = new SimpleSecurityUser(admin);
-            //return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
-            return user;
-        }
+//        String userType = (String) RequestContextHolder.getRequestAttributes().getAttribute(USER_TYPE, RequestAttributes.SCOPE_SESSION);
+//        log.debug("user type :" + userType);
+//
+//        if ("admin".equals(userType) == true) {
+//            Admin admin = adminRepository.findByAdminId(id);
+//            SimpleSecurityUser user = new SimpleSecurityUser(admin);
+//            //return User.builder().username(admin.getAdminId()).password(admin.getAdminPassword()).roles(admin.getAdminRoleName()).build();
+//            return user;
+//        }
 
         Account acc = accountRepository.findByUserId(id);
         if (acc != null) {
