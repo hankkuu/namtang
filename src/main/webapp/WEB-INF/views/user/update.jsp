@@ -55,6 +55,10 @@
 						let obj = JSON.parse(result.message);
 						// user 정보 뿌리기
 						$("#userName").val(obj.userName);
+						$("#userPhone").val(obj.userPhone);
+						$("#userPost").val(obj.userPost);
+						$("#userAddress").val(obj.userAddress);
+						$("#userAddressDetail").val(obj.userAddressDetail);
 
 					} else {
 						alert("회원요청이 잘못되었습니다");
@@ -88,7 +92,7 @@
 					},
 					error : function(error) {
 						console.log(error);
-						alert("오류 발생");
+						alert("b오류 발생");
 					}
 				});//ajax끝
 			})
@@ -188,6 +192,8 @@
 								<input type="text" class="form-control" id="userId" name="userId" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
 								<input type="button" id="confirmId" name="confirmId" class="confirmId" value="중복확인" >	
 			                </div>
+			                
+			                <div class="check_font" id="checkId"></div>
 			                <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
 			                </div>
