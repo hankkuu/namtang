@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @Slf4j
-@RequestMapping("")
+@RequestMapping("user")
 public class PurchaseViewController {
 
 

@@ -28,10 +28,10 @@ public class AccountViewController {
         return view;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/user/update")
     public ModelAndView update() {
         log.debug("update");
-        ModelAndView view = new ModelAndView("/guest/update");
+        ModelAndView view = new ModelAndView("/user/update");
         return view;
     }
     
@@ -42,14 +42,14 @@ public class AccountViewController {
         return view;
     }
     
-    @RequestMapping("findPassword")
+    @RequestMapping("/findPassword")
     public ModelAndView findPassword(){
         log.debug("findPassword");
         ModelAndView view = new ModelAndView("/guest/findPassword");
         return view;
     }
     
-    @RequestMapping(value = "logout")
+    @RequestMapping(value = "/logout")
     public ModelAndView logout() {
         log.debug("logout");
         ModelAndView view = new ModelAndView("/guest/index");
