@@ -17,46 +17,44 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Order(2)
 public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    //@Autowired
-//    //private UserDetailsServiceImpl userDetailService;
-//
-//    @Autowired
-//    private SimpleUserService simpleUserService;
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
-//        auth.userDetailsService(simpleUserService);
-//    }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        //super.configure(http);
-//
-//        http.csrf().disable();
-//
-//        http.authorizeRequests()
-//                .antMatchers("/login", "/register", "/adminLoginForm").permitAll()
-//                .antMatchers("/admin/**").hasRole("admin");
-//
-//        http.formLogin()
-//                .loginPage("/adminLoginForm").failureUrl("/adminLoginForm?error=loginError")
-//                .defaultSuccessUrl("/admin/dashBoard");
-//        // .loginProcessingUrl("/admin/adminloginCheck")
-//        //.defaultSuccessUrl("/admin/dashBoard", true)
-//        //.usernameParameter("username")
-//        //.passwordParameter("password");
+    //@Autowired
+    //private UserDetailsServiceImpl userDetailService;
+
+    @Autowired
+    private SimpleUserService simpleUserService;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
+        auth.userDetailsService(simpleUserService);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //super.configure(http);
+
+        http.csrf().disable();
+
+        http.authorizeRequests()
+                .antMatchers("/login", "/register", "/adminLoginForm").permitAll()
+                .antMatchers("/admin/**").hasRole("admin");
+
+        http.formLogin()
+                .loginPage("/adminLoginForm").failureUrl("/adminLoginForm?error=loginError")
+                .defaultSuccessUrl("/admin/dashBoard");
+        // .loginProcessingUrl("/admin/adminloginCheck")
+        //.defaultSuccessUrl("/admin/dashBoard", true)
+        //.usernameParameter("username")
+        //.passwordParameter("password");
+        http.exceptionHandling().accessDeniedPage("/register");
+
+        http.userDetailsService(simpleUserService);
+
+//        http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());
 //        http.exceptionHandling().accessDeniedPage("/register");
 //
-//        http.userDetailsService(simpleUserService);
-//
-////        http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());
-////
-////        http.exceptionHandling().accessDeniedPage("/register");
-////        http.logout().logoutUrl("/logout").invalidateHttpSession(true);
-////
-//
-//        http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
-//
-//    }
+
+        //http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
+
+    }
 }
