@@ -1,5 +1,4 @@
 package kosta.namtang.talkbook.repository;
-
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.Category;
 import org.springframework.data.domain.Page;
