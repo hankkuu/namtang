@@ -70,7 +70,7 @@
 
                 $.ajax({
                     type : "get",
-                    url : "/cart/insert",
+                    url : "/user/cart/insert",
                     dataType : "json",
                     data : add_to,
                     error : function(err){
