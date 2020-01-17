@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,17 @@
   <title>Aroma Shop - Home</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean');
+    @import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
     .card-product__title a {
       color: #222;
       font-size: initial;
       font-family: 'Noto Sans KR', sans-serif;
     }
+      .hero-carousel__slideOverlay h3{
+          color: #FFFFFF;
+          font-size: 24px;
+          font-family: 'Do Hyeon', sans-serif;
+      }
   </style>
 </head>
 <body>
@@ -48,24 +55,21 @@
     <section class="section-margin mt-0">
         <div class="owl-carousel owl-theme hero-carousel">
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide1.png" alt="" class="img-fluid">
+                <img src="img/home/night.jpg" alt="" class="img-fluid">
                 <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                    <h3 style="font-size: 21px;">감성터지는 늦은 밤, 생각에 잠기기 좋은 책</h3>
                 </a>
             </div>
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide2.png" alt="" class="img-fluid">
+                <img src="img/home/coffee.jpg" alt="" class="img-fluid">
                 <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                    <h3>잔잔한 오후, 카페에서 읽기 좋은 책</h3>
                 </a>
             </div>
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide3.png" alt="" class="img-fluid">
+                <img src="img/home/Happiness.jpg" alt="" class="img-fluid">
                 <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                    <h3>힘들고 마음이 울적할때 읽기 좋은 책</h3>
                 </a>
             </div>
         </div>
