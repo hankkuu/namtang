@@ -79,7 +79,7 @@
                     <h3>로그인</h3>
                     <form class="row login_form" method="post"> <%--action="#/" id="contactForm" >--%>
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="username" name="userName" placeholder="이메일"
+                            <input type="text" class="form-control" id="username" name="username" placeholder="이메일"
                                    onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
                         </div>
                         <div class="col-md-12 form-group">
