@@ -33,7 +33,7 @@ public class AccountServiceImpl implements AccountService {
         Timestamp createDate = DateTimeHelper.timeStampNow();
 
         Account acc = new Account();
-        acc.setUserId(request.getEmail());
+        acc.setUserId(request.getUserId());
         acc.setUserPassword(encryptPw);
         acc.setCreateDate(createDate);
         acc.setDeleteDate(DateTimeHelper.timeStamp("1900-01-01 00:00:00"));
@@ -45,8 +45,10 @@ public class AccountServiceImpl implements AccountService {
             throw new Exception();
         }
         Users user = new Users();
-        user.setUserAddress(request.getAddress());
-        user.setUserAge(request.getAge());
+        user.setUserEmail(request.getEmail());
+        user.setUserPost(request.getUserPost());
+        user.setUserAddress(request.getUserAddress());
+        user.setUserAddressDetail(request.getUserAddressDetail());
         user.setUserName(request.getUserName());
         user.setUserPhone(request.getPhone());
         user.setUserSex(request.getSex());
@@ -62,14 +64,22 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void updateUser(Users user) {
-        Optional<Users> u = userRepository.findById(user.getAccountIdx());
+    public Users updateAccount(long userIdx) {
+        Users user = userRepository.findById(userIdx).orElse(null);
+        return user;
+    }
+
+    @Override
+    public void updateUser(UserSetRequest user) {
+        Optional<Users> u = userRepository.findById(user.getUserIdx());
         u.ifPresent((update) -> {
             update.setUpdateDate(DateTimeHelper.timeStampNow());
-            update.setUserAddress(user.getUserAddress());
-            update.setUserAge(user.getUserAge());
             update.setUserName(user.getUserName());
-            update.setUserPhone(user.getUserPhone());
+            update.setUserPhone(user.getPhone());
+            update.setUserEmail(user.getEmail());
+            update.setUserPost(user.getUserPost());
+            update.setUserAddress(user.getUserAddress());
+            update.setUserAddressDetail(user.getUserAddressDetail());
 
             userRepository.save(update);
         });

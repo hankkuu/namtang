@@ -26,6 +26,4 @@ public class TalkbookApplication {
         log.trace("trace");
         log.debug("debug");
     }
-
-
 }

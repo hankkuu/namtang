@@ -39,6 +39,33 @@
 
 	<script type="text/javascript" src="/js/json.js"></script>
 	<script type="text/javascript" >
+
+		$(function() {
+			$.ajax({
+				type : "get" ,
+				url : "/api/v1/account/updateAccount",
+				dataType : "json",
+
+				success : function(result) {
+					console.log(result.statusCode);
+					if(result.statusCode === "Success") {
+						let obj = JSON.parse(result.message);
+						// user 정보 뿌리기
+						$("#userName").val(obj.userName);
+
+					} else {
+						alert("회원요청이 잘못되었습니다");
+					}
+				},
+				error : function(error) {
+					console.log(error);
+					alert("오류 발생");
+				}
+			});//ajax끝
+		})
+
+
+
 		$(function(){
 			$("#register").click(function(){
 				let user = $("#register_form").serializeObject();
@@ -46,14 +73,14 @@
 				console.log(user);
 				$.ajax({
 					type : "post" ,
-					url : "/api/v1/account",
+					url : "/api/v1/account/updateUser",
 					dataType : "json",
 					data : JSON.stringify(user),
 					contentType: 'application/json; charset=utf-8',
 					success : function(result) {
 						console.log(result.statusCode);
 						if(result.statusCode === "Success") {
-							location.replace('/login');
+							alert("회원정보가 수정되었습니다");
 						} else {
 							alert("회원가입이 잘못되었습니다");
 						}
@@ -146,55 +173,49 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>개인정보 수정</h3>
-						<form class="row login_form" action="#/" id="register_form" >
+						<form class="row login_form" action="#/" id="register_form" method="post" >
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+								<input type="text" class="form-control" id="originalPawwaord" name="originalPawwaord" placeholder="기존 패스워드" onblur="this.placeholder = '기존 패스워드'">
+								<input type="button" name="confitm-id" class="confitm-id" value="중복확인" >
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
 			                </div>
+			                
+			                <div class="check_font" id="checkId"></div>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userPassword" name="userPassword" placeholder="비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
+								<input type="text" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
 			                </div>
 			                <p id="textP"></p>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
+								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="새로운 비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호 확인'">
 							</div>
 							<div class="pw" id="pw-success">비밀번호가 일치합니다.</div>
 							<div class="pw" id="pw-fail">비밀번호가 일치하지 않습니다.</div>
+							<!-- <div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+			                </div> -->
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
-							</div>
-							<div class="col-md-12 form-group">
-								<div class="sex-div">
-									<input type="radio" id="name" name="userSex" class="input_radio"value="1" >
-									<label for="">남자</label>
-								</div>
-								<div class="sex-div">
-									<input type="radio" id="name" name="userSex" class="input_radio"value="2" >
-									<label for="">여자</label>
-								</div>
-							</div>
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userAge" name="userAge" placeholder="나이" onfocus="this.placeholder = ''" onblur="this.placeholder = '나이'">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input id="postcode1" type="text" value="" style="width:50px;" readonly/>
-								&nbsp;-&nbsp;
-								<input id="postcode2" type="text" value="" style="width:50px;" readonly/>
-								&nbsp;&nbsp;
-								<input id="zonecode" type="text" value="" style="width:50px;" readonly/>
-								&nbsp;
+								
+								<input type="text" id="userPost" name="userPost" width="278px" value="우편번호" readonly/>
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
-								<input type="text" id="address" value="" style="width:355px;" readonly/>
-								<input type="text" id="address_etc" value="" style="width:355px;" placeholder="상세주소"/>
+								<input type="text" id="userAddress" name="userAddress" value="주소" readonly/>
+								<input type="text" id="userAddressDetail" name="userAddressDetail" value="상세주소" style="width:355px;" placeholder="상세주소"/>
 							</div>
+							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77?category=1062143" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">개인정보 수정</button>
+								<button type="button" value="button" class="button button-register w-100">개인정보 수정</button>
 							</div>
 						</form>
 					</div>

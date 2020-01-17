@@ -148,7 +148,7 @@
                 console.log(list);
             });
 
-            sessionStorage.setItem("cartlist",list);
+            sessionStorage.setItem("cartlist",JSON.stringify(list));
 
         }
 

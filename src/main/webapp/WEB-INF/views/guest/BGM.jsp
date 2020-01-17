@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
-<script type="text/javascript" src="js/snowfall.jquery.js"></script>
+<%--<script type="text/javascript" src="/js/jquery.ajax-cross-origin.min.js"></script>--%>
+<script type="text/javascript" src="/js/snowfall.jquery.js"></script>
 
 <script src='https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js'></script>
-<link rel="stylesheet" href="css/sakura.css">
-<script src="js/sakura.js" text="text/javascript"></script>
+<link rel="stylesheet" href="/css/sakura.css">
+<script src="/js/sakura.js" text="text/javascript"></script>
 
 
 <style>

@@ -26,6 +26,7 @@ public class Account {
     private String userPassword;
     @Column(name = "ROLE", nullable = false)
     private RoleCode role;
+
     @Column(name = "CREATE_DATE", nullable = false)
     private Timestamp createDate;
     @Column(name = "DELETE_DATE", nullable = false)
