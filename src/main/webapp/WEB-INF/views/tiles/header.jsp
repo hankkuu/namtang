@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -199,12 +199,14 @@
                         </li>
 
                         <li class="nav-item"><a href="/user/cart"><button><i class="ti-shopping-cart"></i></button></a> </li>
-<spring:argument access="!isAuthenticated()">
+                        <li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>
+  <security:authorize access="!isAuthenticated()">
 <li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>
-</spring:argument>
-<spring:argument access="isAuthenticated()">
-<li class="nav-item"><a class="button button-header" href="/logout">logout</a></li>
-</spring:argument>
+</security:authorize>
+<security:authorize access="isAuthenticated()">
+<li class="nav-item"><a class="button button-header" href="/logout">Logout</a></li>
+</security:authorize>
+
                     </ul>
                 </div>
             </div>
