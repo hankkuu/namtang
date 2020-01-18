@@ -205,7 +205,6 @@
 <security:authorize access="isAuthenticated()">
 <li class="nav-item"><a class="button button-header" href="/logout">Logout</a></li>
 </security:authorize>
-
                     </ul>
                 </div>
             </div>

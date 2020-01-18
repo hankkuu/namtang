@@ -105,7 +105,6 @@
     </div>
 </footer>
 <!--================ End footer Area  =================-->
-
 <script src="/vendors/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="/vendors/skrollr.min.js"></script>
 <script src="/vendors/owl-carousel/owl.carousel.min.js"></script>

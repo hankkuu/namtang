@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -26,8 +26,8 @@
 
         function drawStuff() {
             var dataArray = [['날짜', '매출액', '방문수']];
-            <c:forEach  items="${list}" var="liststr">
-            dataArray.push(['${liststr.saleDate}', ${liststr.salePrice}, ${liststr.userCount}]);
+            <c:forEach  items="${list}" var="liststr" >
+            dataArray.push(["${liststr.saleDate}", ${liststr.salePrice}, ${liststr.userCount}]);
             </c:forEach>
             var button = document.getElementById('change-chart');
             var chartDiv = document.getElementById('chart_div');
@@ -91,6 +91,49 @@
         function w3_close() {
             document.getElementById("mySidebar").style.display = "none";
         }
+        
+        $(function () {
+     		 $.ajax({
+     			 url: "${pageContext.request.contextPath}/admin/getlist", //서버요청주소
+     			 type:"post", //요청방식(get|post|put:patch:delete)
+     			 dataType:"json", //서버가 보내온 데이터 타입(text,html,xml,json)
+     			 data:"${_csrf.parameterName}=${_csrf.token}",
+     			 success:function(result){
+     				 /*
+     				var data="<table border='1' cellpadding='5'> 실시간 구매자 정보 ";
+     				<c:forEach var="i" begin="0" end="15">
+     				
+     				 data+="<tr>";
+					    data+="<td>"+result.get(i).userIdx+"</td>";
+						data+="<td>"+result.purchaseOrderIdx+"</td>";
+						data+="<td>"+result.deliveryAddress+"</td>";
+						data+="<td>"+result.updateDate+"</td>";
+						data+="<td>"+result.billKey+"</td>";
+						data+="</tr>";
+
+     			</c:forEach>
+     			*/
+     				 var data="<table border='1' cellpadding='5'> 실시간 구매자 정보 ";
+					 $.each(result, function(index, item){
+						 data+="<tr>";
+						    data+="<td>"+item.userIdx+"</td>";
+							data+="<td>"+item.purchaseOrderIdx+"</td>";
+							data+="<td>"+item.deliveryAddress+"</td>";
+							data+="<td>"+item.updateDate+"</td>";
+							data+="<td>"+item.billKey+"</td>";
+							data+="</tr>";
+						
+					 }) 
+					data+="</table>";
+					
+					$("#memberListView").html(data);
+ 				   
+     			 } ,//성공했을대
+     			 error:function(err){
+     				 alert(err+"오류 발생..");
+     			 }//오류발생했을때
+     		 }); 
+		})
     </script>
 </head>
 <body>
@@ -103,8 +146,8 @@
     
 </a>
 <div style="margin-left:10%; ">
-    현재 관리자 : ${pageContext.request.userPrincipal.name}<br>
-
+    현재 관리자 번호 : ${pageContext.request.userPrincipal.name}<br>
+	
 </div>
 <div style="margin-left:10%; height: 100%">
     <div style=" margin-left:10%;">
@@ -112,7 +155,9 @@
         <button id="change-chart">Change to Classic</button>
         <div id="chart_div" style="width: 50%; height: 20%;"></div>
     </div>
-
+	<div></div>
+	
+<div id="memberListView"> 실시간 구매자 정보 <br></div>
 
 </div>
 </body>

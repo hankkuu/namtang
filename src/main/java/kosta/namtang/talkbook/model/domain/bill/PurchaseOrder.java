@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+@ToString
 public class PurchaseOrder {
 
     @Id

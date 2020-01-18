@@ -8,8 +8,10 @@ import kosta.namtang.talkbook.core.bill.request.CancelData;
 import kosta.namtang.talkbook.core.bill.response.*;
 import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
+import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
 import kosta.namtang.talkbook.model.dto.request.PurchaseRequest;
 import kosta.namtang.talkbook.model.dto.request.PurchaseSetRequest;
+import kosta.namtang.talkbook.repository.bill.PurchaseOrderRepository;
 import kosta.namtang.talkbook.service.bill.BillKeySystem;
 import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @RestController
