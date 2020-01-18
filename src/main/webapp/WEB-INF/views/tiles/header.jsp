@@ -26,8 +26,8 @@
             border-radius: 10px     ;
             background: #fff;
             position: absolute;
-            top: 64px;
-            right: 30%;
+            top: 35px;
+            right: -18px;
             width: 255px;
             height: 45px;
             line-height: 60px;
@@ -54,7 +54,7 @@
             /*padding: 5px 10px;*/
             margin-left: 10px;
             top : -12.5px;
-            border: 1px solid #6900f9;
+            border: 1px solid #384AEB;
             outline: none;
             position: relative;
         }
@@ -64,7 +64,7 @@
             line-height: 15px;
             padding: 5px 0;
             position: relative;
-            background: #6900f9;
+            background: #384AEB;
             color: #fff;
             bottom: 14px;
             left:2px;
@@ -77,18 +77,18 @@
 
         @media all and (min-width:0px) and (max-width:990px){
             .togglesearch{
-                left: 8%;
-                top: 255px;
+                left: -13px;
+                top: 40px;
             }
             .togglesearch:before{
                 right: 215px;
             }
         }
-        @media all and (min-width:990px)and (max-width:1200px){
-            .togglesearch{
-                right: 35%;
-            }
-        }
+        /*@media all and (min-width:990px)and (max-width:1200px){*/
+        /*    .togglesearch{*/
+        /*        right: 35%;*/
+        /*    }*/
+        /*}*/
     </style>
 <script>
     function searchCall(){
@@ -184,17 +184,20 @@
 
                         <li class="searchbar">
 <%--                                <li class="nav-item"><button><i class="ti-search"></i></button></li>--%>
-                        <li class="nav-item2"><button><i class="ti-search" aria-hidden="true"></i></button></li>
-<%--                            <i class="fa fa-search" aria-hidden="true"></i>--%>
-                            <div class="togglesearch">
-                                <form name="searchForm" id="searchForm" action="/SearchWord" method="post">
-                                    <script>
+                        <li class="nav-item2"><button><i class="ti-search" aria-hidden="true">
 
-                                    </script>
+                        <div class="togglesearch">
+                            <form name="searchForm" id="searchForm" action="/SearchWord" method="post">
+                                <script>
+
+                                </script>
                                 <input class="textbox" type="text" name="Word" placeholder=""/>
                                 <input class="textbtn" type="button" value="Search" onclick="searchCall();"/>
-                                </form>
-                            </div>
+                            </form>
+                        </div>
+                    </i></button></li>
+<%--                            <i class="fa fa-search" aria-hidden="true"></i>--%>
+
 
                         </li>
 

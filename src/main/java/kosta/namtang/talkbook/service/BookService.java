@@ -162,6 +162,11 @@ public class BookService {
         return book;
     }
 
+    public Page<Book> findThemeCatg(int type){
+        Pageable page = PageRequest.of(0,50);
+        Page<Book> themeBook = bookRepo.findThemeCatg(type,page);
+        return themeBook;
+    }
 
 
     }
