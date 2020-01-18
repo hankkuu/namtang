@@ -19,7 +19,6 @@ public class PurchaseViewController {
     @RequestMapping("/purchase")
     public ModelAndView checkout() {
         log.debug("purchase");
-
         ModelAndView view = new ModelAndView("/user/checkout");
         return view;
     }
@@ -27,7 +26,7 @@ public class PurchaseViewController {
     @RequestMapping("/confirmation")
     public ModelAndView confirmation() {
         log.debug("confirmation");
-        ModelAndView view = new ModelAndView("/user/confirmation");
+        ModelAndView view = new ModelAndView("/guest/confirmation");
         return view;
     }
 

@@ -45,16 +45,16 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner">
-						<h3>비밀번호 찾기</h3>
+						<h3>아이디 찾기</h3>
 						<form class="row login_form" action="#/" id="contactForm" >
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
+								<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPhone" name="phone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-login w-100">비밀번호 찾기</button>
+								<button type="submit" value="submit" class="button button-login w-100">아이디 찾기</button>
 							</div>
 						</form>
 					</div>

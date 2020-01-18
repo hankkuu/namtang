@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
@@ -69,7 +70,7 @@
 
                 $.ajax({
                     type : "get",
-                    url : "/cart/insert",
+                    url : "/user/cart/insert",
                     dataType : "json",
                     data : add_to,
                     error : function(err){

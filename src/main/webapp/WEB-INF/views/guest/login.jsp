@@ -77,7 +77,7 @@
             <div class="col-lg-6">
                 <div class="login_form_inner">
                     <h3>로그인</h3>
-                    <form class="row login_form" method="post"action="/"> <%--action="#/" id="contactForm" >--%>
+                    <form class="row login_form" method="post"> <%--action="#/" id="contactForm" >--%>
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="username" name="username" placeholder="이메일"
                                    onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
@@ -96,7 +96,7 @@
                             <div class="col-md-12 form-group">
                                 <button type="submit" value="submit" id="login" class="button button-login w-100">로그인
                                 </button>
-                                <a href="findPassword">비밀번호 찾기</a>
+                                <a href="/findId">아이디 찾기</a><a href="/findPassword">비밀번호 찾기</a>
                             </div>
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}"

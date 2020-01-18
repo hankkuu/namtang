@@ -10,24 +10,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+
+// 미사용
 @Slf4j
 @Configuration
 @EnableWebSecurity
 @Order(2)
 public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //@Autowired
-    //private UserDetailsServiceImpl userDetailService;
-
     @Autowired
-    private SimpleUserService simpleUserService;
+    private UserDetailsServiceImpl userDetailService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
-        auth.userDetailsService(simpleUserService);
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -36,25 +31,40 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/login", "/register", "/adminLoginForm").permitAll()
-                .antMatchers("/admin/**").hasRole("admin");
+                .antMatchers("/*").permitAll()
+                .antMatchers("/admin/**").hasRole("admin")
+                .antMatchers("/user/**").hasRole(RoleCode.Member.name());
 
-        http.formLogin()
-                .loginPage("/adminLoginForm").failureUrl("/adminLoginForm?error=loginError")
-                .defaultSuccessUrl("/admin/dashBoard");
-        // .loginProcessingUrl("/admin/adminloginCheck")
-        //.defaultSuccessUrl("/admin/dashBoard", true)
-        //.usernameParameter("username")
-        //.passwordParameter("password");
-        http.exceptionHandling().accessDeniedPage("/register");
+        http.formLogin().loginPage("/login").defaultSuccessUrl("/")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/"))
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .and().exceptionHandling().accessDeniedPage("/");
 
-        http.userDetailsService(simpleUserService);
 
-//        http.formLogin().loginPage("/login").successHandler(new LoginSuccessHandler());
-//        http.exceptionHandling().accessDeniedPage("/register");
-//
+        http.logout().logoutUrl("/logout").invalidateHttpSession(true);
+        http.userDetailsService(userDetailService);
+
 
         //http.addFilterBefore(new AdminFilter(), UsernamePasswordAuthenticationFilter.class);
 
+        // 강은택 원본 내용
+//        http.formLogin()
+//        .loginPage("/adminLoginForm")
+//        // .loginProcessingUrl("/admin/adminloginCheck")
+//        .defaultSuccessUrl("/", true)
+//        .usernameParameter("username")
+//        .passwordParameter("password");
+//        http.exceptionHandling().accessDeniedPage("/");
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        System.out.println("configure(AuthenticationManagerBuilder auth)   call...................");
+        auth.userDetailsService(userDetailService);
+    }
+
 }

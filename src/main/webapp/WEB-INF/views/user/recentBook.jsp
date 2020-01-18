@@ -102,6 +102,8 @@
     <script>
         $(function () {
 
+
+
             var CatgIdx = ${CatgIdx}+"";
             var startPage = ${startPage}+"";
             var maxPage = ${maxPage}+"";

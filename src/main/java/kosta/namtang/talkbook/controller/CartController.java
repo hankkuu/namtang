@@ -19,7 +19,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("cart")
+@RequestMapping("user/cart")
 public class CartController {
 
     private final CartService cartService;
@@ -47,7 +47,7 @@ public class CartController {
         Long idx = Long.valueOf(String.valueOf(req.getSession().getAttribute("userIdx")));
         cartService.delete(idx, bookIdx);
 
-        return "redirect:/cart";
+        return "redirect:/user/cart";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)

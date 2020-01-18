@@ -9,7 +9,7 @@
  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <style type="text/css">
 
-		#textP{
+	#textP{
   		font-size:10px; color:red; margin-top: -20px; margin-left:20px;
   	}
   	
@@ -17,24 +17,27 @@
   		margin-top: -20px; margin-left:20px;
   	}
   	
-  	#pw-success{
+  	#pwSuccess{
   		color:blue; font-size:10px;
   	}
   	
-  	#pw-fail{
+  	#pwFail{
   		color:red; font-size:10px;
   	}
   
   	.login_box_area .login_box_img:before{
   		height:810px;
   	}
+  	
+  	#userId{
+  		 width:280px; display:inline-block; 
+  	}
+  	
+  	#userIdC div:nth-child(1){
+  		display:inline-block;	
+  	}
 	
-	.login_form .sex-div{
-		float:left;
-		width:50%;
-		border-bottom: 1px solid #cccccc
-		
-	}
+	
 	</style>
 
 	<script type="text/javascript" src="/js/json.js"></script>
@@ -52,6 +55,10 @@
 						let obj = JSON.parse(result.message);
 						// user 정보 뿌리기
 						$("#userName").val(obj.userName);
+						$("#userPhone").val(obj.userPhone);
+						$("#userPost").val(obj.userPost);
+						$("#userAddress").val(obj.userAddress);
+						$("#userAddressDetail").val(obj.userAddressDetail);
 
 					} else {
 						alert("회원요청이 잘못되었습니다");
@@ -63,8 +70,6 @@
 				}
 			});//ajax끝
 		})
-
-
 
 		$(function(){
 			$("#register").click(function(){
@@ -87,41 +92,47 @@
 					},
 					error : function(error) {
 						console.log(error);
-						alert("오류 발생");
+						alert("b오류 발생");
 					}
 				});//ajax끝
 			})
 			
 			/* 비밀번호 입력 */
-	  		$("#userPassword").mouseenter(function(){
+	  		/* $("#userPassword").mouseenter(function(){
 	  			$("#textP").text("숫자 또는 문자로만 4~12자리 입력하세요.")
 	  		});
 	  		$("#userPassword").mouseleave(function(){
 	  			$("#textP").text(" ");
-	  		});
+	  		}); */
 	  		
-	  		/* 비밀번호 일치여부*/
-				$("#pw-success").hide();
-					$("#pw-fail").hide();
-					$("input").keyup(function() {
-						var pwd1 = $("#userPassword").val();
-						var pwd2 = $("#confirmPassword").val();
-						if (pwd1 != "" || pwd2 != "") {
-							if (pwd1 == pwd2) {
-								$("#pw-success").show();
-								$("#pw-fail").hide();
-								$("#submit").removeAttr("disabled");
-							} else {
-								$("#pw-success").hide();
-								$("#pw-fail").show();
-								$("#submit").attr("disabled", "disabled");
-							}
+			/* 비밀번호 일치여부*/
+			$("#pwSuccess").hide();
+			$("#pwFail").hide();
+				$("input").keyup(function() {
+					var pwd1 = $("#userPassword").val();
+					var pwd2 = $("#confirmPassword").val();
+					if (pwd1 != "" || pwd2 != "") {
+						if (pwd1 == pwd2) {
+							$("#pwSuccess").show();
+							$("#pwFail").hide();
+							$("#confirmPassword").blur(function(){
+								$("#pwSuccess").hide();
+							}); 
+							$("#submit").removeAttr("disabled");
+						} else {
+							$("#pwFail").show();
+							$("#pwSuccess").hide();
+							$("#submit").attr("disabled", "disabled");
 						}
-						$("#userName").click(function(){
-							$("#pw-success").hide();
-						});
-					});
-			});
+					}
+					
+				 	//$("#confirmPassword").blur(function(){
+						//$("#pw-success").hide();
+					//}); 
+
+				});
+				
+			}); //js 끝
 		
 		/* 주소찾기 */
 	  	function openDaumZipAddress() {
@@ -173,17 +184,13 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>개인정보 수정</h3>
-						<form class="row login_form" action="#/" id="register_form" method="post" >
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="originalPawwaord" name="originalPawwaord" placeholder="기존 패스워드" onblur="this.placeholder = '기존 패스워드'">
-								<input type="button" name="confitm-id" class="confitm-id" value="중복확인" >
-							</div>
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+						<form class="row login_form" action="/#" id="register_form" method="post">
+							<div class="col-md-12 form-group" id="userIdC">
+								<input type="text" class="form-control" id="userId" name="userId" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
+								<input type="button" id="confirmId" name="confirmId" class="confirmId" value="중복확인" >	
 			                </div>
 			                
 			                <div class="check_font" id="checkId"></div>
@@ -194,8 +201,8 @@
 			                <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="새로운 비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호 확인'">
 							</div>
-							<div class="pw" id="pw-success">비밀번호가 일치합니다.</div>
-							<div class="pw" id="pw-fail">비밀번호가 일치하지 않습니다.</div>
+							<div class="pw" id="pwSuccess">비밀번호가 일치합니다.</div>
+							<div class="pw" id="pwFail">비밀번호가 일치하지 않습니다.</div>
 							<!-- <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
 			                </div> -->
@@ -207,13 +214,12 @@
 							</div>
 							<div class="col-md-12 form-group">
 								
-								<input type="text" id="userPost" name="userPost" width="278px" value="우편번호" readonly/>
+								<input type="text" id="userPost" name="userPost" style="width:278px;" value="우편번호" readonly/>
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
-								<input type="text" id="userAddress" name="userAddress" value="주소" readonly/>
-								<input type="text" id="userAddressDetail" name="userAddressDetail" value="상세주소" style="width:355px;" placeholder="상세주소"/>
+								<input type="text" id="userAddress" name="userAddress" style="width:355px;" value="주소" readonly/>
+								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
-							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77?category=1062143" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
 								<button type="button" value="button" class="button button-register w-100">개인정보 수정</button>
 							</div>
