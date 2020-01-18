@@ -1,5 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,29 +31,74 @@
       <div class="d-none d-sm-block mb-5 pb-4">
         <div id="map" style="height: 420px;"></div>
         <script>
+
+          // function initMap() {
+          //   var uluru = {lat: -25.363, lng: 131.044};
+          //   var grayStyles = [
+          //     {
+          //       featureType: "all",
+          //       stylers: [
+          //         { saturation: -90 },
+          //         { lightness: 50 }
+          //       ]
+          //     },
+          //     {elementType: 'labels.text.fill', stylers: [{color: '#A3A3A3'}]}
+          //   ];
+          //   var map = new google.maps.Map(document.getElementById('map'), {
+          //     center: {lat: 37.402265, lng: 127.1012932},
+          //     zoom: 17,
+          //     styles: grayStyles,
+          //     scrollwheel:  false
+          //   });
+          //
+          //   var marker = new google.maps.Marker({
+          //     position: curLatLng,
+          //     map: map,
+          //     title: 'Hello World!'
+          //   });
+          //
+          // }
+
+
           function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var grayStyles = [
-              {
-                featureType: "all",
-                stylers: [
-                  { saturation: -90 },
-                  { lightness: 50 }
-                ]
-              },
-              {elementType: 'labels.text.fill', stylers: [{color: '#A3A3A3'}]}
-            ];
+            // Initial location of a map
+            var curLatLng = {
+              lat: 37.402265,
+              lng: 127.1012932
+            };
+
+            var curLatLngg = {
+              lat: 37.40265,
+              lng: 127.1012932
+            };
+
+            // Creates a map object.
             var map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -31.197, lng: 150.744},
-              zoom: 9,
-              styles: grayStyles,
-              scrollwheel:  false
+              center: curLatLng,
+              scrollwheel: false,
+              zoom: 17
             });
+
+            // Creates a marker on the map.
+            var marker = new google.maps.Marker({
+              position: curLatLng,
+              map: map,
+              title: 'Kosta'
+            });
+
+            infoWindow = new google.maps.InfoWindow();
+            infoWindow.setOptions({
+              content: "  한국소프트웨어기술진흥협회 ( Kosta )  ",
+              position: curLatLngg,
+            });
+
+            infoWindow.open(map);
+
           }
-          
+
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
-        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUXSBBdRYQgfwMwYTdJFifVUfwvPx9k&callback=initMap"></script>
+
       </div>
 
 
@@ -62,22 +107,22 @@
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-home"></i></span>
             <div class="media-body">
-              <h3>California United States</h3>
-              <p>Santa monica bullevard</p>
+              <h3>한국소프트웨어기술진흥협회 (Kosta)</h3>
+              <p>성남시 분당구 대왕판교로 670</p>
             </div>
           </div>
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-headphone"></i></span>
             <div class="media-body">
-              <h3><a href="tel:454545654">00 (440) 9865 562</a></h3>
-              <p>Mon to Fri 9am to 6pm</p>
+              <h3><a href="tel:454545654">031 - 1111 - 2222</a></h3>
+              <p>월 ~ 금 9am to 7pm</p>
             </div>
           </div>
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-email"></i></span>
             <div class="media-body">
-              <h3><a href="mailto:support@colorlib.com">support@colorlib.com</a></h3>
-              <p>Send us your query anytime!</p>
+              <h3><a href="mailto:support@colorlib.com">support@book.com</a></h3>
+              <p>언제나 친절하게 답변해드립니다.</p>
             </div>
           </div>
         </div>
