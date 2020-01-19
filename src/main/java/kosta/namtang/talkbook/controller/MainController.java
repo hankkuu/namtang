@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,6 +41,26 @@ public class MainController {
 		model.addAttribute("booklist2", MonthbestSeller);
 
 		return "/guest/index";
+	}
+
+
+	@RequestMapping("/ThemeCatg")
+	public String mainIndex(@RequestParam int type,Model model) {
+		Page<Book> themeBook = bookService.findThemeCatg(type);
+
+//		model.addAttribute("CatgIdx", catg);
+		if(type==3) model.addAttribute("Title","감성터지는 늦은 밤, 생각에 잠기기 좋은 책");
+		else if(type==4) model.addAttribute("Title","잔잔한 오후, 카페에서 읽기 좋은 책");
+		else if(type==5) model.addAttribute("Title","힘들고 마음이 울적할때 읽기 좋은 책");
+		else if(type==6) model.addAttribute("Title","하상욱 시집 모음");
+		model.addAttribute("booklist", themeBook.getContent());
+//		model.addAttribute("list", bookService.countAll());
+
+		model.addAttribute("maxPage", themeBook.getTotalPages());
+		model.addAttribute("startPage", 1);
+		model.addAttribute("curPage", 1);
+		return "/guest/ThemeCatg";
+
 	}
 
 	@RequestMapping("/Contact")
