@@ -6,6 +6,8 @@ import kosta.namtang.talkbook.model.domain.bill.PurchaseBook;
 import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
 import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
 import kosta.namtang.talkbook.model.domain.account.Users;
+import kosta.namtang.talkbook.model.dto.response.OrderStatusResponse;
+import kosta.namtang.talkbook.model.dto.response.PurchaseBookResponse;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 
 import java.util.List;
@@ -30,21 +32,14 @@ public interface PurchaseService {
     BillKey changePurchase(String billKey, List<PurchaseBook> purchaseGoodsList) throws Exception;
 
     // 구매 내역 조회
-    List<PurchaseOrderResponse> selectOrderList(Users account) throws Exception;
-
-    /**
-     * 장바구니에서 구매 넘어갈때 들고갈 상품 정보(조회)
-     * 주문자 정보 조회
-     * 같이 뿌려주는 작업
-     * */
-    //PurchasePage selectProduct(String loginId, String billKey) throws Exception;
+    List<PurchaseOrderResponse> selectOrderList(long userIdx) throws Exception;
 
 
-    /**
-     * 구매내역 조회
-     *
-     * */
-    //List<PurchaseBook> selectOrderHistory(String loginId) throws Exception;
+    OrderStatusResponse selectOrderStatus(long orderIdx) throws Exception;
+
+
+
+    List<PurchaseBookResponse> selectOrderDetail(long orderIdx, long userIdx) throws Exception;
 
 
 }

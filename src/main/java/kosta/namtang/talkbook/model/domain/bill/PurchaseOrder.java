@@ -1,5 +1,6 @@
 package kosta.namtang.talkbook.model.domain.bill;
 
+import kosta.namtang.talkbook.common.PurchaseCode;
 import lombok.*;
 
 import javax.persistence.*;
