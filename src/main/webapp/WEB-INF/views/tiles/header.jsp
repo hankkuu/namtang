@@ -199,7 +199,7 @@
                         </li>
 
                         <li class="nav-item"><a href="/user/cart"><button><i class="ti-shopping-cart"></i></button></a> </li>
-                        <li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>
+<%--                        <li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>--%>
   <security:authorize access="!isAuthenticated()">
 <li class="nav-item"><a class="button button-header" href="/login">Login / Register</a></li>
 </security:authorize>
