@@ -28,7 +28,6 @@ public class AdminService {
 
     public Optional<Admin> selectById(Admin admin) {
         Optional<Admin> result = adminRepository.findById(admin.getAdminId());
-        System.out.println(admin + "ddddddddd");
         return null;
     }
 
