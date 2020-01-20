@@ -1,5 +1,6 @@
 package kosta.namtang.talkbook.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,13 @@ public class AdminController {
     @ResponseBody
     public List<PurchaseOrder> getlist(){
     	List<PurchaseOrder> list = (List<PurchaseOrder>) purchaseOrder.findAll();
+//    	List<PurchaseStatOrderResponse> response = new ArrayList<>();
+//    	for(PurchaseOrder order : list) {
+//    		PurchaseStatOrderResponse item = new PurchaseStatOrderResponse();
+//    		
+//    	}
+    	
+    	
 		return list;
     	
     }
