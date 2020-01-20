@@ -28,14 +28,14 @@
                 let nb = 0;
                 let sum = 0;
                 
-                for(let i = 0 ; i < list.length ; i++) {
-                    console.log(list[i]);
+                for(let i = 0 ; i < list.length; i++) {
+                    console.log(i);
                     
 					str += '<tr>'
                     str += '<td>'
                     /* str += '<img class=\"card-img\" src=\" \">'list[i].img */
                     str += '<img id="list[' + i + '].img" src=' + list[i].img + '>'
-                    str += '<input type="hidden" name="bookIdx" id="bookIdx' + [i] + '" value=' + [i] + '>'
+                    str += '<input type="hidden" name="bookIdx" id="bookIdx' + i + '" value=' + i + '>'
                     str += '</td>'
                     str += '<td id="list[' + i + '].title" + >' + list[i].title + '</td>'
                     str += '<td id="list[' + i + '].price">' + list[i].price + '</td>'
@@ -55,19 +55,18 @@
                     // str += '<td> <h5 id="priceSum">￦0</h5> </td>'
                     // str += '</tr>'
                 }
-                
-                var book = $("#bookIdx0").text();
-                console.log("book = " + book);
-                
                 $("#cartList").html(str);
                 
+                var receiverName = $("#receiverName").val();
+            	console.log(receiverName);
+                
                 if(sum > 10000){
-                	$("#shipping").html("무료배송");
-                	$("#totalPrice").html(sum +"원");
+                	$("#shipping").html(0);
+                	$("#totalPrice").html(sum);
                 } else {
-                	$("#shipping").html("2500원");
+                	$("#shipping").html(2500);
                 	let s = 2500;
-                	$("#totalPrice").html(sum + s +"원");
+                	$("#totalPrice").html(sum + s);
                 }
                 //$("#list").html(product);
             });
@@ -75,11 +74,24 @@
             console.log("start");
 
             $("#purchase").click(async () => {
-
-                //
-
-                await purchaseProcess().then(async (result) => {
-                    console.log(result);
+            	
+            	let list = JSON.parse(sessionStorage.getItem("cartlist"));
+            	console.log(list);
+            	let purchaseBook = [];
+            		for(var i = 0; i < list.length; i++) {
+            		let item = {
+            				purchaseBookId : {
+            					bookIdx : list[i].id
+            				},
+            			price: list[i].price, 
+            			name: list[i].title, 
+            			count: list[i].qty, 
+            			imagePath: list[i].img
+                	}
+            		purchaseBook.push(item);
+            	}	 
+            	
+            	await purchaseProcess().then(async (result) => {
 
                     if (result.statusCode === "Success") {
                         const key = result.message;
@@ -96,14 +108,16 @@
                                     shippingPrice: "100",  //$("#shipping").text(),
                                     paymentCode: "1" //$("input[type=radio][name=selector]:checked").val()
                                 },
+                                
                                 purchaseOrder: {
                                     deliveryAddress: $("#userAddress").val()
                                 },
-                                purchaseBook: [{
+                                purchaseBook: purchaseBook
+                                	/* [{
                                     purchaseBookId: {
                                         bookIdx: "1"
                                     },
-                                    price: "10000",
+                                    price: $('#list['+  +'].price').val(),
                                     name: "난책1",
                                     count: "3",
                                     imagePath: " "
@@ -116,13 +130,13 @@
                                     count: "1",
                                     imagePath: "test"
                                 }
-                                ],
+                                ] */
+                                ,
+                                
                                 billKey: key
-                            }
-                            
+                            }                           
                             //var uui = $("#list[0]price").val();
                             //console.log(uui);
-                            
                             
                             //console.log("purchaseObj??" + purchaseObj);
 
@@ -307,7 +321,17 @@
 				}
 			}).open();
 		}
-
+        
+        /* 기존 주소 */
+        function openPopup(){
+        	var _width = '650';
+            var _height = '380';
+			
+            // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+            var _left = Math.ceil(( window.screen.width - _width )/2);
+            var _top = Math.ceil(( window.screen.width - _height )/2); 
+            window.open('/url', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+        }
     </script>
     <style>
     #userPost{
@@ -387,6 +411,7 @@
                         <div class="col-md-12 form-group">
 							<input type="text" id="userPost" class="form-control" name="userPost" style="width:278px;" value="우편번호" disabled/>
 							<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
+							<input type="button" onClick="openPopup()" value = "기존 주소" />
 							<br/>
 							<input type="text" id="userAddress" class="form-control" name="userAddress" value="주소" disabled/>
 							<input type="text" id="userAddressDetail" class="form-control" name="userAddressDetail" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
@@ -433,7 +458,7 @@
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
-                                <input type="radio" id="f-option5" name="selector" value="0">
+                                <input type="radio" id="f-option5" name="selector" value="1">
                                 <label for="f-option5">가상계좌</label>
                                 <div class="check"></div>
                             </div>
@@ -441,7 +466,7 @@
                         </div>
                         <div class="payment_item active">
                             <div class="radion_btn">
-                                <input type="radio" id="f-option6" name="selector" value="1">
+                                <input type="radio" id="f-option6" name="selector" value="2">
                                 <label for="f-option6">카드 </label>
                                 <img src="/img/product/card.jpg" alt="">
                                 <div class="check"></div>

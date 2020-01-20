@@ -526,7 +526,7 @@
                                                     <img src="img/product/review-1.png" alt="">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h4>${reviewc.userIdx}</h4>
+                                                    <h4>${reviewc.userId}</h4>
                                                     <h4>${reviewc.reviewTitle}</h4>
                                                     <c:choose>
                                                         <c:when test="${reviewc.reviewScore == 2}">
