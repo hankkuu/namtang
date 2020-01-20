@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Home</title>
+
+
   <style>
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean');
     @import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
@@ -20,12 +22,185 @@
           font-size: 24px;
           font-family: 'Do Hyeon', sans-serif;
       }
+
+    .slider .indicators .indicator-item {
+        background-color: #666666;
+        border: 3px solid #ffffff;
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    .slider .indicators .indicator-item.active {
+        background-color: #ffffff;
+    }
+    .slider {
+        width: 900px;
+        margin: 0 auto;
+    }
+    .slider .indicators {
+        bottom: 60px;
+        z-index: 100;
+        /* text-align: left; */
+    }
+
+    .slider {
+        position: relative;
+        height: 600px;
+        width: 100%
+    }
+
+    .slider.fullscreen {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0
+    }
+
+    .slider.fullscreen ul.slides {
+        height: 100%
+    }
+
+    .slider.fullscreen ul.indicators {
+        z-index: 2;
+        bottom: 30px
+    }
+
+    .slider .slides {
+        background-color: #9e9e9e;
+        margin: 0;
+        height: 600px
+    }
+
+    .slider .slides li {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: inherit;
+        overflow: hidden
+    }
+
+    .slider .slides li img {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center
+    }
+
+    .slider .slides li .caption {
+        color: #fff;
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        width: 70%;
+        opacity: 0%
+    }
+
+    .caption{
+        font-size: xx-large;
+    }
+    .caption.top {
+    }
+    .caption.middle{
+        margin-top: 250px;
+    }
+    .caption.bottom {
+        margin-top: 350px;
+    }
+
+
+
+    .slider .slides li .caption p {
+        color: #e0e0e0
+    }
+
+    .slider .slides li.active {
+        z-index: 2
+    }
+
+    .slider .indicators {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        bottom: 25px;
+        margin: 0
+    }
+
+    .slider .indicators .indicator-item {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+        margin: 0 12px;
+        background-color: #e0e0e0;
+        transition: background-color .3s;
+        border-radius: 50%
+    }
+
+    .slider .indicators .indicator-item.active {
+        background-color: #4CAF50
+    }
+
+    .left-align {
+        text-align: left;
+        top:800px;
+    }
+
+    .right-align {
+        text-align: right;
+    }
+    .center-align {
+        text-align: center;
+    }
+    .a3w{
+        color:white;
+        font-size: 50px;
+    }
+      .a5w{
+          color:white;
+          font-size: 30px;
+      }
+
   </style>
+<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">--%>
+<%--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">--%>
     <script>
         $(function(){
+            // $('.header_area').css("opacity","0");
+            $('.header_area').css("box-shadow","none");
+            $('.nav-link,.button.button-header').css("color","white");
+            $('.nav-link.black').css("color","black");
+            $('.nav-shop li i, .nav-shop li span').css("color","white");
+            $(".navbar-brand.logo_h img").attr('src','/img/logo_white.png');
+            $(window).scroll(function() {
+
+                var scroll = $(window).scrollTop();
+                //console.log(scroll);
+
+                if (scroll >= 50) {
+                    // $('.header_area').css("box-shadow","none");
+                    $('.nav-link,.button.button-header').css("color","black");
+                    $('.nav-shop li i, .nav-shop li span').css("color","black");
+                    $(".navbar-brand.logo_h img").attr('src','/img/logo.png');
+                } else {
+                    $('.nav-link,.button.button-header').css("color","white");
+                    $('.nav-shop li i, .nav-shop li span').css("color","white");
+                    $('.nav-link.black').css("color","black");
+                    $(".navbar-brand.logo_h img").attr('src','/img/logo_white.png');
+                    // $(".header_area").removeClass("change");
+                    // $('.header_area').animate({opacity:"0"}, 1000);
+                }
+            });
            $(".hero-carousel__slide").click(function(){
                location.href=$(this).children().next().attr('href');
-           })
+           });
 
             //상품 디테일 버튼
             $(document).on('click','#BookDetail',function(){
@@ -36,6 +211,10 @@
                 var id = $(this).next().children().children().children().text();
                 location.href="/BookDetail?id="+id;
             });
+
+            $('.slider').slider({full_width: true});
+            $('.slider').css("height","670px");
+            $('.slides').css("height","670px");
 
         });
 
@@ -48,32 +227,55 @@
 	<!--================ End Header Menu Area =================-->
 
   <main class="site-main">
-    
-    <!--================ Hero banner start =================-->
-    <section class="hero-banner">
-      <div class="container">
-        <div class="row no-gutters align-items-center pt-60px">
-          <div class="col-5 d-none d-sm-block">
-            <div class="hero-banner__img">
-              <img class="img-fluid" src="img/home/hero-banner3.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
-            <div class="hero-banner__content">
-              <h4>Book is fun</h4>
-              <h2>Listening Our Music, Browse Our Books</h2>
-              <p>Us which over of signs divide dominion deep fill bring they're meat beho upon own earth without morning over third. Their male dry. They are great appear whose land fly grass.</p>
-              <a class="button button-hero" href="#">Browse Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
+          <!--================ Hero banner start =================-->
+
+    <section class="hero-banner" style="position: relative;top: -97px;">
+
+<%--        <img class="img-fluid" src="img/home/hero-banner3.jpg" alt="">--%>
+    <div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="img/home/dd.jpg"> <!-- random image -->
+                <div class="caption middle center-align">
+                    <h3 class="a3w">감성이 일상이 되는 공간</h3>
+                    <h5 class="light white-text text-lighten-3 a5w">저희 '토크북'은 시와 에세이를 통해 세상을 다양하게 이야기 하고 있습니다.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="img/home/bb.jpg"> <!-- random image -->
+                <div class="caption middle left-align">
+                    <h3 class="a3w">About TalkBook</h3>
+                    <h5 class="light grey-text text-lighten-3 a5w">We talk about the world in a variety of poems and essays.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="img/home/cc.jpg"> <!-- random image -->
+                <div class="caption bottom right-align">
+                    <h3 class="a3w"></h3>
+                    <h5 class="light grey-text text-lighten-3 a5w">“한 편의 좋은 시를 읽는다는 것은, 영혼의  <br> 항아리 속에 향기로운 꽃을 꽂아두는 것과 같다."<br>-이어령</h5>
+                </div>
+            </li>
+            <li>
+                <img src="img/home/aa.jpg"> <!-- random image -->
+                <div class="caption bottom left-align">
+                    <h5 class="light grey-text text-lighten-3 a5w">“시는 우주의 생명적 본질이 인간의 감성적 <br> 작용을 통하여 표현되는 언어의 통일적 구상이다.”<br>-조지훈</h5>
+                    <h3 class="a3w"></h3>
+                </div>
+            </li>
+        </ul>
+    </div>
     </section>
     <!--================ Hero banner start =================-->
-
-    <!--================ Hero Carousel start =================-->
-    <section class="section-margin mt-0">
+          <!--================ Hero Carousel start =================-->
+    <section class="section-margin mt-0" style="top: -107px;position: relative;">
+<%--        <div class="container">--%>
+<%--        <div class="section-intro pb-60px">--%>
+<%--            <p>Theme Item in the market</p>--%>
+<%--            <h2>Special <span class="section-intro__style">Category</span></h2>--%>
+<%--        </div>--%>
+<%--        </div>--%>
         <div class="owl-carousel owl-theme hero-carousel">
+
             <div class="hero-carousel__slide">
                 <img src="img/home/night.jpg" alt="" class="img-fluid">
                 <a href="/ThemeCatg?type=3" class="hero-carousel__slideOverlay">

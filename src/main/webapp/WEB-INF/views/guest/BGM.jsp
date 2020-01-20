@@ -77,9 +77,7 @@
 
 </head>
 <body>
-<div id="rand-val">날씨
-
-</div>
+<div id="rand-val"></div>
 
 
 </body>
