@@ -20,6 +20,46 @@
         }
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      computePiDecimal
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Memory', 80],
+          ['CPU', 55],
+          ['접속량', ${userCount}]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div2'));
+
+        chart.draw(data, options);
+
+        setInterval(function() {
+          data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 13000);
+        setInterval(function() {
+          data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 5000);
+        setInterval(function() {
+          data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+          chart.draw(data, options);
+        }, 26000);
+      }
+    </script>
+    
     <script type="text/javascript">
         google.charts.load('current', {'packages': ['corechart', 'bar']});
         google.charts.setOnLoadCallback(drawStuff);
@@ -94,7 +134,7 @@
         
         $(function () {
      		 $.ajax({
-     			 url: "${pageContext.request.contextPath}/admin/getlist", //서버요청주소
+     			 url: "${pageContext.request.contextPath}/admin/getlist2", //서버요청주소
      			 type:"post", //요청방식(get|post|put:patch:delete)
      			 dataType:"json", //서버가 보내온 데이터 타입(text,html,xml,json)
      			 data:"${_csrf.parameterName}=${_csrf.token}",
@@ -113,14 +153,12 @@
 
      			</c:forEach>
      			*/
-     				 var data="<table border='1' cellpadding='5'> 실시간 구매자 정보 ";
+     				 var data="<table border='1' cellpadding='5'> 구매목록 top 8 ";
+     				
 					 $.each(result, function(index, item){
 						 data+="<tr>";
-						    data+="<td>"+item.userIdx+"</td>";
-							data+="<td>"+item.purchaseOrderIdx+"</td>";
-							data+="<td>"+item.deliveryAddress+"</td>";
-							data+="<td>"+item.updateDate+"</td>";
-							data+="<td>"+item.billKey+"</td>";
+							data+="<td>"+(index+1)+"</td>";
+						    data+="<td>"+item.bookTitle+"</td>";
 							data+="</tr>";
 						
 					 }) 
@@ -128,6 +166,53 @@
 					
 					$("#memberListView").html(data);
  				   
+					
+					<!-- -->
+				      
+     			 } ,//성공했을대
+     			 error:function(err){
+     				 alert(err+"오류 발생..");
+     			 }//오류발생했을때
+     		 }); 
+		})
+		
+		 $(function () {
+     		 $.ajax({
+     			 url: "${pageContext.request.contextPath}/admin/getlist3", //서버요청주소
+     			 type:"post", //요청방식(get|post|put:patch:delete)
+     			 dataType:"json", //서버가 보내온 데이터 타입(text,html,xml,json)
+     			 data:"${_csrf.parameterName}=${_csrf.token}",
+     			 success:function(result){
+     				 /*
+     				var data="<table border='1' cellpadding='5'> 실시간 구매자 정보 ";
+     				<c:forEach var="i" begin="0" end="15">
+     				
+     				 data+="<tr>";
+					    data+="<td>"+result.get(i).userIdx+"</td>";
+						data+="<td>"+result.purchaseOrderIdx+"</td>";
+						data+="<td>"+result.deliveryAddress+"</td>";
+						data+="<td>"+result.updateDate+"</td>";
+						data+="<td>"+result.billKey+"</td>";
+						data+="</tr>";
+
+     			</c:forEach>
+     			*/
+     				 var data="<table border='1' cellpadding='5'> 이번달 구매목록 top 8 ";
+     				
+					 $.each(result, function(index, item){
+						 data+="<tr>";
+							data+="<td>"+(index+1)+"</td>";
+						    data+="<td>"+item.bookTitle+"</td>";
+							data+="</tr>";
+						
+					 }) 
+					data+="</table>";
+					
+					$("#memberListView2").html(data);
+ 				   
+					
+					<!-- -->
+				      
      			 } ,//성공했을대
      			 error:function(err){
      				 alert(err+"오류 발생..");
@@ -140,7 +225,7 @@
 <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:10%;" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
     <a href="dashBoard" class="w3-bar-item w3-button">종합 통계</a>
-    <a href="상세 통계" class="w3-bar-item w3-button">상세 통계</a>
+    <a href="dashBoard2" class="w3-bar-item w3-button">구매자 정보</a>
     <a href="회원 상품 통계" class="w3-bar-item w3-button">회원 상품 통계</a>
     <a href="/logout" class="w3-bar-item w3-button">Logout</div>
     
@@ -155,9 +240,11 @@
         <button id="change-chart">Change to Classic</button>
         <div id="chart_div" style="width: 50%; height: 20%;"></div>
     </div>
-	<div></div>
-	
-<div id="memberListView"> 실시간 구매자 정보 <br></div>
+    <br><h3 style="margin-left:10%;" >실시간 통계</h3><br>
+	 <div  style="width: 80%; height: 120px; margin-left:10%;">
+        <div style="width: 50%; float: left; box-sizing: border-box;" id="memberListView" ></div>
+        <div style="width: 50%; float: right; box-sizing: border-box;" id="memberListView2" ></div>
+	</div>
 
 </div>
 </body>
