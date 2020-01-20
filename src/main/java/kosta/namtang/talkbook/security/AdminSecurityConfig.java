@@ -35,7 +35,7 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("admin")
                 .antMatchers("/user/**").hasRole(RoleCode.Member.name());
 
-        http.formLogin().loginPage("/login").defaultSuccessUrl("/")
+        http.formLogin().loginPage("/adminLoginForm").defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()

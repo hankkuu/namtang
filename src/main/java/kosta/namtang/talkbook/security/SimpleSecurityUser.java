@@ -3,6 +3,7 @@ package kosta.namtang.talkbook.security;
 import kosta.namtang.talkbook.common.RoleCode;
 import kosta.namtang.talkbook.model.domain.Admin;
 import kosta.namtang.talkbook.model.domain.account.Account;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+//@EqualsAndHashCode
 @Getter
 public class SimpleSecurityUser extends User {
 

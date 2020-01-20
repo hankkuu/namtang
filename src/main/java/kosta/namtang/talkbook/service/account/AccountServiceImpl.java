@@ -1,7 +1,10 @@
 package kosta.namtang.talkbook.service.account;
 
 import kosta.namtang.talkbook.common.RoleCode;
+import kosta.namtang.talkbook.common.ShopResponse;
+import kosta.namtang.talkbook.common.StatusCode;
 import kosta.namtang.talkbook.model.domain.account.Account;
+import kosta.namtang.talkbook.model.domain.account.UserAddress;
 import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.dto.request.UserSetRequest;
 import kosta.namtang.talkbook.repository.account.AccountRepository;
@@ -13,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -64,14 +69,39 @@ public class AccountServiceImpl implements AccountService {
         return member;
     }
 
+    public ShopResponse checkNewUser(String userId) {
+        Account acc = accountRepository.findByUserId(userId);
+        if(acc != null) {
+            boolean isActive = acc.getDeleteDate().equals("1900-01-01 00:00:00");
+            if(isActive == true)
+                return new ShopResponse(StatusCode.Fail, "이미 있는 계정");
+            else
+                return new ShopResponse(StatusCode.Fail, "삭제된 계정입니다 관리자에 문의하세요");
+        }
+        return new ShopResponse(StatusCode.Success, "사용할 수 있는 계정 입니다");
+
+    }
+
+
     @Override
     public Users updateAccount(long userIdx) {
         Users user = userRepository.findById(userIdx).orElse(null);
         return user;
     }
 
+    @Transactional
     @Override
     public void updateUser(UserSetRequest user) {
+        String encryptPw = pwEncoder.encode(user.getPassword());
+        Timestamp createDate = DateTimeHelper.timeStampNow();
+
+        Optional<Account> member = accountRepository.findById(user.getUserIdx());
+        member.ifPresent( (update) -> {
+            update.setUserPassword(encryptPw);
+            accountRepository.save(update);
+        });
+
+
         Optional<Users> u = userRepository.findById(user.getUserIdx());
         u.ifPresent((update) -> {
             update.setUpdateDate(DateTimeHelper.timeStampNow());
@@ -87,13 +117,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void deleteAccount(Account acc) {
-        Optional<Account> account = accountRepository.findById(acc.getAccountIdx());
+    public void deleteAccount(long accountIdx) {
+        Optional<Account> account = accountRepository.findById(accountIdx);
         account.ifPresent((update) -> {
             update.setDeleteDate(DateTimeHelper.timeStampNow());
             accountRepository.save(update);
         });
-        return;
     }
 
     @Override
@@ -112,12 +141,27 @@ public class AccountServiceImpl implements AccountService {
         return a;
     }
 
+
+
     @Override
-    public Boolean checkId(String id) {
-        Account acc = accountRepository.findByUserId(id);
-        if (acc != null) {
-            return true;
+    public boolean checkPassword(long accountIdx, String password) {
+        boolean matched = false;
+        Optional<Account> acc = accountRepository.findById(accountIdx);
+        if(acc.isPresent() == true) {
+            matched = pwEncoder.matches(password, acc.get().getUserPassword());
         }
-        return false;
+        return matched;
+    }
+
+    @Override
+    public List<UserAddress> selectAddress(long accountIdx) {
+        Optional<Users> user = userRepository.findById(accountIdx);
+        List<UserAddress> list = new ArrayList<>();
+        user.ifPresent((u) -> {
+            UserAddress addr = new UserAddress(u.getUserPost(), u.getUserAddress(), u.getUserAddressDetail());
+            list.add(addr);
+        });
+
+        return list;
     }
 }

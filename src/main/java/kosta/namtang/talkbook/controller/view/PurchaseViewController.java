@@ -26,7 +26,39 @@ public class PurchaseViewController {
     @RequestMapping("/confirmation")
     public ModelAndView confirmation() {
         log.debug("confirmation");
-        ModelAndView view = new ModelAndView("/guest/confirmation");
+        ModelAndView view = new ModelAndView("/user/confirmation");
+        return view;
+    }
+
+    @RequestMapping("/myPurchaseList")
+    public ModelAndView myPurchase() {
+        log.debug("myPurchase");
+
+        ModelAndView view = new ModelAndView("/user/myPurchase");
+        return view;
+    }
+
+    @RequestMapping("/myPurchaseDetail")
+    public ModelAndView myPurchaseDetail() {
+        log.debug("myPurchaseDetail");
+
+        ModelAndView view = new ModelAndView("/user/myPurchaseDetail");
+        return view;
+    }
+
+    @RequestMapping("/purchase/popupStatus")
+    public ModelAndView popupStatus() {
+        log.debug("popupStatus");
+
+        ModelAndView view = new ModelAndView("/popup/popupStatus");
+        return view;
+    }
+
+    @RequestMapping("/purchase/popupRefund")
+    public ModelAndView popupRefund() {
+        log.debug("popupRefund");
+
+        ModelAndView view = new ModelAndView("/popup/popupRefund");
         return view;
     }
 
