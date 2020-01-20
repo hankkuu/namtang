@@ -22,21 +22,18 @@
                         let list = JSON.parse( result.message);
                         for(let i = 0 ; i < list.length ; i++) {
 
-                            console.log(list[i].orderDate);
+                            console.log(list[i]);
 
 
                             str += '<tr>'
-                            str += '<td>' + list[i].orderDate + '</td>'
-                            str += '<td><a href="#" onclick="movePurchaseDetail();"> ' +  list[i].billKey + '</a></td>'
-                            str += '<td>' + list[i].receiveName + '</td>'
-                            str += '<td>'
-                            str +=      list[i].productName
-                            str += '</td>'
-                            str += '<td>'+ list[i].totalPrice +'</td>'
-
-                            str += '<td>' + '<button type="button" id="checkStatus" value="상태확인" onclick="showStatusPopup();">상태확인</button>'  + '</td>'
-                            str += '<td>' + '<button type="button" id="refund" value="신청" onclick="showRefundPopup();">신청</button>'
-                            str += '<input type="hidden" id="orderIdx" value='+list[i].orderIdx+' />'
+                            str += '<td>' + list[i].bookName + '</td>'
+                            str += '<td>' + list[i].count + '</a></td>'
+                            str += '<td>' + list[i].price + '</td>'
+                            if(list[i].isReview === true) {
+                                str += '<td>' + '<button type="button" id="writeReview" value="review" onclick="showStatusPopup();">리뷰작성</button>'  + '</td>'
+                            } else {
+                                str += '<td>' + '<button type="button" id="readReview" value="viewReview" onclick="showRefundPopup();">리뷰보기</button>'
+                            }
                             str += '</td>'
                             str += '</tr>'
 
@@ -51,11 +48,6 @@
             });
         });
     });
-
-    function movePurchaseDetail() {
-        //alert("aaa");
-        location.href="/user/myPurchaseDetail?orderIdx=" + $("#orderIdx").val();
-    }
 
     function showStatusPopup() {
             window.open("/user/purchase/popupStatus?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
@@ -128,13 +120,11 @@
                   <table class="table">
                       <thead>
                           <tr>
-                              <th scope="col">주문일</th>
-                              <th scope="col">주문번호</th>
-                              <th scope="col">수령인</th>
-                              <th scope="col">주문상품</th>
-                              <th scope="col">구매금액</th>
-                              <th scope="col">주문상태</th>
-                              <th scope="col">반품 및 교환신청</th>
+                              <th scope="col">상품명</th>
+                              <th scope="col">수량</th>
+                              <th scope="col">가격</th>
+                              <th scope="col">리뷰작성</th>
+
                           </tr>
                       </thead>
 

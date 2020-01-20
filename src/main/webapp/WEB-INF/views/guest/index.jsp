@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +9,38 @@
   <title>Aroma Shop - Home</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean');
+    @import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
     .card-product__title a {
       color: #222;
       font-size: initial;
       font-family: 'Noto Sans KR', sans-serif;
     }
+      .hero-carousel__slideOverlay h3{
+          color: #FFFFFF;
+          font-size: 24px;
+          font-family: 'Do Hyeon', sans-serif;
+      }
   </style>
+    <script>
+        $(function(){
+           $(".hero-carousel__slide").click(function(){
+               location.href=$(this).children().next().attr('href');
+           })
+
+            //상품 디테일 버튼
+            $(document).on('click','#BookDetail',function(){
+                var id = $("i a",this).text();
+                location.href="/BookDetail?id="+id;
+            });
+            $(document).on('click','.card-img, #card-img-temp',function(){
+                var id = $(this).next().children().children().children().text();
+                location.href="/BookDetail?id="+id;
+            });
+
+        });
+
+    </script>
+
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -48,24 +75,21 @@
     <section class="section-margin mt-0">
         <div class="owl-carousel owl-theme hero-carousel">
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide1.png" alt="" class="img-fluid">
-                <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                <img src="img/home/night.jpg" alt="" class="img-fluid">
+                <a href="/ThemeCatg?type=3" class="hero-carousel__slideOverlay">
+                    <h3 style="font-size: 21px;">감성터지는 늦은 밤, 생각에 잠기기 좋은 책</h3>
                 </a>
             </div>
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide2.png" alt="" class="img-fluid">
-                <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                <img src="img/home/coffee.jpg" alt="" class="img-fluid">
+                <a href="/ThemeCatg?type=4" class="hero-carousel__slideOverlay">
+                    <h3>잔잔한 오후, 카페에서 읽기 좋은 책</h3>
                 </a>
             </div>
             <div class="hero-carousel__slide">
-                <img src="img/home/hero-slide3.png" alt="" class="img-fluid">
-                <a href="#" class="hero-carousel__slideOverlay">
-                    <h3>Wireless Headphone</h3>
-                    <p>Accessories Item</p>
+                <img src="img/home/Happiness.jpg" alt="" class="img-fluid">
+                <a href="/ThemeCatg?type=5" class="hero-carousel__slideOverlay">
+                    <h3>힘들고 마음이 울적할때 읽기 좋은 책</h3>
                 </a>
             </div>
         </div>
@@ -86,7 +110,7 @@
               <div class="card-product__img">
                 <img class="card-img" src="${item.bookImg}" alt="" style="width: 50%">
                 <ul class="card-product__imgOverlay">
-                  <li><button><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
+                  <li><button id="BookDetail"><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
                   <li><button><i class="ti-shopping-cart"></i></button></li>
                   <li><button><i class="ti-heart"></i></button></li>
                 </ul>
@@ -113,10 +137,11 @@
         <div class="row">
           <div class="col-xl-5">
             <div class="offer__content text-center">
-              <h3>Up To 50% Off</h3>
-              <h4>Winter Sale</h4>
-              <p>Him she'd let them sixth saw light</p>
-              <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
+              <h3 style="font-family: 'Noto Sans KR', sans-serif;">하상욱 시집 모음</h3>
+              <h4 style="font-family: 'Noto Sans KR', sans-serif;"></h4>
+              <p style="font-family: 'Noto Sans KR', sans-serif;">사람들의, 세상의 고정관념을 깨뜨리며
+                  공감 또 공감하게 되는 시</p>
+              <a class="button button--active mt-3 mt-xl-4" href="/ThemeCatg?type=6">Shop Now</a>
             </div>
           </div>
         </div>
@@ -136,9 +161,9 @@
           <c:forEach var="item" items="${booklist}" varStatus="status">
           <div class="card text-center card-product">
             <div class="card-product__img">
-              <img class="img-fluid" src="${item.bookImg}" alt="" style="width: 50%;margin-left: 65px;">
+              <img class="img-fluid" id="card-img-temp" src="${item.bookImg}" alt="" style="width: 50%;margin-left: 65px;">
               <ul class="card-product__imgOverlay">
-                <li><button><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
+                <li><button id="BookDetail"><i class="ti-search"><a hidden>${item.bookIdx}</a></i></button></li>
                 <li><button><i class="ti-shopping-cart"></i></button></li>
                 <li><button><i class="ti-heart"></i></button></li>
               </ul>

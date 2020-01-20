@@ -1,5 +1,4 @@
 package kosta.namtang.talkbook.repository;
-
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.Category;
 import org.springframework.data.domain.Page;
@@ -41,5 +40,9 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     //누적Top10,월간Top10
     @Query("select b from Book As b where b.bookIdx in(?1)")
     public List<Book> findBestCount(List<Long> idList);
+
+    //테마 카테고리
+    @Query("select b from Book As b where b.bookType = ?1")
+    public Page<Book> findThemeCatg(int type,Pageable pageable);
 }
 

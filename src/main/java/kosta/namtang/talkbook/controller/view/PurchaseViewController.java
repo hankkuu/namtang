@@ -19,7 +19,6 @@ public class PurchaseViewController {
     @RequestMapping("/purchase")
     public ModelAndView checkout() {
         log.debug("purchase");
-
         ModelAndView view = new ModelAndView("/user/checkout");
         return view;
     }
@@ -31,10 +30,27 @@ public class PurchaseViewController {
         return view;
     }
 
-    @RequestMapping("/myPurchase")
+    @RequestMapping("/myPurchaseList")
     public ModelAndView myPurchase() {
         log.debug("myPurchase");
+
         ModelAndView view = new ModelAndView("/user/myPurchase");
+        return view;
+    }
+
+    @RequestMapping("/myPurchaseDetail")
+    public ModelAndView myPurchaseDetail() {
+        log.debug("myPurchaseDetail");
+
+        ModelAndView view = new ModelAndView("/user/myPurchaseDetail");
+        return view;
+    }
+
+    @RequestMapping("/purchase/popupStatus")
+    public ModelAndView popupStatus() {
+        log.debug("popupStatus");
+
+        ModelAndView view = new ModelAndView("/popup/popupStatus");
         return view;
     }
 

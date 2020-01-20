@@ -50,7 +50,7 @@
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
-                            <a href="/user/myPurchase">
+                            <a href="/user/myPurchaseList">
                                 <h5>결제 내역</h5>
                             </a>
                             <div class="border_line"></div>

@@ -10,6 +10,9 @@ import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
 import kosta.namtang.talkbook.model.dto.request.PurchaseRequest;
 import kosta.namtang.talkbook.model.dto.request.PurchaseSetRequest;
+import kosta.namtang.talkbook.model.dto.response.OrderStatusResponse;
+import kosta.namtang.talkbook.model.dto.response.PurchaseBookResponse;
+import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 import kosta.namtang.talkbook.service.bill.BillKeySystem;
 import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -34,6 +38,38 @@ public class PurchaseController {
 
     @Autowired
     private BillKeySystem keySystem;
+
+
+    @GetMapping("/myPurchase")
+    public ShopResponse getMyPurchase(HttpServletRequest request) throws Exception {
+        Object obj = request.getSession().getAttribute("userIdx");
+        long userIdx = Long.valueOf(String.valueOf(obj));
+
+        List<PurchaseOrderResponse> list = purchaseService.selectOrderList(1);
+
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(list));
+    }
+
+    @GetMapping("/myPurchaseStatus")
+    public ShopResponse myPurchaseStatus(@RequestParam long id) throws Exception {
+
+        OrderStatusResponse res = purchaseService.selectOrderStatus(id);
+
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(res));
+    }
+
+    @GetMapping("/myPurchaseDetail")
+    public ShopResponse myPurchaseDetail(@RequestParam long orderId, HttpServletRequest request) throws Exception {
+        Object obj = request.getSession().getAttribute("userIdx");
+        long userIdx = Long.valueOf(String.valueOf(obj));
+
+        List<PurchaseBookResponse> res = purchaseService.selectOrderDetail(orderId, userIdx);
+
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(res));
+    }
+
+
+
 
     @PostMapping("/getBillKey")
     public ShopResponse getBillKey() throws Exception {
