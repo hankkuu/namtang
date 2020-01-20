@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
     <title>Aroma Shop - Checkout</title>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!-- iamport.payment.js -->
@@ -22,23 +24,30 @@
             $(function () {
                 let list = JSON.parse(sessionStorage.getItem("cartlist"));
                 let str = "";
+                let strCut = "";
+                let nb = 0;
+                let sum = 0;
+                
                 for(let i = 0 ; i < list.length ; i++) {
                     console.log(list[i]);
                     
 					str += '<tr>'
                     str += '<td>'
                     /* str += '<img class=\"card-img\" src=\" \">'list[i].img */
-                    str += '<img class="card-img" src=' + list[i].img + '>'
-                    str += '<input type="hidden" name="bookIdx" id=bookIdx value="">'
+                    str += '<img id="list[' + i + '].img" src=' + list[i].img + '>'
+                    str += '<input type="hidden" name="bookIdx" id="bookIdx' + [i] + '" value=' + [i] + '>'
                     str += '</td>'
-                    str += '<td class="card-title">' + list[i].title + '</td>'
-                    str += '<td id="price">' + list[i].price + '</td>'
-                    str += '<td>'
-                    str += "&emsp;" + list[i].qty
-                    str += '</td>'
-                    str += '<td id=Total>'+ list[i].total +'</td>'
+                    str += '<td id="list[' + i + '].title" + >' + list[i].title + '</td>'
+                    str += '<td id="list[' + i + '].price">' + list[i].price + '</td>'
+                    str += '<td id="list[' + i + '].qty">&emsp;'+ list[i].qty +'</td>'
+                    str += '<td id="list[' + i + '].total">'+ list[i].total +'</td>'
                     str += '</tr>'
-
+                    
+                    strCut = list[i].total.substr(1,list[i].price.length);
+                    strCut = strCut.split(',');
+                    nb = parseInt(strCut[0]+strCut[1]);
+                    sum += nb;
+                    
                     // str += '<tr>'
                     // str += '<td></td>'
                     // str += '<td></td>'
@@ -46,13 +55,22 @@
                     // str += '<td> <h5 id="priceSum">￦0</h5> </td>'
                     // str += '</tr>'
                 }
+                
+                var book = $("#bookIdx0").text();
+                console.log("book = " + book);
+                
                 $("#cartList").html(str);
-
+                
+                if(sum > 10000){
+                	$("#shipping").html("무료배송");
+                	$("#totalPrice").html(sum +"원");
+                } else {
+                	$("#shipping").html("2500원");
+                	let s = 2500;
+                	$("#totalPrice").html(sum + s +"원");
+                }
+                //$("#list").html(product);
             });
-
-
-
-
 
             console.log("start");
 
@@ -65,24 +83,27 @@
 
                     if (result.statusCode === "Success") {
                         const key = result.message;
+                        
+                        console.log("key: " + key);
+                        
                         if (key !== undefined) {
                             let purchaseObj = {
                                 purchasePayment: {
-                                    totalPrice: "100000", // $("#totalPrice").text(),
-                                    receiverName: "받는사람이름",
-                                    receiverPhone: "받는사람연락처",
-                                    deliveryComment: "배송요청사항",
-                                    paymentCode: "1",
-                                    shippingPrice: "0"
+                                	receiverName: $("#receiverName").val(),
+                                    totalPrice: $("#totalPrice").text(),
+                                    receiverPhone: $("#phoneNumber").val(),
+                                    deliveryComment: $("#deliveryComment").val(),
+                                    shippingPrice: $("#shipping").text(),
+                                    paymentCode: $("input[type=radio][name=selector]:checked").val()
                                 },
                                 purchaseOrder: {
-                                    deliveryAddress: "우리집"
+                                    deliveryAddress: $("#userAddress").val()
                                 },
                                 purchaseBook: [{
                                     purchaseBookId: {
-                                        bookIdx: "10"
+                                        bookIdx: $("#bookIdx").val()
                                     },
-                                    price: "10000",
+                                    price: $('#list['+ +'].price').val(),
                                     name: "난책1",
                                     count: "3",
                                     imagePath: " "
@@ -98,6 +119,12 @@
                                 ],
                                 billKey: key
                             }
+                            
+                            //var uui = $("#list[0]price").val();
+                            //console.log(uui);
+                            
+                            
+                            //console.log("purchaseObj??" + purchaseObj);
 
                             // 구매하는 user 정보 필요
                             // billkey 정보 필요
@@ -268,8 +295,25 @@
         //     });
         //     return result;
         // }
+        
+        /* 주소찾기 */
+	  	function openDaumZipAddress() {
+			new daum.Postcode({
+				oncomplete:function(data) {
+					$("#userAddress").val(data.address);
+					$("#userAddressDetail").focus();
+					$("#userPost").val(data.postcode1 +"-"+ data.postcode2 + "-"+data.zonecode);					
+					console.log(data.postcode1 +"-"+ data.postcode2 + "-"+data.zonecode);				
+				}
+			}).open();
+		}
 
     </script>
+    <style>
+    #userPost{
+    	display:inline-block;
+    }
+    </style>
 </head>
 <body>
 
@@ -302,7 +346,7 @@
                 </td>
                 <td>
                     <div class="checkout_btn_inner d-flex align-items-center">
-                        <a class="button primary-btn" href="#">계속 쇼핑하기</a>
+                        <a class="button primary-btn" href="#" onclick="CatgPage(0)">계속 쇼핑하기</a>
                     </div>
                 </td>
             </tr>
@@ -326,7 +370,7 @@
                             <span class="placeholder" data-placeholder="First name">주문인</span>
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="last" name="name">
+                            <input type="text" class="form-control" id="orderName" name="name">
                             <span class="placeholder" data-placeholder="Last name"></span>
                         </div>
                         <%--<div class="col-md-12 form-group">
@@ -337,36 +381,24 @@
                             <span class="placeholder" data-placeholder="Phone number">받는 사람</span>
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="email" name="compemailany">
+                            <input type="text" class="form-control" id="receiverName" name="compemailany">
                             <span class="placeholder" data-placeholder="Email Address"></span>
                         </div>
-                        <div class="col-md-12 form-group p_star">
-                            <select class="country_select">
-                                <option value="1">Address1</option>
-                                <option value="2">Address2</option>
-                                <option value="4">Address3</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="city" name="city">
-                            <span class="placeholder" data-placeholder="Town/City"></span>
-                        </div>
+                        <div class="col-md-12 form-group">
+							<input type="text" id="userPost" class="form-control" name="userPost" style="width:278px;" value="우편번호" disabled/>
+							<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
+							<br/>
+							<input type="text" id="userAddress" class="form-control" name="userAddress" value="주소" disabled/>
+							<input type="text" id="userAddressDetail" class="form-control" name="userAddressDetail" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
+						</div>
                         <div class="col-md-6 form-group p_star">
                             <span class="placeholder" data-placeholder="Phone number">연락처</span>
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="add1" name="add1">
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
                             <span class="placeholder" data-placeholder="Address line 01"></span>
                         </div>
 
-
-                        <div class="col-md-12 form-group p_star">
-                            <select class="country_select">
-                                <option value="1">District</option>
-                                <option value="2">District</option>
-                                <option value="4">District</option>
-                            </select>
-                        </div>
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
                         </div>
@@ -382,27 +414,22 @@
                                 <input type="checkbox" id="f-option3" name="selector">
                                 <label for="f-option3">Ship to a different address?</label>
                             </div>
-                            <textarea class="form-control" name="message" id="message" rows="1"
-                                      placeholder="Order Notes"></textarea>
+                            <textarea class="form-control" name="message" id="deliveryComment" rows="1"
+                                      placeholder="배송시 요청 사항"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="order_box">
                         <h2>주문 정보</h2>
-                        <ul class="list">
-                            <li><a href="#"><h4>Product <span>Total</span></h4></a></li>
-                            <li><a href="#">Fresh Blackberry <span class="middle">x 02</span> <span
-                                    class="last">$720.00</span></a></li>
-                            <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span
-                                    class="last">$720.00</span></a></li>
-                            <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span
-                                    class="last">$720.00</span></a></li>
-                        </ul>
+                        <table id="list">
+	                        <tr>
+	                            <td><a href="#"><h4>상품 <span>금액</span></h4></a></td>
+	                        </tr>
+                        </table>
                         <ul class="list list_2">
-                            <li><a href="#">Subtotal <span id="totalPrice">$2160.00</span></a></li>
-                            <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                            <li><a href="#">Total <span>$2210.00</span></a></li>
+                            <li><a href="#">배송비 <span id="shipping"></span></a></li>
+                            <li><a href="#">총 금액<span id="totalPrice"></span></a></li>
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
@@ -410,8 +437,7 @@
                                 <label for="f-option5">가상계좌</label>
                                 <div class="check"></div>
                             </div>
-                            <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,
-                                Store Postcode.</p>
+                            <p>가상계좌 관련 내용.</p>
                         </div>
                         <div class="payment_item active">
                             <div class="radion_btn">
@@ -420,8 +446,7 @@
                                 <img src="/img/product/card.jpg" alt="">
                                 <div class="check"></div>
                             </div>
-                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                account.</p>
+                            <p>카드 관련 내용.</p>
                         </div>
                         <div class="creat_account">
                             <input type="checkbox" id="f-option4" name="selector">

@@ -23,7 +23,7 @@
         }
 
         .togglesearch{
-            border-radius: 10px     ;
+            border-radius: 10px;
             background: #fff;
             position: absolute;
             top: 35px;

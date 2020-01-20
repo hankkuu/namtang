@@ -37,7 +37,7 @@
   		display:inline-block;
   	}
 
-	.login_form .sex-div{
+	.login_form #sex-div{
 		float:left;
 		width:50%;
 		border-bottom: 1px solid #cccccc;
@@ -46,6 +46,11 @@
 	#personalDate{
 		margin-top:-2px; font-size:10px;
 	}
+	
+	#sex-div label{
+		vertical-align: 16px;
+	}
+	
 	</style>
 
 	<script type="text/javascript" src="/js/json.js"></script>
@@ -60,7 +65,7 @@
 					type : "get",
 					url : "/api/v1/account/checkId",
 					dataType : "json",
-					data : { id: id },
+					data : { id : id },
 					success : function(result){
 						console.log("1 = 중복o / 0 = 중복x : " + result);
 						if(result.statusCode === "Fail" ){
@@ -80,7 +85,6 @@
 
 			$("#register").click(function(){
 				let user = $("#register_form").serializeObject();
-
 				console.log(user);
 				$.ajax({
 					type : "post" ,
@@ -91,7 +95,6 @@
 					success : function(result) {
 						console.log(result.statusCode);
 						if(result.statusCode === "Success") {
-							
 							location.replace('/login');
 						} else {
 							alert("회원가입이 잘못되었습니다");
@@ -138,10 +141,8 @@
 							});
 							$("#submit").removeAttr("disabled");
 						} else {
-							$("#confirmPassword").blur(function(){
-								$("#pw-fail").show();
-							});
-							$("#pw-fail").hide();
+							$("#pwFail").show();
+							$("#pwSuccess").hide();
 							$("#submit").attr("disabled", "disabled");
 						}
 					}
@@ -218,8 +219,8 @@
 			                <div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
 							</div>
-							<div class="pw" id="pw-success">비밀번호가 일치합니다.</div>
-							<div class="pw" id="pw-fail">비밀번호가 일치하지 않습니다.</div>
+							<div class="pw" id="pwSuccess">비밀번호가 일치합니다.</div>
+							<div class="pw" id="pwFail">비밀번호가 일치하지 않습니다.</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
 			                </div>
@@ -227,29 +228,28 @@
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
 							</div>
 							<div class="col-md-12 form-group">
-								<div class="sex-div">
-									<input type="radio" id="man" name="sex" class="input_radio"value="1" >
-									<label>남자</label>
+								<div id="sex-div">
+									<input type="radio" id="man" name="sex" class="input_radio" value="1" >
+									<label for="man">남자</label>
 								</div>
-								<div class="sex-div">
-									<input type="radio" id="woman" name="sex" class="input_radio"value="2" >
-									<label>여자</label>
+								<div id="sex-div">
+									<input type="radio" id="woman" name="sex" class="input_radio" value="2" >
+									<label for="woman">여자</label>
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPhone" name="phone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
-
-								<input type="text" id="userPost" name="userPost" width="278px" value="우편번호" readonly/>
+								<input type="text" id="userPost" name="userPost" style="width:278px;" value="우편번호" readonly/>
 								<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
 								<br/>
-								<input type="text" id="userAddress" name="userAddress" value="주소" readonly/>
+								<input type="text" id="userAddress" name="userAddress" style="width:355px;" value="주소" readonly/>
 								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
 							<input type="checkbox" id="checkPersonalDate"><a href="https://hankkuu.tistory.com/77" id="personalDate" target="_blank">개인정보 수집 및 활용 동의</a>
 							<div class="col-md-12 form-group">
-								<input type="button" value="submit" id="register" class="button button-register w-100">회원가입
+								<input type="button" value="회원가입" id="register" class="button button-register w-100">
 							</div>
 						</form>
 					</div>

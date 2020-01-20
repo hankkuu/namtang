@@ -113,7 +113,7 @@
           </div>
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-headphone"></i></span>
-            <div class="media-body">
+              <div class="media-body">
               <h3><a href="tel:454545654">031 - 1111 - 2222</a></h3>
               <p>월 ~ 금 9am to 7pm</p>
             </div>

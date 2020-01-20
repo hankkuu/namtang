@@ -54,7 +54,13 @@
 							data+="<td>"+item.deliveryAddress+"</td>";
 							data+="<td>"+item.updateDate+"</td>";
 							data+="<td>"+item.billKey+"</td>";
-							data+="<td>"+item.stateCode+"</td>";
+							if(item.stateCode==10){
+								data+="<td>"+결제완료+"</td>";
+							}else if(item.stateCode==20){
+								data+="<td>"+환불중+"</td>";
+							}else{
+								data+="<td>"+환불완료+"</td>";
+							}
 							data+="</tr>";
 						
 					 }) 
