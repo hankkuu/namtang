@@ -86,6 +86,13 @@ public class AdminController {
         
         return "admin/dashBoard2";
     }
+    @RequestMapping("dashBoard3")
+    public String dashBoard3(Model model) {
+        List<Statistics> list = service.selectAll();
+        model.addAttribute("list", list);
+        
+        return "admin/dashBoard3";
+    }
 
     @RequestMapping("adminDOM")
     public String adminDOM(Model model) {

@@ -31,20 +31,6 @@
      			 dataType:"json", //서버가 보내온 데이터 타입(text,html,xml,json)
      			 data:"${_csrf.parameterName}=${_csrf.token}",
      			 success:function(result){
-     				 /*
-     				var data="<table border='1' cellpadding='5'> 실시간 구매자 정보 ";
-     				<c:forEach var="i" begin="0" end="15">
-     				
-     				 data+="<tr>";
-					    data+="<td>"+result.get(i).userIdx+"</td>";
-						data+="<td>"+result.purchaseOrderIdx+"</td>";
-						data+="<td>"+result.deliveryAddress+"</td>";
-						data+="<td>"+result.updateDate+"</td>";
-						data+="<td>"+result.billKey+"</td>";
-						data+="</tr>";
-
-     			</c:forEach>
-     			*/
      				 var data="<table border='1' cellpadding='5'> 실시간 구매자 정보 ";
      				
 					 $.each(result, function(index, item){
