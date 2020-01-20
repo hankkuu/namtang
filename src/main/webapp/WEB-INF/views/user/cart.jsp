@@ -15,16 +15,6 @@
         var Total_price;
         <%! int test =1;%>
 
-        <%--function amount_change(){--%>
-        <%--    var qtySelect = document.getElementById("amount<%=test%>");--%>
-
-        <%--    var qty=qtySelect.options[qtySelect.selectedIndex].value;--%>
-        <%--    console.log(qty);--%>
-
-        <%--    document.getElementById("qty").innerHTML=qty;--%>
-
-        <%--}--%>
-
         $(document).on('click', ".nice-select .list li", function () {
             // alert($(".nice-select ul .option.selected").attr('data-value'));
             var result = qty($(this).attr('data-value'), $(this).parent().parent().next().val());
@@ -142,18 +132,11 @@
                     // var qty=td.eq(4).children().children().next().children('selected').text();
                     total : td.eq(5).text()
             }
-
                 list.push(book);
-
-                console.log(list);
             });
-
             sessionStorage.setItem("cartlist",JSON.stringify(list));
-
         }
-
     </script>
-
 </head>
 <body>
 
@@ -174,7 +157,6 @@
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-
   <!--================Cart Area =================-->
   <section class="cart_area">
       <div class="container">
@@ -200,11 +182,7 @@
                               </tr>
                           </c:when>
                           <c:otherwise>
-<%--                              <c:set var="test" value="1"/>--%>
-<%--                              <%! int test =1;%>--%>
-
                               <c:forEach items="${cartList}" var="cartVO">
-
                                   <tr>
                                       <td>
                                           <a id="hiddenSum"hidden>${cartVO.bookPrice*cartVO.qty}</a>
@@ -242,8 +220,6 @@
                                       </td>
                                       <% test += 1;%>
                                   </tr>
-
-
                               </c:forEach>
                           </c:otherwise>
                       </c:choose>
@@ -288,6 +264,5 @@
       </div>
   </section>
   <!--================End Cart Area =================-->
-
 </body>
 </html>

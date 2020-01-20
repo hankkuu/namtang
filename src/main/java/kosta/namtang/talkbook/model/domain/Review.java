@@ -23,6 +23,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "review_seq")
     private Long reviewIdx;
 
+    private String userId;
     private Long userIdx;
 
     private String reviewTitle;
