@@ -31,23 +31,24 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         super.onAuthenticationSuccess(request, response, authentication);
 
         String userId = "";
-        String test = "";
+        String loginId = "";
         if (authentication.getPrincipal() instanceof Principal) {
             userId = ((Principal) authentication.getPrincipal()).getName();
 
         } else {
             if (authentication.getPrincipal() instanceof SimpleSecurityUser) {
-                test = ((SimpleSecurityUser) authentication.getPrincipal()).getText();
+                loginId = ((SimpleSecurityUser) authentication.getPrincipal()).getText();
             }
             userId = ((User) authentication.getPrincipal()).getUsername();
         }
         logger.info("userName: " + userId);
-        logger.debug("test message: " + test);
+        logger.debug("test message: " + loginId);
 
         //Account account = repository.findByUserId(userId);
 
         HttpSession session = request.getSession();
         session.setAttribute("userIdx", userId);
+        session.setAttribute("loginId", loginId);
     }
 
     @Override

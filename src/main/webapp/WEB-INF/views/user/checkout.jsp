@@ -103,7 +103,7 @@
                                     purchaseBookId: {
                                         bookIdx: $("#bookIdx").val()
                                     },
-                                    price: $('#list['+ +'].price').val(),
+                                    price: "10000",
                                     name: "난책1",
                                     count: "3",
                                     imagePath: " "
