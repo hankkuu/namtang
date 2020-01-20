@@ -1,5 +1,6 @@
 package kosta.namtang.talkbook.model.domain.bill;
 
+import kosta.namtang.talkbook.common.PurchaseCode;
 import kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId;
 import lombok.*;
 
@@ -25,7 +26,7 @@ public class PurchaseBook {
     @Column(name = "PRICE", nullable = false)
     private BigDecimal price;
     @Column(name = "STATE_CODE", nullable = false)
-    private int stateCode;
+    private PurchaseCode stateCode;
     @Column(name = "NAME", nullable = false)
     private String name;
     @Column(name = "COUNT", nullable = false)

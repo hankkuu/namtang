@@ -20,4 +20,18 @@ public enum PurchaseCode {
     public int getValue() {
         return value;
     }
+
+    public PurchaseCode fromInteger(int x) {
+        switch (x) {
+            case 10:
+                return PurchaseCode.Payment_Success;
+            case 13:
+                return PurchaseCode.Purchase_Success;
+            case 20:
+                return PurchaseCode.Cancel_Ing;
+            case 21:
+                return PurchaseCode.Cancel_Success;
+        }
+        return PurchaseCode.None;
+    }
 };

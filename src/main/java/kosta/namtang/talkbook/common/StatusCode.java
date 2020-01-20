@@ -22,4 +22,16 @@ public enum StatusCode {
     public int getValue() {
         return value;
     }
+
+    public StatusCode fromInteger(int x) {
+        switch (x) {
+            case 0:
+                return StatusCode.None;
+            case 1:
+                return StatusCode.Success;
+            case 2:
+                return StatusCode.Fail;
+        }
+        return StatusCode.None;
+    }
 };

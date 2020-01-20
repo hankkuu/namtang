@@ -1,8 +1,12 @@
 package kosta.namtang.talkbook.service.account;
 
+import kosta.namtang.talkbook.common.ShopResponse;
 import kosta.namtang.talkbook.model.domain.account.Account;
+import kosta.namtang.talkbook.model.domain.account.UserAddress;
 import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.dto.request.UserSetRequest;
+
+import java.util.List;
 
 public interface AccountService {
 
@@ -12,9 +16,13 @@ public interface AccountService {
 
     Users updateAccount(long userIdx);
 
-    void deleteAccount(Account acc);
+    void deleteAccount(long accountIdx);
 
     Account login(Account acc) throws Exception;
 
-    Boolean checkId(String id);
+    ShopResponse checkNewUser(String userId);
+
+    boolean checkPassword(long accountIdx, String password);
+
+    List<UserAddress> selectAddress(long accountIdx);
 }
