@@ -65,7 +65,7 @@
 					type : "get",
 					url : "/api/v1/account/checkId",
 					dataType : "json",
-					data : { id: id },
+					data : { id : id },
 					success : function(result){
 						console.log("1 = 중복o / 0 = 중복x : " + result);
 						if(result.statusCode === "Fail" ){
@@ -85,7 +85,6 @@
 
 			$("#register").click(function(){
 				let user = $("#register_form").serializeObject();
-
 				console.log(user);
 				$.ajax({
 					type : "post" ,
@@ -96,7 +95,6 @@
 					success : function(result) {
 						console.log(result.statusCode);
 						if(result.statusCode === "Success") {
-							
 							location.replace('/login');
 						} else {
 							alert("회원가입이 잘못되었습니다");
@@ -143,10 +141,8 @@
 							});
 							$("#submit").removeAttr("disabled");
 						} else {
-							$("#confirmPassword").blur(function(){
-								$("#pw-fail").show();
-							});
-							$("#pw-fail").hide();
+							$("#pwFail").show();
+							$("#pwSuccess").hide();
 							$("#submit").attr("disabled", "disabled");
 						}
 					}
@@ -223,8 +219,8 @@
 			                <div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'">
 							</div>
-							<div class="pw" id="pw-success">비밀번호가 일치합니다.</div>
-							<div class="pw" id="pw-fail">비밀번호가 일치하지 않습니다.</div>
+							<div class="pw" id="pwSuccess">비밀번호가 일치합니다.</div>
+							<div class="pw" id="pwFail">비밀번호가 일치하지 않습니다.</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
 			                </div>
