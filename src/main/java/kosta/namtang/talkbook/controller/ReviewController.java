@@ -32,13 +32,16 @@ public class ReviewController {
         String idxstr = (String) idxobj;
         Long uIdx = Long.valueOf(idxstr);
 
+        Object objId = req.getSession().getAttribute("loginId");
+        String myId = (String) objId;
+
         // 리뷰 저장
         String title = dto.getReviewTitle();
         String content = dto.getReviewContent();
         Long bookIdx = dto.getBookIdx();
         int reviewScore = dto.getReviewScore();
 
-        Review review = new Review(null, uIdx, title, content, bookIdx, reviewScore, null, null);
+        Review review = new Review(null, myId, uIdx, title, content, bookIdx, reviewScore, null, null);
 
         service.insert(review);
 
@@ -63,13 +66,16 @@ public class ReviewController {
         String idxstr = (String) idxobj;
         Long uIdx = Long.valueOf(idxstr);
 
+        Object objId = req.getSession().getAttribute("loginId");
+        String myId = (String) objId;
+
         // 리뷰 저장
         String title = dto.getReviewTitle();
         String content = dto.getReviewContent();
         Long bookIdx = dto.getBookIdx();
         int reviewScore = dto.getReviewScore();
 
-        Review review = new Review(null, uIdx, title, content, bookIdx, reviewScore, null, null);
+        Review review = new Review(null, myId, uIdx, title, content, bookIdx, reviewScore, null, null);
 
         service.update(review);
 
@@ -94,8 +100,11 @@ public class ReviewController {
         String idxstr = (String) idxobj;
         Long uIdx = Long.valueOf(idxstr);
 
+        Object objId = req.getSession().getAttribute("loginId");
+        String myId = (String) objId;
+
         // 리뷰 저장
-        Review review = new Review(null, uIdx, reviewTitle, reviewContent, bookIdx, 2, null, null);
+        Review review = new Review(null, myId, uIdx, reviewTitle, reviewContent, bookIdx, 2, null, null);
 
         service.delete(review);
 
