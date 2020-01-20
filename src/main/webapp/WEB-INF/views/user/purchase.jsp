@@ -89,19 +89,19 @@
                         if (key !== undefined) {
                             let purchaseObj = {
                                 purchasePayment: {
-                                	receiverName: $("#receiverName").val(),
-                                    totalPrice: $("#totalPrice").text(),
-                                    receiverPhone: $("#phoneNumber").val(),
-                                    deliveryComment: $("#deliveryComment").val(),
-                                    shippingPrice: $("#shipping").text(),
-                                    paymentCode: $("input[type=radio][name=selector]:checked").val()
+                                	receiverName: "tester", // $("#receiverName").val(),
+                                    totalPrice: "30000", //$("#totalPrice").text(),
+                                    receiverPhone: "123456", // $("#phoneNumber").val(),
+                                    deliveryComment: "18181818", //$("#deliveryComment").val(),
+                                    shippingPrice: "100",  //$("#shipping").text(),
+                                    paymentCode: "1" //$("input[type=radio][name=selector]:checked").val()
                                 },
                                 purchaseOrder: {
                                     deliveryAddress: $("#userAddress").val()
                                 },
                                 purchaseBook: [{
                                     purchaseBookId: {
-                                        bookIdx: $("#bookIdx").val()
+                                        bookIdx: "1"
                                     },
                                     price: "10000",
                                     name: "난책1",
@@ -151,7 +151,7 @@
                                 custom_data: shop.custom_data,
                                 merchant_uid: key,
                                 name: "임시로 사용하는 이름이다",
-                                amount: "100000", //total값 넣기
+                                amount: "30000", //total값 넣기
                                 buyer_email: user.email,
                                 buyer_name: user.name,
                                 buyer_tel: user.tel,
@@ -192,7 +192,7 @@
                                                     if (result.data.statusCode === "Success") {
                                                         alert("최종 구매 성공 success");
                                                         let param = JSON.stringify(result.data.message);
-                                                        location.replace('/confirmation?msg=' + encodeURI(param));
+                                                        location.replace('/user/confirmation?msg=' + encodeURI(param));
                                                         //location.href='/confirmation';
                                                     } else {
                                                         alert("최종 구매 실패");

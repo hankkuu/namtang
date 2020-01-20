@@ -15,7 +15,7 @@ public enum CancelCode {
         return value;
     }
 
-    public CancelCode fromInteger(int x) {
+    public static CancelCode fromInteger(int x) {
         switch (x) {
             case 1:
                 return CancelCode.Buyer;

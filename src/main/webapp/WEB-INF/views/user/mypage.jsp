@@ -72,7 +72,7 @@
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
-                            <a href="/user/myPurchaseList">
+                            <a href="/user/myPurchase">
                                 <h5>결제 내역</h5>
                             </a>
                             <div class="border_line"></div>
@@ -86,7 +86,7 @@
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/5.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
-                            <a href="/user/update">
+                            <a href="/user/myUpdate">
                                 <h5>내 정보 수정</h5>
                             </a>
                             <div class="border_line"></div>
