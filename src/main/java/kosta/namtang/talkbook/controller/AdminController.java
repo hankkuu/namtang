@@ -5,6 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
+import kosta.namtang.talkbook.model.dto.response.PurchaseOrderStatReponse;
+import kosta.namtang.talkbook.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,16 +40,18 @@ public class AdminController {
     
     @RequestMapping("/getlist")
     @ResponseBody
-    public List<PurchaseOrder> getlist(){
-    	List<PurchaseOrder> list = (List<PurchaseOrder>) purchaseOrder.findAll();
-//    	List<PurchaseStatOrderResponse> response = new ArrayList<>();
-//    	for(PurchaseOrder order : list) {
-//    		PurchaseStatOrderResponse item = new PurchaseStatOrderResponse();
-//    		
-//    	}
+    public List<PurchaseOrderStatReponse> getlist() throws Exception {
+    	Iterable<PurchaseOrder> list = purchaseOrder.findAll();
+    	List<PurchaseOrder> l = Lists.newArrayList(list);
+        List<PurchaseOrderStatReponse> list2 = new ArrayList<>();
+    	for(PurchaseOrder order : l) {
+            PurchaseOrderStatReponse response = JsonUtil.fromJson(JsonUtil.toJson(order), PurchaseOrderStatReponse.class);
+            response.setStatusName(order.getStateCode().name());
+            list2.add(response);
+    	}
     	
     	
-		return list;
+		return list2;
     	
     }
     

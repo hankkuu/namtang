@@ -75,8 +75,11 @@
             console.log("start");
 
             $("#purchase").click(async () => {
-            	
-            	await purchaseProcess().then(async (result) => {
+
+                //
+
+                await purchaseProcess().then(async (result) => {
+                    console.log(result);
 
                     if (result.statusCode === "Success") {
                         const key = result.message;

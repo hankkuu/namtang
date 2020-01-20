@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>]
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="/vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="/vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="/vendors/nouislider/nouislider.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <style>
         .nav-item2{
@@ -153,18 +157,18 @@
                             </form>
                             <a href="#" onclick='CatgPage(0)' class="nav-link dropdown-toggle">Category</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(1)'>한국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(2)'>외국시</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(3)'>인물 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(4)'>여행 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(5)'>성공 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(6)'>독서 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(7)'>명상 에세이</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(8)'>그림/포토 에세이</a>
+                                <li class="nav-item" ><a class="nav-link black" href="#" onclick='CatgPage(1)'>한국시</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(2)'>외국시</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(3)'>인물 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(4)'>여행 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(5)'>성공 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(6)'>독서 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(7)'>명상 에세이</a></li>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(8)'>그림/포토 에세이</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(9)'>연애/사랑 에세이</a>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(9)'>연애/사랑 에세이</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="#" onclick='CatgPage(10)'>삶의 지혜/명언</a>
+                                <li class="nav-item"><a class="nav-link black" href="#" onclick='CatgPage(10)'>삶의 지혜/명언</a>
                                 </li>
                             </ul>
                         </li>
