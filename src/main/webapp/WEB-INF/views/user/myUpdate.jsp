@@ -97,6 +97,30 @@
 					}
 				});//ajax끝
 			})
+
+			$(function () {
+				$("#deleteBtn").click(function () {
+					let password = $("#originalPassword").val();
+					let user = {password: password}
+
+					console.log(password);
+					$.ajax({
+						type: "post",
+						url: "/api/v1/account/deleteUser",
+						//dataType: "json",
+						data: JSON.stringify(user),
+						contentType: 'application/json; charset=utf-8',
+						success: function (result) {
+							alert("회원정보가 삭제되었습니다 로그아웃을 진행합니다");
+							location.replace("/logout");
+						},
+						error: function (error) {
+							console.log(error);
+							alert("b오류 발생");
+						}
+					});//ajax끝
+				})
+			})
 			
 			/* 비밀번호 입력 */
 	  		/* $("#userPassword").mouseenter(function(){
@@ -165,10 +189,12 @@
 							$("#checkedPassword").text("기존 패스워드가 일치하지 않습니다");
 							$("#checkedPassword").css("color","red");
 							$("#updateBtn").attr("disabled", true);
+							$("#deleteBtn").attr("disabled", true);
 						} else {
 							$("#checkedPassword").text("기존 패스워드가 일치합니다.");
 							$("#checkedPassword").css("color","blue");
 							$("#updateBtn").attr("disabled", false);
+							$("#deleteBtn").attr("disabled", false);
 
 						}
 					},
@@ -256,6 +282,7 @@
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="button" value="button" id="updateBtn" class="button button-register w-100" disabled="disabled">개인정보 수정</button>
+								<button type="button" value="button" id="deleteBtn" class="button button-register w-100" disabled="disabled">회원 탈퇴</button>
 							</div>
 						</form>
 					</div>

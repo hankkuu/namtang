@@ -16,7 +16,7 @@ public interface AccountService {
 
     Users updateAccount(long userIdx);
 
-    void deleteAccount(long accountIdx);
+    void deleteAccount(long accountIdx, String password);
 
     Account login(Account acc) throws Exception;
 
@@ -25,4 +25,8 @@ public interface AccountService {
     boolean checkPassword(long accountIdx, String password);
 
     List<UserAddress> selectAddress(long accountIdx);
+
+    Account selectByEmail(String email);
+
+    Account selectByEmailAndId(String email, String userId);
 }

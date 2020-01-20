@@ -38,6 +38,11 @@ public class SimpleUserService implements UserDetailsService {
 //        }
 
         Account acc = accountRepository.findByUserId(id);
+        boolean isActive = acc.getDeleteDate().equals(DateTimeHelper.timeStamp("1900-01-01 00:00:00.0"));
+        if(isActive == false) {
+            throw new UsernameNotFoundException("탈퇴한 회원입니다");
+        }
+
         if (acc != null) {
             acc.setLastLoginDate(DateTimeHelper.timeStampNow());
             accountRepository.save(acc);

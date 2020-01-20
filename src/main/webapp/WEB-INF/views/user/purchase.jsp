@@ -78,7 +78,7 @@
             	let list = JSON.parse(sessionStorage.getItem("cartlist"));
             	console.log(list);
             	let purchaseBook = [];
-            		for(var i = 0; i < list.length; i++) {
+            		for(let i = 0; i < list.length; i++) {
             		let item = {
             				purchaseBookId : {
             					bookIdx : list[i].id

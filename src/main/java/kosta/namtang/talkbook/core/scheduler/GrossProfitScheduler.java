@@ -1,4 +1,4 @@
-package kosta.namtang.talkbook.core.Scheduler;
+package kosta.namtang.talkbook.core.scheduler;
 
 import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
 import kosta.namtang.talkbook.repository.bill.PurchasePaymentRepository;

@@ -99,12 +99,37 @@ public class AccountController {
         return new ShopResponse(StatusCode.Success, JsonUtil.toJson(list));
     }
 
-    @DeleteMapping("/user")
-    public void deleteUser(HttpServletRequest request) {
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestBody UserSetRequest user, HttpServletRequest request) {
         log.debug("deleteUser");
         long userIdx = Long.valueOf(String.valueOf(request.getSession().getAttribute("userIdx")));
 
-         accountService.deleteAccount(userIdx);
+        accountService.deleteAccount(userIdx, user.getPassword());
+//        if (user != null)
+//            return new ShopResponse(StatusCode.Success, "user 정보 업데이트");
+//        else
+//            return new ShopResponse(StatusCode.Fail, "user 검색 실패");
+    }
+
+    @PostMapping("/findId")
+    public ShopResponse findId(@RequestBody UserSetRequest user) {
+
+        Account acc = accountService.selectByEmail(user.getEmail());
+        if (acc != null)
+            return new ShopResponse(StatusCode.Success, acc.getUserId());
+        else
+            return new ShopResponse(StatusCode.Fail, "email 검색 실패");
+    }
+
+    @PostMapping("/findPassword")
+    public ShopResponse findPassword(@RequestBody UserSetRequest user) {
+
+        Account acc = accountService.selectByEmailAndId(user.getEmail(), user.getUserId());
+        // 패스워드 초기화가 필요하다면 해서 보내야 한다
+        if (acc != null)
+            return new ShopResponse(StatusCode.Success, acc.getUserPassword());
+        else
+            return new ShopResponse(StatusCode.Fail, "password 검색 실패");
     }
 
     // Security로 대체
