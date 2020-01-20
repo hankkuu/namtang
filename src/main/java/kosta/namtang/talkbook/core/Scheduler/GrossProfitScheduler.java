@@ -23,7 +23,7 @@ public class GrossProfitScheduler {
     @Autowired
     PurchasePaymentRepository purchasePaymentRepository;
 
-    @Scheduled(cron = "* * 23 * * ?")
+    @Scheduled(cron = "59 59 23 * * ?")
     public void cronJobSch() {
         BigDecimal total = new BigDecimal("0");
         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");

@@ -59,6 +59,7 @@
 						$("#userPost").val(obj.userPost);
 						$("#userAddress").val(obj.userAddress);
 						$("#userAddressDetail").val(obj.userAddressDetail);
+						$("#userEmail").val(obj.userEmail);
 
 					} else {
 						alert("회원요청이 잘못되었습니다");
@@ -72,23 +73,23 @@
 		})
 
 		$(function(){
-			$("#register").click(function(){
+			$("#updateBtn").click(function(){
 				let user = $("#register_form").serializeObject();
 
 				console.log(user);
 				$.ajax({
 					type : "post" ,
 					url : "/api/v1/account/updateUser",
-					dataType : "json",
+					//dataType : "json",
 					data : JSON.stringify(user),
 					contentType: 'application/json; charset=utf-8',
 					success : function(result) {
-						console.log(result.statusCode);
-						if(result.statusCode === "Success") {
+						//console.log(result.statusCode);
+						//if(result.statusCode === "Success") {
 							alert("회원정보가 수정되었습니다");
-						} else {
-							alert("회원가입이 잘못되었습니다");
-						}
+						//} else {
+						//	alert("회원가입이 잘못되었습니다");
+						//}
 					},
 					error : function(error) {
 						console.log(error);
@@ -148,6 +149,39 @@
 			}).open();
 		}
 
+		$(function() {
+			$("#checkPassword").click(function () {
+				let password = $("#originalPassword").val();
+				console.log(password);
+				$.ajax({
+					type : "post",
+					url : "/api/v1/account/checkPassword",
+					dataType : "json",
+					data : password,
+					contentType : 'application/json;charset=UTF-8', // 서버 요청시 전송할 데이터가 UTF-8 형식의 JSON 객체임을 명시
+					success : function(result){
+
+						if(result.statusCode === "Fail" ){
+							$("#checkedPassword").text("기존 패스워드가 일치하지 않습니다");
+							$("#checkedPassword").css("color","red");
+							$("#updateBtn").attr("disabled", true);
+						} else {
+							$("#checkedPassword").text("기존 패스워드가 일치합니다.");
+							$("#checkedPassword").css("color","blue");
+							$("#updateBtn").attr("disabled", false);
+
+						}
+					},
+					error : function(error) {
+						console.log(error);
+						alert("패스워드 체크 오류 발생");
+					}
+				});
+
+			});
+		});
+
+
 	</script>
 
 </head>
@@ -187,30 +221,30 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>개인정보 수정</h3>
-						<form class="row login_form" action="/#" id="register_form" method="post">
+						<form class="row login_form" id="register_form" method="post">
 							<div class="col-md-12 form-group" id="userIdC">
-								<input type="text" class="form-control" id="userId" name="userId" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
-								<input type="button" id="confirmId" name="confirmId" class="confirmId" value="중복확인" >	
-			                </div>
+								<input type="text" class="form-control" id="originalPassword" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
+								<input type="button" id="checkPassword" name="checkPassword" class="checkPassword" value="확인" >
+							</div>
 			                
-			                <div class="check_font" id="checkId"></div>
+			                <div class="check_font" id="checkedPassword"></div>
 			                <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
 			                </div>
 			                <p id="textP"></p>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="새로운 비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호 확인'">
+								<input type="text" class="form-control" id="confirmPassword" placeholder="새로운 비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호 확인'">
 							</div>
 							<div class="pw" id="pwSuccess">비밀번호가 일치합니다.</div>
 							<div class="pw" id="pwFail">비밀번호가 일치하지 않습니다.</div>
-							<!-- <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
-			                </div> -->
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="userEmail" name="email" placeholder="이메일 주소" onblur="this.placeholder = '이메일 주소'">
+			                </div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
+								<input type="text" class="form-control" id="userPhone" name="phone" placeholder="전화번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '전화번호'">
 							</div>
 							<div class="col-md-12 form-group">
 								
@@ -221,7 +255,7 @@
 								<input type="text" id="userAddressDetail" name="userAddressDetail" style="width:355px;" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="button" value="button" class="button button-register w-100">개인정보 수정</button>
+								<button type="button" value="button" id="updateBtn" class="button button-register w-100" disabled="disabled">개인정보 수정</button>
 							</div>
 						</form>
 					</div>

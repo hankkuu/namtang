@@ -1,20 +1,16 @@
 package kosta.namtang.talkbook.security;
 
-import freemarker.template.utility.DateUtil;
-import kosta.namtang.talkbook.model.domain.Admin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
 import kosta.namtang.talkbook.model.domain.account.Account;
 import kosta.namtang.talkbook.repository.AdminRepository;
 import kosta.namtang.talkbook.repository.account.AccountRepository;
 import kosta.namtang.talkbook.util.DateTimeHelper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
 
 @Service
 @Slf4j

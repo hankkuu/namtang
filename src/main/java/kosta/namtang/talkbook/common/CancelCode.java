@@ -14,4 +14,14 @@ public enum CancelCode {
     public int getValue() {
         return value;
     }
+
+    public CancelCode fromInteger(int x) {
+        switch (x) {
+            case 1:
+                return CancelCode.Buyer;
+            case 2:
+                return CancelCode.Seller;
+        }
+        return CancelCode.None;
+    }
 }

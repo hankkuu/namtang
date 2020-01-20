@@ -12,6 +12,14 @@
   <title>Aroma Shop - Category</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean');
+
+    .pagination {
+      position: relative;
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .card-product__title a {
       color: #222;
       font-size: initial;

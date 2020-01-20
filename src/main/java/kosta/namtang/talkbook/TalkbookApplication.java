@@ -8,6 +8,7 @@ import kosta.namtang.talkbook.util.UserCountListner;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
+
 @Slf4j
 @EnableScheduling
 public class TalkbookApplication {
