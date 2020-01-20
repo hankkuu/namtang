@@ -37,7 +37,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
         } else {
             if (authentication.getPrincipal() instanceof SimpleSecurityUser) {
-                loginId = ((SimpleSecurityUser) authentication.getPrincipal()).getText();
+                loginId = ((SimpleSecurityUser) authentication.getPrincipal()).getUserId();
             }
             userId = ((User) authentication.getPrincipal()).getUsername();
         }
