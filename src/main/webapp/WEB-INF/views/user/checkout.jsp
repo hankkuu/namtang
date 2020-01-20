@@ -58,6 +58,8 @@
 
             $("#purchase").click(async () => {
 
+                //
+
                 await purchaseProcess().then(async (result) => {
                     console.log(result);
 

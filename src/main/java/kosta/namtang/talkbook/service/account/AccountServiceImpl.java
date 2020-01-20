@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
             else
                 return new ShopResponse(StatusCode.Fail, "삭제된 계정입니다 관리자에 문의하세요");
         }
-        return new ShopResponse(StatusCode.Fail, "사용할 수 있는 계정 입니다");
+        return new ShopResponse(StatusCode.Success, "사용할 수 있는 계정 입니다");
 
     }
 
