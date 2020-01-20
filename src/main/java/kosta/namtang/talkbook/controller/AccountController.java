@@ -3,6 +3,7 @@ package kosta.namtang.talkbook.controller;
 import kosta.namtang.talkbook.common.ShopResponse;
 import kosta.namtang.talkbook.common.StatusCode;
 import kosta.namtang.talkbook.model.domain.account.Account;
+import kosta.namtang.talkbook.model.domain.account.UserAddress;
 import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.BillKey;
 import kosta.namtang.talkbook.model.dto.request.PurchaseSetRequest;
@@ -10,11 +11,13 @@ import kosta.namtang.talkbook.model.dto.request.UserSetRequest;
 import kosta.namtang.talkbook.service.account.AccountService;
 import kosta.namtang.talkbook.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -45,11 +48,20 @@ public class AccountController {
     public ShopResponse checkId(@RequestParam String id) {
         log.debug(id);
 
-        Boolean result = accountService.checkId(id);
+        ShopResponse result = accountService.checkNewUser(id);
+        return result;
+    }
+
+    @PostMapping("/checkPassword")
+    public ShopResponse checkId(@RequestBody String password, HttpServletRequest req) {
+        log.debug(password);
+        long idx = Long.valueOf(String.valueOf(req.getSession().getAttribute("userIdx")));
+
+        boolean result = accountService.checkPassword( idx, password);
         if (result == true)
-            return new ShopResponse(StatusCode.Fail, "중복 ID 입니다");
+            return new ShopResponse(StatusCode.Success, "패스워드 일치");
         else
-            return new ShopResponse(StatusCode.Success, "사용가능합니다 ID 입니다");
+            return new ShopResponse(StatusCode.Fail, "패스워드 불일치");
 
     }
 
@@ -65,17 +77,34 @@ public class AccountController {
             return new ShopResponse(StatusCode.Fail, "user 검색 실패");
     }
 
-    @GetMapping("/updateUser")
-    public ShopResponse updateUser(@RequestBody UserSetRequest user, HttpServletRequest request) {
+    @PostMapping("/updateUser")
+    public void updateUser(@RequestBody UserSetRequest user, HttpServletRequest request) {
         log.debug("updateUser");
         long userIdx = Long.valueOf(String.valueOf(request.getSession().getAttribute("userIdx")));
         user.setUserIdx(userIdx);
         accountService.updateUser(user);
-        if (user != null)
-            return new ShopResponse(StatusCode.Success, "user 정보 업데이트");
-        else
-            return new ShopResponse(StatusCode.Fail, "user 검색 실패");
+//        if (user != null)
+//            return new ShopResponse(StatusCode.Success, "user 정보 업데이트");
+//        else
+//            return new ShopResponse(StatusCode.Fail, "user 검색 실패");
 
+    }
+
+    @GetMapping("/userAddress")
+    public ShopResponse userAddress(HttpServletRequest request) {
+        log.debug("userAddress");
+        long userIdx = Long.valueOf(String.valueOf(request.getSession().getAttribute("userIdx")));
+
+        List<UserAddress> list = accountService.selectAddress(userIdx);
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(list));
+    }
+
+    @DeleteMapping("/user")
+    public void deleteUser(HttpServletRequest request) {
+        log.debug("deleteUser");
+        long userIdx = Long.valueOf(String.valueOf(request.getSession().getAttribute("userIdx")));
+
+         accountService.deleteAccount(userIdx);
     }
 
     // Security로 대체

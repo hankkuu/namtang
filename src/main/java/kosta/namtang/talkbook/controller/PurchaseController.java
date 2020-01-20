@@ -12,6 +12,9 @@ import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
 import kosta.namtang.talkbook.model.dto.request.PurchaseRequest;
 import kosta.namtang.talkbook.model.dto.request.PurchaseSetRequest;
 import kosta.namtang.talkbook.repository.bill.PurchaseOrderRepository;
+import kosta.namtang.talkbook.model.dto.response.OrderStatusResponse;
+import kosta.namtang.talkbook.model.dto.response.PurchaseBookResponse;
+import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
 import kosta.namtang.talkbook.service.bill.BillKeySystem;
 import kosta.namtang.talkbook.service.bill.PurchaseService;
 import kosta.namtang.talkbook.util.JsonUtil;
@@ -38,6 +41,38 @@ public class PurchaseController {
     @Autowired
     private BillKeySystem keySystem;
 
+
+    @GetMapping("/myPurchase")
+    public ShopResponse getMyPurchase(HttpServletRequest request) throws Exception {
+        Object obj = request.getSession().getAttribute("userIdx");
+        long userIdx = Long.valueOf(String.valueOf(obj));
+
+        List<PurchaseOrderResponse> list = purchaseService.selectOrderList(1);
+
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(list));
+    }
+
+    @GetMapping("/myPurchaseStatus")
+    public ShopResponse myPurchaseStatus(@RequestParam long id) throws Exception {
+
+        OrderStatusResponse res = purchaseService.selectOrderStatus(id);
+
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(res));
+    }
+
+    @GetMapping("/myPurchaseDetail")
+    public ShopResponse myPurchaseDetail(@RequestParam long orderId, HttpServletRequest request) throws Exception {
+        Object obj = request.getSession().getAttribute("userIdx");
+        long userIdx = Long.valueOf(String.valueOf(obj));
+
+        List<PurchaseBookResponse> res = purchaseService.selectOrderDetail(orderId, userIdx);
+
+        return new ShopResponse(StatusCode.Success, JsonUtil.toJson(res));
+    }
+
+
+
+
     @PostMapping("/getBillKey")
     public ShopResponse getBillKey() throws Exception {
         String key = keySystem.issueBillKey();
@@ -46,6 +81,23 @@ public class PurchaseController {
             return new ShopResponse(StatusCode.Success, key);
         } else {
             throw new Exception();
+        }
+    }
+
+    @GetMapping("/status")
+    public ShopResponse purchaseStatus(@RequestParam long bookIdx, HttpServletRequest req) throws Exception {
+        Object obj = req.getSession().getAttribute("userIdx");
+        if(obj == null) {
+            return new ShopResponse(StatusCode.Fail, "로그인한 사용자만 리뷰를 쓸수있습니다");
+        }
+
+        long userIdx = Long.valueOf(String.valueOf(obj));
+        log.debug("purchaseStatus");
+        boolean result = purchaseService.selectPurchaseStatus(bookIdx, userIdx);
+        if(result == true) {
+            return new ShopResponse(StatusCode.Success, "구매내역이 있는 책 리뷰작성 가능");
+        } else {
+            return new ShopResponse(StatusCode.Fail, "구매내역이 없습니다");
         }
     }
 
