@@ -81,7 +81,7 @@
     <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
     <a href="dashBoard" class="w3-bar-item w3-button">종합 통계</a>
     <a href="dashBoard2" class="w3-bar-item w3-button">구매자 정보</a>
-    <a href="회원 상품 통계" class="w3-bar-item w3-button">회원 상품 통계</a>
+   <a href="dashBoard3" class="w3-bar-item w3-button">상품 목록</a>
     <a href="/logout" class="w3-bar-item w3-button">Logout</div>
     
 </a>
