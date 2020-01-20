@@ -45,20 +45,7 @@
 <%--                    </div>--%>
 <%--                </div>--%>
 <%--            </div>--%>
-            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="categories_post">
-                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
-                    <div class="categories_details">
-                        <div class="categories_text">
-                            <a href="/user/myPurchaseList">
-                                <h5>결제 내역</h5>
-                            </a>
-                            <div class="border_line"></div>
-                            <p>Be a part of politics</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 <%--            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">--%>
 <%--                <div class="categories_post">--%>
 <%--                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/4.jpg" alt="post">--%>
@@ -80,6 +67,20 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="categories_post">
+                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
+                    <div class="categories_details">
+                        <div class="categories_text">
+                            <a href="/user/myPurchaseList">
+                                <h5>결제 내역</h5>
+                            </a>
+                            <div class="border_line"></div>
+                            <p>Be a part of politics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/5.jpg" alt="post">
@@ -108,20 +109,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="categories_post">
-                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/3.jpg" alt="post">
-                    <div class="categories_details">
-                        <div class="categories_text">
-                            <button type="button" id="deleteAccount" >
-                                <h5>회원 탈퇴</h5>
-                            </button>
-                            <div class="border_line"></div>
-                            <p>Let the food be finished</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">--%>
+<%--                <div class="categories_post">--%>
+<%--                    <img class="card-img100 rounded-0" src="/img/blog/cat-post/3.jpg" alt="post">--%>
+<%--                    <div class="categories_details">--%>
+<%--                        <div class="categories_text">--%>
+<%--                            <button type="button" id="deleteAccount" >--%>
+<%--                                <h5>회원 탈퇴</h5>--%>
+<%--                            </button>--%>
+<%--                            <div class="border_line"></div>--%>
+<%--                            <p>Let the food be finished</p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
     </div>
 </section>
