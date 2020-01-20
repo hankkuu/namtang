@@ -18,7 +18,7 @@ public class PurchaseOrder {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "ORDER_SEQ_NO")
     @SequenceGenerator(sequenceName = "ORDER_SEQ_NO", name = "ORDER_SEQ_NO", allocationSize = 1)
     private long purchaseOrderIdx;
-    private int stateCode;
+    private PurchaseCode stateCode;
     @Column(name = "DELIVERY_ADDRESS", nullable = false)
     private String deliveryAddress;
     @Column(name = "ORDER_DATE", nullable = false)

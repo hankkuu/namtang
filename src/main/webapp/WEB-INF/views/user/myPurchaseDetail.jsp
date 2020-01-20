@@ -11,9 +11,13 @@
     $(window).on('load', function () {
         $(function () {
 
+            let para = document.location.href.split("?");
+            console.log(para);
+
             $.ajax({
                 type: "get",
-                url: "/api/v1/purchase/myPurchase",
+                url: "/api/v1/purchase/myPurchaseDetail",
+                data: { id: para[1] },
                 dataType:"json",
                 success: function (result) {
 
@@ -30,9 +34,9 @@
                             str += '<td>' + list[i].count + '</a></td>'
                             str += '<td>' + list[i].price + '</td>'
                             if(list[i].isReview === true) {
-                                str += '<td>' + '<button type="button" id="writeReview" value="review" onclick="showStatusPopup();">리뷰작성</button>'  + '</td>'
+                                str += '<td>' + '<button type="button" id="writeReview" value="review" onclick="showStatusPopup();">리뷰보기</button>'  + '</td>'
                             } else {
-                                str += '<td>' + '<button type="button" id="readReview" value="viewReview" onclick="showRefundPopup();">리뷰보기</button>'
+                                str += '<td>' + '<button type="button" id="readReview" value="viewReview" onclick="showRefundPopup();">리뷰작성</button>'
                             }
                             str += '</td>'
                             str += '</tr>'
@@ -123,7 +127,7 @@
                               <th scope="col">상품명</th>
                               <th scope="col">수량</th>
                               <th scope="col">가격</th>
-                              <th scope="col">리뷰작성</th>
+                              <th scope="col">리뷰 보기/작성</th>
 
                           </tr>
                       </thead>

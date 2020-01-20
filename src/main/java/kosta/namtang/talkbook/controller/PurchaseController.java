@@ -59,13 +59,21 @@ public class PurchaseController {
     }
 
     @GetMapping("/myPurchaseDetail")
-    public ShopResponse myPurchaseDetail(@RequestParam long orderId, HttpServletRequest request) throws Exception {
+    public ShopResponse myPurchaseDetail(@RequestParam long id, HttpServletRequest request) throws Exception {
         Object obj = request.getSession().getAttribute("userIdx");
         long userIdx = Long.valueOf(String.valueOf(obj));
 
-        List<PurchaseBookResponse> res = purchaseService.selectOrderDetail(orderId, userIdx);
+        List<PurchaseBookResponse> res = purchaseService.selectOrderDetail(id, userIdx);
 
         return new ShopResponse(StatusCode.Success, JsonUtil.toJson(res));
+    }
+
+    @GetMapping("/refund")
+    public ShopResponse refund(@RequestParam long id, HttpServletRequest request ) throws Exception {
+        Object obj = request.getSession().getAttribute("userIdx");
+        long userIdx = Long.valueOf(String.valueOf(obj));
+        return null;
+        //purchaseService.refund()
     }
 
 

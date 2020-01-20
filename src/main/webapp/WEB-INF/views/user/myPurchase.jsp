@@ -54,7 +54,7 @@
 
     function movePurchaseDetail() {
         //alert("aaa");
-        location.href="/user/myPurchaseDetail?orderIdx=" + $("#orderIdx").val();
+        location.href="/user/myPurchaseDetail?" + $("#orderIdx").val();
     }
 
     function showStatusPopup() {
@@ -62,7 +62,7 @@
     }
 
     function showRefundPopup() {
-        window.open("/user/purchase/popupRefund?id="+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+        window.open("/user/purchase/popupRefund?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
     }
 
 <%--        function qty(qty, bookIdx) {--%>

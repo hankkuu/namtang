@@ -54,4 +54,12 @@ public class PurchaseViewController {
         return view;
     }
 
+    @RequestMapping("/purchase/popupRefund")
+    public ModelAndView popupRefund() {
+        log.debug("popupRefund");
+
+        ModelAndView view = new ModelAndView("/popup/popupRefund");
+        return view;
+    }
+
 }

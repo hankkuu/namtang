@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 
 @Data
 public class PurchaseBookResponse {
+    private long bookIdx;
+    private String billKey;
     private String bookName;
     private int count;
     private BigDecimal price;
