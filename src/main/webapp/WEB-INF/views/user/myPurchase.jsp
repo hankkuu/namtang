@@ -58,7 +58,7 @@
     }
 
     function showStatusPopup() {
-            window.open("/user/purchase/popupStatus?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+        window.open("/user/purchase/popupStatus?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
     }
 
     function showRefundPopup() {

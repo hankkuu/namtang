@@ -22,8 +22,9 @@ public class SimpleSecurityUser extends User {
     private static final String ROLE_PREFIX = "ROLE_";
 
     private Account account;
-    private String accountId;
+    private String accountIdx;
     private String text;            // 원하는 값을 넣을 수 있음
+    private String userId;
 
 //    private Admin admin;
 //    private String adminId;
@@ -31,8 +32,9 @@ public class SimpleSecurityUser extends User {
     public SimpleSecurityUser(Account acc) {
         super(String.valueOf(acc.getAccountIdx()), acc.getUserPassword(), makeGrantedAuthority(acc.getRole()));
         this.account = acc;
-        this.accountId = String.valueOf(acc.getAccountIdx());
+        this.accountIdx = String.valueOf(acc.getAccountIdx());
         this.text = acc.getLastLoginDate().toString();
+        this.userId = acc.getUserId();
     }
 
 //    public SimpleSecurityUser(Admin admin) {
