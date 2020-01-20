@@ -46,6 +46,23 @@ public class PurchaseController {
         }
     }
 
+    @GetMapping("/status")
+    public ShopResponse purchaseStatus(@RequestParam long bookIdx, HttpServletRequest req) throws Exception {
+        Object obj = req.getSession().getAttribute("userIdx");
+        if(obj == null) {
+            return new ShopResponse(StatusCode.Fail, "로그인한 사용자만 리뷰를 쓸수있습니다");
+        }
+
+        long userIdx = Long.valueOf(String.valueOf(obj));
+        log.debug("purchaseStatus");
+        boolean result = purchaseService.selectPurchaseStatus(bookIdx, userIdx);
+        if(result == true) {
+            return new ShopResponse(StatusCode.Success, "구매내역이 있는 책 리뷰작성 가능");
+        } else {
+            return new ShopResponse(StatusCode.Fail, "구매내역이 없습니다");
+        }
+    }
+
     @PostMapping("")
     public ShopResponse purchase(HttpServletRequest req, @RequestBody PurchaseSetRequest request) throws Exception {
         Object obj = req.getSession().getAttribute("userIdx");

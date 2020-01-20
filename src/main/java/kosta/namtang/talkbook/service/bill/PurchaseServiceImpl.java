@@ -260,4 +260,19 @@ public class PurchaseServiceImpl implements PurchaseService {
 
         return list;
     }
+
+    @Override
+    @Transactional
+    public boolean selectPurchaseStatus(long bookIdx, long userIdx) throws Exception {
+
+        List<PurchaseOrder> orderList = purchaseOrder.findByUserIdx(userIdx);
+        for(PurchaseOrder order : orderList) {
+            long orderIdx = order.getPurchaseOrderIdx();
+            PurchaseBook book = purchaseBook.findByPurchaseBookId(new PurchaseBookId(bookIdx, orderIdx));
+            if(book != null) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

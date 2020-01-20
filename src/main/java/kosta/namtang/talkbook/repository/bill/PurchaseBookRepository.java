@@ -10,6 +10,8 @@ public interface PurchaseBookRepository extends CrudRepository<PurchaseBook, Pur
 
     List<PurchaseBook> findByPurchaseBookIdPurchaseOrderIdx(long orderIdx);
 
+    PurchaseBook findByPurchaseBookId(PurchaseBookId purchaseBookId);
+
     PurchaseBook findByPurchaseBookIdBookIdx(long bookIdx);
 //
 //	int update(PurchaseGoodsDTO dto);

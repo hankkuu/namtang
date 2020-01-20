@@ -44,7 +44,7 @@ public interface PurchaseService {
      * 구매내역 조회
      *
      * */
-    //List<PurchaseBook> selectOrderHistory(String loginId) throws Exception;
+    boolean selectPurchaseStatus(long book, long userIdx) throws Exception;
 
 
 }

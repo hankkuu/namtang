@@ -50,7 +50,7 @@
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/cat-post-2.jpg" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
-                            <a href="single-blog.html">
+                            <a href="/user/myPurchase">
                                 <h5>결제 내역</h5>
                             </a>
                             <div class="border_line"></div>
@@ -97,7 +97,7 @@
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="categories_post">
                     <img class="card-img100 rounded-0" src="/img/blog/cat-post/2.jpg" alt="post">
-                    <div class="categories_details" onclick="location.href='/cart'">
+                    <div class="categories_details" onclick="location.href='/user/cart'">
                         <div class="categories_text">
                             <a href="single-blog.html">
                                 <h5>장바구니</h5>
