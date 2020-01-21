@@ -78,12 +78,25 @@
             	let list = JSON.parse(sessionStorage.getItem("cartlist"));
             	console.log(list);
             	let purchaseBook = [];
+                    let priceList = []
+                    for(let i = 0; i < list.length; i++) {
+
+
+
+
+                    }
             		for(let i = 0; i < list.length; i++) {
-            		let item = {
+                        let regExp = /[\{\}\[\]\/?.,;:|\)*￦~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+                        let price = "";
+                        if(regExp.test(list[i].price)) {
+                            price = list[i].price.replace(regExp, "");
+                            //특수문자를 대체. ""
+                        }
+            		    let item = {
             				purchaseBookId : {
             					bookIdx : list[i].id
             				},
-            			price: list[i].price, 
+            			price: price,
             			name: list[i].title, 
             			count: list[i].qty, 
             			imagePath: list[i].img
@@ -113,26 +126,24 @@
                                     deliveryAddress: $("#userAddress").val()
                                 },
                                 purchaseBook: purchaseBook
-                                	/* [{
-                                    purchaseBookId: {
-                                        bookIdx: "1"
-                                    },
-                                    price: $('#list['+  +'].price').val(),
-                                    name: "난책1",
-                                    count: "3",
-                                    imagePath: " "
-                                }, {
-                                    purchaseBookId: {
-                                        bookIdx: "20"
-                                    },
-                                    price: "20000",
-                                    name: "난책2",
-                                    count: "1",
-                                    imagePath: "test"
-                                }
-                                ] */
+                                // [{
+                                //     purchaseBookId: {
+                                //         bookIdx: "1"
+                                //     },
+                                //     price: "10000",
+                                //     name: "난책1",
+                                //     count: "3",
+                                //     imagePath: " "
+                                // }, {
+                                //     purchaseBookId: {
+                                //         bookIdx: "20"
+                                //     },
+                                //     price: "20000",
+                                //     name: "난책2",
+                                //     count: "1",
+                                //     imagePath: "test"
+                                // }]
                                 ,
-                                
                                 billKey: key
                             }                           
                             //var uui = $("#list[0]price").val();
