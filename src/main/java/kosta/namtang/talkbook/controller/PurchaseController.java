@@ -125,14 +125,12 @@ public class PurchaseController {
     public ShopResponse purchase(HttpServletRequest req, @RequestBody PurchaseSetRequest request) throws Exception {
         Object obj = req.getSession().getAttribute("userIdx");
         long accountIdx = Long.valueOf(String.valueOf(obj));
-        Users acc = request.getUser();
-        acc.setAccountIdx(accountIdx);
-        
+
         ShopResponse result = null;
         log.debug(request.toString());
 
         BillKey key = purchaseService.insertPurchase(request.getBook(), request.getOrder(), request.getPayment()
-                , request.getUser(), request.getBillKey());
+                , accountIdx, request.getBillKey());
 
         if (key != null) {
             // 구매 DB 입력 완료

@@ -23,7 +23,7 @@ public interface PurchaseService {
      */
 
     BillKey insertPurchase(List<PurchaseBook> goodsList, PurchaseOrder order,
-                           PurchasePayment payment, Users user, String billKey) throws Exception;
+                           PurchasePayment payment, long accountIdx, String billKey) throws Exception;
 
     // 환불
     BillKey refund(String billKey, String reason, int refundType, List<PurchaseBook> cancelBookList) throws Exception;

@@ -149,7 +149,7 @@
                                 },
 
                                 purchaseOrder: {
-                                    deliveryAddress: $("#userAddress").val()
+                                    deliveryAddress: $("#userAddress").val() + "  " + $("#userAddressDetail")
                                 },
                                 purchaseBook: purchaseBook
                                 // [{
@@ -205,7 +205,7 @@
                                     receiverName: $("#receiverName").val(),
                                     billKey: purchaseObj.billKey,
                                     orderDate: currentDate + ", 시간: " + currentTime,
-                                    address: $("#userAddress").val(),
+                                    address: $("#userAddress").val() + "  " + $("#userAddressDetail"),
                                     phone: $("#phoneNumber").val(),
                                     paymentCode: $("input[type=radio][name=selector]:checked").val(),
                                     totalPrice: purchaseObj.purchasePayment.totalPrice,
@@ -317,10 +317,7 @@
                     book: purchaseObj.purchaseBook,
                     order: purchaseObj.purchaseOrder,
                     payment: purchaseObj.purchasePayment,
-                    billKey: purchaseObj.billKey,
-                    user: {
-                        userIdx: "1"
-                    }
+                    billKey: purchaseObj.billKey
                 }
             }).then((data) => {
                 // 가맹점 서버 결제 API 성공시 로직
