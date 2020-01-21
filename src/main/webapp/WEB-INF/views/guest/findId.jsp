@@ -27,7 +27,7 @@
 						console.log(email);
 						$.ajax({
 							type: "post",
-							url: "http://localhost:8889/api/v1/mail",
+							url: "http://192.168.0.119:8889/api/v1/mail",
 							dataType: "json",
 							data: JSON.stringify(email),
 							contentType: 'application/json; charset=utf-8',

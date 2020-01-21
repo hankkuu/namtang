@@ -249,17 +249,17 @@
 						<h3>개인정보 수정</h3>
 						<form class="row login_form" id="register_form" method="post">
 							<div class="col-md-12 form-group" id="userIdC">
-								<input type="text" class="form-control" id="originalPassword" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
+								<input type="password" class="form-control" id="originalPassword" placeholder="기존 비밀번호" onblur="this.placeholder = '기존 비밀번호'">
 								<input type="button" id="checkPassword" name="checkPassword" class="checkPassword" value="확인" >
 							</div>
 			                
 			                <div class="check_font" id="checkedPassword"></div>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
+								<input type="password" class="form-control" id="userPassword" name="password" placeholder="새로운 비밀번호" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호'">
 			                </div>
 			                <p id="textP"></p>
 			                <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" placeholder="새로운 비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호 확인'">
+								<input type="password" class="form-control" id="confirmPassword" placeholder="새로운 비밀번호 확인" onfocus="this.placeholder = ''" onblur="this.placeholder = '새로운 비밀번호 확인'">
 							</div>
 							<div class="pw" id="pwSuccess">비밀번호가 일치합니다.</div>
 							<div class="pw" id="pwFail">비밀번호가 일치하지 않습니다.</div>

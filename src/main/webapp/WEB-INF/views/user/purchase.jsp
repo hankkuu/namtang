@@ -149,7 +149,7 @@
                                 },
 
                                 purchaseOrder: {
-                                    deliveryAddress: $("#userAddress").val() + "  " + $("#userAddressDetail")
+                                    deliveryAddress: $("#userAddress").val() + "  " + $("#userAddressDetail").val()
                                 },
                                 purchaseBook: purchaseBook
                                 // [{
@@ -183,11 +183,11 @@
                             // billkey 정보 필요
                             // 총금액 and 구매 이름 필요
                             let user = {
-                                email: "gildong@gmail.com", // 장현아
-                                name: "홍길동",    // 장현아
-                                tel: "010-4242-4242",   // 장현아
-                                addr: "서울특별시 강남구 신사동",  // 장현아
-                                postcode: "01181"   // 장현아
+                                email: $("#userEmail").val(), // 장현아
+                                name: $("#userName").val(),    // 장현아
+                                tel: $("#phoneNumber").val(),   // 장현아
+                                addr: $("#userAddress").val() + "  " + $("#userAddressDetail").val(),  // 장현아
+                                postcode: "0"   // 장현아
                             };
 
                             let d = new Date();
@@ -205,7 +205,7 @@
                                     receiverName: $("#receiverName").val(),
                                     billKey: purchaseObj.billKey,
                                     orderDate: currentDate + ", 시간: " + currentTime,
-                                    address: $("#userAddress").val() + "  " + $("#userAddressDetail"),
+                                    address: $("#userAddress").val() + "  " + $("#userAddressDetail").val(),
                                     phone: $("#phoneNumber").val(),
                                     paymentCode: $("input[type=radio][name=selector]:checked").val(),
                                     totalPrice: purchaseObj.purchasePayment.totalPrice,
