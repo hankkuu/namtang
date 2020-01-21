@@ -22,6 +22,6 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
     void deleteByBookIdx(Long idx);
 
-    Review findByUserIdxAndBookIdx(long userIdx, long bookIdx);
+    List<Review> findByUserIdxAndBookIdx(long userIdx, long bookIdx);
 
 }

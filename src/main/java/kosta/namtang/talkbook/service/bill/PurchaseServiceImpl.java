@@ -240,7 +240,8 @@ public class PurchaseServiceImpl implements PurchaseService {
                 List<PurchaseBook> bookList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
                 String productName = bookList.get(0).getName();
                 if(bookList.size() > 1) {
-                    productName.concat("외 " + String.valueOf(bookList.size()));
+                    //일단 대충 더하기
+                    productName = productName + "외 " + String.valueOf(bookList.size()-1) + "권";
                 }
 
                 //dto 사용
@@ -277,7 +278,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             e.printStackTrace();
         }
 
-        return list.subList(1,10);
+        return list;
     }
 
     @Override
@@ -305,8 +306,8 @@ public class PurchaseServiceImpl implements PurchaseService {
             item.setPrice(book.getPrice());
             item.setBillKey(book.getBillKey());
             item.setBookIdx(book.getPurchaseBookId().getBookIdx());
-            Review review = reviewRepository.findByUserIdxAndBookIdx(userIdx, book.getPurchaseBookId().getBookIdx());
-            if(review != null) {
+            List<Review> review = reviewRepository.findByUserIdxAndBookIdx(userIdx, book.getPurchaseBookId().getBookIdx());
+            if(review.size() > 0) {
                 item.setReview(true);
             }
             else {

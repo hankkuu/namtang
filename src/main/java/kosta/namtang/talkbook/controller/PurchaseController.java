@@ -59,7 +59,7 @@ public class PurchaseController {
         Object obj = request.getSession().getAttribute("userIdx");
         long userIdx = Long.valueOf(String.valueOf(obj));
 
-        List<PurchaseOrderResponse> list = purchaseService.selectOrderList(1);
+        List<PurchaseOrderResponse> list = purchaseService.selectOrderList(userIdx);
 
         return new ShopResponse(StatusCode.Success, JsonUtil.toJson(list));
     }

@@ -189,6 +189,11 @@
                                 addr: "서울특별시 강남구 신사동",  // 장현아
                                 postcode: "01181"   // 장현아
                             };
+
+                            let d = new Date();
+                            let currentDate = d.getFullYear() + "년 " + ( d.getMonth() + 1 ) + "월 " + d.getDate() + "일";
+                            let currentTime = d.getHours() + "시 " + d.getMinutes() + "분 " + d.getSeconds() + "초";
+
                             let shop = {
                                 pg: "kakaopay",
                                 pay_method: "card",
@@ -199,10 +204,12 @@
                                     senderName: user.name,
                                     receiverName: $("#receiverName").val(),
                                     billKey: purchaseObj.billKey,
-                                    orderDate: Date.now(),
+                                    orderDate: currentDate + ", 시간: " + currentTime,
                                     address: $("#userAddress").val(),
                                     phone: $("#phoneNumber").val(),
-                                    paymentCode: $("input[type=radio][name=selector]:checked").val()
+                                    paymentCode: $("input[type=radio][name=selector]:checked").val(),
+                                    totalPrice: purchaseObj.purchasePayment.totalPrice,
+                                    title: purchaseBook[0].name + "외 " + purchaseBook.length + "권"
                                 }
                             };
                             let param = {
