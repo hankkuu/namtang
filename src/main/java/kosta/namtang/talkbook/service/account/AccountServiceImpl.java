@@ -72,7 +72,7 @@ public class AccountServiceImpl implements AccountService {
     public ShopResponse checkNewUser(String userId) {
         Account acc = accountRepository.findByUserId(userId);
         if(acc != null) {
-            boolean isActive = acc.getDeleteDate().equals("1900-01-01 00:00:00");
+            boolean isActive = acc.getDeleteDate().equals("1900-01-01 00:00:00.0");
             if(isActive == true)
                 return new ShopResponse(StatusCode.Fail, "이미 있는 계정");
             else
@@ -117,7 +117,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void deleteAccount(long accountIdx) {
+    public void deleteAccount(long accountIdx, String password) {
         Optional<Account> account = accountRepository.findById(accountIdx);
         account.ifPresent((update) -> {
             update.setDeleteDate(DateTimeHelper.timeStampNow());
@@ -163,5 +163,26 @@ public class AccountServiceImpl implements AccountService {
         });
 
         return list;
+    }
+
+    @Override
+    public Account selectByEmail(String email) {
+
+        List<Users> user = userRepository.findByUserEmail(email);
+        Account acc = accountRepository.findById(user.get(0).getAccountIdx()).orElse(null);
+        return acc;
+    }
+
+    @Override
+    public Account selectByEmailAndId(String email, String userId) {
+
+        Account acc = accountRepository.findByUserId(userId);
+        if(acc != null) {
+            Users u = userRepository.findByUserEmailAndAccountIdx(email, acc.getAccountIdx());
+            if(u != null) {
+                return acc;
+            }
+        }
+        return null;
     }
 }

@@ -180,7 +180,7 @@ public class PurchaseServiceImpl implements PurchaseService {
                     cancel.setPurchaseBookId(new PurchaseBookId(book.getPurchaseBookId().getBookIdx(), order.getPurchaseOrderIdx()));
                     //cancel.setPurchaseGoodsId(goods.getPurchaseGoodId());
                     cancel.setReason(reason);
-                    cancel.setRefundCode(CancelCode.None.fromInteger(refundCode) );
+                    cancel.setRefundCode(CancelCode.fromInteger(refundCode) );
                     cancel.setCreateDate(cancelDate);
                     cancel.setUpdateDate(cancelDate);
                     cancel.setCount(book.getCount());

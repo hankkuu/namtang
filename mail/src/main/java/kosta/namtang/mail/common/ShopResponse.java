@@ -1,4 +1,4 @@
-package kosta.namtang.talkbook.common;
+package kosta.namtang.mail.common;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -4,7 +4,6 @@ import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.BookCount;
 import kosta.namtang.talkbook.model.domain.BookCountHistory;
 import kosta.namtang.talkbook.model.domain.BookCountHistoryId;
-import kosta.namtang.talkbook.repository.BookRepository;
 import kosta.namtang.talkbook.repository.CountHistoryRepository;
 import kosta.namtang.talkbook.repository.CountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
