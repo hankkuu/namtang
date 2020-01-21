@@ -26,6 +26,15 @@
             cursor: pointer;
         }
         .starR.on{background-position:0 0;}
+
+        #updateB{ border-top-left-radius: 5px; border-bottom-left-radius: 5px; margin-right:-4px; }
+
+        #deleteB{ border-top-right-radius: 5px; border-bottom-right-radius: 5px; margin-left:-3px; }
+
+        #udBtn input{ border: 1px solid skyblue; background-color: rgba(0,0,0,0); color: skyblue; padding: 5px; }
+
+        #udBtn input:hover{ color:white; background-color: skyblue; }
+
         /*.starR1{*/
         /*    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;*/
         /*    background-size: auto 100%;*/
@@ -563,8 +572,10 @@
                                             <p>${reviewc.reviewContent}</p>
                                             <c:choose>
                                                 <c:when test="${reviewc.userIdx == sessionScope.userIdx}">
+                                                    <div id="udBtn">
                                                     <input type="button" value="수정하기" id="updateB" onclick="moveScroll(this)">
                                                     <input type="button" value="삭제하기" id="deleteB" onclick="deleteReview(this)">
+                                                    </div>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <div></div>
