@@ -47,7 +47,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Override
     @Transactional
     public BillKey insertPurchase(List<PurchaseBook> booksList, PurchaseOrder order,
-                                  PurchasePayment payment, Users account, String key) throws Exception {
+                                  PurchasePayment payment, long accountIdx, String key) throws Exception {
 
         BillKey keyResult = null;
         try {
@@ -58,7 +58,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             Timestamp purchaseDate = DateTimeHelper.timeStampNow();
 
             // [1] 계정 정보 알아오기 (로그인 세션에서 알수있음)
-            long accountIdx = account.getAccountIdx();
+            //long accountIdx = account.getAccountIdx();
 
             // 주문정보 셋팅
             order.setUserIdx(accountIdx);
@@ -240,7 +240,8 @@ public class PurchaseServiceImpl implements PurchaseService {
                 List<PurchaseBook> bookList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
                 String productName = bookList.get(0).getName();
                 if(bookList.size() > 1) {
-                    productName.concat("외 " + String.valueOf(bookList.size()));
+                    //일단 대충 더하기
+                    productName = productName + "외 " + String.valueOf(bookList.size()-1) + "권";
                 }
 
                 //dto 사용
@@ -277,7 +278,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             e.printStackTrace();
         }
 
-        return list.subList(1,10);
+        return list;
     }
 
     @Override
@@ -305,8 +306,8 @@ public class PurchaseServiceImpl implements PurchaseService {
             item.setPrice(book.getPrice());
             item.setBillKey(book.getBillKey());
             item.setBookIdx(book.getPurchaseBookId().getBookIdx());
-            Review review = reviewRepository.findByUserIdxAndBookIdx(userIdx, book.getPurchaseBookId().getBookIdx());
-            if(review != null) {
+            List<Review> review = reviewRepository.findByUserIdxAndBookIdx(userIdx, book.getPurchaseBookId().getBookIdx());
+            if(review.size() > 0) {
                 item.setReview(true);
             }
             else {

@@ -162,7 +162,7 @@
                   <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="sendTo" id="sendTo" type="email" placeholder="Enter email address">
+                  <input class="form-control" name="sendTo" id="sendTo" type="email" placeholder="Enter email address" value="hankkuu@gmail.com" readonly>
                 </div>
                 <div class="form-group">
                   <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject">
