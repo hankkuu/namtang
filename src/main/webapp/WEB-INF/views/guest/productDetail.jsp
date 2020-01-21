@@ -26,6 +26,15 @@
             cursor: pointer;
         }
         .starR.on{background-position:0 0;}
+
+        #updateB{ border-top-left-radius: 5px; border-bottom-left-radius: 5px; margin-right:-4px; }
+
+        #deleteB{ border-top-right-radius: 5px; border-bottom-right-radius: 5px; margin-left:-3px; }
+
+        #udBtn input{ border: 1px solid skyblue; background-color: rgba(0,0,0,0); color: skyblue; padding: 5px; }
+
+        #udBtn input:hover{ color:white; background-color: skyblue; }
+
         /*.starR1{*/
         /*    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;*/
         /*    background-size: auto 100%;*/
@@ -471,27 +480,30 @@
                     <div class="col-lg-6">
                         <div class="row total_rate">
                             <div class="col-6">
-                                <div class="box_total">
-                                    <h5>Overall</h5>
-                                    <h4>4.0</h4>
-                                    <h6>(03 Reviews)</h6>
-                                </div>
+<%--                                <div class="box_total">--%>
+<%--                                    <h5>Overall</h5>--%>
+<%--                                    <h4>4.0</h4>--%>
+<%--                                    <h6>(03 Reviews)</h6>--%>
+<%--                                </div>--%>
+
+                             <h3>리뷰 목록</h3>
+                                <br>
                             </div>
                             <div class="col-6">
                                 <div class="rating_list">
-                                    <h3>Based on 3 Reviews</h3>
-                                    <ul class="list">
-                                        <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                        <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                    </ul>
+<%--                                    <h3>Based on 3 Reviews</h3>--%>
+<%--                                    <ul class="list">--%>
+<%--                                        <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i--%>
+<%--                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>--%>
+<%--                                        <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i--%>
+<%--                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>--%>
+<%--                                        <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i--%>
+<%--                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>--%>
+<%--                                        <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i--%>
+<%--                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>--%>
+<%--                                        <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i--%>
+<%--                                                class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>--%>
+<%--                                    </ul>--%>
                                 </div>
                             </div>
                         </div>
@@ -560,13 +572,16 @@
                                             <p>${reviewc.reviewContent}</p>
                                             <c:choose>
                                                 <c:when test="${reviewc.userIdx == sessionScope.userIdx}">
+                                                    <div id="udBtn">
                                                     <input type="button" value="수정하기" id="updateB" onclick="moveScroll(this)">
                                                     <input type="button" value="삭제하기" id="deleteB" onclick="deleteReview(this)">
+                                                    </div>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <div></div>
                                                 </c:otherwise>
                                             </c:choose>
+                                            <br>
                                         </div>
                                     </div>
                                 </c:forEach>

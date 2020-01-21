@@ -55,8 +55,9 @@
                     // str += '<td> <h5 id="priceSum">￦0</h5> </td>'
                     // str += '</tr>'
                 }
-                $("#cartList").html(str);
                 
+                $("#cartList").html(str);
+
                 var receiverName = $("#receiverName").val();
             	console.log(receiverName);
                 
@@ -68,13 +69,15 @@
                 	let s = 2500;
                 	$("#totalPrice").html(sum + s);
                 }
-                //$("#list").html(product);
+                
             });
 
             console.log("start");
+            
+            
+            
 
-            $("#purchase").click(async () => {
-            	
+			$("#purchase").click(async () => {
             	let list = JSON.parse(sessionStorage.getItem("cartlist"));
             	console.log(list);
             	let purchaseBook = [];
@@ -100,15 +103,14 @@
             			name: list[i].title, 
             			count: list[i].qty, 
             			imagePath: list[i].img
-                	}
+            		}	 
             		purchaseBook.push(item);
-            	}	 
+        		}	 
+            	console.log(purchaseBook);
             	
             	await purchaseProcess().then(async (result) => {
-
                     if (result.statusCode === "Success") {
                         const key = result.message;
-                        
                         console.log("key: " + key);
                         
                         if (key !== undefined) {
@@ -145,7 +147,9 @@
                                 // }]
                                 ,
                                 billKey: key
-                            }                           
+                            }       
+                             
+                           
                             //var uui = $("#list[0]price").val();
                             //console.log(uui);
                             
@@ -433,10 +437,6 @@
                         <div class="col-md-6 form-group p_star">
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
                             <span class="placeholder" data-placeholder="Address line 01"></span>
-                        </div>
-
-                        <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
                         </div>
                         <div class="col-md-12 form-group">
                             <div class="creat_account">
