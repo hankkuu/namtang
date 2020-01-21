@@ -1,4 +1,4 @@
-package kosta.namtang.talkbook.core.Scheduler;
+package kosta.namtang.talkbook.core.scheduler;
 
 import kosta.namtang.talkbook.model.domain.Book;
 import kosta.namtang.talkbook.model.domain.BookCount;
