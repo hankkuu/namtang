@@ -83,7 +83,7 @@
                                    onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일'">
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="password" name="password" placeholder="비밀번호"
+                            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호"
                                    onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'">
                         </div>
                         <div class="col-md-12-form-group">

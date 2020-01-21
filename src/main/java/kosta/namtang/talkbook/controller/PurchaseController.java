@@ -124,6 +124,10 @@ public class PurchaseController {
     @PostMapping("")
     public ShopResponse purchase(HttpServletRequest req, @RequestBody PurchaseSetRequest request) throws Exception {
         Object obj = req.getSession().getAttribute("userIdx");
+        long accountIdx = Long.valueOf(String.valueOf(obj));
+        Users acc = request.getUser();
+        acc.setAccountIdx(accountIdx);
+        
         ShopResponse result = null;
         log.debug(request.toString());
 
