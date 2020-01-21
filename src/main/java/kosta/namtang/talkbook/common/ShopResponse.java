@@ -23,7 +23,7 @@ public class ShopResponse {
         this.message = message;
     }
 
-    public StatusCode fromInteger(int x) {
+    public static StatusCode fromInteger(int x) {
         switch (x) {
             case 0:
                 return StatusCode.None;

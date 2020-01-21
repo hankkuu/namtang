@@ -28,10 +28,10 @@ public class AccountViewController {
         return view;
     }
 
-    @RequestMapping("/user/update")
+    @RequestMapping("/user/myUpdate")
     public ModelAndView update() {
         log.debug("update");
-        ModelAndView view = new ModelAndView("/user/update");
+        ModelAndView view = new ModelAndView("/user/myUpdate");
         return view;
     }
     

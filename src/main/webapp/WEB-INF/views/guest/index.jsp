@@ -148,9 +148,15 @@
         background-color: #4CAF50
     }
 
+    @font-face {
+        font-family: Binggrae;
+        src: url('/vendors/linericon/fonts/Binggrae-Bold.ttf')format('truetype');
+    }
+
     .left-align {
         text-align: left;
         top:800px;
+
     }
 
     .right-align {
@@ -158,21 +164,40 @@
     }
     .center-align {
         text-align: center;
+
     }
+    .a3wKo{
+        color:white;
+        font-size: 50px;
+        font-family: Binggrae, serif;
+    }
+      .a5wKo{
+          color:white;
+          font-size: 30px;
+          font-family: Binggrae, serif;
+      }
     .a3w{
         color:white;
         font-size: 50px;
     }
-      .a5w{
-          color:white;
-          font-size: 30px;
-      }
+    .a5w{
+        color:white;
+        font-size: 30px;
+    }
 
   </style>
 <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">--%>
 <%--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">--%>
     <script>
+
+
         $(function(){
+            $(".owl-carousel").owlCarousel({
+                items : 3,
+                margin:0
+            });
+
+
             // $('.header_area').css("opacity","0");
             $('.header_area').css("box-shadow","none");
             $('.nav-link,.button.button-header').css("color","white");
@@ -213,11 +238,15 @@
             });
 
             $('.slider').slider({full_width: true});
-            $('.slider').css("height","670px");
-            $('.slides').css("height","670px");
+            $('.slider').css("height","100vh");
+            $('.slides').css("height","100vh");
 
         });
 
+        window.onload=function(){
+            // $('.owl-item').css('marginRight','0px');
+            // $('.owl-item').css('left','90px');
+        }
     </script>
 
 </head>
@@ -238,7 +267,7 @@
                 <img src="img/home/dd.jpg"> <!-- random image -->
                 <div class="caption middle center-align">
                     <h3 class="a3w">감성이 일상이 되는 공간</h3>
-                    <h5 class="light white-text text-lighten-3 a5w">저희 '토크북'은 시와 에세이를 통해 세상을 다양하게 이야기 하고 있습니다.</h5>
+                    <h5 class="light white-text text-lighten-3 a5wKo">저희 '토크북'은 시와 에세이를 통해 세상을 다양하게 이야기 하고 있습니다.</h5>
                 </div>
             </li>
             <li>
@@ -251,15 +280,15 @@
             <li>
                 <img src="img/home/cc.jpg"> <!-- random image -->
                 <div class="caption bottom right-align">
-                    <h3 class="a3w"></h3>
-                    <h5 class="light grey-text text-lighten-3 a5w">“한 편의 좋은 시를 읽는다는 것은, 영혼의  <br> 항아리 속에 향기로운 꽃을 꽂아두는 것과 같다."<br>-이어령</h5>
+                    <h3 class="a3wKo"></h3>
+                    <h5 class="light grey-text text-lighten-3 a5wKo">“한 편의 좋은 시를 읽는다는 것은, 영혼의  <br> 항아리 속에 향기로운 꽃을 꽂아두는 것과 같다."<br>-이어령</h5>
                 </div>
             </li>
             <li>
                 <img src="img/home/aa.jpg"> <!-- random image -->
                 <div class="caption bottom left-align">
-                    <h5 class="light grey-text text-lighten-3 a5w">“시는 우주의 생명적 본질이 인간의 감성적 <br> 작용을 통하여 표현되는 언어의 통일적 구상이다.”<br>-조지훈</h5>
-                    <h3 class="a3w"></h3>
+                    <h5 class="light grey-text text-lighten-3 a5wKo">“시는 우주의 생명적 본질이 인간의 감성적 <br> 작용을 통하여 표현되는 언어의 통일적 구상이다.”<br>-조지훈</h5>
+                    <h3 class="a3wKo"></h3>
                 </div>
             </li>
         </ul>

@@ -21,7 +21,7 @@ public enum PurchaseCode {
         return value;
     }
 
-    public PurchaseCode fromInteger(int x) {
+    public static PurchaseCode fromInteger(int x) {
         switch (x) {
             case 10:
                 return PurchaseCode.Payment_Success;
