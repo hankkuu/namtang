@@ -18,10 +18,45 @@
             let replaceStr = str.slice(0, -1);
             replaceStr = replaceStr.replace(/\\/ig, "").replace("\"\"{", "{").replace("}\"\"", "}");
             let json = JSON.parse(replaceStr);
-
-            console.log(json);
+            
+            console.log("json : " + json);
+            
+            let str = "";
+            let strCut = "";
+            let nb = 0;
+            let sum = 0;
+            
+            for(let i = 0 ; i < list.length; i++) {
+                
+				str += '<tr>'
+                str += '<td>'+ json[i].title +'</td>'
+                str += '<td>'+ json[i].qty +'</td>'
+                str += '<td>'+ json[i].total +'</td>'
+                str += '</tr>'
+                
+                strCut = list[i].total.substr(1,json[i].price.length);
+                strCut = strCut.split(',');
+                nb = parseInt(strCut[0]+strCut[1]);
+                sum += nb;
+            } 
+            
+            $("#product").html(str);
+            
+            if(sum > 10000){
+            	$("#shipping").html(0);
+            	$(".totalPrice").html(sum);
+            	$(".totalPrice").html(sum);
+            } else {
+            	$("#shipping").html(2500);
+            	let s = 2500;
+            	$(".totalPrice").html(sum + s);
+            	$(".totalPrice").html(sum + s);
+            }
+        	
+        	
+            
+            
         })
-
     </script>
 
 </head>
@@ -48,11 +83,11 @@
 <!--================Order Details Area =================-->
 <section class="order_details section-margin--small">
     <div class="container">
-        <p class="text-center billing-alert">Thank you. Your order has been received.</p>
+        <p class="text-center billing-alert">주문이 완료되었습니다. 감사합니다.</p>
         <div class="row mb-5">
             <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
                 <div class="confirmation-card">
-                    <h3 class="billing-title">Order Info</h3>
+                    <h3 class="billing-title">주문자 정보</h3>
                     <table class="order-rable">
                         <tr>
                             <td>Order number</td>
@@ -63,8 +98,8 @@
                             <td>: Oct 03, 2017</td>
                         </tr>
                         <tr>
-                            <td>Total</td>
-                            <td>: USD 2210</td>
+                            <td class="totalPrice"></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Payment method</td>
@@ -75,7 +110,7 @@
             </div>
             <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
                 <div class="confirmation-card">
-                    <h3 class="billing-title">Billing Address</h3>
+                    <h3 class="billing-title">주소</h3>
                     <table class="order-rable">
                         <tr>
                             <td>Street</td>
@@ -131,71 +166,37 @@
                         <th scope="col">Total</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="product">
                     <tr>
                         <td>
-                            <p>Pixelstore fresh Blackberry</p>
-                        </td>
-                        <td>
-                            <h5>x 02</h5>
-                        </td>
-                        <td>
-                            <p>$720.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Pixelstore fresh Blackberry</p>
-                        </td>
-                        <td>
-                            <h5>x 02</h5>
-                        </td>
-                        <td>
-                            <p>$720.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Pixelstore fresh Blackberry</p>
-                        </td>
-                        <td>
-                            <h5>x 02</h5>
-                        </td>
-                        <td>
-                            <p>$720.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>Subtotal</h4>
+                            <h4>순수책값</h4>
                         </td>
                         <td>
                             <h5></h5>
                         </td>
                         <td>
-                            <p>$2160.00</p>
+                            
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h4>Shipping</h4>
+                            <h4>배송비</h4>
+                        </td>
+                        <td>
+                            <h5></h5>
+                        </td>
+                        <td id="shipping">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>총 금액</h4>
                         </td>
                         <td>
                             <h5></h5>
                         </td>
                         <td>
-                            <p>Flat rate: $50.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>Total</h4>
-                        </td>
-                        <td>
-                            <h5></h5>
-                        </td>
-                        <td>
-                            <h4>$2210.00</h4>
+                            <h4 class="totalPrice"></h4>
                         </td>
                     </tr>
                     </tbody>
@@ -205,7 +206,5 @@
     </div>
 </section>
 <!--================End Order Details Area =================-->
-
-
 </body>
 </html>

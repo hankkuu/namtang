@@ -69,24 +69,15 @@
                 	let s = 2500;
                 	$("#totalPrice").html(sum + s);
                 }
-                
             });
-
+            
             console.log("start");
-            
-            
-            
-
 			$("#purchase").click(async () => {
             	let list = JSON.parse(sessionStorage.getItem("cartlist"));
             	console.log(list);
             	let purchaseBook = [];
                     let priceList = []
                     for(let i = 0; i < list.length; i++) {
-
-
-
-
                     }
             		for(let i = 0; i < list.length; i++) {
                         let regExp = /[\{\}\[\]\/?.,;:|\)*￦~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
@@ -116,12 +107,12 @@
                         if (key !== undefined) {
                             let purchaseObj = {
                                 purchasePayment: {
-                                	receiverName: "tester", // $("#receiverName").val(),
-                                    totalPrice: "30000", //$("#totalPrice").text(),
-                                    receiverPhone: "123456", // $("#phoneNumber").val(),
-                                    deliveryComment: "18181818", //$("#deliveryComment").val(),
-                                    shippingPrice: "100",  //$("#shipping").text(),
-                                    paymentCode: "1" //$("input[type=radio][name=selector]:checked").val()
+                                	receiverName: $("#receiverName").val(),
+                                    totalPrice: $("#totalPrice").text(),
+                                    receiverPhone: $("#phoneNumber").val(),
+                                    deliveryComment: $("#deliveryComment").val(),
+                                    shippingPrice: $("#shipping").text(),
+                                    paymentCode: $("input[type=radio][name=selector]:checked").val()
                                 },
                                 
                                 purchaseOrder: {
