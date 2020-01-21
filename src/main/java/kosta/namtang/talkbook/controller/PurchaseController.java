@@ -161,7 +161,7 @@ public class PurchaseController {
             } else if (status.equals("paid")) {
                 log.debug("paid");
 
-                result = new ShopResponse(StatusCode.Success, paymentData);
+                result = new ShopResponse(StatusCode.Success, payment.getCustomData());
             } else {
                 throw new Exception();
             }

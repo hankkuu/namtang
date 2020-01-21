@@ -21,17 +21,49 @@
         IMP.init("imp13182886"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.'
 
         $(window).load(function () {
+
+            $(function() {
+                $.ajax({
+                    type : "get" ,
+                    url : "/api/v1/account/updateAccount",
+                    dataType : "json",
+
+                    success : function(result) {
+                        console.log(result.statusCode);
+                        if(result.statusCode === "Success") {
+                            let obj = JSON.parse(result.message);
+                            // user 정보 뿌리기
+                            // $("#userName").val(obj.userName);
+                            // $("#userPhone").val(obj.userPhone);
+                            // $("#userPost").val(obj.userPost);
+                            // $("#userAddress").val(obj.userAddress);
+                            // $("#userAddressDetail").val(obj.userAddressDetail);
+                            // $("#userEmail").val(obj.userEmail);
+
+                        } else {
+                            alert("회원정보 로딩이 잘못되었습니다");
+                        }
+                    },
+                    error : function(error) {
+                        console.log(error);
+                        alert("오류 발생");
+                    }
+                });//ajax끝
+            })
+
+
+
             $(function () {
                 let list = JSON.parse(sessionStorage.getItem("cartlist"));
                 let str = "";
                 let strCut = "";
                 let nb = 0;
                 let sum = 0;
-                
-                for(let i = 0 ; i < list.length; i++) {
+
+                for (let i = 0; i < list.length; i++) {
                     console.log(i);
-                    
-					str += '<tr>'
+
+                    str += '<tr>'
                     str += '<td>'
                     /* str += '<img class=\"card-img\" src=\" \">'list[i].img */
                     str += '<img id="list[' + i + '].img" src=' + list[i].img + '>'
@@ -39,15 +71,15 @@
                     str += '</td>'
                     str += '<td id="list[' + i + '].title" + >' + list[i].title + '</td>'
                     str += '<td id="list[' + i + '].price">' + list[i].price + '</td>'
-                    str += '<td id="list[' + i + '].qty">&emsp;'+ list[i].qty +'</td>'
-                    str += '<td id="list[' + i + '].total">'+ list[i].total +'</td>'
+                    str += '<td id="list[' + i + '].qty">&emsp;' + list[i].qty + '</td>'
+                    str += '<td id="list[' + i + '].total">' + list[i].total + '</td>'
                     str += '</tr>'
-                    
-                    strCut = list[i].total.substr(1,list[i].price.length);
+
+                    strCut = list[i].total.substr(1, list[i].price.length);
                     strCut = strCut.split(',');
-                    nb = parseInt(strCut[0]+strCut[1]);
+                    nb = parseInt(strCut[0] + strCut[1]);
                     sum += nb;
-                    
+
                     // str += '<tr>'
                     // str += '<td></td>'
                     // str += '<td></td>'
@@ -55,75 +87,67 @@
                     // str += '<td> <h5 id="priceSum">￦0</h5> </td>'
                     // str += '</tr>'
                 }
-                
+
                 $("#cartList").html(str);
 
                 var receiverName = $("#receiverName").val();
-            	console.log(receiverName);
-                
-                if(sum > 10000){
-                	$("#shipping").html(0);
-                	$("#totalPrice").html(sum);
+                console.log(receiverName);
+
+                if (sum > 10000) {
+                    $("#shipping").html(0);
+                    $("#totalPrice").html(sum);
                 } else {
-                	$("#shipping").html(2500);
-                	let s = 2500;
-                	$("#totalPrice").html(sum + s);
+                    $("#shipping").html(2500);
+                    let s = 2500;
+                    $("#totalPrice").html(sum + s);
                 }
-                
+
             });
 
             console.log("start");
-            
-            
-            
-
-			$("#purchase").click(async () => {
-            	let list = JSON.parse(sessionStorage.getItem("cartlist"));
-            	console.log(list);
-            	let purchaseBook = [];
-                    let priceList = []
-                    for(let i = 0; i < list.length; i++) {
 
 
+            $("#purchase").click(async () => {
+                let list = JSON.parse(sessionStorage.getItem("cartlist"));
+                console.log(list);
+                let purchaseBook = [];
 
-
+                for (let i = 0; i < list.length; i++) {
+                    let regExp = /[\{\}\[\]\/?.,;:|\)*￦~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+                    let price = "";
+                    if (regExp.test(list[i].price)) {
+                        price = list[i].price.replace(regExp, "");
+                        //특수문자를 대체. ""
                     }
-            		for(let i = 0; i < list.length; i++) {
-                        let regExp = /[\{\}\[\]\/?.,;:|\)*￦~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
-                        let price = "";
-                        if(regExp.test(list[i].price)) {
-                            price = list[i].price.replace(regExp, "");
-                            //특수문자를 대체. ""
-                        }
-            		    let item = {
-            				purchaseBookId : {
-            					bookIdx : list[i].id
-            				},
-            			price: price,
-            			name: list[i].title, 
-            			count: list[i].qty, 
-            			imagePath: list[i].img
-            		}	 
-            		purchaseBook.push(item);
-        		}	 
-            	console.log(purchaseBook);
-            	
-            	await purchaseProcess().then(async (result) => {
+                    let item = {
+                        purchaseBookId: {
+                            bookIdx: list[i].id
+                        },
+                        price: price,
+                        name: list[i].title,
+                        count: list[i].qty,
+                        imagePath: list[i].img
+                    }
+                    purchaseBook.push(item);
+                }
+                console.log(purchaseBook);
+
+                await purchaseProcess().then(async (result) => {
                     if (result.statusCode === "Success") {
                         const key = result.message;
                         console.log("key: " + key);
-                        
+
                         if (key !== undefined) {
                             let purchaseObj = {
                                 purchasePayment: {
-                                	receiverName: "tester", // $("#receiverName").val(),
-                                    totalPrice: "30000", //$("#totalPrice").text(),
-                                    receiverPhone: "123456", // $("#phoneNumber").val(),
-                                    deliveryComment: "18181818", //$("#deliveryComment").val(),
-                                    shippingPrice: "100",  //$("#shipping").text(),
-                                    paymentCode: "1" //$("input[type=radio][name=selector]:checked").val()
+                                    receiverName: $("#receiverName").val(),
+                                    totalPrice: $("#totalPrice").text(),
+                                    receiverPhone: $("#phoneNumber").val(),
+                                    deliveryComment: $("#deliveryComment").val(),
+                                    shippingPrice: $("#shipping").text(),
+                                    paymentCode: $("input[type=radio][name=selector]:checked").val()
                                 },
-                                
+
                                 purchaseOrder: {
                                     deliveryAddress: $("#userAddress").val()
                                 },
@@ -147,30 +171,39 @@
                                 // }]
                                 ,
                                 billKey: key
-                            }       
-                             
-                           
+                            }
+
+
                             //var uui = $("#list[0]price").val();
                             //console.log(uui);
-                            
+
                             //console.log("purchaseObj??" + purchaseObj);
 
                             // 구매하는 user 정보 필요
                             // billkey 정보 필요
                             // 총금액 and 구매 이름 필요
                             let user = {
-                                email: "gildong@gmail.com",
-                                name: "홍길동",
-                                tel: "010-4242-4242",
-                                addr: "서울특별시 강남구 신사동",
-                                postcode: "01181"
+                                email: "gildong@gmail.com", // 장현아
+                                name: "홍길동",    // 장현아
+                                tel: "010-4242-4242",   // 장현아
+                                addr: "서울특별시 강남구 신사동",  // 장현아
+                                postcode: "01181"   // 장현아
                             };
                             let shop = {
                                 pg: "kakaopay",
                                 pay_method: "card",
                                 escrow: true,
                                 currency: "KRW",
-                                custom_data: purchaseObj
+                                // custom data의 깊이는 1단계 구성으로 보내야 한다
+                                custom_data: {
+                                    senderName: user.name,
+                                    receiverName: $("#receiverName").val(),
+                                    billKey: purchaseObj.billKey,
+                                    orderDate: Date.now(),
+                                    address: $("#userAddress").val(),
+                                    phone: $("#phoneNumber").val(),
+                                    paymentCode: $("input[type=radio][name=selector]:checked").val()
+                                }
                             };
                             let param = {
                                 pg: shop.pg,
@@ -179,8 +212,8 @@
                                 currency: shop.currency,
                                 custom_data: shop.custom_data,
                                 merchant_uid: key,
-                                name: "임시로 사용하는 이름이다",
-                                amount: "30000", //total값 넣기
+                                name: "임시로 사용하는 이름이다",      // 장현아
+                                amount: "30000", //total값 넣기        // 장현아
                                 buyer_email: user.email,
                                 buyer_name: user.name,
                                 buyer_tel: user.tel,
@@ -324,34 +357,34 @@
         //     });
         //     return result;
         // }
-        
+
         /* 주소찾기 */
-	  	function openDaumZipAddress() {
-			new daum.Postcode({
-				oncomplete:function(data) {
-					$("#userAddress").val(data.address);
-					$("#userAddressDetail").focus();
-					$("#userPost").val(data.postcode1 +"-"+ data.postcode2 + "-"+data.zonecode);					
-					console.log(data.postcode1 +"-"+ data.postcode2 + "-"+data.zonecode);				
-				}
-			}).open();
-		}
-        
+        function openDaumZipAddress() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    $("#userAddress").val(data.address);
+                    $("#userAddressDetail").focus();
+                    $("#userPost").val(data.postcode1 + "-" + data.postcode2 + "-" + data.zonecode);
+                    console.log(data.postcode1 + "-" + data.postcode2 + "-" + data.zonecode);
+                }
+            }).open();
+        }
+
         /* 기존 주소 */
-        function openPopup(){
-        	var _width = '650';
+        function openPopup() {
+            var _width = '650';
             var _height = '380';
-			
+
             // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
-            var _left = Math.ceil(( window.screen.width - _width )/2);
-            var _top = Math.ceil(( window.screen.width - _height )/2); 
-            window.open('/url', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+            var _left = Math.ceil((window.screen.width - _width) / 2);
+            var _top = Math.ceil((window.screen.width - _height) / 2);
+            window.open('/url', 'popup-test', 'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);
         }
     </script>
     <style>
-    #userPost{
-    	display:inline-block;
-    }
+        #userPost {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -363,16 +396,16 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">ProductName</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">ProductName</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                    </tr>
                     </thead>
                     <tbody id="cartList">
-                     
+
                     </tbody>
                 </table>
             </div>
@@ -409,7 +442,7 @@
                             <span class="placeholder" data-placeholder="First name">주문인</span>
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="orderName" name="name">
+                            <input type="text" class="form-control" id="userName" name="name">
                             <span class="placeholder" data-placeholder="Last name"></span>
                         </div>
                         <%--<div class="col-md-12 form-group">
@@ -424,13 +457,17 @@
                             <span class="placeholder" data-placeholder="Email Address"></span>
                         </div>
                         <div class="col-md-12 form-group">
-							<input type="text" id="userPost" class="form-control" name="userPost" style="width:278px;" value="우편번호" disabled/>
-							<input type="button" onClick="openDaumZipAddress()" value = "주소 찾기" />
-							<input type="button" onClick="openPopup()" value = "기존 주소" />
-							<br/>
-							<input type="text" id="userAddress" class="form-control" name="userAddress" value="주소" disabled/>
-							<input type="text" id="userAddressDetail" class="form-control" name="userAddressDetail" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'"/>
-						</div>
+                            <input type="text" id="userPost" class="form-control" name="userPost" style="width:278px;"
+                                   value="우편번호" disabled/>
+                            <input type="button" onClick="openDaumZipAddress()" value="주소 찾기"/>
+                            <input type="button" onClick="openPopup()" value="기존 주소"/>
+                            <br/>
+                            <input type="text" id="userAddress" class="form-control" name="userAddress" value="주소"
+                                   disabled/>
+                            <input type="text" id="userAddressDetail" class="form-control" name="userAddressDetail"
+                                   placeholder="상세주소" onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = '상세주소'"/>
+                        </div>
                         <div class="col-md-6 form-group p_star">
                             <span class="placeholder" data-placeholder="Phone number">연락처</span>
                         </div>
@@ -459,9 +496,9 @@
                     <div class="order_box">
                         <h2>주문 정보</h2>
                         <table id="list">
-	                        <tr>
-	                            <td><a href="#"><h4>상품 <span>금액</span></h4></a></td>
-	                        </tr>
+                            <tr>
+                                <td><a href="#"><h4>상품 <span>금액</span></h4></a></td>
+                            </tr>
                         </table>
                         <ul class="list list_2">
                             <li><a href="#">배송비 <span id="shipping"></span></a></li>
