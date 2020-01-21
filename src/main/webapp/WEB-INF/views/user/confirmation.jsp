@@ -21,41 +21,50 @@
             
             console.log("json : " + json);
             
-            let str = "";
-            let strCut = "";
-            let nb = 0;
+            $("#orderNumber").html(json.billKey);
+            $("#orderDate").html(json.orderDate);            
+            if(json.paymentCode == "1"){
+            	$("#orderInfo").html("가상계좌");
+            } else {
+            	$("#orderInfo").html("카드");
+            }
+            
+            $("#receiverName").html(json.receiverName);
+            $("#phone").html(json.phone);
+            
+            $("#address").html(json.address);
+            $("#addressDetail").html(json.addressDetail);
+            
+            
+            
             let sum = 0;
             
-            for(let i = 0 ; i < list.length; i++) {
+            /*  for(let i = 0 ; i < json.length; i++) {
                 
-				str += '<tr>'
-                str += '<td>'+ json[i].title +'</td>'
-                str += '<td>'+ json[i].qty +'</td>'
-                str += '<td>'+ json[i].total +'</td>'
-                str += '</tr>'
+				strg += '<tr>'
+                strg += '<td>'+ json[i].title +'</td>'
+                strg += '<td>'+ json[i].qty +'</td>'
+                strg += '<td>'+ json[i].total +'</td>'
+                strg += '</tr>'
                 
-                strCut = list[i].total.substr(1,json[i].price.length);
+                strCut = json[i].total.substr(1,json[i].price.length);
                 strCut = strCut.split(',');
                 nb = parseInt(strCut[0]+strCut[1]);
                 sum += nb;
-            } 
+            }  */
             
-            $("#product").html(str);
+            $("#product").html(strg);
             
             if(sum > 10000){
-            	$("#shipping").html(0);
+            	$("#orderShipping").html(0);
             	$(".totalPrice").html(sum);
             	$(".totalPrice").html(sum);
             } else {
-            	$("#shipping").html(2500);
+            	$("#orderShipping").html(2500);
             	let s = 2500;
             	$(".totalPrice").html(sum + s);
             	$(".totalPrice").html(sum + s);
-            }
-        	
-        	
-            
-            
+            }  
         })
     </script>
 
@@ -87,75 +96,67 @@
         <div class="row mb-5">
             <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
                 <div class="confirmation-card">
-                    <h3 class="billing-title">주문자 정보</h3>
+                    <h3 class="billing-title">주문 정보</h3>
                     <table class="order-rable">
                         <tr>
-                            <td>Order number</td>
-                            <td>: 60235</td>
+                            <td>주문번호</td>
+                            <td>:</td>
+                            <td id="orderNumber"></td>
                         </tr>
                         <tr>
-                            <td>Date</td>
-                            <td>: Oct 03, 2017</td>
+                            <td>날짜</td>
+                            <td>:</td>
+                            <td id="orderDate"></td>
                         </tr>
                         <tr>
-                            <td class="totalPrice"></td>
+                            <td>배송비</td>
+                            <td>:</td>
+                            <td id="orderShipping"></td>
+                        </tr>
+                        <tr>
+                            <td>주문방식</td>
+                            <td>:</td>
+                            <td id="orderInfo"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+                <div class="confirmation-card">
+                    <h3 class="billing-title">회원 정보</h3>
+                    <table class="order-rable">
+                        <tr>
+                            <td>받는사람</td>
+                            <td>:</td>
+                            <td id="receiverName"></td>
+                        </tr>
+                        <tr>
+                            <td>핸드폰 번호</td>
+                            <td>:</td>
+                            <td id="phone"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div> 
+            <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+                <div class="confirmation-card">
+                    <h3 class="billing-title">배송 정보</h3>
+                    <table class="order-rable">
+                        <tr>
+                            <td>주소</td>
+                            <td>:</td>
+                            <td id="address"></td>
+                        </tr>
+                        <tr>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td>Payment method</td>
-                            <td>: Check payments</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-                <div class="confirmation-card">
-                    <h3 class="billing-title">주소</h3>
-                    <table class="order-rable">
-                        <tr>
-                            <td>Street</td>
-                            <td>: 56/8 panthapath</td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>: Dhaka</td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>: Bangladesh</td>
-                        </tr>
-                        <tr>
-                            <td>Postcode</td>
-                            <td>: 1205</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-                <div class="confirmation-card">
-                    <h3 class="billing-title">Shipping Address</h3>
-                    <table class="order-rable">
-                        <tr>
-                            <td>Street</td>
-                            <td>: 56/8 panthapath</td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>: Dhaka</td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>: Bangladesh</td>
-                        </tr>
-                        <tr>
-                            <td>Postcode</td>
-                            <td>: 1205</td>
+                            <td></td>
+                            <td id="addressDetail"></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="order_details_table">
+        <!-- <div class="order_details_table">
             <h2>Order Details</h2>
             <div class="table-responsive">
                 <table class="table">
@@ -202,7 +203,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 <!--================End Order Details Area =================-->

@@ -33,12 +33,12 @@
                         if(result.statusCode === "Success") {
                             let obj = JSON.parse(result.message);
                             // user 정보 뿌리기
-                            // $("#userName").val(obj.userName);
-                            // $("#userPhone").val(obj.userPhone);
-                            // $("#userPost").val(obj.userPost);
-                            // $("#userAddress").val(obj.userAddress);
-                            // $("#userAddressDetail").val(obj.userAddressDetail);
-                            // $("#userEmail").val(obj.userEmail);
+                             $("#userName").val(obj.userName);
+                             $("#phoneNumber").val(obj.userPhone);
+                             $("#userPost").val(obj.userPost);
+                             $("#userAddress").val(obj.userAddress);
+                             $("#userAddressDetail").val(obj.userAddressDetail);
+                             $("#userEmail").val(obj.userEmail);
 
                         } else {
                             alert("회원정보 로딩이 잘못되었습니다");
@@ -212,8 +212,8 @@
                                 currency: shop.currency,
                                 custom_data: shop.custom_data,
                                 merchant_uid: key,
-                                name: "임시로 사용하는 이름이다",      // 장현아
-                                amount: "30000", //total값 넣기        // 장현아
+                                name: purchaseBook[0].name + "외 " + purchaseBook.length + "권",      // 장현아
+                                amount: purchaseObj.purchasePayment.totalPrice , //total값 넣기        // 장현아
                                 buyer_email: user.email,
                                 buyer_name: user.name,
                                 buyer_tel: user.tel,
@@ -370,22 +370,8 @@
             }).open();
         }
 
-        /* 기존 주소 */
-        function openPopup() {
-            var _width = '650';
-            var _height = '380';
-
-            // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
-            var _left = Math.ceil((window.screen.width - _width) / 2);
-            var _top = Math.ceil((window.screen.width - _height) / 2);
-            window.open('/url', 'popup-test', 'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);
-        }
     </script>
-    <style>
-        #userPost {
-            display: inline-block;
-        }
-    </style>
+    
 </head>
 <body>
 
@@ -443,24 +429,22 @@
                         </div>
                         <div class="col-md-6 form-group p_star">
                             <input type="text" class="form-control" id="userName" name="name">
-                            <span class="placeholder" data-placeholder="Last name"></span>
+                            <span class="placeholder" data-placeholder="User Name"></span>
                         </div>
-                        <%--<div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="company" name="company" placeholder="Company name">
-                        </div>--%>
                         <div class="col-md-6 form-group p_star">
-                            <%--<input type="text" class="form-control" id="number" name="number">--%>
                             <span class="placeholder" data-placeholder="Phone number">받는 사람</span>
                         </div>
                         <div class="col-md-6 form-group p_star">
                             <input type="text" class="form-control" id="receiverName" name="compemailany">
-                            <span class="placeholder" data-placeholder="Email Address"></span>
+                            <span class="placeholder" data-placeholder="Receiver Name"></span>
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <input type="hidden" class="form-control" id="userEmail" name="userEmail">
                         </div>
                         <div class="col-md-12 form-group">
                             <input type="text" id="userPost" class="form-control" name="userPost" style="width:278px;"
                                    value="우편번호" disabled/>
                             <input type="button" onClick="openDaumZipAddress()" value="주소 찾기"/>
-                            <input type="button" onClick="openPopup()" value="기존 주소"/>
                             <br/>
                             <input type="text" id="userAddress" class="form-control" name="userAddress" value="주소"
                                    disabled/>
