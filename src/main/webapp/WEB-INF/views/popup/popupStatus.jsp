@@ -11,14 +11,15 @@
             $(window).on('load', function () {
                 $(function () {
 
-                    let para = document.location.href.split("?");
-                    console.log(para);
+                    let params = window.location.search;
+                    //let decode = decodeURI(params);
+                    let str = params.substring(params.indexOf("=") + 1);
 
 
                     $.ajax({
                     method: "get",
                     url: "/api/v1/purchase/myPurchaseStatus",
-                    data: { id: para[1] },
+                    data: { id: str },
                     dataType:"json",
                     success: function (result) {
 

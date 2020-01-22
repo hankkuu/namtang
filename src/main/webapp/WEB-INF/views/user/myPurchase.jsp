@@ -54,15 +54,15 @@
 
     function movePurchaseDetail() {
         //alert("aaa");
-        location.href="/user/myPurchaseDetail?" + $("#orderIdx").val();
+        location.href="/user/myPurchaseDetail?orderIdx=" + $("#orderIdx").val();
     }
 
     function showStatusPopup() {
-        window.open("/user/purchase/popupStatus?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+        window.open("/user/purchase/popupStatus?orderIdx="+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
     }
 
     function showRefundPopup() {
-        window.open("/user/purchase/popupRefund?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+        window.open("/user/purchase/popupRefund?orderIdx="+$("#orderIdx").val() , "a", "width=700, height=300, left=100, top=50");
     }
 
 <%--        function qty(qty, bookIdx) {--%>

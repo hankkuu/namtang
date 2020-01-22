@@ -16,6 +16,6 @@ import java.io.Serializable;
 @Embeddable
 public class PurchaseBookId implements Serializable {
 
-    private long bookIdx;
-    private long purchaseOrderIdx;
+    private Long bookIdx;
+    private Long purchaseOrderIdx;
 }

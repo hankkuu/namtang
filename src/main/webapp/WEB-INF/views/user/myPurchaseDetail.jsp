@@ -11,13 +11,22 @@
     $(window).on('load', function () {
         $(function () {
 
-            let para = document.location.href.split("?");
-            console.log(para);
+            let params = window.location.search;
+            //let decode = decodeURI(params);
+            let str = params.substring(params.indexOf("=") + 1);
+            //let replaceStr = str.slice(0, -1);
+            //replaceStr = replaceStr.replace(/\\/ig, "").replace("\"\"{", "{").replace("}\"\"", "}");
+            //let json = JSON.parse(replaceStr);
+
+            console.log("json : " + str);
+
+            //let para = document.location.href.split("?");
+            //console.log(para);
 
             $.ajax({
                 type: "get",
                 url: "/api/v1/purchase/myPurchaseDetail",
-                data: { id: para[1] },
+                data: { id: str },
                 dataType:"json",
                 success: function (result) {
 
@@ -33,11 +42,13 @@
                             str += '<td>' + list[i].bookName + '</td>'
                             str += '<td>' + list[i].count + '</a></td>'
                             str += '<td>' + list[i].price + '</td>'
+                            str += '<td>' + list[i].state + '</td>'
                             if(list[i].isReview === true) {
                                 str += '<td>' + '<button type="button" id="writeReview" value="review" onclick="showStatusPopup();">리뷰보기</button>'  + '</td>'
                             } else {
                                 str += '<td>' + '<button type="button" id="readReview" value="viewReview" onclick="showRefundPopup();">리뷰작성</button>'
                             }
+                            str += '<input type="hidden" id="bookIdx" value='+list[i].bookIdx+' />'
                             str += '</td>'
                             str += '</tr>'
 
@@ -52,13 +63,13 @@
             });
         });
     });
-
+    //location.href="/BookDetail?id="+id;
     function showStatusPopup() {
-            window.open("/user/purchase/popupStatus?"+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+        window.open("/BookDetail?id=?"+$("#bookIdx").val() , '_blank');
     }
 
     function showRefundPopup() {
-        window.open("/user/purchase/popupRefund?id="+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+        window.open("/BookDetail?id="+$("#bookIdx").val() , '_blank');
     }
 
 <%--        function qty(qty, bookIdx) {--%>
@@ -127,6 +138,7 @@
                               <th scope="col">상품명</th>
                               <th scope="col">수량</th>
                               <th scope="col">가격</th>
+                              <th scope="col">상태</th>
                               <th scope="col">리뷰 보기/작성</th>
 
                           </tr>

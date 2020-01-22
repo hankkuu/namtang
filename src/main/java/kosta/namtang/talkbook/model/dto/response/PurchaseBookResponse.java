@@ -12,4 +12,5 @@ public class PurchaseBookResponse {
     private int count;
     private BigDecimal price;
     private boolean isReview;
+    private String state;
 }

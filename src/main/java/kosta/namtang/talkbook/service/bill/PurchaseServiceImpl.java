@@ -10,6 +10,8 @@ import kosta.namtang.talkbook.model.domain.Review;
 import kosta.namtang.talkbook.model.domain.bill.*;
 import kosta.namtang.talkbook.model.domain.account.Users;
 import kosta.namtang.talkbook.model.domain.bill.id.PurchaseBookId;
+import kosta.namtang.talkbook.model.dto.request.Refund;
+import kosta.namtang.talkbook.model.dto.request.RefundRequest;
 import kosta.namtang.talkbook.model.dto.response.OrderStatusResponse;
 import kosta.namtang.talkbook.model.dto.response.PurchaseBookResponse;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
@@ -126,86 +128,98 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     @Transactional
-    public BillKey refund(String billKey, String reason, int refundCode, List<PurchaseBook> cancelBookList) throws Exception {
-
+    public BillKey refund(List<Refund> list) throws Exception {
+        //String billKey, String reason, int refundCode, List<PurchaseBook> cancelBookList
         try {
+
             //구매당시의 Billkey를 가져 옴
             // 빌키 검증이 필요할까???
             Timestamp cancelDate = DateTimeHelper.timeStampNow();
-
+            long oderIdx = list.get(0).getOrderIdx();
             //해당 BillKey의 Basket 정보를 가져옴
-            PurchaseOrder order = purchaseOrder.findByBillKey(billKey);
+
+            PurchaseOrder order = purchaseOrder.findById(oderIdx).orElse(null);
+            order.setStateCode(PurchaseCode.Cancel_Ing);
+            PurchaseOrder purchaseOrderResult = purchaseOrder.save(order);
             //해당 BillKey(basketId )의 Payment 정보를 가져옴
             //(취소할 때 refund type을 넣도록 변경)
             //PurchaseBasketPaymentDTO payment = dao.selectPayment(basket.getBasketId());
 
-            //해당 Basket 정보의 Goods를 가져옴
-            // 단, 여기서 전체환불인지 부분환불인지 구분한다
-            List<PurchaseBook> booksList = new ArrayList<PurchaseBook>();
-            if (cancelBookList.size() == 0) {
-                booksList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
-            } else {
-                for (PurchaseBook cancelBook : cancelBookList) {
-                    PurchaseBook book = purchaseBook.findByPurchaseBookIdBookIdx(cancelBook.getPurchaseBookId().getBookIdx());
-                    book.setCount(cancelBook.getCount());
-                    booksList.add(book);
-                }
+            if (purchaseOrderResult == null) {
+                throw new GlobalException("환불 상품 수정 실패", StatusCode.Fail_Update_BaksetState);
             }
 
-            // 아래 부터는 환불 데이터를 수정 또는 입력하는 단계이다 즉 List<PurchaseGoodsDTO> goodsList 를 처리한다
-            if (booksList.size() > 0) {
+            for (Refund r : list) {
+
+//                //해당 Basket 정보의 Goods를 가져옴
+//                // 단, 여기서 전체환불인지 부분환불인지 구분한다
+//                List<PurchaseBook> booksList = new ArrayList<PurchaseBook>();
+//                if (cancelBookList.size() == 0) {
+//                    booksList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
+//                } else {
+//                    for (PurchaseBook cancelBook : cancelBookList) {
+//                        PurchaseBook book = purchaseBook.findByPurchaseBookIdBookIdx(cancelBook.getPurchaseBookId().getBookIdx());
+//                        book.setCount(cancelBook.getCount());
+//                        booksList.add(book);
+//                    }
+//                }
+
+
+                // 아래 부터는 환불 데이터를 수정 또는 입력하는 단계이다 즉 List<PurchaseGoodsDTO> goodsList 를 처리한다
+                //if (booksList.size() > 0) {
 
                 //Basket 상태 정보를 update
-                order.setStateCode(PurchaseCode.Cancel_Ing);
-                PurchaseOrder purchaseOrderResult = purchaseOrder.save(order);
-                if (purchaseOrderResult == null) {
-                    throw new GlobalException("환불 상품 수정 실패", StatusCode.Fail_Update_BaksetState);
+
+
+                Optional<PurchaseBook> book = purchaseBook.findByPurchaseBookId(new PurchaseBookId(r.getBookIdx(), r.getOrderIdx()));
+                //book.setCount(r.getBookCount());
+
+//                    //해당 Basket의 Goods 상태 정보를 update
+//                    for (PurchaseBook book : booksList) {
+                book.get().setStateCode(PurchaseCode.Cancel_Ing);
+
+                // 수량만 부분 환불할 경우 대처가 필요하다 (정책상 아예 환불 후 재구매를 할지 아니면 부분 환불을 수량까지 지원할지 정책이 필요함)
+                // 세부 정책이 없기 때문에 수량 환불은 구매 수정으로 따로 API를 만들어 지원한다 / 옥션의 경우 수량 수정은 없고 배송정보 수정만 있다
+                PurchaseBook purchaseBookResult = purchaseBook.save(book.get());
+                if (purchaseBookResult == null) {
+                    // 완전 존망 ㅠㅜㅜ
+                    throw new GlobalException("환불 상품 수정 실패", StatusCode.Fail_Update_RefundState);
                 }
 
-                //해당 Basket의 Goods 상태 정보를 update
-                for (PurchaseBook book : booksList) {
-                    book.setStateCode(PurchaseCode.Cancel_Ing);
+                // 아래와 같이 1:1 로 맵핑되는 부분은 procedure로 하면 좋을 듯
+                PurchaseCancel cancel = new PurchaseCancel();
+                cancel.setBillKey(book.get().getBillKey());
+                cancel.setPurchaseBookId(new PurchaseBookId(book.get().getPurchaseBookId().getBookIdx(), order.getPurchaseOrderIdx()));
+                //cancel.setPurchaseGoodsId(goods.getPurchaseGoodId());
+                cancel.setReason(r.getReason());
+                CancelCode cc =  CancelCode.fromInteger(r.getRefundCode());
+                cancel.setCancelCode(cc);
+                cancel.setCreateDate(cancelDate);
 
-                    // 수량만 부분 환불할 경우 대처가 필요하다 (정책상 아예 환불 후 재구매를 할지 아니면 부분 환불을 수량까지 지원할지 정책이 필요함)
-                    // 세부 정책이 없기 때문에 수량 환불은 구매 수정으로 따로 API를 만들어 지원한다 / 옥션의 경우 수량 수정은 없고 배송정보 수정만 있다
-                    PurchaseBook purchaseBookResult = purchaseBook.save(book);
-                    if (purchaseBookResult == null) {
-                        // 완전 존망 ㅠㅜㅜ
-                        throw new GlobalException("환불 상품 수정 실패", StatusCode.Fail_Update_RefundState);
-                    }
+                cancel.setUpdateDate(cancelDate);
+                cancel.setCount(r.getBookCount());
+                cancel.setPrice(book.get().getPrice());
 
-                    // 아래와 같이 1:1 로 맵핑되는 부분은 procedure로 하면 좋을 듯
-                    PurchaseCancel cancel = new PurchaseCancel();
-                    cancel.setBillKey(billKey);
-                    cancel.setPurchaseBookId(new PurchaseBookId(book.getPurchaseBookId().getBookIdx(), order.getPurchaseOrderIdx()));
-                    //cancel.setPurchaseGoodsId(goods.getPurchaseGoodId());
-                    cancel.setReason(reason);
-                    cancel.setRefundCode(CancelCode.fromInteger(refundCode) );
-                    cancel.setCreateDate(cancelDate);
-                    cancel.setUpdateDate(cancelDate);
-                    cancel.setCount(book.getCount());
-                    cancel.setPrice(book.getPrice());
-
-                    //해당 Goods의 Cancel 정보를 insert
-                    PurchaseCancel cancelResult = purchaseCancel.save(cancel);
-                    if (cancelResult == null) {
-                        throw new GlobalException("환불 상품 수정 실패", StatusCode.Fail_Add_CancelGoods);
-                    }
+                //해당 Goods의 Cancel 정보를 insert
+                PurchaseCancel cancelResult = purchaseCancel.save(cancel);
+                if (cancelResult == null) {
+                    throw new GlobalException("환불 상품 수정 실패", StatusCode.Fail_Add_CancelGoods);
                 }
-
-                //해당 Billkey의 Cancel Date를 update
-                BillKey keyResult = keySystem.registerCancel(billKey, cancelDate);
-
-                //환불 완료 후 환불완료 페이지 이동
-                if (keyResult != null) {
-                    return keyResult;
-                } else {
-                    throw new GlobalException("환불 진행을 취소시킵니다", StatusCode.Fail_Cancel_BillKey);
-                }
-
-            } else {
-                throw new GlobalException("환불 진행할 상품이 없습니다", StatusCode.Fail_Not_Exist_Goods);
             }
+
+            //해당 Billkey의 Cancel Date를 update
+            BillKey keyResult = keySystem.registerCancel(order.getBillKey(), cancelDate);
+
+            //환불 완료 후 환불완료 페이지 이동
+            if (keyResult != null) {
+                return keyResult;
+            } else {
+                throw new GlobalException("환불 진행을 취소시킵니다", StatusCode.Fail_Cancel_BillKey);
+            }
+
+
+            //}
+
 
         } catch (Exception e) {
             // 임시 트랜잭션
@@ -239,15 +253,15 @@ public class PurchaseServiceImpl implements PurchaseService {
 
                 List<PurchaseBook> bookList = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(order.getPurchaseOrderIdx());
                 String productName = bookList.get(0).getName();
-                if(bookList.size() > 1) {
+                if (bookList.size() > 1) {
                     //일단 대충 더하기
-                    productName = productName + "외 " + String.valueOf(bookList.size()-1) + "권";
+                    productName = productName + "외 " + String.valueOf(bookList.size() - 1) + "권";
                 }
 
                 //dto 사용
                 PurchaseOrderResponse response = new PurchaseOrderResponse();
                 response.setOrderDate(DateTimeHelper.sqlDate(order.getOrderDate().getTime()));
-                response.setBillKey(order.getBillKey().substring(0,8));
+                response.setBillKey(order.getBillKey().substring(0, 8));
                 response.setTotalPrice(payment.getTotalPrice());
                 response.setReceiveName(payment.getReceiverName());
                 response.setProductName(productName);
@@ -299,18 +313,18 @@ public class PurchaseServiceImpl implements PurchaseService {
     public List<PurchaseBookResponse> selectOrderDetail(long orderIdx, long userIdx) throws Exception {
         List<PurchaseBook> books = purchaseBook.findByPurchaseBookIdPurchaseOrderIdx(orderIdx);
         List<PurchaseBookResponse> responses = new ArrayList<>();
-        for(PurchaseBook book : books) {
+        for (PurchaseBook book : books) {
             PurchaseBookResponse item = new PurchaseBookResponse();
             item.setBookName(book.getName());
             item.setCount(book.getCount());
             item.setPrice(book.getPrice());
             item.setBillKey(book.getBillKey());
+            item.setState(book.getStateCode().name());
             item.setBookIdx(book.getPurchaseBookId().getBookIdx());
             List<Review> review = reviewRepository.findByUserIdxAndBookIdx(userIdx, book.getPurchaseBookId().getBookIdx());
-            if(review.size() > 0) {
+            if (review.size() > 0) {
                 item.setReview(true);
-            }
-            else {
+            } else {
                 item.setReview(false);
             }
             responses.add(item);
@@ -324,10 +338,10 @@ public class PurchaseServiceImpl implements PurchaseService {
     public boolean selectPurchaseStatus(long bookIdx, long userIdx) throws Exception {
 
         List<PurchaseOrder> orderList = purchaseOrder.findByUserIdx(userIdx);
-        for(PurchaseOrder order : orderList) {
+        for (PurchaseOrder order : orderList) {
             long orderIdx = order.getPurchaseOrderIdx();
-            PurchaseBook book = purchaseBook.findByPurchaseBookId(new PurchaseBookId(bookIdx, orderIdx));
-            if(book != null) {
+            PurchaseBook book = purchaseBook.findByPurchaseBookId(new PurchaseBookId(bookIdx, orderIdx)).get();
+            if (book != null) {
                 return true;
             }
         }

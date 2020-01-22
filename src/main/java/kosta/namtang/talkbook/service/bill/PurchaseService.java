@@ -6,6 +6,8 @@ import kosta.namtang.talkbook.model.domain.bill.PurchaseBook;
 import kosta.namtang.talkbook.model.domain.bill.PurchaseOrder;
 import kosta.namtang.talkbook.model.domain.bill.PurchasePayment;
 import kosta.namtang.talkbook.model.domain.account.Users;
+import kosta.namtang.talkbook.model.dto.request.Refund;
+import kosta.namtang.talkbook.model.dto.request.RefundRequest;
 import kosta.namtang.talkbook.model.dto.response.OrderStatusResponse;
 import kosta.namtang.talkbook.model.dto.response.PurchaseBookResponse;
 import kosta.namtang.talkbook.model.dto.response.PurchaseOrderResponse;
@@ -26,7 +28,7 @@ public interface PurchaseService {
                            PurchasePayment payment, long accountIdx, String billKey) throws Exception;
 
     // 환불
-    BillKey refund(String billKey, String reason, int refundType, List<PurchaseBook> cancelBookList) throws Exception;
+    BillKey refund(List<Refund> list) throws Exception;
 
     // 구매 수정
     BillKey changePurchase(String billKey, List<PurchaseBook> purchaseGoodsList) throws Exception;

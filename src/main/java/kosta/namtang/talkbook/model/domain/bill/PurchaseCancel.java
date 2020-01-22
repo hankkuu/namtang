@@ -28,7 +28,7 @@ public class PurchaseCancel {
     private String reason;
     private int count;
     @Column(name = "CANCEL_CODE", nullable = false)
-    private CancelCode refundCode;
+    private CancelCode cancelCode;
     @Column(name = "CREATE_DATE", nullable = false)
     private Timestamp createDate;
     @Column(name = "UPDATE_DATE", nullable = false)

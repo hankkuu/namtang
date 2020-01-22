@@ -34,37 +34,37 @@
             
             $("#address").html(json.address);
             $("#addressDetail").html(json.addressDetail);
+            $("#totalPrice").html(json.totalPrice);
             
             
-            
-            let sum = 0;
-            
-            /*  for(let i = 0 ; i < json.length; i++) {
-                
-				strg += '<tr>'
-                strg += '<td>'+ json[i].title +'</td>'
-                strg += '<td>'+ json[i].qty +'</td>'
-                strg += '<td>'+ json[i].total +'</td>'
-                strg += '</tr>'
-                
-                strCut = json[i].total.substr(1,json[i].price.length);
-                strCut = strCut.split(',');
-                nb = parseInt(strCut[0]+strCut[1]);
-                sum += nb;
-            }  */
-            
-            $("#product").html(strg);
-            
-            if(sum > 10000){
-            	$("#orderShipping").html(0);
-            	$(".totalPrice").html(sum);
-            	$(".totalPrice").html(sum);
-            } else {
-            	$("#orderShipping").html(2500);
-            	let s = 2500;
-            	$(".totalPrice").html(sum + s);
-            	$(".totalPrice").html(sum + s);
-            }  
+            // let sum = 0;
+            //
+            // /*  for(let i = 0 ; i < json.length; i++) {
+            //
+			// 	strg += '<tr>'
+            //     strg += '<td>'+ json[i].title +'</td>'
+            //     strg += '<td>'+ json[i].qty +'</td>'
+            //     strg += '<td>'+ json[i].total +'</td>'
+            //     strg += '</tr>'
+            //
+            //     strCut = json[i].total.substr(1,json[i].price.length);
+            //     strCut = strCut.split(',');
+            //     nb = parseInt(strCut[0]+strCut[1]);
+            //     sum += nb;
+            // }  */
+            //
+            // $("#product").html(strg);
+            //
+            // if(sum > 10000){
+            // 	$("#orderShipping").html(0);
+            // 	$(".totalPrice").html(sum);
+            // 	$(".totalPrice").html(sum);
+            // } else {
+            // 	$("#orderShipping").html(2500);
+            // 	let s = 2500;
+            // 	$(".totalPrice").html(sum + s);
+            // 	$(".totalPrice").html(sum + s);
+            // }
         })
     </script>
 
@@ -109,9 +109,9 @@
                             <td id="orderDate"></td>
                         </tr>
                         <tr>
-                            <td>배송비</td>
+                            <td>총 금액</td>
                             <td>:</td>
-                            <td id="orderShipping"></td>
+                            <td id="totalPrice"></td>
                         </tr>
                         <tr>
                             <td>주문방식</td>

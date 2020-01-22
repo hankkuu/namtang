@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import kosta.namtang.talkbook.model.dto.request.Refund;
+import kosta.namtang.talkbook.model.dto.request.RefundRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,12 +84,22 @@ public class PurchaseController {
         return new ShopResponse(StatusCode.Success, JsonUtil.toJson(res));
     }
 
-    @GetMapping("/refund")
-    public ShopResponse refund(@RequestParam long id, HttpServletRequest request ) throws Exception {
+    @PostMapping("/refund")
+    public ShopResponse refund(HttpServletRequest request, @RequestBody RefundRequest list ) throws Exception {
         Object obj = request.getSession().getAttribute("userIdx");
         long userIdx = Long.valueOf(String.valueOf(obj));
-        return null;
-        //purchaseService.refund()
+
+        ShopResponse result = null;
+        BillKey key = purchaseService.refund(list.getList());
+
+        if (key != null) {
+            // 구매 DB 입력 완료
+            result = new ShopResponse(StatusCode.Success, JsonUtil.toJson(key));
+        } else {
+            throw new Exception();
+        }
+
+        return result;
     }
 
 
