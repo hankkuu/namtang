@@ -22,21 +22,20 @@
                         let list = JSON.parse( result.message);
                         for(let i = 0 ; i < list.length ; i++) {
 
-                            console.log(list[i].orderDate);
-
+                            //console.log(list[i].orderDate);
 
                             str += '<tr>'
                             str += '<td>' + list[i].orderDate + '</td>'
-                            str += '<td><a href="#" onclick="movePurchaseDetail();"> ' +  list[i].billKey + '</a></td>'
+                            str += '<td><a href=/user/myPurchaseDetail?orderIdx=' + list[i].orderIdx + '> ' +  list[i].billKey + '</a></td>'
                             str += '<td>' + list[i].receiveName + '</td>'
                             str += '<td>'
                             str +=      list[i].productName
                             str += '</td>'
                             str += '<td>'+ list[i].totalPrice +'</td>'
 
-                            str += '<td>' + '<button type="button" id="checkStatus" value="상태확인" onclick="showStatusPopup();">상태확인</button>'  + '</td>'
-                            str += '<td>' + '<button type="button" id="refund" value="신청" onclick="showRefundPopup();">신청</button>'
-                            str += '<input type="hidden" id="orderIdx" value='+list[i].orderIdx+' />'
+                            str += '<td>' + '<button type="button" id="checkStatus" value=' + list[i].orderIdx + ' onclick="showStatusPopup(this);">상태확인</button>'  + '</td>'
+                            str += '<td>' + '<button type="button" id="refund" value=' + list[i].orderIdx + ' onclick="showRefundPopup(this);">신청</button>'
+                            str += '<div><input type="hidden" id="orderIdx" value='+ list[i].orderIdx +' /><div>'
                             str += '</td>'
                             str += '</tr>'
 
@@ -52,50 +51,13 @@
         });
     });
 
-    function movePurchaseDetail() {
-        //alert("aaa");
-        location.href="/user/myPurchaseDetail?orderIdx=" + $("#orderIdx").val();
+    function showStatusPopup(idx) {
+        window.open("/user/purchase/popupStatus?orderIdx="+idx.value , "a", "width=400, height=300, left=100, top=50");
     }
 
-    function showStatusPopup() {
-        window.open("/user/purchase/popupStatus?orderIdx="+$("#orderIdx").val() , "a", "width=400, height=300, left=100, top=50");
+    function showRefundPopup(idx) {
+        window.open("/user/purchase/popupRefund?orderIdx="+idx.value , "a", "width=700, height=300, left=100, top=50");
     }
-
-    function showRefundPopup() {
-        window.open("/user/purchase/popupRefund?orderIdx="+$("#orderIdx").val() , "a", "width=700, height=300, left=100, top=50");
-    }
-
-<%--        function qty(qty, bookIdx) {--%>
-<%--            let sum;--%>
-<%--            let tt = bookIdx;--%>
-
-<%--            console.log(tt);--%>
-<%--            let cart = {--%>
-<%--                qty: qty,--%>
-<%--                bookIdx: tt--%>
-<%--            }--%>
-
-<%--            console.log(cart);--%>
-<%--                $.ajax({--%>
-<%--                    async: false,--%>
-<%--                    url: "/user/cart/update",--%>
-<%--                    dataType:"json",--%>
-<%--                    data: cart,--%>
-<%--                    //contentType:"application/json",--%>
-<%--                    success: function (result) {--%>
-
-
-<%--                    },--%>
-<%--                    error: function (request, status, error) {--%>
-<%--                        console.log('code:' + request.status + "\n" + 'message : ' + request.responseText + "\n" + 'error:' + error);--%>
-<%--                    }--%>
-
-<%--                });--%>
-<%--            return "￦"+sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");//천단위 콤마 찍기;--%>
-<%--        }--%>
-
-
-
 
     </script>
 

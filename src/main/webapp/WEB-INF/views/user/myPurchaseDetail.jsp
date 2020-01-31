@@ -44,9 +44,9 @@
                             str += '<td>' + list[i].price + '</td>'
                             str += '<td>' + list[i].state + '</td>'
                             if(list[i].isReview === true) {
-                                str += '<td>' + '<button type="button" id="writeReview" value="review" onclick="showStatusPopup();">리뷰보기</button>'  + '</td>'
+                                str += '<td>' + '<button type="button" id="writeReview" value="'+list[i].bookIdx+'" onclick="showStatusPopup(this);">리뷰보기</button>'  + '</td>'
                             } else {
-                                str += '<td>' + '<button type="button" id="readReview" value="viewReview" onclick="showRefundPopup();">리뷰작성</button>'
+                                str += '<td>' + '<button type="button" id="readReview" value="'+list[i].bookIdx+'" onclick="showRefundPopup(this);">리뷰작성</button>'
                             }
                             str += '<input type="hidden" id="bookIdx" value='+list[i].bookIdx+' />'
                             str += '</td>'
@@ -64,44 +64,13 @@
         });
     });
     //location.href="/BookDetail?id="+id;
-    function showStatusPopup() {
-        window.open("/BookDetail?id=?"+$("#bookIdx").val() , '_blank');
+    function showStatusPopup(idx) {
+        window.open("/BookDetail?id="+idx.value , '_blank');
     }
 
-    function showRefundPopup() {
-        window.open("/BookDetail?id="+$("#bookIdx").val() , '_blank');
+    function showRefundPopup(idx) {
+        window.open("/BookDetail?id="+idx.value , '_blank');
     }
-
-<%--        function qty(qty, bookIdx) {--%>
-<%--            let sum;--%>
-<%--            let tt = bookIdx;--%>
-
-<%--            console.log(tt);--%>
-<%--            let cart = {--%>
-<%--                qty: qty,--%>
-<%--                bookIdx: tt--%>
-<%--            }--%>
-
-<%--            console.log(cart);--%>
-<%--                $.ajax({--%>
-<%--                    async: false,--%>
-<%--                    url: "/user/cart/update",--%>
-<%--                    dataType:"json",--%>
-<%--                    data: cart,--%>
-<%--                    //contentType:"application/json",--%>
-<%--                    success: function (result) {--%>
-
-
-<%--                    },--%>
-<%--                    error: function (request, status, error) {--%>
-<%--                        console.log('code:' + request.status + "\n" + 'message : ' + request.responseText + "\n" + 'error:' + error);--%>
-<%--                    }--%>
-
-<%--                });--%>
-<%--            return "￦"+sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");//천단위 콤마 찍기;--%>
-<%--        }--%>
-
-
 
 
     </script>
